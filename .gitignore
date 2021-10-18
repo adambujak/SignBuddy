@@ -1,0 +1,39 @@
+# Python files
+*.pyc
+**/__pychache__
+
+# Prerequisites
+*.d
+
+# Object files
+*.o
+*.out
+*.map
+*.in
+*.obj
+*.bin
+*.hex
+*.settings
+
+# MacOS 
+**/.DS_Store
+
+# Ozone
+**/*.jdebug*
+
+# VIM
+*.swp
+**/tags
+
+**/_build
+
+# Eclipse
+**/.cproject
+**/.project
+**/.settings
+
+# VSCode
+**/.vscode
+
+# STM32 Cube IDE
+**/stm32cubeide
