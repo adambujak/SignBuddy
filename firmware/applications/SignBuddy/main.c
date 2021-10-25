@@ -1,0 +1,68 @@
+#include "board.h"
+#include "gpio.h"
+
+void error_handler(void);
+
+#define PRIORITYGROUP  ((uint32_t)0x00000003)
+
+void sysclk_init(void)
+{
+  LL_FLASH_SetLatency(LL_FLASH_LATENCY_3);
+  while(LL_FLASH_GetLatency()!= LL_FLASH_LATENCY_3);
+
+  LL_PWR_SetRegulVoltageScaling(LL_PWR_REGU_VOLTAGE_SCALE1);
+  LL_RCC_HSI_Enable();
+
+  while(LL_RCC_HSI_IsReady() != 1);
+
+  LL_RCC_HSI_SetCalibTrimming(16);
+  LL_RCC_PLL_ConfigDomain_SYS(LL_RCC_PLLSOURCE_HSI, LL_RCC_PLLM_DIV_1, 8, LL_RCC_PLLR_DIV_2);
+  LL_RCC_PLL_EnableDomain_SYS();
+  LL_RCC_PLL_Enable();
+
+  while(LL_RCC_PLL_IsReady() != 1);
+
+  LL_RCC_SetSysClkSource(LL_RCC_SYS_CLKSOURCE_PLL);
+
+  while(LL_RCC_GetSysClkSource() != LL_RCC_SYS_CLKSOURCE_STATUS_PLL);
+
+  LL_RCC_SetAHBPrescaler(LL_RCC_SYSCLK_DIV_1);
+  LL_RCC_SetAPB1Prescaler(LL_RCC_APB1_DIV_1);
+  LL_RCC_SetAPB2Prescaler(LL_RCC_APB2_DIV_1);
+
+  LL_Init1msTick(SYSCLK_FREQ);
+
+  LL_SetSystemCoreClock(SYSCLK_FREQ);
+}
+
+static void board_bringup(void)
+{
+  LL_APB2_GRP1_EnableClock(LL_APB2_GRP1_PERIPH_SYSCFG);
+  LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_PWR);
+
+  NVIC_SetPriorityGrouping(PRIORITYGROUP);
+
+  sysclk_init();
+
+  gpio_init();
+}
+
+int main(void)
+{
+  board_bringup();
+
+  while (1)
+  {
+    gpio_led_set(1);
+    for (uint32_t i = 0; i < 8000000; i++);
+    gpio_led_set(0);
+    for (uint32_t i = 0; i < 8000000; i++);
+  }
+}
+
+void error_handler(void)
+{
+  __disable_irq();
+  while (1);
+}
+
