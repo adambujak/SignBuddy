@@ -1,6 +1,7 @@
 #include "board.h"
 #include "gpio.h"
 #include "system_time.h"
+#include "ble_uart.h"
 
 #define PRIORITYGROUP  ((uint32_t)0x00000003)
 
@@ -44,6 +45,7 @@ void sysclk_init(void)
   LL_Init1msTick(SYSCLK_FREQ);
 
   LL_SetSystemCoreClock(SYSCLK_FREQ);
+  LL_RCC_SetLPUARTClockSource(LL_RCC_LPUART1_CLKSOURCE_HSI);
 }
 
 static void board_bringup(void)
@@ -57,6 +59,7 @@ static void board_bringup(void)
 
   gpio_init();
   system_time_init();
+  ble_uart_init();
 }
 
 int main(void)
@@ -66,8 +69,10 @@ int main(void)
   while (1)
   {
     gpio_led_set(1);
+    ble_uart_tx((uint8_t)0x94);
     delay_ms(2000);
     gpio_led_set(0);
+    ble_uart_tx((uint8_t)0x95);
     delay_ms(1000);
   }
 }

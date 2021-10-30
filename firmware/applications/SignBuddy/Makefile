@@ -13,6 +13,7 @@ PROJ_ROOT = $(FIRMWARE_ROOT)/applications/SignBuddy
 
 HAL_SOURCES = \
 	$(HAL_ROOT)/Src/stm32l4xx_ll_gpio.c \
+	$(HAL_ROOT)/Src/stm32l4xx_ll_lpuart.c \
 	$(HAL_ROOT)/Src/stm32l4xx_ll_rcc.c \
 	$(HAL_ROOT)/Src/stm32l4xx_ll_tim.c \
 	$(HAL_ROOT)/Src/stm32l4xx_ll_utils.c \
@@ -22,6 +23,7 @@ C_SOURCES = \
 	gpio.c \
 	system_stm32l4xx.c \
 	$(LIB_ROOT)/system_time/system_time.c \
+	$(LIB_ROOT)/ble_uart/ble_uart.c \
 	$(HAL_SOURCES) \
 
 C_INCLUDES = \
@@ -30,6 +32,7 @@ C_INCLUDES = \
 	-I$(HAL_ROOT)/Inc \
 	-I$(PROJ_ROOT) \
 	-I$(LIB_ROOT)/system_time \
+	-I$(LIB_ROOT)/ble_uart \
 
 
 ifeq ($(BOARD_VERSION), DISCO)
