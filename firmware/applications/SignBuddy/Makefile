@@ -5,24 +5,31 @@ BOARD_VERSION ?= DISCO
 #Paths
 BUILD_DIR = _build
 FIRMWARE_ROOT = ../..
+
 SDK_ROOT = $(FIRMWARE_ROOT)/dependencies/STM32CubeL4
 HAL_ROOT = $(SDK_ROOT)/Drivers/STM32L4xx_HAL_Driver
+LIB_ROOT = $(FIRMWARE_ROOT)/libraries
+PROJ_ROOT = $(FIRMWARE_ROOT)/applications/SignBuddy
 
 HAL_SOURCES = \
-	$(HAL_ROOT)/Src/stm32l4xx_ll_rcc.c \
 	$(HAL_ROOT)/Src/stm32l4xx_ll_gpio.c \
+	$(HAL_ROOT)/Src/stm32l4xx_ll_rcc.c \
+	$(HAL_ROOT)/Src/stm32l4xx_ll_tim.c \
 	$(HAL_ROOT)/Src/stm32l4xx_ll_utils.c \
 
 C_SOURCES = \
 	main.c \
 	gpio.c \
 	system_stm32l4xx.c \
-	$(HAL_SOURCES)
+	$(LIB_ROOT)/system_time/system_time.c \
+	$(HAL_SOURCES) \
 
 C_INCLUDES = \
 	-I$(SDK_ROOT)/Drivers/CMSIS/Device/ST/STM32L4xx/Include \
 	-I$(SDK_ROOT)/Drivers/CMSIS/Include \
-	-I$(HAL_ROOT)/Inc
+	-I$(HAL_ROOT)/Inc \
+	-I$(PROJ_ROOT) \
+	-I$(LIB_ROOT)/system_time \
 
 
 ifeq ($(BOARD_VERSION), DISCO)

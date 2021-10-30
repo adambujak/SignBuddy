@@ -1,9 +1,20 @@
 #include "board.h"
 #include "gpio.h"
-
-void error_handler(void);
+#include "system_time.h"
 
 #define PRIORITYGROUP  ((uint32_t)0x00000003)
+
+void delay_us(uint32_t us)
+{
+  uint32_t start_time = system_time_get();
+  while (system_time_cmp_us(start_time, system_time_get()) < us);
+}
+
+void delay_ms(uint32_t ms)
+{
+  uint32_t start_time = system_time_get();
+  while (system_time_cmp_ms(start_time, system_time_get()) < ms);
+}
 
 void sysclk_init(void)
 {
@@ -45,6 +56,7 @@ static void board_bringup(void)
   sysclk_init();
 
   gpio_init();
+  system_time_init();
 }
 
 int main(void)
@@ -54,9 +66,9 @@ int main(void)
   while (1)
   {
     gpio_led_set(1);
-    for (uint32_t i = 0; i < 8000000; i++);
+    delay_ms(2000);
     gpio_led_set(0);
-    for (uint32_t i = 0; i < 8000000; i++);
+    delay_ms(1000);
   }
 }
 

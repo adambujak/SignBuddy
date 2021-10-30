@@ -17,15 +17,22 @@
 #include "stm32l4xx_ll_pwr.h"
 #include "stm32l4xx_ll_rcc.h"
 #include "stm32l4xx_ll_system.h"
+#include "stm32l4xx_ll_tim.h"
 #include "stm32l4xx_ll_utils.h"
 
-#define SYSCLK_FREQ                   80000000
+#define SYSCLK_FREQ                   64000000
 
 #if defined(BOARD_DISCO)
+
+/* LED */
 #define LED1_PORT                     GPIOB
 #define LED1_PIN                      LL_GPIO_PIN_2
 
-#define GPIO_LED_CLK_EN()             LL_AHB2_GRP1_EnableClock(LL_AHB2_GRP1_PERIPH_GPIOB);
+#define GPIO_LED_CLK_EN()             LL_AHB2_GRP1_EnableClock(LL_AHB2_GRP1_PERIPH_GPIOB)
+
+/* System Time */
+#define SYSTEM_TIME_TIMER             TIM2
+#define SYSTEM_TIME_CLK_EN()          LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_TIM2)
 
 #endif // defined(BOARD_DISCO)
 
