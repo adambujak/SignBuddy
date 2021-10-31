@@ -21,9 +21,9 @@ HAL_SOURCES = \
 C_SOURCES = \
 	main.c \
 	gpio.c \
+	ble_uart.c \
 	system_stm32l4xx.c \
 	$(LIB_ROOT)/system_time/system_time.c \
-	$(LIB_ROOT)/ble_uart/ble_uart.c \
 	$(HAL_SOURCES) \
 
 C_INCLUDES = \
@@ -32,7 +32,6 @@ C_INCLUDES = \
 	-I$(HAL_ROOT)/Inc \
 	-I$(PROJ_ROOT) \
 	-I$(LIB_ROOT)/system_time \
-	-I$(LIB_ROOT)/ble_uart \
 
 
 ifeq ($(BOARD_VERSION), DISCO)
