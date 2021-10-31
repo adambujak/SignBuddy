@@ -4,13 +4,13 @@
 #include <stdint.h>
 
 /** Receive transmission from the bluetooth uart module
-  * @retval    Byte of data received
-*/
+ * @retval    Byte of data received
+ */
 uint8_t ble_uart_rx(void);
 
 /** Send transmission to the bluetooth uart module
-  * @param data    Byte of data to transmit
-*/
+ * @param data    Byte of data to transmit
+ */
 void ble_uart_tx(uint8_t data);
 
 /* Initialize ble_uart module */
