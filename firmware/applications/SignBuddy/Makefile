@@ -13,6 +13,7 @@ PROJ_ROOT = $(FIRMWARE_ROOT)/applications/SignBuddy
 
 HAL_SOURCES = \
 	$(HAL_ROOT)/Src/stm32l4xx_ll_gpio.c \
+	$(HAL_ROOT)/Src/stm32l4xx_ll_lpuart.c \
 	$(HAL_ROOT)/Src/stm32l4xx_ll_rcc.c \
 	$(HAL_ROOT)/Src/stm32l4xx_ll_tim.c \
 	$(HAL_ROOT)/Src/stm32l4xx_ll_utils.c \
@@ -20,6 +21,7 @@ HAL_SOURCES = \
 C_SOURCES = \
 	main.c \
 	gpio.c \
+	ble_uart.c \
 	system_stm32l4xx.c \
 	$(LIB_ROOT)/system_time/system_time.c \
 	$(HAL_SOURCES) \

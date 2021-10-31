@@ -14,6 +14,7 @@
 #include "stm32l4xx_ll_dma.h"
 #include "stm32l4xx_ll_exti.h"
 #include "stm32l4xx_ll_gpio.h"
+#include "stm32l4xx_ll_lpuart.h"
 #include "stm32l4xx_ll_pwr.h"
 #include "stm32l4xx_ll_rcc.h"
 #include "stm32l4xx_ll_system.h"
@@ -33,6 +34,14 @@
 /* System Time */
 #define SYSTEM_TIME_TIMER             TIM2
 #define SYSTEM_TIME_CLK_EN()          LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_TIM2)
+
+/* Bluetooth UART */
+#define LPUART_PORT                   GPIOC
+#define LPUART_RX_PIN                 LL_GPIO_PIN_0
+#define LPUART_TX_PIN                 LL_GPIO_PIN_1
+#define GPIO_LPUART_CLK_EN()          LL_AHB2_GRP1_EnableClock(LL_AHB2_GRP1_PERIPH_GPIOC)
+
+#define LPUART_CLK_EN()               LL_APB1_GRP2_EnableClock(LL_APB1_GRP2_PERIPH_LPUART1)
 
 #endif // defined(BOARD_DISCO)
 
