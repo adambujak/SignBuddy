@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /bin/sh
 
 IMAGE_NAME="buildenv"
 GIT_ROOT=$(git rev-parse --show-toplevel)
