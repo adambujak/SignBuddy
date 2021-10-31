@@ -2,7 +2,7 @@
 
 IMAGE_NAME="buildenv"
 
-if ! docker image inspect ${IMAGE_NAME} &>> /dev/null; then
+if ! docker image inspect ${IMAGE_NAME} &> /dev/null; then
     echo "Docker image does not exist.. building now"
     docker build . -t buildenv
 fi
