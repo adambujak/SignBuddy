@@ -6,7 +6,7 @@ FIRMWARE_ROOT=${GIT_ROOT}/firmware
 
 if ! docker image inspect ${IMAGE_NAME} &> /dev/null; then
     echo "Docker image does not exist.. building now"
-    docker build . -t buildenv
+    docker build . -t ${IMAGE_NAME}
 fi
 
 docker create -it -v ${FIRMWARE_ROOT}:/workspace --name env ${IMAGE_NAME} bash > /dev/null
