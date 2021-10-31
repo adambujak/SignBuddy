@@ -8,7 +8,11 @@ clean:
 
 build:
 	@echo "Compiling SignBuddy..."
-	@./compile.sh	
+	@./tools/compile.sh
+
+format:
+	@echo "Formatting Source Code..."
+	@./tools/run_formatter.sh
 
 flash:
 	@make -C $(APPLICATION_ROOT) flash
