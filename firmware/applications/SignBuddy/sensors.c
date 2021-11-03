@@ -22,8 +22,9 @@ static state_t state;
 
 int get_flex_data(flex_data_t *data)
 {
-  for (int i = 0; i < FLEX_SENSOR_CNT; i++)
+  for (int i = 0; i < FLEX_SENSOR_CNT; i++) {
     data->sensor_data[i] = rand() % 150;
+  }
   return RET_OK;
 }
 
