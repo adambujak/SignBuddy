@@ -2,6 +2,7 @@
 #include "gpio.h"
 #include "system_time.h"
 #include "ble_uart.h"
+#include "sensors.h"
 
 #define PRIORITYGROUP    ((uint32_t)0x00000003)
 
@@ -64,17 +65,26 @@ static void board_bringup(void)
   ble_uart_init();
 }
 
+static void led_process(void)
+{
+  static uint32_t last_ticks = 0;
+  static uint32_t led_state  = 0;
+
+  uint32_t time = system_time_get();
+
+  if (system_time_cmp_ms(last_ticks, time) < 1000) {
+    led_state = (led_state + 1) % 2;
+    gpio_led_set(led_state);
+  }
+}
+
 int main(void)
 {
   board_bringup();
 
   while (1) {
-    gpio_led_set(1);
-    ble_uart_tx((uint8_t)0x94);
-    delay_ms(2000);
-    gpio_led_set(0);
-    ble_uart_tx((uint8_t)0x95);
-    delay_ms(1000);
+    led_process();
+    sensors_process();
   }
 }
 
