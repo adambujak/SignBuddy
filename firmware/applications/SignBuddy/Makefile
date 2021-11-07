@@ -20,8 +20,9 @@ HAL_SOURCES = \
 
 C_SOURCES = \
 	main.c \
-	gpio.c \
 	ble_uart.c \
+	gpio.c \
+	sensors.c \
 	system_stm32l4xx.c \
 	$(LIB_ROOT)/system_time/system_time.c \
 	$(HAL_SOURCES) \
