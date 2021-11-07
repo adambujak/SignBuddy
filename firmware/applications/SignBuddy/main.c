@@ -61,8 +61,6 @@ static void board_bringup(void)
   sysclk_init();
 
   gpio_init();
-  system_time_init();
-  ble_uart_init();
 }
 
 static void led_process(void)
@@ -73,14 +71,21 @@ static void led_process(void)
   uint32_t time = system_time_get();
 
   if (system_time_cmp_ms(last_ticks, time) < 1000) {
-    led_state = (led_state + 1) % 2;
-    gpio_led_set(led_state);
+    return;
   }
+  last_ticks = time;
+  led_state  = (led_state + 1) % 2;
+  gpio_led_set(led_state);
 }
 
 int main(void)
 {
   board_bringup();
+  // init early
+  system_time_init();
+
+  sensors_init();
+  ble_uart_init();
 
   while (1) {
     led_process();
