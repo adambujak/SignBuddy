@@ -43,6 +43,6 @@ void sensors_process(void)
   state.last_ticks = time;
 
   flex_data_t flex_data;
-  get_flex_data(&flex_data);
+  ERR_CHECK(get_flex_data(&flex_data));
   // encode data and send
 }

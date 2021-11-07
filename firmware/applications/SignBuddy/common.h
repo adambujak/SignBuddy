@@ -4,6 +4,7 @@
 #include "system_time.h"
 
 void error_handler(void);
+void delay_ms(void);
 
 #define RET_OK                0
 #define RET_ERR               1
@@ -15,7 +16,7 @@ void error_handler(void);
 #define ERR_CHECK(x)        \
   do {                      \
     int retval = (x);       \
-    if (retval != FLN_OK) { \
+    if (retval != RET_OK) { \
       error_handler();      \
     }                       \
   } while (0)

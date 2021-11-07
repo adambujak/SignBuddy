@@ -96,5 +96,10 @@ int main(void)
 void error_handler(void)
 {
   __disable_irq();
-  while (1);
+  while (1) {
+    gpio_led_set(0);
+    delay_ms(250);
+    gpio_led_set(1);
+    delay_ms(250);
+  }
 }
