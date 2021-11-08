@@ -9,9 +9,6 @@
 #define ADC_DELAY_CALIB_ENABLE_CPU_CYCLES    (LL_ADC_DELAY_CALIB_ENABLE_ADC_CYCLES * 32)
 #define VAR_CONVERTED_DATA_INIT_VALUE        (__LL_ADC_DIGITAL_SCALE(LL_ADC_RESOLUTION_12B) + 1)
 
-uint16_t uhADCxConvertedData_Voltage_mVolt = 0;               /* Value of voltage calculated from ADC conversion data (unit: mV) */
-uint8_t  ubAdcGrpRegularUnitaryConvStatus  = 2;               /* Variable set into ADC interruption callback */
-
 void adc_init(void)
 {
   LL_ADC_InitTypeDef       ADC_InitStruct       = { 0 };
