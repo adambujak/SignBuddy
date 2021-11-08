@@ -12,6 +12,7 @@ LIB_ROOT = $(FIRMWARE_ROOT)/libraries
 PROJ_ROOT = $(FIRMWARE_ROOT)/applications/SignBuddy
 
 HAL_SOURCES = \
+	$(HAL_ROOT)/Src/stm32l4xx_ll_adc.c \
 	$(HAL_ROOT)/Src/stm32l4xx_ll_gpio.c \
 	$(HAL_ROOT)/Src/stm32l4xx_ll_lpuart.c \
 	$(HAL_ROOT)/Src/stm32l4xx_ll_rcc.c \
@@ -20,6 +21,7 @@ HAL_SOURCES = \
 
 C_SOURCES = \
 	main.c \
+	adc.c \
 	ble_uart.c \
 	gpio.c \
 	sensors.c \

@@ -1,6 +1,7 @@
 #include "board.h"
 #include "gpio.h"
 #include "system_time.h"
+#include "adc.h"
 #include "ble_uart.h"
 #include "sensors.h"
 
@@ -86,6 +87,7 @@ int main(void)
 
   sensors_init();
   ble_uart_init();
+  adc_init();
 
   while (1) {
     led_process();
