@@ -8,13 +8,11 @@
 #define FLEX_SENSOR_CNT      3
 #define PROCESS_PERIOD_MS    1000
 
-typedef struct
-{
+typedef struct {
   float sensor_data[FLEX_SENSOR_CNT];
 } flex_data_t;
 
-typedef struct
-{
+typedef struct {
   uint32_t last_ticks;
 } state_t;
 

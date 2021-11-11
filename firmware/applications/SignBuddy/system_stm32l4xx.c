@@ -174,8 +174,8 @@
  */
 uint32_t SystemCoreClock = 4000000U;
 
-const uint8_t  AHBPrescTable[16] = { 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 1U, 2U, 3U, 4U, 6U, 7U, 8U, 9U };
-const uint8_t  APBPrescTable[8]  = { 0U, 0U, 0U, 0U, 1U, 2U, 3U, 4U };
+const uint8_t AHBPrescTable[16] = { 0U, 0U, 0U, 0U, 0U, 0U, 0U, 0U, 1U, 2U, 3U, 4U, 6U, 7U, 8U, 9U };
+const uint8_t APBPrescTable[8] = { 0U, 0U, 0U, 0U, 1U, 2U, 3U, 4U };
 const uint32_t MSIRangeTable[12] = { 100000U,   200000U,   400000U,   800000U,  1000000U, 2000000U, \
                                      4000000U, 8000000U, 16000000U, 24000000U, 32000000U, 48000000U };
 
@@ -288,8 +288,7 @@ void SystemCoreClockUpdate(void)
   msirange = MSIRangeTable[msirange];
 
   /* Get SYSCLK source -------------------------------------------------------*/
-  switch (RCC->CFGR & RCC_CFGR_SWS)
-  {
+  switch (RCC->CFGR & RCC_CFGR_SWS) {
   case 0x00:    /* MSI used as system clock source */
     SystemCoreClock = msirange;
     break;
@@ -308,10 +307,9 @@ void SystemCoreClockUpdate(void)
      * SYSCLK = PLL_VCO / PLLR
      */
     pllsource = (RCC->PLLCFGR & RCC_PLLCFGR_PLLSRC);
-    pllm      = ((RCC->PLLCFGR & RCC_PLLCFGR_PLLM) >> 4U) + 1U;
+    pllm = ((RCC->PLLCFGR & RCC_PLLCFGR_PLLM) >> 4U) + 1U;
 
-    switch (pllsource)
-    {
+    switch (pllsource) {
     case 0x02:      /* HSI used as PLL clock source */
       pllvco = (HSI_VALUE / pllm);
       break;
@@ -324,8 +322,8 @@ void SystemCoreClockUpdate(void)
       pllvco = (msirange / pllm);
       break;
     }
-    pllvco          = pllvco * ((RCC->PLLCFGR & RCC_PLLCFGR_PLLN) >> 8U);
-    pllr            = (((RCC->PLLCFGR & RCC_PLLCFGR_PLLR) >> 25U) + 1U) * 2U;
+    pllvco = pllvco * ((RCC->PLLCFGR & RCC_PLLCFGR_PLLN) >> 8U);
+    pllr = (((RCC->PLLCFGR & RCC_PLLCFGR_PLLR) >> 25U) + 1U) * 2U;
     SystemCoreClock = pllvco / pllr;
     break;
 

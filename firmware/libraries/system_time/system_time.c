@@ -15,9 +15,9 @@ static void timer_init(void)
 
   LL_TIM_InitTypeDef timer_config = { 0 };
 
-  timer_config.Prescaler     = PRESCALER;
-  timer_config.CounterMode   = LL_TIM_COUNTERMODE_UP;
-  timer_config.Autoreload    = AUTORELOAD;
+  timer_config.Prescaler = PRESCALER;
+  timer_config.CounterMode = LL_TIM_COUNTERMODE_UP;
+  timer_config.Autoreload = AUTORELOAD;
   timer_config.ClockDivision = LL_TIM_CLOCKDIVISION_DIV1;
 
   LL_TIM_Init(SYSTEM_TIME_TIMER, &timer_config);

@@ -66,7 +66,7 @@ static void board_bringup(void)
 static void led_process(void)
 {
   static uint32_t last_ticks = 0;
-  static uint32_t led_state  = 0;
+  static uint32_t led_state = 0;
 
   uint32_t time = system_time_get();
 
@@ -74,7 +74,7 @@ static void led_process(void)
     return;
   }
   last_ticks = time;
-  led_state  = (led_state + 1) % 2;
+  led_state = (led_state + 1) % 2;
   gpio_led_set(led_state);
 }
 
