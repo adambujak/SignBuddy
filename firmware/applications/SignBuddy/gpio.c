@@ -16,11 +16,11 @@ void gpio_init(void)
 
   LL_GPIO_InitTypeDef config = { 0 };
 
-  config.Pin        = LED1_PIN;
-  config.Mode       = LL_GPIO_MODE_OUTPUT;
-  config.Speed      = LL_GPIO_SPEED_FREQ_LOW;
+  config.Pin = LED1_PIN;
+  config.Mode = LL_GPIO_MODE_OUTPUT;
+  config.Speed = LL_GPIO_SPEED_FREQ_LOW;
   config.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
-  config.Pull       = LL_GPIO_PULL_UP;
+  config.Pull = LL_GPIO_PULL_UP;
 
   LL_GPIO_Init(LED1_PORT, &config);
 }
