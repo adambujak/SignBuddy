@@ -25,7 +25,7 @@ static void lpuart_init(void)
   NVIC_EnableIRQ(LPUART1_IRQn);
 
   uart_config.BaudRate = 9600;
-  uart_config.DataWidth = LL_LPUART_DATAWIDTH_7B;
+  uart_config.DataWidth = LL_LPUART_DATAWIDTH_8B;
   uart_config.StopBits = LL_LPUART_STOPBITS_1;
   uart_config.Parity = LL_LPUART_PARITY_NONE;
   uart_config.TransferDirection = LL_LPUART_DIRECTION_TX_RX;
