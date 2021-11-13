@@ -9,6 +9,7 @@
 #ifndef BOARD_H
 #define BOARD_H
 
+#include "stm32l4xx_ll_adc.h"
 #include "stm32l4xx_ll_bus.h"
 #include "stm32l4xx_ll_cortex.h"
 #include "stm32l4xx_ll_dma.h"
@@ -40,8 +41,17 @@
 #define LPUART_RX_PIN           LL_GPIO_PIN_0
 #define LPUART_TX_PIN           LL_GPIO_PIN_1
 #define GPIO_LPUART_CLK_EN()    LL_AHB2_GRP1_EnableClock(LL_AHB2_GRP1_PERIPH_GPIOC)
-
 #define LPUART_CLK_EN()         LL_APB1_GRP2_EnableClock(LL_APB1_GRP2_PERIPH_LPUART1)
+
+/* ADC */
+#define ADC                     ADC1
+#define ADC_IRQ                 ADC1_2_IRQn
+#define ADC_IRQ_Callback        ADC1_2_IRQHandler
+#define ADC_CHANNEL             LL_ADC_CHANNEL_9
+#define ADC_PORT                GPIOA
+#define ADC_PIN                 LL_GPIO_PIN_4
+#define GPIO_ADC_CLK_EN()       LL_AHB2_GRP1_EnableClock(LL_AHB2_GRP1_PERIPH_GPIOA)
+#define ADC_CLK_EN()            LL_AHB2_GRP1_EnableClock(LL_AHB2_GRP1_PERIPH_ADC)
 
 #endif // defined(BOARD_DISCO)
 
