@@ -11,15 +11,15 @@
 
 void adc_init(void)
 {
-  LL_ADC_InitTypeDef       adc_config        = { 0 };
-  LL_ADC_REG_InitTypeDef   adc_reg_config    = { 0 };
+  LL_ADC_InitTypeDef adc_config = { 0 };
+  LL_ADC_REG_InitTypeDef adc_reg_config = { 0 };
   LL_ADC_CommonInitTypeDef adc_common_config = { 0 };
 
   LL_GPIO_InitTypeDef GPIO_InitStruct = { 0 };
 
   GPIO_ADC_CLK_EN();
 
-  GPIO_InitStruct.Pin  = ADC_PIN;
+  GPIO_InitStruct.Pin = ADC_PIN;
   GPIO_InitStruct.Mode = LL_GPIO_MODE_ANALOG;
   GPIO_InitStruct.Pull = LL_GPIO_PULL_NO;
   LL_GPIO_Init(ADC_PORT, &GPIO_InitStruct);
@@ -31,16 +31,16 @@ void adc_init(void)
 
   ADC_CLK_EN();
 
-  adc_config.Resolution    = LL_ADC_RESOLUTION_12B;
+  adc_config.Resolution = LL_ADC_RESOLUTION_12B;
   adc_config.DataAlignment = LL_ADC_DATA_ALIGN_RIGHT;
-  adc_config.LowPowerMode  = LL_ADC_LP_MODE_NONE;
+  adc_config.LowPowerMode = LL_ADC_LP_MODE_NONE;
   LL_ADC_Init(ADC1, &adc_config);
-  adc_reg_config.TriggerSource    = LL_ADC_REG_TRIG_SOFTWARE;
-  adc_reg_config.SequencerLength  = LL_ADC_REG_SEQ_SCAN_DISABLE;
+  adc_reg_config.TriggerSource = LL_ADC_REG_TRIG_SOFTWARE;
+  adc_reg_config.SequencerLength = LL_ADC_REG_SEQ_SCAN_DISABLE;
   adc_reg_config.SequencerDiscont = LL_ADC_REG_SEQ_DISCONT_DISABLE;
-  adc_reg_config.ContinuousMode   = LL_ADC_REG_CONV_SINGLE;
-  adc_reg_config.DMATransfer      = LL_ADC_REG_DMA_TRANSFER_NONE;
-  adc_reg_config.Overrun          = LL_ADC_REG_OVR_DATA_OVERWRITTEN;
+  adc_reg_config.ContinuousMode = LL_ADC_REG_CONV_SINGLE;
+  adc_reg_config.DMATransfer = LL_ADC_REG_DMA_TRANSFER_NONE;
+  adc_reg_config.Overrun = LL_ADC_REG_OVR_DATA_OVERWRITTEN;
   LL_ADC_REG_Init(ADC1, &adc_reg_config);
 
   adc_common_config.CommonClock = LL_ADC_CLOCK_SYNC_PCLK_DIV2;
@@ -78,7 +78,7 @@ void ADC1_2_IRQHandler(void)
 
 uint16_t adc_read(void)
 {
-  uint16_t adc_data_raw   = VAR_CONVERTED_DATA_INIT_VALUE;
+  uint16_t adc_data_raw = VAR_CONVERTED_DATA_INIT_VALUE;
   uint16_t adc_data_mvolt = 0;
 
   LL_ADC_REG_StartConversion(ADC1);
