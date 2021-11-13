@@ -2,6 +2,7 @@ TARGET = SignBuddy
 BUILD_CONFIG ?= DEBUG
 BOARD_VERSION ?= DISCO
 
+
 #Paths
 BUILD_DIR = _build
 FIRMWARE_ROOT = ../..
@@ -18,15 +19,22 @@ HAL_SOURCES = \
 	$(HAL_ROOT)/Src/stm32l4xx_ll_rcc.c \
 	$(HAL_ROOT)/Src/stm32l4xx_ll_tim.c \
 	$(HAL_ROOT)/Src/stm32l4xx_ll_utils.c \
+	$(HAL_ROOT)/Src/stm32l4xx_ll_usart.c \
+
+LIB_SOURCES = \
+	$(LIB_ROOT)/fast_fifo/fifo.c \
+	$(LIB_ROOT)/system_time/system_time.c \
 
 C_SOURCES = \
 	main.c \
 	adc.c \
 	ble_uart.c \
 	gpio.c \
+	log_uart.c \
+	logger.c \
 	sensors.c \
 	system_stm32l4xx.c \
-	$(LIB_ROOT)/system_time/system_time.c \
+	$(LIB_SOURCES) \
 	$(HAL_SOURCES) \
 
 C_INCLUDES = \
@@ -35,6 +43,7 @@ C_INCLUDES = \
 	-I$(HAL_ROOT)/Inc \
 	-I$(PROJ_ROOT) \
 	-I$(LIB_ROOT)/system_time \
+	-I$(LIB_ROOT)/fast_fifo \
 
 
 ifeq ($(BOARD_VERSION), DISCO)

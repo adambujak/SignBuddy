@@ -34,16 +34,17 @@
 #define LPUART_CLK_EN()           LL_APB1_GRP2_EnableClock(LL_APB1_GRP2_PERIPH_LPUART1)
 
 /* LOG UART */
-#define LOG_UART                  USART3
-#define LOG_UART_IRQn             USART3_IRQn
-#define LOG_UART_IRQHandler       USART3_IRQHandler
-#define LOG_UART_RX_PIN           LL_GPIO_PIN_8
-#define LOG_UART_TX_PIN           LL_GPIO_PIN_9
-#define LOG_UART_GPIO_PORT        GPIOD
+#define LOG_UART                  USART2
+#define LOG_UART_IRQn             USART2_IRQn
+#define LOG_UART_IRQHandler       USART2_IRQHandler
+#define LOG_UART_RX_PIN           LL_GPIO_PIN_3
+#define LOG_UART_TX_PIN           LL_GPIO_PIN_2
+#define LOG_UART_GPIO_PORT        GPIOA
 #define LOG_UART_GPIO_AF          LL_GPIO_AF_7
 #define LOG_UART_BAUDRATE         115200
-#define LOG_UART_CLK_EN()         LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_USART3)
-#define LOG_UART_GPIO_CLK_EN()    LL_AHB2_GRP1_EnableClock(LL_AHB2_GRP1_PERIPH_GPIOD)
+#define LOG_UART_CLKSRC()         LL_RCC_SetUSARTClockSource(LL_RCC_USART2_CLKSOURCE_PCLK1);
+#define LOG_UART_CLK_EN()         LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_USART2)
+#define LOG_UART_GPIO_CLK_EN()    LL_AHB2_GRP1_EnableClock(LL_AHB2_GRP1_PERIPH_GPIOA)
 
 /* ADC */
 #define ADC                       ADC1

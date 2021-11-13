@@ -1,5 +1,9 @@
 #include "board.h"
+#include "ble_uart.h"
 #include "gpio.h"
+#include "log_uart.h"
+#include "logger.h"
+#include "sensors.h"
 #include "system_time.h"
 #include "adc.h"
 #include "ble_uart.h"
@@ -50,6 +54,7 @@ void sysclk_init(void)
 
   LL_SetSystemCoreClock(SYSCLK_FREQ);
   LL_RCC_SetLPUARTClockSource(LL_RCC_LPUART1_CLKSOURCE_HSI);
+  LOG_UART_CLKSRC()
 }
 
 static void board_bringup(void)
@@ -77,6 +82,8 @@ static void led_process(void)
   last_ticks = time;
   led_state = (led_state + 1) % 2;
   gpio_led_set(led_state);
+
+  LOG_INFO("LED process\r\n");
 }
 
 int main(void)
@@ -84,6 +91,7 @@ int main(void)
   board_bringup();
   // init early
   system_time_init();
+  log_uart_init();
 
   sensors_init();
   ble_uart_init();
