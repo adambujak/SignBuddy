@@ -41,6 +41,10 @@ ifeq ($(BOARD_VERSION), DISCO)
 STARTUP_FILE = startup_stm32l476xx.s
 endif
 
+ifeq ($(BOARD_VERSION), NUCLEO)
+STARTUP_FILE = startup_stm32l476xx.s
+endif
+
 ASM_SOURCES = \
 	$(STARTUP_FILE)
 
@@ -81,6 +85,11 @@ MCU = $(CPU) -mthumb $(FPU) $(FLOAT-ABI)
 ifeq ($(BOARD_VERSION), DISCO)
 CHIPSET_DEF = STM32L476xx
 BOARD_DEF = BOARD_DISCO
+endif
+
+ifeq ($(BOARD_VERSION), NUCLEO)
+CHIPSET_DEF = STM32L476xx
+BOARD_DEF = BOARD_NUCLEO
 endif
 
 # macros for gcc
