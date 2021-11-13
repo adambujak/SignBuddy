@@ -11,9 +11,9 @@
 
 void adc_init(void)
 {
-  LL_ADC_InitTypeDef       ADC_InitStruct       = { 0 };
-  LL_ADC_REG_InitTypeDef   ADC_REG_InitStruct   = { 0 };
-  LL_ADC_CommonInitTypeDef ADC_CommonInitStruct = { 0 };
+  LL_ADC_InitTypeDef       adc_config        = { 0 };
+  LL_ADC_REG_InitTypeDef   adc_reg_config    = { 0 };
+  LL_ADC_CommonInitTypeDef adc_common_config = { 0 };
 
   LL_GPIO_InitTypeDef GPIO_InitStruct = { 0 };
 
@@ -31,20 +31,20 @@ void adc_init(void)
 
   ADC_CLK_EN();
 
-  ADC_InitStruct.Resolution    = LL_ADC_RESOLUTION_12B;
-  ADC_InitStruct.DataAlignment = LL_ADC_DATA_ALIGN_RIGHT;
-  ADC_InitStruct.LowPowerMode  = LL_ADC_LP_MODE_NONE;
-  LL_ADC_Init(ADC1, &ADC_InitStruct);
-  ADC_REG_InitStruct.TriggerSource    = LL_ADC_REG_TRIG_SOFTWARE;
-  ADC_REG_InitStruct.SequencerLength  = LL_ADC_REG_SEQ_SCAN_DISABLE;
-  ADC_REG_InitStruct.SequencerDiscont = LL_ADC_REG_SEQ_DISCONT_DISABLE;
-  ADC_REG_InitStruct.ContinuousMode   = LL_ADC_REG_CONV_SINGLE;
-  ADC_REG_InitStruct.DMATransfer      = LL_ADC_REG_DMA_TRANSFER_NONE;
-  ADC_REG_InitStruct.Overrun          = LL_ADC_REG_OVR_DATA_OVERWRITTEN;
-  LL_ADC_REG_Init(ADC1, &ADC_REG_InitStruct);
+  adc_config.Resolution    = LL_ADC_RESOLUTION_12B;
+  adc_config.DataAlignment = LL_ADC_DATA_ALIGN_RIGHT;
+  adc_config.LowPowerMode  = LL_ADC_LP_MODE_NONE;
+  LL_ADC_Init(ADC1, &adc_config);
+  adc_reg_config.TriggerSource    = LL_ADC_REG_TRIG_SOFTWARE;
+  adc_reg_config.SequencerLength  = LL_ADC_REG_SEQ_SCAN_DISABLE;
+  adc_reg_config.SequencerDiscont = LL_ADC_REG_SEQ_DISCONT_DISABLE;
+  adc_reg_config.ContinuousMode   = LL_ADC_REG_CONV_SINGLE;
+  adc_reg_config.DMATransfer      = LL_ADC_REG_DMA_TRANSFER_NONE;
+  adc_reg_config.Overrun          = LL_ADC_REG_OVR_DATA_OVERWRITTEN;
+  LL_ADC_REG_Init(ADC1, &adc_reg_config);
 
-  ADC_CommonInitStruct.CommonClock = LL_ADC_CLOCK_SYNC_PCLK_DIV2;
-  LL_ADC_CommonInit(__LL_ADC_COMMON_INSTANCE(ADC1), &ADC_CommonInitStruct);
+  adc_common_config.CommonClock = LL_ADC_CLOCK_SYNC_PCLK_DIV2;
+  LL_ADC_CommonInit(__LL_ADC_COMMON_INSTANCE(ADC1), &adc_common_config);
 
   LL_ADC_REG_SetSequencerRanks(ADC1, LL_ADC_REG_RANK_1, LL_ADC_CHANNEL_9);
   LL_ADC_SetChannelSamplingTime(ADC3, LL_ADC_CHANNEL_9, LL_ADC_SAMPLINGTIME_47CYCLES_5);
@@ -78,8 +78,8 @@ void ADC1_2_IRQHandler(void)
 
 uint16_t adc_read(void)
 {
-  uint16_t ADC_Data_Raw   = VAR_CONVERTED_DATA_INIT_VALUE;
-  uint16_t ADC_Data_mVolt = 0;
+  uint16_t adc_data_raw   = VAR_CONVERTED_DATA_INIT_VALUE;
+  uint16_t adc_data_mvolt = 0;
 
   LL_ADC_REG_StartConversion(ADC1);
 
@@ -87,9 +87,9 @@ uint16_t adc_read(void)
 
   LL_ADC_ClearFlag_EOS(ADC1);
 
-  ADC_Data_Raw = LL_ADC_REG_ReadConversionData12(ADC1);
+  adc_data_raw = LL_ADC_REG_ReadConversionData12(ADC1);
 
-  ADC_Data_mVolt = __LL_ADC_CALC_DATA_TO_VOLTAGE(VREF, ADC_Data_Raw, LL_ADC_RESOLUTION_12B);
+  adc_data_mvolt = __LL_ADC_CALC_DATA_TO_VOLTAGE(VREF, adc_data_raw, LL_ADC_RESOLUTION_12B);
 
-  return ADC_Data_mVolt;
+  return adc_data_mvolt;
 }
