@@ -2,9 +2,6 @@
 
 #include "board.h"
 
-#define ADC_PREEMPT_PRIO                     0
-#define ADC_SUB_PRIO                         0
-
 #define VREF                                 ((uint32_t)5000)
 #define ADC_DELAY_CALIB_ENABLE_CPU_CYCLES    (LL_ADC_DELAY_CALIB_ENABLE_ADC_CYCLES * 32)
 #define VAR_CONVERTED_DATA_INIT_VALUE        (__LL_ADC_DIGITAL_SCALE(LL_ADC_RESOLUTION_12B) + 1)
@@ -26,8 +23,8 @@ void adc_init(void)
 
   LL_GPIO_EnablePinAnalogControl(ADC_PORT, ADC_PIN);
 
-  NVIC_SetPriority(ADC_IRQ, NVIC_EncodePriority(NVIC_GetPriorityGrouping(), ADC_PREEMPT_PRIO, ADC_SUB_PRIO));
-  NVIC_EnableIRQ(ADC_IRQ);
+  NVIC_SetPriority(ADC_IRQn, 0);
+  NVIC_EnableIRQ(ADC_IRQn);
 
   ADC_CLK_EN();
 
@@ -73,7 +70,7 @@ void adc_init(void)
   while (LL_ADC_IsActiveFlag_ADRDY(ADC) == 0);
 }
 
-void ADC_IRQ_Callback(void)
+void ADC_IRQHandler(void)
 {}
 
 uint16_t adc_read(void)

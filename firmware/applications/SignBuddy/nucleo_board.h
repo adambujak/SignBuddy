@@ -63,8 +63,8 @@
 
 /* ADC */
 #define ADC                       ADC1
-#define ADC_IRQ                   ADC1_2_IRQn
-#define ADC_IRQ_Callback          ADC1_2_IRQHandler
+#define ADC_IRQn                  ADC1_2_IRQn
+#define ADC_IRQHandler            ADC1_2_IRQHandler
 #define ADC_CHANNEL               LL_ADC_CHANNEL_9
 #define ADC_PORT                  GPIOA
 #define ADC_PIN                   LL_GPIO_PIN_4
