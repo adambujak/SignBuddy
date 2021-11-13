@@ -53,7 +53,7 @@ void sysclk_init(void)
   LL_Init1msTick(SYSCLK_FREQ);
 
   LL_SetSystemCoreClock(SYSCLK_FREQ);
-  LL_RCC_SetLPUARTClockSource(LL_RCC_LPUART1_CLKSOURCE_HSI);
+  BLE_UART_CLKSRC()
   LOG_UART_CLKSRC()
 }
 

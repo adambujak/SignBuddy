@@ -30,6 +30,7 @@
 #define LPUART_PORT               GPIOC
 #define LPUART_RX_PIN             LL_GPIO_PIN_0
 #define LPUART_TX_PIN             LL_GPIO_PIN_1
+#define BLE_UART_CLKSRC 		  LL_RCC_SetLPUARTClockSource(LL_RCC_LPUART1_CLKSOURCE_HSI);
 #define GPIO_LPUART_CLK_EN()      LL_AHB2_GRP1_EnableClock(LL_AHB2_GRP1_PERIPH_GPIOC)
 #define LPUART_CLK_EN()           LL_APB1_GRP2_EnableClock(LL_APB1_GRP2_PERIPH_LPUART1)
 
