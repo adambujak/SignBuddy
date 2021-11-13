@@ -15,7 +15,7 @@
 #include "stm32l4xx_ll_usart.h"
 #include "stm32l4xx_ll_utils.h"
 
-#define SYSCLK_FREQ             64000000
+#define SYSCLK_FREQ               64000000
 
 /* LED */
 #define LED1_PORT                 GPIOB
