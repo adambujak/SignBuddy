@@ -54,6 +54,7 @@ void sysclk_init(void)
 
   LL_SetSystemCoreClock(SYSCLK_FREQ);
   LL_RCC_SetLPUARTClockSource(LL_RCC_LPUART1_CLKSOURCE_HSI);
+  LOG_UART_CLKSRC()
 }
 
 static void board_bringup(void)
@@ -90,6 +91,7 @@ int main(void)
   board_bringup();
   // init early
   system_time_init();
+  log_uart_init();
 
   sensors_init();
   ble_uart_init();
