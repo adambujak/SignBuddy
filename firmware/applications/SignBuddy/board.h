@@ -16,4 +16,3 @@
 #endif // BOARD_DEF
 
 #endif // BOARD_H
-
