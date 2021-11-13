@@ -1,9 +1,12 @@
 #include "board.h"
-#include "gpio.h"
-#include "system_time.h"
+
 #include "adc.h"
 #include "ble_uart.h"
+#include "gpio.h"
+#include "log_uart.h"
+#include "logger.h"
 #include "sensors.h"
+#include "system_time.h"
 
 #define PRIORITYGROUP    ((uint32_t)0x00000003)
 
@@ -77,6 +80,8 @@ static void led_process(void)
   last_ticks = time;
   led_state = (led_state + 1) % 2;
   gpio_led_set(led_state);
+
+  LOG_INFO("LED process\r\n");
 }
 
 int main(void)
@@ -88,6 +93,8 @@ int main(void)
   sensors_init();
   ble_uart_init();
   adc_init();
+
+  log_uart_init();
 
   while (1) {
     led_process();

@@ -28,4 +28,14 @@ void delay_ms(void);
     }                  \
   } while (0)
 
+#define DISABLE_IRQ()     \
+  uint32_t prim;          \
+  prim = __get_PRIMASK(); \
+  __disable_irq();        \
+
+#define ENABLE_IRQ() \
+  if (!prim) {       \
+    __enable_irq();  \
+  }                  \
+
 #endif // COMMON_H
