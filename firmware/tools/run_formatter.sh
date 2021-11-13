@@ -41,7 +41,7 @@ runFormatter ()
     # get a list of all the files we want to run the formatter on
     docker exec -i env bash -c "find /workspace/. \( -name '*.c' -o -name '*.h' -o -path '/workspace/./dependencies' -prune \) -type f > $TEMP_FIND_FILE"
 
-    if [ $CHECK_FLAG == "TRUE" ]; then
+    if [[ $CHECK_FLAG == "TRUE" ]]; then
     # run formatter check
     docker exec -i env bash -c "uncrustify -c /workspace/tools/firmware_style.cfg -F $TEMP_FIND_FILE --check"
     else
