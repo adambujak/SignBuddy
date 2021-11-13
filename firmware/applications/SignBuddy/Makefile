@@ -2,6 +2,7 @@ TARGET = SignBuddy
 BUILD_CONFIG ?= DEBUG
 BOARD_VERSION ?= DISCO
 
+
 #Paths
 BUILD_DIR = _build
 FIRMWARE_ROOT = ../..
