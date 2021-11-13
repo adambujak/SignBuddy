@@ -18,8 +18,7 @@ void delay_us(uint32_t us)
   while (system_time_cmp_us(start_time, system_time_get()) < us);
 }
 
-void delay_ms(uint32_t ms)
-{
+void delay_ms(uint32_t ms) {
   uint32_t start_time = system_time_get();
 
   while (system_time_cmp_ms(start_time, system_time_get()) < ms);
@@ -79,11 +78,11 @@ static void led_process(void)
   if (system_time_cmp_ms(last_ticks, time) < 1000) {
     return;
   }
-  last_ticks = time;
-  led_state = (led_state + 1) % 2;
+    last_ticks = time;
+  led_state = (led_state+ 1) % 2;
   gpio_led_set(led_state);
 
-  LOG_INFO("LED process\r\n");
+    LOG_INFO("LED process\r\n");
 }
 
 int main(void)
