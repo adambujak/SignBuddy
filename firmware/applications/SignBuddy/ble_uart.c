@@ -7,19 +7,19 @@
 
 static void lpuart_init(void)
 {
-  LL_GPIO_InitTypeDef config = { 0 };
+  LL_GPIO_InitTypeDef gpio_config = { 0 };
   LL_LPUART_InitTypeDef uart_config = { 0 };
 
   LPUART_CLK_EN();
   GPIO_LPUART_CLK_EN();
 
-  config.Pin = LPUART_RX_PIN | LPUART_TX_PIN;
-  config.Mode = LL_GPIO_MODE_ALTERNATE;
-  config.Speed = LL_GPIO_SPEED_FREQ_VERY_HIGH;
-  config.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
-  config.Pull = LL_GPIO_PULL_NO;
-  config.Alternate = LL_GPIO_AF_8;
-  LL_GPIO_Init(LPUART_PORT, &config);
+  gpio_config.Pin = LPUART_RX_PIN | LPUART_TX_PIN;
+  gpio_config.Mode = LL_GPIO_MODE_ALTERNATE;
+  gpio_config.Speed = LL_GPIO_SPEED_FREQ_VERY_HIGH;
+  gpio_config.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
+  gpio_config.Pull = LL_GPIO_PULL_NO;
+  gpio_config.Alternate = LL_GPIO_AF_8;
+  LL_GPIO_Init(LPUART_PORT, &gpio_config);
 
   NVIC_SetPriority(LPUART1_IRQn, NVIC_EncodePriority(NVIC_GetPriorityGrouping(), LPUART_PREEMPT_PRIO, LPUART_SUB_PRIO));
   NVIC_EnableIRQ(LPUART1_IRQn);
