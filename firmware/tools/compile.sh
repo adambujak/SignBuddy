@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /bin/bash
 
 BOARD_VERSION="${1:-DISCO}"
 
@@ -7,6 +7,8 @@ IMAGE_NAME="buildenv"
 GIT_ROOT=$(git rev-parse --show-toplevel)
 FIRMWARE_ROOT=$GIT_ROOT/firmware
 BUILD_DOCKER_SCRIPT=$FIRMWARE_ROOT/tools/build_docker_image.sh
+
+set -e
 
 source "$BUILD_DOCKER_SCRIPT"
 

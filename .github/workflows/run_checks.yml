@@ -1,0 +1,44 @@
+name: Run Checks
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Update submodules
+      run: git submodule update --init --recursive
+    - name: Build docker image
+      run: |
+        bash firmware/tools/build_docker_image.sh
+        echo "Exited with '$?'"
+    - name: Build the discovery firmware
+      run: |
+        bash firmware/tools/compile.sh DISCO
+        echo "Exited with '$?'"
+    - name: Clean the firmware
+      run: |
+        sudo make clean -C firmware
+        echo "Exited with '$?'"
+    - name: Build the nucleo firmware
+      run: |
+        bash firmware/tools/compile.sh NUCLEO
+        echo "Exited with '$?'"
+
+  format_check:
+    needs: build
+    runs-on: ubuntu-latest
+    if: always()
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Check Code Formatting
+      run: make format_check -C firmware
+
