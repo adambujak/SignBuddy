@@ -3,6 +3,7 @@
 #include "adc.h"
 #include "ble_uart.h"
 #include "common.h"
+#include "logger.h"
 
 #include <stdlib.h>
 
@@ -30,12 +31,7 @@ int get_flex_data(flex_data_t *data)
 void tx_flex_data(flex_data_t *data)
 {
   for (int i = 0; i < FLEX_SENSOR_CNT; i++) {
-    uint8_t tx_data[2] = { data->sensor_data[i] & 0xff, data->sensor_data[i] >> 8 };
-    for (int j = 0; j < 2; j++) {
-      ble_uart_tx(tx_data[j]);
-      uint32_t start_time = system_time_get();
-      while (system_time_cmp_ms(start_time, system_time_get()) < 100);
-    }
+    LOG_INFO("Reading: %hu\n\r", data->sensor_data[i]);
   }
 }
 
