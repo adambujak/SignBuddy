@@ -27,11 +27,26 @@
 #define SYSTEM_TIME_CLK_EN()      LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_TIM2)
 
 /* BLE UART */
-#define LPUART_PORT               GPIOC
-#define LPUART_RX_PIN             LL_GPIO_PIN_0
-#define LPUART_TX_PIN             LL_GPIO_PIN_1
-#define GPIO_LPUART_CLK_EN()      LL_AHB2_GRP1_EnableClock(LL_AHB2_GRP1_PERIPH_GPIOC)
-#define LPUART_CLK_EN()           LL_APB1_GRP2_EnableClock(LL_APB1_GRP2_PERIPH_LPUART1)
+#define BLE_UART                  LPUART1
+#define BLE_UART_CONFIG           LL_LPUART_InitTypeDef
+#define BLE_UART_IRQn             LPUART1_IRQn
+#define BLE_UART_IRQHandler       LPUART1_IRQHandler
+#define BLE_UART_RX_PIN           LL_GPIO_PIN_0
+#define BLE_UART_TX_PIN           LL_GPIO_PIN_1
+#define BLE_UART_GPIO_PORT        GPIOC
+#define BLE_UART_GPIO_AF          LL_GPIO_AF_8
+#define BLE_UART_DATAWIDTH        LL_LPUART_DATAWIDTH_8B
+#define BLE_UART_STOPBITS         LL_LPUART_STOPBITS_1
+#define BLE_UART_PARITY           LL_LPUART_PARITY_NONE
+#define BLE_UART_DIRECTION        LL_LPUART_DIRECTION_TX_RX
+#define BLE_UART_FLOWCTRL         LL_LPUART_HWCONTROL_NONE
+#define BLE_UART_Init             LL_LPUART_Init
+#define BLE_UART_Enable           LL_LPUART_Enable
+#define BLE_UART_RX               LL_LPUART_ReceiveData8
+#define BLE_UART_TX               LL_LPUART_TransmitData8
+#define BLE_UART_CLK_SRC()        LL_RCC_SetLPUARTClockSource(LL_RCC_LPUART1_CLKSOURCE_HSI)
+#define BLE_UART_CLK_EN()         LL_APB1_GRP2_EnableClock(LL_APB1_GRP2_PERIPH_LPUART1)
+#define BLE_UART_GPIO_CLK_EN()    LL_AHB2_GRP1_EnableClock(LL_AHB2_GRP1_PERIPH_GPIOC)
 
 /* LOG UART */
 #define LOG_UART                  USART2
@@ -42,14 +57,14 @@
 #define LOG_UART_GPIO_PORT        GPIOA
 #define LOG_UART_GPIO_AF          LL_GPIO_AF_7
 #define LOG_UART_BAUDRATE         115200
-#define LOG_UART_CLKSRC()         LL_RCC_SetUSARTClockSource(LL_RCC_USART2_CLKSOURCE_PCLK1);
+#define LOG_UART_CLK_SRC()        LL_RCC_SetUSARTClockSource(LL_RCC_USART2_CLKSOURCE_PCLK1)
 #define LOG_UART_CLK_EN()         LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_USART2)
 #define LOG_UART_GPIO_CLK_EN()    LL_AHB2_GRP1_EnableClock(LL_AHB2_GRP1_PERIPH_GPIOA)
 
 /* ADC */
 #define ADC                       ADC1
-#define ADC_IRQ                   ADC1_2_IRQn
-#define ADC_IRQ_Callback          ADC1_2_IRQHandler
+#define ADC_IRQn                  ADC1_2_IRQn
+#define ADC_IRQHandler            ADC1_2_IRQHandler
 #define ADC_CHANNEL               LL_ADC_CHANNEL_9
 #define ADC_PORT                  GPIOA
 #define ADC_PIN                   LL_GPIO_PIN_4

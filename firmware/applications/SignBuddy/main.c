@@ -53,8 +53,8 @@ void sysclk_init(void)
   LL_Init1msTick(SYSCLK_FREQ);
 
   LL_SetSystemCoreClock(SYSCLK_FREQ);
-  LL_RCC_SetLPUARTClockSource(LL_RCC_LPUART1_CLKSOURCE_HSI);
-  LOG_UART_CLKSRC()
+  BLE_UART_CLK_SRC();
+  LOG_UART_CLK_SRC();
 }
 
 static void board_bringup(void)
