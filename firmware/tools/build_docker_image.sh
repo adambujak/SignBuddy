@@ -1,7 +1,7 @@
 #! /bin/sh
 
 IMAGE_NAME="buildenv"
-IMAGE_NAME="env"
+CONTAINER_NAME="env"
 
 GIT_ROOT=$(git rev-parse --show-toplevel)
 FIRMWARE_ROOT=$GIT_ROOT/firmware
