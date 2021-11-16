@@ -16,5 +16,4 @@ if ! docker container inspect $CONTAINER_NAME &> /dev/null; then
     echo "Deleting docker container... "
     docker container stop $CONTAINER_NAME
     docker container rm $CONTAINER_NAME
-
-
+fi
