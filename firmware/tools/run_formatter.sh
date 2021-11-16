@@ -44,9 +44,11 @@ runFormatter ()
     if [[ $CHECK_FLAG == "TRUE" ]]; then
     # run formatter check
     docker exec -i env bash -c "uncrustify -c /workspace/tools/firmware_style.cfg -F $TEMP_FIND_FILE --check"
+    FORMATTER_RUN_STATUS=$?
     else
     # run formatter inplace
     docker exec -i env bash -c "uncrustify -c /workspace/tools/firmware_style.cfg -F $TEMP_FIND_FILE --replace --no-backup"
+    FORMATTER_RUN_STATUS=$?
     fi
 
     # delete file list file
@@ -71,8 +73,8 @@ for ((i=1; i<=$#; i++)) do
     esac
 done
 
-set -e
-
 startDocker
 runFormatter
 cleanupDocker
+
+exit $FORMATTER_RUN_STATUS
