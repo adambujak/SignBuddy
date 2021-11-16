@@ -30,7 +30,8 @@ void sysclk_init(void)
   LL_FLASH_SetLatency(LL_FLASH_LATENCY_3);
   while (LL_FLASH_GetLatency() != LL_FLASH_LATENCY_3);
 
-  LL_PWR_SetRegulVoltageScaling(LL_PWR_REGU_VOLTAGE_SCALE1);
+    LL_PWR_SetRegulVoltageScaling(LL_PWR_REGU_VOLTAGE_SCALE1);
+  do_something();
   LL_RCC_HSI_Enable();
 
   while (LL_RCC_HSI_IsReady() != 1);
