@@ -12,7 +12,9 @@ source "$BUILD_DOCKER_SCRIPT"
 
 docker create -it -v $FIRMWARE_ROOT:/workspace --name env $IMAGE_NAME bash > /dev/null
 docker start env > /dev/null
-BUILD_STATUS=$(docker exec -i env bash -c "cd /workspace/applications/SignBuddy && make BOARD_VERSION=$BOARD_VERSION")
+docker exec -i env bash -c "cd /workspace/applications/SignBuddy && make BOARD_VERSION=$BOARD_VERSION"
+BUILD_STATUS=$?
 docker rm -f env > /dev/null
 
+echo "build status: $BUILD_STATUS"
 exit $BUILD_STATUS
