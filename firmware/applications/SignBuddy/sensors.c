@@ -18,7 +18,7 @@ typedef struct {
   uint32_t last_ticks;
 } state_t;
 
-static state_t state;
+static state_t s;
 
 int get_flex_data(flex_data_t *data)
 {
@@ -37,17 +37,17 @@ void tx_flex_data(flex_data_t *data)
 
 void sensors_init(void)
 {
-  state.last_ticks = system_time_get();
+  s.last_ticks = system_time_get();
 }
 
 void sensors_process(void)
 {
   uint32_t time = system_time_get();
 
-  if (system_time_cmp_ms(state.last_ticks, time) < PROCESS_PERIOD_MS) {
+  if (system_time_cmp_ms(s.last_ticks, time) < PROCESS_PERIOD_MS) {
     return;
   }
-  state.last_ticks = time;
+  s.last_ticks = time;
 
   flex_data_t flex_data;
   ERR_CHECK(get_flex_data(&flex_data));
