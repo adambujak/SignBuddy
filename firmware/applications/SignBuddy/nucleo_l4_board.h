@@ -1,5 +1,5 @@
-#ifndef DISCO_BOARD_H
-#define DISCO_BOARD_H
+#ifndef NUCLEO_L4_BOARD_H
+#define NUCLEO_L4_BOARD_H
 
 #include "stm32l4xx_ll_adc.h"
 #include "stm32l4xx_ll_bus.h"
@@ -15,18 +15,17 @@
 #include "stm32l4xx_ll_usart.h"
 #include "stm32l4xx_ll_utils.h"
 
-#define SYSCLK_FREQ             64000000
+#define SYSCLK_FREQ                   64000000
 
 /* LED */
-#define LED1_PORT               GPIOB
-#define LED1_PIN                LL_GPIO_PIN_2
-#define GPIO_LED_CLK_EN()       LL_AHB2_GRP1_EnableClock(LL_AHB2_GRP1_PERIPH_GPIOB)
+#define LED1_PORT                     GPIOA
+#define LED1_PIN                      LL_GPIO_PIN_5
+#define GPIO_LED_CLK_EN()             LL_AHB2_GRP1_EnableClock(LL_AHB2_GRP1_PERIPH_GPIOA)
 
 /* System Time */
-#define SYSTEM_TIME_TIMER       TIM2
-#define SYSTEM_TIME_CLK_EN()    LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_TIM2)
+#define SYSTEM_TIME_TIMER             TIM2
+#define SYSTEM_TIME_CLK_EN()          LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_TIM2)
 
-// To do: Configure second uart on discovery for sending to ble
 /* BLE UART */
 #define BLE_UART                      LPUART1
 #define BLE_UART_CONFIG               LL_LPUART_InitTypeDef
@@ -59,17 +58,17 @@
 #define LOG_UART                      USART2
 #define LOG_UART_IRQn                 USART2_IRQn
 #define LOG_UART_IRQHandler           USART2_IRQHandler
-#define LOG_UART_RX_PIN               LL_GPIO_PIN_6
-#define LOG_UART_TX_PIN               LL_GPIO_PIN_5
-#define LOG_UART_GPIO_PORT            GPIOD
+#define LOG_UART_RX_PIN               LL_GPIO_PIN_3
+#define LOG_UART_TX_PIN               LL_GPIO_PIN_2
+#define LOG_UART_GPIO_PORT            GPIOA
 #define LOG_UART_GPIO_AF              LL_GPIO_AF_7
 #define LOG_UART_BAUDRATE             115200
 #define LOG_UART_CLK_SRC()            LL_RCC_SetUSARTClockSource(LL_RCC_USART2_CLKSOURCE_PCLK1)
 #define LOG_UART_CLK_EN()             LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_USART2)
-#define LOG_UART_GPIO_CLK_EN()        LL_AHB2_GRP1_EnableClock(LL_AHB2_GRP1_PERIPH_GPIOD)
+#define LOG_UART_GPIO_CLK_EN()        LL_AHB2_GRP1_EnableClock(LL_AHB2_GRP1_PERIPH_GPIOA)
 
 /* ADC */
-#define ADC                           ADC1
+#define ADC_PERIPH                    ADC1
 #define ADC_IRQn                      ADC1_2_IRQn
 #define ADC_IRQHandler                ADC1_2_IRQHandler
 #define ADC_CHANNEL                   LL_ADC_CHANNEL_9
@@ -78,4 +77,4 @@
 #define GPIO_ADC_CLK_EN()             LL_AHB2_GRP1_EnableClock(LL_AHB2_GRP1_PERIPH_GPIOA)
 #define ADC_CLK_EN()                  LL_AHB2_GRP1_EnableClock(LL_AHB2_GRP1_PERIPH_ADC)
 
-#endif // DISCO_BOARD_H
+#endif // NUCLEO_L4_BOARD_H

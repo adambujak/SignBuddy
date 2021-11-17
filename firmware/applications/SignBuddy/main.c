@@ -27,8 +27,13 @@ void delay_ms(uint32_t ms)
 
 void sysclk_init(void)
 {
+  #if defined(BOARD_DISCO_L4) || defined(BOARD_NUCLEO_L4)
   LL_FLASH_SetLatency(LL_FLASH_LATENCY_3);
   while (LL_FLASH_GetLatency() != LL_FLASH_LATENCY_3);
+  #elif defined(BOARD_NUCLEO_L0)
+  LL_FLASH_SetLatency(LL_FLASH_LATENCY_1);
+  while (LL_FLASH_GetLatency() != LL_FLASH_LATENCY_1);
+  #endif
 
   LL_PWR_SetRegulVoltageScaling(LL_PWR_REGU_VOLTAGE_SCALE1);
   LL_RCC_HSI_Enable();
@@ -36,8 +41,12 @@ void sysclk_init(void)
   while (LL_RCC_HSI_IsReady() != 1);
 
   LL_RCC_HSI_SetCalibTrimming(16);
+  #if defined(BOARD_DISCO_L4) || defined(BOARD_NUCLEO_L4)
   LL_RCC_PLL_ConfigDomain_SYS(LL_RCC_PLLSOURCE_HSI, LL_RCC_PLLM_DIV_1, 8, LL_RCC_PLLR_DIV_2);
   LL_RCC_PLL_EnableDomain_SYS();
+  #elif defined(BOARD_NUCLEO_L0)
+  LL_RCC_PLL_ConfigDomain_SYS(LL_RCC_PLLSOURCE_HSI, LL_RCC_PLL_MUL_3, LL_RCC_PLL_DIV_2);
+  #endif
   LL_RCC_PLL_Enable();
 
   while (LL_RCC_PLL_IsReady() != 1);
