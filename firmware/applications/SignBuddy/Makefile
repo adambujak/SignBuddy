@@ -1,17 +1,31 @@
 TARGET = SignBuddy
 BUILD_CONFIG ?= DEBUG
-BOARD_VERSION ?= DISCO
+BOARD_VERSION ?= DISCO_L4
 
 
 #Paths
 BUILD_DIR = _build
 FIRMWARE_ROOT = ../..
 
+ifeq ($(BOARD_VERSION), DISCO_L4)
 SDK_ROOT = $(FIRMWARE_ROOT)/dependencies/STM32CubeL4
 HAL_ROOT = $(SDK_ROOT)/Drivers/STM32L4xx_HAL_Driver
+endif
+
+ifeq ($(BOARD_VERSION), NUCLEO_L4)
+SDK_ROOT = $(FIRMWARE_ROOT)/dependencies/STM32CubeL4
+HAL_ROOT = $(SDK_ROOT)/Drivers/STM32L4xx_HAL_Driver
+endif
+
+ifeq ($(BOARD_VERSION), NUCLEO_L0)
+SDK_ROOT = $(FIRMWARE_ROOT)/dependencies/STM32CubeL0
+HAL_ROOT = $(SDK_ROOT)/Drivers/STM32L0xx_HAL_Driver
+endif
+
 LIB_ROOT = $(FIRMWARE_ROOT)/libraries
 PROJ_ROOT = $(FIRMWARE_ROOT)/applications/SignBuddy
 
+ifeq ($(BOARD_VERSION), DISCO_L4)
 HAL_SOURCES = \
 	$(HAL_ROOT)/Src/stm32l4xx_ll_adc.c \
 	$(HAL_ROOT)/Src/stm32l4xx_ll_gpio.c \
@@ -19,7 +33,30 @@ HAL_SOURCES = \
 	$(HAL_ROOT)/Src/stm32l4xx_ll_rcc.c \
 	$(HAL_ROOT)/Src/stm32l4xx_ll_tim.c \
 	$(HAL_ROOT)/Src/stm32l4xx_ll_utils.c \
-	$(HAL_ROOT)/Src/stm32l4xx_ll_usart.c \
+	$(HAL_ROOT)/Src/stm32l4xx_ll_usart.c 
+endif
+
+ifeq ($(BOARD_VERSION), NUCLEO_L4)
+HAL_SOURCES = \
+	$(HAL_ROOT)/Src/stm32l4xx_ll_adc.c \
+	$(HAL_ROOT)/Src/stm32l4xx_ll_gpio.c \
+	$(HAL_ROOT)/Src/stm32l4xx_ll_lpuart.c \
+	$(HAL_ROOT)/Src/stm32l4xx_ll_rcc.c \
+	$(HAL_ROOT)/Src/stm32l4xx_ll_tim.c \
+	$(HAL_ROOT)/Src/stm32l4xx_ll_utils.c \
+	$(HAL_ROOT)/Src/stm32l4xx_ll_usart.c 
+endif
+
+ifeq ($(BOARD_VERSION), NUCLEO_L0)
+HAL_SOURCES = \
+	$(HAL_ROOT)/Src/stm32l0xx_ll_adc.c \
+	$(HAL_ROOT)/Src/stm32l0xx_ll_gpio.c \
+	$(HAL_ROOT)/Src/stm32l0xx_ll_lpuart.c \
+	$(HAL_ROOT)/Src/stm32l0xx_ll_rcc.c \
+	$(HAL_ROOT)/Src/stm32l0xx_ll_tim.c \
+	$(HAL_ROOT)/Src/stm32l0xx_ll_utils.c \
+	$(HAL_ROOT)/Src/stm32l0xx_ll_usart.c 
+endif
 
 LIB_SOURCES = \
 	$(LIB_ROOT)/fast_fifo/fifo.c \
@@ -33,25 +70,50 @@ C_SOURCES = \
 	log_uart.c \
 	logger.c \
 	sensors.c \
-	system_stm32l4xx.c \
 	$(LIB_SOURCES) \
 	$(HAL_SOURCES) \
 
+ifeq ($(BOARD_VERSION), DISCO_L4)
+C_SOURCES += system_stm32l4xx.c
+endif
+
+ifeq ($(BOARD_VERSION), NUCLEO_L4)
+C_SOURCES += system_stm32l4xx.c
+endif
+
+ifeq ($(BOARD_VERSION), NUCLEO_L0)
+C_SOURCES += system_stm32l0xx.c
+endif
+
 C_INCLUDES = \
-	-I$(SDK_ROOT)/Drivers/CMSIS/Device/ST/STM32L4xx/Include \
 	-I$(SDK_ROOT)/Drivers/CMSIS/Include \
 	-I$(HAL_ROOT)/Inc \
 	-I$(PROJ_ROOT) \
 	-I$(LIB_ROOT)/system_time \
 	-I$(LIB_ROOT)/fast_fifo \
 
+ifeq ($(BOARD_VERSION), DISCO_L4)
+C_INCLUDES += -I$(SDK_ROOT)/Drivers/CMSIS/Device/ST/STM32L4xx/Include
+endif
 
-ifeq ($(BOARD_VERSION), DISCO)
+ifeq ($(BOARD_VERSION), NUCLEO_L4)
+C_INCLUDES += -I$(SDK_ROOT)/Drivers/CMSIS/Device/ST/STM32L4xx/Include
+endif
+
+ifeq ($(BOARD_VERSION), NUCLEO_L0)
+C_INCLUDES += -I$(SDK_ROOT)/Drivers/CMSIS/Device/ST/STM32L0xx/Include
+endif
+
+ifeq ($(BOARD_VERSION), DISCO_L4)
 STARTUP_FILE = startup_stm32l476xx.s
 endif
 
-ifeq ($(BOARD_VERSION), NUCLEO)
+ifeq ($(BOARD_VERSION), NUCLEO_L4)
 STARTUP_FILE = startup_stm32l476xx.s
+endif
+
+ifeq ($(BOARD_VERSION), NUCLEO_L0)
+STARTUP_FILE = startup_stm32l053xx.s
 endif
 
 ASM_SOURCES = \
@@ -80,25 +142,52 @@ BIN = $(CP) -O binary -S
 # CFLAGS
 #######################################
 # cpu
+ifeq ($(BOARD_VERSION), DISCO_L4)
 CPU = -mcpu=cortex-m4
+endif
+
+ifeq ($(BOARD_VERSION), NUCLEO_L4)
+CPU = -mcpu=cortex-m4
+endif
+
+ifeq ($(BOARD_VERSION), NUCLEO_L0)
+CPU = -mcpu=cortex-m0plus
+endif	
 
 # fpu
+ifeq ($(BOARD_VERSION), DISCO_L4)
 FPU = -mfpu=fpv4-sp-d16
+endif
+
+ifeq ($(BOARD_VERSION), NUCLEO_L4)
+FPU = -mfpu=fpv4-sp-d16
+endif
 
 # float-abi
+ifeq ($(BOARD_VERSION), DISCO_L4)
 FLOAT-ABI = -mfloat-abi=hard
+endif
+
+ifeq ($(BOARD_VERSION), NUCLEO_L4)
+FLOAT-ABI = -mfloat-abi=hard
+endif
 
 # mcu
 MCU = $(CPU) -mthumb $(FPU) $(FLOAT-ABI)
 
-ifeq ($(BOARD_VERSION), DISCO)
+ifeq ($(BOARD_VERSION), DISCO_L4)
 CHIPSET_DEF = STM32L476xx
-BOARD_DEF = BOARD_DISCO
+BOARD_DEF = BOARD_DISCO_L4
 endif
 
-ifeq ($(BOARD_VERSION), NUCLEO)
+ifeq ($(BOARD_VERSION), NUCLEO_L4)
 CHIPSET_DEF = STM32L476xx
-BOARD_DEF = BOARD_NUCLEO
+BOARD_DEF = BOARD_NUCLEO_L4
+endif
+
+ifeq ($(BOARD_VERSION), NUCLEO_L0)
+CHIPSET_DEF = STM32L053xx
+BOARD_DEF = BOARD_NUCLEO_L0
 endif
 
 # macros for gcc
@@ -132,7 +221,17 @@ CFLAGS += -MMD -MP -MF"$(@:%.o=%.d)"
 # LDFLAGS
 #######################################
 # link script
+ifeq ($(BOARD_VERSION), DISCO_L4)
 LDSCRIPT = STM32L476VGTx_FLASH.ld
+endif
+
+ifeq ($(BOARD_VERSION), NUCLEO_L4)
+LDSCRIPT = STM32L476VGTx_FLASH.ld
+endif
+
+ifeq ($(BOARD_VERSION), NUCLEO_L0)
+LDSCRIPT = STM32L053R8Tx_FLASH.ld
+endif
 
 # libraries
 LIBS = -lc -lm -lnosys 
