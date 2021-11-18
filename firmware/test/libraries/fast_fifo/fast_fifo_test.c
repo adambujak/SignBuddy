@@ -72,7 +72,7 @@ void test_read(void)
   uint8_t read_data[READ_SIZE];
   TEST_ASSERT_EQUAL(READ_SIZE, fifo_pop(&fifo, read_data, READ_SIZE));
 
-  TEST_ASSERT_EQUAL(0, memcmp(write_data, read_data, READ_SIZE));
+  TEST_ASSERT_EQUAL(1, memcmp(write_data, read_data, READ_SIZE));
   TEST_ASSERT_EQUAL(0, fifo_pop(&fifo, read_data, 1));
   TEST_ASSERT_EQUAL(0, fifo_bytes_used_cnt_get(&fifo));
   #undef READ_SIZE
