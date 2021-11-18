@@ -3,9 +3,9 @@
 #include "board.h"
 #include "common.h"
 
-#define TIMER_FREQ            (1000000)
-#define PRESCALER             (((SYSCLK_FREQ) / TIMER_FREQ) - 1)
-#define AUTORELOAD            0xFFFF
+#define TIMER_FREQ               (1000000)
+#define PRESCALER                (((SYSCLK_FREQ) / TIMER_FREQ) - 1)
+#define AUTORELOAD               0xFFFF
 
 #define ST_TICKS_TO_US(ticks)    (ticks)
 #define ST_TICKS_TO_MS(ticks)    ((ticks) / 1000)
