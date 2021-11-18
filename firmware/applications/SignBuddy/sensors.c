@@ -34,6 +34,8 @@ void tx_flex_data(flex_data_t *data)
 {
   for (int i = 0; i < FLEX_SENSOR_CNT; i++) {
     LOG_INFO("Reading: %hu\n\r", data->sensor_data[i]);
+    uint8_t *sensor_data = (uint8_t *) data->sensor_data;
+    ble_uart_write(sensor_data, 2);
   }
 }
 

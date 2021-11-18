@@ -61,6 +61,7 @@ bool ble_uart_is_writing(void)
 
 void ble_uart_write(uint8_t *data, uint32_t length)
 {
+  BLE_UART_TX(BLE_UART, 0xf);
   DISABLE_IRQ();
   fifo_push(&tx_fifo, data, length);
   if (!writing) {
