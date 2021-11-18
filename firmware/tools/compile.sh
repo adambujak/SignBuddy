@@ -8,7 +8,7 @@ GIT_ROOT=$(git rev-parse --show-toplevel)
 FIRMWARE_ROOT=$GIT_ROOT/firmware
 BUILD_DOCKER_SCRIPT=$FIRMWARE_ROOT/tools/build_docker_image.sh
 
-source "$BUILD_DOCKER_SCRIPT"
+bash $BUILD_DOCKER_SCRIPT
 
 docker create -it -v $FIRMWARE_ROOT:/workspace --name env $IMAGE_NAME bash > /dev/null
 docker start env > /dev/null

@@ -8,7 +8,7 @@ startDocker ()
 {
     local IMAGE_NAME="buildenv"
 
-    source "$BUILD_DOCKER_SCRIPT"
+    bash "$BUILD_DOCKER_SCRIPT"
 
     docker create -it -v $GIT_ROOT:/workspace --name env $IMAGE_NAME bash > /dev/null
     docker start env > /dev/null
