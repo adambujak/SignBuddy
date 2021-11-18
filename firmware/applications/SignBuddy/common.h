@@ -4,7 +4,7 @@
 #include "system_time.h"
 
 void error_handler(void);
-void delay_ms(void);
+void delay_ms(uint32_t ms);
 
 #define RET_OK                0
 #define RET_ERR               1

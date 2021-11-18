@@ -1,5 +1,6 @@
 #include "board.h"
 #include "ble_uart.h"
+#include "common.h"
 #include "gpio.h"
 #include "log_uart.h"
 #include "logger.h"
@@ -8,8 +9,6 @@
 #include "adc.h"
 #include "ble_uart.h"
 #include "sensors.h"
-
-#define PRIORITYGROUP    ((uint32_t)0x00000003)
 
 void delay_us(uint32_t us)
 {
@@ -62,8 +61,6 @@ static void board_bringup(void)
   LL_APB2_GRP1_EnableClock(LL_APB2_GRP1_PERIPH_SYSCFG);
   LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_PWR);
 
-  NVIC_SetPriorityGrouping(PRIORITYGROUP);
-
   sysclk_init();
 
   gpio_init();
@@ -99,7 +96,7 @@ int main(void)
 
   LOG_INFO("App started\r\n");
 
-
+  error_handler();
   while (1) {
     led_process();
     sensors_process();
@@ -111,8 +108,8 @@ void error_handler(void)
   __disable_irq();
   while (1) {
     gpio_led_set(0);
-    delay_ms(250);
+    for (uint32_t i = 0; i < 1000000; i++);
     gpio_led_set(1);
-    delay_ms(250);
+    for (uint32_t i = 0; i < 1000000; i++);
   }
 }
