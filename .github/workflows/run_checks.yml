@@ -19,25 +19,13 @@ jobs:
       run: |
         bash firmware/tools/build_docker_image.sh
         echo "Exited with '$?'"
-    - name: Build the discovery_l4 firmware
+    - name: Build the nucleo firmware
       run: |
-        bash firmware/tools/compile.sh DISCO_L4
+        bash firmware/tools/compile.sh NUCLEO
         echo "Exited with '$?'"
     - name: Clean the firmware
       run: |
         sudo make clean -C firmware
-        echo "Exited with '$?'"
-    - name: Build the nucleo_l4 firmware
-      run: |
-        bash firmware/tools/compile.sh NUCLEO_L4
-        echo "Exited with '$?'"
-    - name: Clean the firmware
-      run: |
-        sudo make clean -C firmware
-        echo "Exited with '$?'"
-    - name: Build the nucleo_l0 firmware
-      run: |
-        bash firmware/tools/compile.sh NUCLEO_L0
         echo "Exited with '$?'"
 
   format_check:

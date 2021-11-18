@@ -21,9 +21,6 @@ void adc_init(void)
   GPIO_InitStruct.Pull = LL_GPIO_PULL_NO;
   LL_GPIO_Init(ADC_PORT, &GPIO_InitStruct);
 
-  #if defined(BOARD_DISCO_L4) || defined(BOARD_NUCLEO_L4)
-  LL_GPIO_EnablePinAnalogControl(ADC_PORT, ADC_PIN);
-  #endif
   NVIC_SetPriority(ADC_IRQn, ADC_PRIORITY);
   NVIC_EnableIRQ(ADC_IRQn);
 
@@ -34,9 +31,6 @@ void adc_init(void)
   adc_config.LowPowerMode = LL_ADC_LP_MODE_NONE;
   LL_ADC_Init(ADC_PERIPH, &adc_config);
   adc_reg_config.TriggerSource = LL_ADC_REG_TRIG_SOFTWARE;
-  #if defined(BOARD_DISCO_L4) || defined(BOARD_NUCLEO_L4)
-  adc_reg_config.SequencerLength = LL_ADC_REG_SEQ_SCAN_DISABLE;
-  #endif
   adc_reg_config.SequencerDiscont = LL_ADC_REG_SEQ_DISCONT_DISABLE;
   adc_reg_config.ContinuousMode = LL_ADC_REG_CONV_SINGLE;
   adc_reg_config.DMATransfer = LL_ADC_REG_DMA_TRANSFER_NONE;
@@ -46,17 +40,10 @@ void adc_init(void)
   adc_common_config.CommonClock = LL_ADC_CLOCK_SYNC_PCLK_DIV2;
   LL_ADC_CommonInit(__LL_ADC_COMMON_INSTANCE(ADC_PERIPH), &adc_common_config);
 
-  #if defined(BOARD_DISCO_L4) || defined(BOARD_NUCLEO_L4)
-  LL_ADC_REG_SetSequencerRanks(ADC_PERIPH, LL_ADC_REG_RANK_1, ADC_CHANNEL);
-  LL_ADC_SetChannelSamplingTime(ADC_PERIPH, ADC_CHANNEL, LL_ADC_SAMPLINGTIME_47CYCLES_5);
-  LL_ADC_SetChannelSingleDiff(ADC_PERIPH, ADC_CHANNEL, LL_ADC_SINGLE_ENDED);
-  LL_ADC_DisableDeepPowerDown(ADC_PERIPH);
-  #elif defined(BOARD_NUCLEO_L0)
   LL_ADC_SetSamplingTimeCommonChannels(ADC_PERIPH, LL_ADC_SAMPLINGTIME_1CYCLE_5);
   LL_ADC_SetOverSamplingScope(ADC_PERIPH, LL_ADC_OVS_DISABLE);
   LL_ADC_REG_SetSequencerScanDirection(ADC_PERIPH, LL_ADC_REG_SEQ_SCAN_DIR_FORWARD);
   LL_ADC_SetCommonFrequencyMode(__LL_ADC_COMMON_INSTANCE(ADC_PERIPH), LL_ADC_CLOCK_FREQ_MODE_HIGH);
-  #endif
 
   LL_ADC_EnableIT_OVR(ADC_PERIPH);
 
@@ -66,11 +53,8 @@ void adc_init(void)
   wait_loop_index = ((LL_ADC_DELAY_INTERNAL_REGUL_STAB_US * (SystemCoreClock / (100000 * 2))) / 10);
   while (wait_loop_index != 0)
     wait_loop_index--;
-  #if defined(BOARD_DISCO_L4) || defined(BOARD_NUCLEO_L4)
-  LL_ADC_StartCalibration(ADC_PERIPH, LL_ADC_SINGLE_ENDED);
-  #elif defined(BOARD_NUCLEO_L0)
+
   LL_ADC_StartCalibration(ADC_PERIPH);
-  #endif
 
   while (LL_ADC_IsCalibrationOnGoing(ADC_PERIPH) != 0);
 

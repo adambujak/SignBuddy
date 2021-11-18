@@ -1,5 +1,5 @@
-#ifndef NUCLEO_L0_BOARD_H
-#define NUCLEO_L0_BOARD_H
+#ifndef NUCLEO_BOARD_H
+#define NUCLEO_BOARD_H
 
 #include "stm32l0xx_ll_adc.h"
 #include "stm32l0xx_ll_bus.h"
@@ -85,4 +85,4 @@
 #define GPIO_ADC_CLK_EN()         LL_IOP_GRP1_EnableClock(LL_IOP_GRP1_PERIPH_GPIOA)
 #define ADC_CLK_EN()              LL_APB2_GRP1_EnableClock(LL_APB2_GRP1_PERIPH_ADC1)
 
-#endif // NUCLEO_L0_BOARD_H
+#endif // NUCLEO_BOARD_H
