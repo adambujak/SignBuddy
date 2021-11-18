@@ -20,7 +20,7 @@ format:
 
 format_check:
 	@echo "Checking Source Code Formatting..."
-	@./tools/run_formatter.sh -c
+	@./tools/docker_run_formatter.sh -c
 
 flash_disco:
 	@make -C $(APPLICATION_ROOT) flash BOARD_VERSION=DISCO
