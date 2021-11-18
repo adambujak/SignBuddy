@@ -102,7 +102,7 @@ void test_write(void)
     TEST_ASSERT_EQUAL(WRITE_SIZE * (i + 1), fifo_bytes_used_cnt_get(&fifo));
   }
 
-  #undef READ_SIZE
+  #undef WRITE_SIZE
   #undef SIZE
 }
 
@@ -211,7 +211,7 @@ void test_peek_and_pop_wraparound(void)
   // Offset write index to middle of buffer
   TEST_ASSERT_EQUAL(WRITE_SIZE_0, fifo_push(&fifo, write_data0, WRITE_SIZE_0));
   TEST_ASSERT_EQUAL(WRITE_SIZE_0, fifo_bytes_used_cnt_get(&fifo));
-  fifo_drop(&fifo, WRITE_SIZE_0);
+  TEST_ASSERT_EQUAL(WRITE_SIZE_0, fifo_drop(&fifo, WRITE_SIZE_0));
   TEST_ASSERT_EQUAL(0, fifo_bytes_used_cnt_get(&fifo));
 
   #define READ_SIZE    WRITE_SIZE_1
@@ -233,7 +233,7 @@ void test_peek_and_pop_wraparound(void)
   TEST_ASSERT_EQUAL(WRITE_SIZE_1, fifo_bytes_used_cnt_get(&fifo));
   TEST_ASSERT_EQUAL(0, memcmp(write_data1, read_data, READ_SIZE));
 
-  fifo_drop(&fifo, 10);
+  TEST_ASSERT_EQUAL(10, fifo_drop(&fifo, 10));
 
   TEST_ASSERT_EQUAL(WRITE_SIZE_1 - 10, fifo_bytes_used_cnt_get(&fifo));
   TEST_ASSERT_EQUAL(WRITE_SIZE_1 - 10, fifo_pop(&fifo, read_data, WRITE_SIZE_1 - 10));
@@ -243,5 +243,53 @@ void test_peek_and_pop_wraparound(void)
   #undef WRITE_SIZE_0
   #undef WRITE_SIZE_1
   #undef READ_SIZE
+  #undef SIZE
+}
+
+void test_drop_more_than_available(void)
+{
+  #define SIZE    128
+  uint8_t buffer[SIZE] = { 0 };
+  memset(buffer, 0, SIZE);
+  fifo_t fifo;
+  TEST_ASSERT_EQUAL(0, fifo_init(&fifo, buffer, SIZE));
+
+  #define WRITE_SIZE    50
+
+  uint8_t write_data[WRITE_SIZE];
+
+  fill_buffer_random(write_data, WRITE_SIZE);
+
+  TEST_ASSERT_EQUAL(WRITE_SIZE, fifo_push(&fifo, write_data, WRITE_SIZE));
+  TEST_ASSERT_EQUAL(10, fifo_drop(&fifo, 10));
+  TEST_ASSERT_EQUAL(0, fifo_drop(&fifo, WRITE_SIZE));
+
+  #undef WRITE_SIZE
+  #undef SIZE
+}
+
+// test dropping the exact number of bytes available
+void test_drop_exactly_available(void)
+{
+  #define SIZE    128
+  uint8_t buffer[SIZE] = { 0 };
+  memset(buffer, 0, SIZE);
+  fifo_t fifo;
+  TEST_ASSERT_EQUAL(0, fifo_init(&fifo, buffer, SIZE));
+
+  #define WRITE_SIZE    50
+
+  uint8_t write_data[WRITE_SIZE];
+
+  fill_buffer_random(write_data, WRITE_SIZE);
+
+  TEST_ASSERT_EQUAL(WRITE_SIZE, fifo_push(&fifo, write_data, WRITE_SIZE));
+  TEST_ASSERT_EQUAL(10, fifo_drop(&fifo, 10));
+  TEST_ASSERT_EQUAL(WRITE_SIZE-10, fifo_drop(&fifo, WRITE_SIZE-10));
+
+  TEST_ASSERT_EQUAL(0, fifo.bytes_used);
+  TEST_ASSERT_EQUAL(fifo.read_index, fifo.write_index);
+
+  #undef WRITE_SIZE
   #undef SIZE
 }
