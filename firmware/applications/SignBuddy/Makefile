@@ -20,7 +20,7 @@ HAL_SOURCES = \
 	$(HAL_ROOT)/Src/stm32l0xx_ll_rcc.c \
 	$(HAL_ROOT)/Src/stm32l0xx_ll_tim.c \
 	$(HAL_ROOT)/Src/stm32l0xx_ll_utils.c \
-	$(HAL_ROOT)/Src/stm32l0xx_ll_usart.c 
+	$(HAL_ROOT)/Src/stm32l0xx_ll_usart.c \
 
 LIB_SOURCES = \
 	$(LIB_ROOT)/fast_fifo/fifo.c \
@@ -34,19 +34,17 @@ C_SOURCES = \
 	log_uart.c \
 	logger.c \
 	sensors.c \
+	system_stm32l0xx.c \
 	$(LIB_SOURCES) \
 	$(HAL_SOURCES) \
 
-C_SOURCES += system_stm32l0xx.c
-
 C_INCLUDES = \
+	-I$(SDK_ROOT)/Drivers/CMSIS/Device/ST/STM32L0xx/Include \
 	-I$(SDK_ROOT)/Drivers/CMSIS/Include \
 	-I$(HAL_ROOT)/Inc \
 	-I$(PROJ_ROOT) \
 	-I$(LIB_ROOT)/system_time \
 	-I$(LIB_ROOT)/fast_fifo \
-
-C_INCLUDES += -I$(SDK_ROOT)/Drivers/CMSIS/Device/ST/STM32L0xx/Include
 
 STARTUP_FILE = startup_stm32l053xx.s
 
