@@ -1,5 +1,6 @@
 #include "board.h"
 #include "ble_uart.h"
+#include "common.h"
 #include "gpio.h"
 #include "log_uart.h"
 #include "logger.h"
@@ -8,8 +9,6 @@
 #include "adc.h"
 #include "ble_uart.h"
 #include "sensors.h"
-
-#define PRIORITYGROUP    ((uint32_t)0x00000003)
 
 void delay_us(uint32_t us)
 {
@@ -27,8 +26,8 @@ void delay_ms(uint32_t ms)
 
 void sysclk_init(void)
 {
-  LL_FLASH_SetLatency(LL_FLASH_LATENCY_3);
-  while (LL_FLASH_GetLatency() != LL_FLASH_LATENCY_3);
+  LL_FLASH_SetLatency(LL_FLASH_LATENCY_1);
+  while (LL_FLASH_GetLatency() != LL_FLASH_LATENCY_1);
 
   LL_PWR_SetRegulVoltageScaling(LL_PWR_REGU_VOLTAGE_SCALE1);
   LL_RCC_HSI_Enable();
@@ -36,8 +35,8 @@ void sysclk_init(void)
   while (LL_RCC_HSI_IsReady() != 1);
 
   LL_RCC_HSI_SetCalibTrimming(16);
-  LL_RCC_PLL_ConfigDomain_SYS(LL_RCC_PLLSOURCE_HSI, LL_RCC_PLLM_DIV_1, 8, LL_RCC_PLLR_DIV_2);
-  LL_RCC_PLL_EnableDomain_SYS();
+
+  LL_RCC_PLL_ConfigDomain_SYS(LL_RCC_PLLSOURCE_HSI, LL_RCC_PLL_MUL_3, LL_RCC_PLL_DIV_2);
   LL_RCC_PLL_Enable();
 
   while (LL_RCC_PLL_IsReady() != 1);
@@ -61,8 +60,6 @@ static void board_bringup(void)
 {
   LL_APB2_GRP1_EnableClock(LL_APB2_GRP1_PERIPH_SYSCFG);
   LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_PWR);
-
-  NVIC_SetPriorityGrouping(PRIORITYGROUP);
 
   sysclk_init();
 
@@ -97,6 +94,8 @@ int main(void)
   ble_uart_init();
   adc_init();
 
+  LOG_INFO("App started\r\n");
+
   while (1) {
     led_process();
     sensors_process();
@@ -108,8 +107,8 @@ void error_handler(void)
   __disable_irq();
   while (1) {
     gpio_led_set(0);
-    delay_ms(250);
+    for (uint32_t i = 0; i < 1000000; i++);
     gpio_led_set(1);
-    delay_ms(250);
+    for (uint32_t i = 0; i < 1000000; i++);
   }
 }

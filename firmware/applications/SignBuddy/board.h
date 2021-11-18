@@ -9,9 +9,7 @@
 #ifndef BOARD_H
 #define BOARD_H
 
-#if defined(BOARD_DISCO)
-#include "disco_board.h"
-#elif defined(BOARD_NUCLEO)
+#if defined(BOARD_NUCLEO)
 #include "nucleo_board.h"
 #endif // BOARD_DEF
 

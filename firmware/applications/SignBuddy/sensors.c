@@ -23,7 +23,9 @@ static state_t s;
 int get_flex_data(flex_data_t *data)
 {
   for (int i = 0; i < FLEX_SENSOR_CNT; i++) {
+    adc_enable();
     data->sensor_data[i] = adc_read();
+    adc_disable();
   }
   return RET_OK;
 }

@@ -28,7 +28,7 @@ static void uart_init(void)
   gpio_config.Alternate = BLE_UART_GPIO_AF;
   LL_GPIO_Init(BLE_UART_GPIO_PORT, &gpio_config);
 
-  NVIC_SetPriority(BLE_UART_IRQn, 0);
+  NVIC_SetPriority(BLE_UART_IRQn, BLE_UART_PRIORITY);
   NVIC_EnableIRQ(BLE_UART_IRQn);
 
   uart_config.BaudRate = 9600;

@@ -1,13 +1,20 @@
 #include "system_time.h"
 
 #include "board.h"
+#include "common.h"
 
-#define TIMER_FREQ            (1000000)
-#define PRESCALER             (((SYSCLK_FREQ) / TIMER_FREQ) - 1)
-#define AUTORELOAD            0xFFFFFFFF
+#define TIMER_FREQ               (1000000)
+#define PRESCALER                (((SYSCLK_FREQ) / TIMER_FREQ) - 1)
+#define AUTORELOAD               0xFFFF
 
-#define TICKS_TO_US(ticks)    (ticks)
-#define TICKS_TO_MS(ticks)    ((ticks) / 1000)
+#define ST_TICKS_TO_US(ticks)    (ticks)
+#define ST_TICKS_TO_MS(ticks)    ((ticks) / 1000)
+
+typedef struct {
+  uint32_t overrun_cnt;
+} state_t;
+
+static state_t s;
 
 static void timer_init(void)
 {
@@ -26,6 +33,12 @@ static void timer_init(void)
   LL_TIM_SetTriggerOutput(SYSTEM_TIME_TIMER, LL_TIM_TRGO_RESET);
   LL_TIM_DisableMasterSlaveMode(SYSTEM_TIME_TIMER);
   LL_TIM_EnableCounter(SYSTEM_TIME_TIMER);
+
+  LL_TIM_EnableUpdateEvent(SYSTEM_TIME_TIMER);
+  LL_TIM_EnableIT_UPDATE(SYSTEM_TIME_TIMER);
+
+  NVIC_SetPriority(SYSTEM_TIME_TIMER_IRQn, SYSTEM_TIME_PRIORITY);
+  NVIC_EnableIRQ(SYSTEM_TIME_TIMER_IRQn);
 }
 
 inline uint32_t system_time_cmp_ticks(uint32_t old_time, uint32_t new_time)
@@ -40,22 +53,33 @@ inline uint32_t system_time_cmp_us(uint32_t old_time, uint32_t new_time)
 {
   uint32_t tick_diff = system_time_cmp_ticks(old_time, new_time);
 
-  return TICKS_TO_US(tick_diff);
+  return ST_TICKS_TO_US(tick_diff);
 }
 
 inline uint32_t system_time_cmp_ms(uint32_t old_time, uint32_t new_time)
 {
   uint32_t tick_diff = system_time_cmp_ticks(old_time, new_time);
 
-  return TICKS_TO_MS(tick_diff);
+  return ST_TICKS_TO_MS(tick_diff);
 }
 
 uint32_t system_time_get(void)
 {
-  return SYSTEM_TIME_TIMER->CNT;
+  DISABLE_IRQ();
+  uint32_t time = (AUTORELOAD * s.overrun_cnt) + SYSTEM_TIME_TIMER->CNT;
+  ENABLE_IRQ();
+  return time;
 }
 
 void system_time_init(void)
 {
   timer_init();
+}
+
+void SYSTEM_TIME_TIMER_IRQHandler(void)
+{
+  DISABLE_IRQ();
+  LL_TIM_ClearFlag_UPDATE(SYSTEM_TIME_TIMER);
+  s.overrun_cnt++;
+  ENABLE_IRQ();
 }

@@ -1,25 +1,26 @@
 TARGET = SignBuddy
 BUILD_CONFIG ?= DEBUG
-BOARD_VERSION ?= DISCO
+BOARD_VERSION ?= NUCLEO
 
 
 #Paths
 BUILD_DIR = _build
 FIRMWARE_ROOT = ../..
 
-SDK_ROOT = $(FIRMWARE_ROOT)/dependencies/STM32CubeL4
-HAL_ROOT = $(SDK_ROOT)/Drivers/STM32L4xx_HAL_Driver
+SDK_ROOT = $(FIRMWARE_ROOT)/dependencies/STM32CubeL0
+HAL_ROOT = $(SDK_ROOT)/Drivers/STM32L0xx_HAL_Driver
+
 LIB_ROOT = $(FIRMWARE_ROOT)/libraries
 PROJ_ROOT = $(FIRMWARE_ROOT)/applications/SignBuddy
 
 HAL_SOURCES = \
-	$(HAL_ROOT)/Src/stm32l4xx_ll_adc.c \
-	$(HAL_ROOT)/Src/stm32l4xx_ll_gpio.c \
-	$(HAL_ROOT)/Src/stm32l4xx_ll_lpuart.c \
-	$(HAL_ROOT)/Src/stm32l4xx_ll_rcc.c \
-	$(HAL_ROOT)/Src/stm32l4xx_ll_tim.c \
-	$(HAL_ROOT)/Src/stm32l4xx_ll_utils.c \
-	$(HAL_ROOT)/Src/stm32l4xx_ll_usart.c \
+	$(HAL_ROOT)/Src/stm32l0xx_ll_adc.c \
+	$(HAL_ROOT)/Src/stm32l0xx_ll_gpio.c \
+	$(HAL_ROOT)/Src/stm32l0xx_ll_lpuart.c \
+	$(HAL_ROOT)/Src/stm32l0xx_ll_rcc.c \
+	$(HAL_ROOT)/Src/stm32l0xx_ll_tim.c \
+	$(HAL_ROOT)/Src/stm32l0xx_ll_utils.c \
+	$(HAL_ROOT)/Src/stm32l0xx_ll_usart.c \
 
 LIB_SOURCES = \
 	$(LIB_ROOT)/fast_fifo/fifo.c \
@@ -33,32 +34,24 @@ C_SOURCES = \
 	log_uart.c \
 	logger.c \
 	sensors.c \
-	system_stm32l4xx.c \
+	system_stm32l0xx.c \
 	$(LIB_SOURCES) \
 	$(HAL_SOURCES) \
 
 C_INCLUDES = \
-	-I$(SDK_ROOT)/Drivers/CMSIS/Device/ST/STM32L4xx/Include \
+	-I$(SDK_ROOT)/Drivers/CMSIS/Device/ST/STM32L0xx/Include \
 	-I$(SDK_ROOT)/Drivers/CMSIS/Include \
 	-I$(HAL_ROOT)/Inc \
 	-I$(PROJ_ROOT) \
 	-I$(LIB_ROOT)/system_time \
 	-I$(LIB_ROOT)/fast_fifo \
 
-
-ifeq ($(BOARD_VERSION), DISCO)
-STARTUP_FILE = startup_stm32l476xx.s
-endif
-
-ifeq ($(BOARD_VERSION), NUCLEO)
-STARTUP_FILE = startup_stm32l476xx.s
-endif
+STARTUP_FILE = startup_stm32l053xx.s
 
 ASM_SOURCES = \
 	$(STARTUP_FILE)
 
 AS_INCLUDES = 
-
 
 
 PREFIX = arm-none-eabi-
@@ -80,24 +73,13 @@ BIN = $(CP) -O binary -S
 # CFLAGS
 #######################################
 # cpu
-CPU = -mcpu=cortex-m4
-
-# fpu
-FPU = -mfpu=fpv4-sp-d16
-
-# float-abi
-FLOAT-ABI = -mfloat-abi=hard
+CPU = -mcpu=cortex-m0plus
 
 # mcu
 MCU = $(CPU) -mthumb $(FPU) $(FLOAT-ABI)
 
-ifeq ($(BOARD_VERSION), DISCO)
-CHIPSET_DEF = STM32L476xx
-BOARD_DEF = BOARD_DISCO
-endif
-
 ifeq ($(BOARD_VERSION), NUCLEO)
-CHIPSET_DEF = STM32L476xx
+CHIPSET_DEF = STM32L053xx
 BOARD_DEF = BOARD_NUCLEO
 endif
 
@@ -132,7 +114,7 @@ CFLAGS += -MMD -MP -MF"$(@:%.o=%.d)"
 # LDFLAGS
 #######################################
 # link script
-LDSCRIPT = STM32L476VGTx_FLASH.ld
+LDSCRIPT = STM32L053R8Tx_FLASH.ld
 
 # libraries
 LIBS = -lc -lm -lnosys 
