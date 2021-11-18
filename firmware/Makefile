@@ -14,7 +14,7 @@ nucleo:
 
 test:
 	@echo "Running tests..."
-	@./test/run_tests.sh
+	@./tools/docker_run_tests.sh
 
 format:
 	@echo "Formatting Source Code..."
