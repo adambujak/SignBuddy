@@ -1,7 +1,7 @@
 APPLICATION_ROOT = applications/SignBuddy
 OUTPUT = _build
 
-default: disco_l4
+default: nucleo
 
 clean: 
 	rm -rf $(APPLICATION_ROOT)/$(OUTPUT)
