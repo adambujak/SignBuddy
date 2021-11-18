@@ -7,8 +7,17 @@ on:
     branches: [ master ]
 
 jobs:
+  run_tests:
+    runs-on: ubuntu-latest
+    if: always()
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run Unit Tests
+      run: make test -C firmware
 
   build:
+    needs: run_tests
     runs-on: ubuntu-latest
 
     steps:
@@ -38,13 +47,4 @@ jobs:
     - name: Check Code Formatting
       run: make format_check -C firmware
 
-  run_tests:
-    needs: format_check
-    runs-on: ubuntu-latest
-    if: always()
-
-    steps:
-    - uses: actions/checkout@v2
-    - name: Run Unit Tests
-      run: make test
 
