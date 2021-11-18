@@ -38,5 +38,5 @@
 # STM32 Cube IDE
 **/stm32cubeide
 
-# Test Runners files
-firmware/tests/**/test_runners
+# Test Runners folders
+**/test_runners
