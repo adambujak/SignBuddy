@@ -3,12 +3,18 @@ OUTPUT = _build
 
 default: nucleo
 
+.PHONY: test clean format format_check flash_nucleo
+
 clean: 
 	rm -rf $(APPLICATION_ROOT)/$(OUTPUT)
 
 nucleo:
 	@echo "Compiling SignBudy for nucleo..."
 	@./tools/compile.sh NUCLEO
+
+test:
+	@echo "Running tests..."
+	@./tools/docker_run_tests.sh
 
 format:
 	@echo "Formatting Source Code..."

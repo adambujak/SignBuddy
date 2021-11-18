@@ -19,14 +19,14 @@ cleanupDocker ()
     docker rm -f env > /dev/null
 }
 
-runFormatter ()
+runTests ()
 {
-    docker exec -i env bash -c "pushd /workspace/firmware/tools > /dev/null && bash run_formatter.sh $@"
-    FORMATTER_RUN_STATUS=$?
+    docker exec -i env bash -c "pushd /workspace/firmware/test > /dev/null && bash run_tests.sh $@"
+    TEST_RUN_STATUS=$?
 }
 
 startDocker
-runFormatter
+runTests
 cleanupDocker
 
-exit $FORMATTER_RUN_STATUS
+exit $TEST_RUN_STATUS

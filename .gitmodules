@@ -1,3 +1,6 @@
 [submodule "firmware/dependencies/STM32CubeL0"]
 	path = firmware/dependencies/STM32CubeL0
 	url = https://github.com/stephen99scott/STM32CubeL0
+[submodule "firmware/test/Unity"]
+	path = firmware/test/Unity
+	url = https://github.com/ThrowTheSwitch/Unity
