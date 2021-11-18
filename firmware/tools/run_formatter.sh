@@ -4,8 +4,6 @@ GIT_ROOT=$(git rev-parse --show-toplevel)
 FIRMWARE_ROOT=$GIT_ROOT/firmware
 BUILD_DOCKER_SCRIPT=$FIRMWARE_ROOT/tools/build_docker_image.sh
 
-TEMP_FIND_FILE=/workspace/formatter_files.txt
-
 echoerr()
 {
     echo "$@" 1>&2;
@@ -21,38 +19,61 @@ printHelp ()
     exit 1
 }
 
-startDocker ()
+getBlackListFindExclusion()
 {
-    local IMAGE_NAME="buildenv"
+    local blackListPath=${1}
+    local searchDir=${2}
+    # return expected:
+    # \( -path [path1] -o -path [path2] \)
+    local findExclusionString="\( "
 
-    source "$BUILD_DOCKER_SCRIPT"
+    local isFirstLine="1"
+    # Read rest of file and add as exclusion paths
+    while IFS= read -r line; do
+        path="${line}"
 
-    docker create -it -v $FIRMWARE_ROOT:/workspace --name env $IMAGE_NAME bash > /dev/null
-    docker start env > /dev/null
+        # If first line in file, don't prepend -o
+        if [ "1" == "${isFirstLine}" ]; then
+            findExclusionString="${findExclusionString} -path $searchDir/${line}"
+            isFirstLine="0"
+        else
+            findExclusionString="${findExclusionString} -o -path $searchDir/${line}"
+        fi
+    done < ${blackListPath}
+    echo "${findExclusionString} \)"
 }
 
-cleanupDocker ()
+findFiles ()
 {
-    docker rm -f env > /dev/null
+    local OUTPUT_FILE=${1}
+    local SEARCH_DIR="$FIRMWARE_ROOT"
+    local EXCLUDE_FILE_PATH="$FIRMWARE_ROOT/tools/formatter_blacklist.txt"
+
+    local blackListFindExclusion=$(getBlackListFindExclusion ${EXCLUDE_FILE_PATH} ${SEARCH_DIR})
+    local fileInclusionString=" \( -name '*.c' -o -name '*.h' \)"
+    local findParams="$SEARCH_DIR -type d $blackListFindExclusion -prune -o $fileInclusionString -print"
+    local findCommand="find $findParams"
+    eval "$findCommand" > $OUTPUT_FILE
 }
 
 runFormatter ()
 {
     # get a list of all the files we want to run the formatter on
-    docker exec -i env bash -c "find /workspace/. \( -name '*.c' -o -name '*.h' -o -path '/workspace/./dependencies' -prune \) -type f > $TEMP_FIND_FILE"
+    local TEMP_FILE="formatter_file_list.temp"
+    findFiles $TEMP_FILE
 
     if [[ $CHECK_FLAG == "TRUE" ]]; then
     # run formatter check
-    docker exec -i env bash -c "uncrustify -c /workspace/tools/firmware_style.cfg -F $TEMP_FIND_FILE --check"
+    uncrustify -c $FIRMWARE_ROOT/tools/firmware_style.cfg -F $TEMP_FILE --check
     FORMATTER_RUN_STATUS=$?
     else
     # run formatter inplace
-    docker exec -i env bash -c "uncrustify -c /workspace/tools/firmware_style.cfg -F $TEMP_FIND_FILE --replace --no-backup"
+    uncrustify -c $FIRMWARE_ROOT/tools/firmware_style.cfg -F $TEMP_FILE --replace --no-backup
     FORMATTER_RUN_STATUS=$?
     fi
 
     # delete file list file
-    docker exec -i env bash -c "rm $TEMP_FIND_FILE"
+    rm $TEMP_FILE
 }
 
 # Input Argument Parsing
@@ -73,8 +94,6 @@ for ((i=1; i<=$#; i++)) do
     esac
 done
 
-startDocker
 runFormatter
-cleanupDocker
 
 exit $FORMATTER_RUN_STATUS
