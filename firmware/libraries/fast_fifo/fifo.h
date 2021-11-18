@@ -46,9 +46,9 @@ int fifo_peek(fifo_t *fifo, uint8_t *dest, uint32_t length);
 /** Drop data from fifo
  * @param  fifo - pointer to fifo
  * @param  length - number of bytes to drop
- * @retval None
+ * @retval number of bytes dropped
  */
-void fifo_drop(fifo_t *fifo, uint32_t length);
+int fifo_drop(fifo_t *fifo, uint32_t length);
 
 /** Get number of bytes stored in fifo
  * @param  fifo - pointer to fifo

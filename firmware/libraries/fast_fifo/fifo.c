@@ -61,15 +61,16 @@ int fifo_peek(fifo_t *fifo, uint8_t *dest, uint32_t length)
   return length;
 }
 
-void fifo_drop(fifo_t *fifo, uint32_t length)
+int fifo_drop(fifo_t *fifo, uint32_t length)
 {
+  if (fifo->bytes_used < length) {
+    return 0;
+  }
+
   fifo->read_index = (fifo->read_index + length) & (fifo->size - 1);
-  if (length > fifo->bytes_used) {
-    fifo->bytes_used = 0;
-  }
-  else {
-    fifo->bytes_used = fifo->bytes_used - length;
-  }
+  fifo->bytes_used = fifo->bytes_used - length;
+
+  return length;
 }
 
 uint32_t fifo_bytes_used_cnt_get(fifo_t *fifo)
