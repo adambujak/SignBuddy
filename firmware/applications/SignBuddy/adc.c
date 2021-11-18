@@ -24,7 +24,7 @@ void adc_init(void)
   #if defined(BOARD_DISCO_L4) || defined(BOARD_NUCLEO_L4)
   LL_GPIO_EnablePinAnalogControl(ADC_PORT, ADC_PIN);
   #endif
-  NVIC_SetPriority(ADC_IRQn, 0);
+  NVIC_SetPriority(ADC_IRQn, ADC_PRIORITY);
   NVIC_EnableIRQ(ADC_IRQn);
 
   ADC_CLK_EN();

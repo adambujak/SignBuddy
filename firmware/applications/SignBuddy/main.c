@@ -106,6 +106,9 @@ int main(void)
   ble_uart_init();
   adc_init();
 
+  LOG_INFO("app started\r\n");
+
+
   while (1) {
     led_process();
     sensors_process();

@@ -48,7 +48,7 @@ static void hw_init(void)
   LL_USART_EnableIT_RXNE(LOG_UART);
   LL_USART_EnableIT_TC(LOG_UART);
 
-  NVIC_SetPriority(LOG_UART_IRQn, 0);
+  NVIC_SetPriority(LOG_UART_IRQn, LOG_UART_PRIORITY);
   NVIC_EnableIRQ(LOG_UART_IRQn);
 }
 
