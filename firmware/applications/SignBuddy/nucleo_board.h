@@ -18,7 +18,7 @@
 #define SYSCLK_FREQ                     24000000
 
 #define SYSTEM_TIME_PRIORITY            4
-#define ADC_PRIORITY                    5
+#define FLEX_ADC_PRIORITY               5
 #define BLE_UART_PRIORITY               9
 #define LOG_UART_PRIORITY               10
 
@@ -76,13 +76,13 @@
 #define LOG_UART_GPIO_CLK_EN()    LL_IOP_GRP1_EnableClock(LL_IOP_GRP1_PERIPH_GPIOA)
 
 /* ADC */
-#define ADC_PERIPH                ADC1
-#define ADC_IRQn                  ADC1_COMP_IRQn
-#define ADC_IRQHandler            ADC1_COMP_IRQHandler
-#define ADC_CHANNEL               LL_ADC_CHANNEL_4
-#define ADC_PORT                  GPIOA
-#define ADC_PIN                   LL_GPIO_PIN_4
-#define GPIO_ADC_CLK_EN()         LL_IOP_GRP1_EnableClock(LL_IOP_GRP1_PERIPH_GPIOA)
-#define ADC_CLK_EN()              LL_APB2_GRP1_EnableClock(LL_APB2_GRP1_PERIPH_ADC1)
+#define FLEX_ADC                  ADC1
+#define FLEX_ADC_IRQn             ADC1_COMP_IRQn
+#define FLEX_ADC_IRQHandler       ADC1_COMP_IRQHandler
+#define FLEX_ADC_CHANNEL          LL_ADC_CHANNEL_4
+#define FLEX_ADC_PORT             GPIOA
+#define FLEX_ADC_PIN              LL_GPIO_PIN_4
+#define FLEX_ADC_GPIO_CLK_EN()    LL_IOP_GRP1_EnableClock(LL_IOP_GRP1_PERIPH_GPIOA)
+#define FLEX_ADC_CLK_EN()         LL_APB2_GRP1_EnableClock(LL_APB2_GRP1_PERIPH_ADC1)
 
 #endif // NUCLEO_BOARD_H
