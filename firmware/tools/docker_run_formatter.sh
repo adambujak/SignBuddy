@@ -21,7 +21,7 @@ cleanupDocker ()
 
 runFormatter ()
 {
-    docker exec -i env bash -c "pushd /workspace/firmware/tools && bash run_formatter.sh $@"
+    docker exec -i env bash -c "pushd /workspace/firmware/tools > /dev/null && bash run_formatter.sh $@"
     FORMATTER_RUN_STATUS=$?
 }
 
