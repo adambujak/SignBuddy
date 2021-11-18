@@ -7,6 +7,11 @@ GIT_ROOT=$(git rev-parse --show-toplevel)
 FIRMWARE_ROOT=$GIT_ROOT/firmware
 DOCKER_PATH=$FIRMWARE_ROOT/tools
 
+echoerr()
+{
+    echo "$@" 1>&2;
+}
+
 printHelp ()
 {
     echo "###################### Commands ######################"
