@@ -1,6 +1,6 @@
 #! /bin/bash
 
-BOARD_VERSION="${1:-DISCO}"
+BOARD_VERSION="${1:-NUCLEO}"
 
 IMAGE_NAME="buildenv"
 
