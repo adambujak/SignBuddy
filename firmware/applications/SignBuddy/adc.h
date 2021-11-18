@@ -11,4 +11,10 @@ uint16_t adc_read(void);
 /* Initialize adc module */
 void adc_init(void);
 
+/* Enable adc module */
+void adc_enable(void);
+
+/* Disable adc module */
+void adc_disable(void);
+
 #endif // ADC_H

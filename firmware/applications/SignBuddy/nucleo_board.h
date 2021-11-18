@@ -36,8 +36,8 @@
 /* BLE UART */
 #define BLE_UART                        LPUART1
 #define BLE_UART_CONFIG                 LL_LPUART_InitTypeDef
-#define BLE_UART_IRQn                   LPUART1_IRQn
-#define BLE_UART_IRQHandler             LPUART1_IRQHandler
+#define BLE_UART_IRQn                   RNG_LPUART1_IRQn
+#define BLE_UART_IRQHandler             RNG_LPUART1_IRQHandler
 #define BLE_UART_RX_PIN                 LL_GPIO_PIN_5
 #define BLE_UART_TX_PIN                 LL_GPIO_PIN_4
 #define BLE_UART_GPIO_PORT              GPIOC

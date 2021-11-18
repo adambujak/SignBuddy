@@ -97,7 +97,7 @@ int main(void)
   ble_uart_init();
   adc_init();
 
-  LOG_INFO("app started\r\n");
+  LOG_INFO("App started\r\n");
 
 
   while (1) {
