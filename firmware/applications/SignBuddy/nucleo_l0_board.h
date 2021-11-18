@@ -17,6 +17,11 @@
 
 #define SYSCLK_FREQ                   24000000
 
+#define SYSTEM_TIME_PRIORITY  4
+#define ADC_PRIORITY     5
+#define BLE_UART_PRIORITY     9
+#define LOG_UART_PRIORITY     10
+
 /* LED */
 #define LED1_PORT                     GPIOA
 #define LED1_PIN                      LL_GPIO_PIN_5
@@ -24,6 +29,8 @@
 
 /* System Time */
 #define SYSTEM_TIME_TIMER             TIM2
+#define SYSTEM_TIME_TIMER_IRQn        TIM2_IRQn
+#define SYSTEM_TIME_TIMER_IRQHandler  TIM2_IRQHandler
 #define SYSTEM_TIME_CLK_EN()          LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_TIM2)
 
 /* BLE UART */
