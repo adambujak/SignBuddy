@@ -7,7 +7,7 @@ typedef struct {
   uint8_t *buffer;
   uint32_t write_index;
   uint32_t read_index;
-  uint32_t bytes_available;
+  uint32_t bytes_used;
   uint32_t size;
 } fifo_t;
 
@@ -23,9 +23,9 @@ int fifo_init(fifo_t *fifo, uint8_t *buffer, uint32_t size);
  * @param  fifo - pointer to fifo
  * @param  buffer - data to add to fifo
  * @param  length - number of bytes to add to fifo
- * @retval None
+ * @retval number of bytes pushed - 0 if full or failed
  */
-void fifo_push(fifo_t *fifo, uint8_t *buffer, uint32_t length);
+int fifo_push(fifo_t *fifo, uint8_t *buffer, uint32_t length);
 
 /** Pop data out of fifo
  * @param  fifo - pointer to fifo
@@ -50,10 +50,17 @@ int fifo_peek(fifo_t *fifo, uint8_t *dest, uint32_t length);
  */
 void fifo_drop(fifo_t *fifo, uint32_t length);
 
-/** Get bytes available in fifo
+/** Get number of bytes stored in fifo
  * @param  fifo - pointer to fifo
  * @retval number of bytes in fifo
  */
-uint32_t fifo_available(fifo_t *fifo);
+uint32_t fifo_bytes_used_cnt_get(fifo_t *fifo);
+
+/** Get number of bytes unused in fifo
+ * @param  fifo - pointer to fifo
+ * @retval number of free bytes in fifo
+ */
+uint32_t fifo_bytes_unused_cnt_get(fifo_t *fifo);
+
 
 #endif // FAST_FIFO_H
