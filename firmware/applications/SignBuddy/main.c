@@ -96,7 +96,6 @@ int main(void)
 
   LOG_INFO("App started\r\n");
 
-  error_handler();
   while (1) {
     led_process();
     sensors_process();

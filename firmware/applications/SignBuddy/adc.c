@@ -52,7 +52,7 @@ void adc_enable(void)
       wait_loop_index--;
   }
   else {
-    ERR_CHECK(RET_ERR);
+    error_handler();
   }
 
   LL_ADC_Enable(FLEX_ADC);
@@ -67,7 +67,7 @@ void adc_disable(void)
     LL_ADC_Disable(FLEX_ADC);
   }
   else {
-    ERR_CHECK(RET_ERR);
+    error_handler();
   }
 }
 
@@ -85,7 +85,7 @@ uint16_t adc_read(void)
     LL_ADC_REG_StartConversion(FLEX_ADC);
   }
   else {
-    ERR_CHECK(RET_ERR);
+    error_handler();
   }
 
   while (LL_ADC_IsActiveFlag_EOC(FLEX_ADC) == 0);
