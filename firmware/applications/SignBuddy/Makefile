@@ -153,14 +153,19 @@ $(BUILD_DIR)/%.hex: $(BUILD_DIR)/%.elf | $(BUILD_DIR)
 	
 $(BUILD_DIR)/%.bin: $(BUILD_DIR)/%.elf | $(BUILD_DIR)
 	$(BIN) $< $@	
-	
+
 $(BUILD_DIR):
 	mkdir $@		
+
+FLASH_SCRIPT = $(realpath $(PROJ_ROOT))/flash_stm.jlink
 
 flash: all
 	# retry st-flash on failure
 	st-flash write $(BUILD_DIR)/$(TARGET).bin 0x8000000 || st-flash write $(BUILD_DIR)/$(TARGET).bin 0x8000000
 	st-flash reset
+
+flash_jlink:
+	JLinkExe -device STM32L053R8 -CommandFile $(FLASH_SCRIPT)
 
 clean:
 	-rm -fR $(BUILD_DIR)
