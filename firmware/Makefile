@@ -26,3 +26,6 @@ format_check:
 
 flash_nucleo:
 	@make -C $(APPLICATION_ROOT) flash BOARD_VERSION=NUCLEO
+
+flash_nucleo_jlink:
+	@make -C $(APPLICATION_ROOT) flash_jlink BOARD_VERSION=NUCLEO
