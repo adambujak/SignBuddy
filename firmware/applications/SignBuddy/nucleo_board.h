@@ -74,4 +74,8 @@
 #define IMU_I2C                   I2C1
 #define IMU_I2C_CLK_SRC()         LL_RCC_SetI2CClockSource(LL_RCC_I2C1_CLKSOURCE_PCLK1);
 
+/* I2C */
+#define IMU_I2C                   I2C1
+#define IMU_I2C_CLK_SRC()         LL_RCC_SetI2CClockSource(LL_RCC_I2C1_CLKSOURCE_PCLK1);
+
 #endif // NUCLEO_BOARD_H
