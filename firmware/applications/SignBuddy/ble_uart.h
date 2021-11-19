@@ -2,16 +2,22 @@
 #define BLE_UART_H
 
 #include <stdint.h>
+#include <stdbool.h>
+
+#define BLE_UART_TX_BUFFER_SIZE    512
+#define BLE_UART_RX_BUFFER_SIZE    512
 
 /** Receive transmission from the bluetooth uart module
  * @retval    Byte of data received
  */
-uint8_t ble_uart_rx(void);
+int ble_uart_read(uint8_t *data, uint32_t length);
 
 /** Send transmission to the bluetooth uart module
  * @param data    Byte of data to transmit
  */
-void ble_uart_tx(uint8_t data);
+void ble_uart_write(uint8_t *data, uint32_t length);
+
+bool ble_uart_is_writing(void);
 
 /* Initialize ble_uart module */
 void ble_uart_init(void);
