@@ -3,6 +3,7 @@
 GIT_ROOT=$(git rev-parse --show-toplevel)
 FIRMWARE_ROOT=$GIT_ROOT/firmware
 BUILD_DOCKER_SCRIPT=$FIRMWARE_ROOT/tools/build_docker_image.sh
+FORMATTER_PARAMS=$@
 
 startDocker ()
 {
@@ -21,7 +22,7 @@ cleanupDocker ()
 
 runFormatter ()
 {
-    docker exec -i env bash -c "pushd /workspace/firmware/tools > /dev/null && bash run_formatter.sh $@"
+    docker exec -i env bash -c "pushd /workspace/firmware/tools > /dev/null && ./run_formatter.sh $FORMATTER_PARAMS"
     FORMATTER_RUN_STATUS=$?
 }
 
