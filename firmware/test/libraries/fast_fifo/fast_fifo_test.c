@@ -285,7 +285,7 @@ void test_drop_exactly_available(void)
 
   TEST_ASSERT_EQUAL(WRITE_SIZE, fifo_push(&fifo, write_data, WRITE_SIZE));
   TEST_ASSERT_EQUAL(10, fifo_drop(&fifo, 10));
-  TEST_ASSERT_EQUAL(WRITE_SIZE-10, fifo_drop(&fifo, WRITE_SIZE-10));
+  TEST_ASSERT_EQUAL(WRITE_SIZE - 10, fifo_drop(&fifo, WRITE_SIZE - 10));
 
   TEST_ASSERT_EQUAL(0, fifo.bytes_used);
   TEST_ASSERT_EQUAL(fifo.read_index, fifo.write_index);
