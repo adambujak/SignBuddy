@@ -16,6 +16,7 @@ PROJ_ROOT = $(FIRMWARE_ROOT)/applications/SignBuddy
 HAL_SOURCES = \
 	$(HAL_ROOT)/Src/stm32l0xx_ll_adc.c \
 	$(HAL_ROOT)/Src/stm32l0xx_ll_gpio.c \
+	$(HAL_ROOT)/Src/stm32l0xx_ll_i2c.c \
 	$(HAL_ROOT)/Src/stm32l0xx_ll_lpuart.c \
 	$(HAL_ROOT)/Src/stm32l0xx_ll_rcc.c \
 	$(HAL_ROOT)/Src/stm32l0xx_ll_tim.c \
@@ -31,6 +32,8 @@ C_SOURCES = \
 	adc.c \
 	ble_uart.c \
 	gpio.c \
+	i2c.c \
+	imu.c \
 	log_uart.c \
 	logger.c \
 	sensors.c \

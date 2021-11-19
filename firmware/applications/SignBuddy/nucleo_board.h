@@ -7,6 +7,7 @@
 #include "stm32l0xx_ll_dma.h"
 #include "stm32l0xx_ll_exti.h"
 #include "stm32l0xx_ll_gpio.h"
+#include "stm32l0xx_ll_i2c.h"
 #include "stm32l0xx_ll_lpuart.h"
 #include "stm32l0xx_ll_pwr.h"
 #include "stm32l0xx_ll_rcc.h"
@@ -68,5 +69,9 @@
 #define FLEX_ADC_CHANNEL          LL_ADC_CHANNEL_4
 #define FLEX_ADC_CLK_EN()         LL_APB2_GRP1_EnableClock(LL_APB2_GRP1_PERIPH_ADC1)
 #define FLEX_ADC_GPIO_CLK_EN()    LL_IOP_GRP1_EnableClock(LL_IOP_GRP1_PERIPH_GPIOA)
+
+/* I2C */
+#define IMU_I2C                   I2C1
+#define IMU_I2C_CLK_SRC()         LL_RCC_SetI2CClockSource(LL_RCC_I2C1_CLKSOURCE_PCLK1);
 
 #endif // NUCLEO_BOARD_H
