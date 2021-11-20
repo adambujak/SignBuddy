@@ -4,8 +4,11 @@
 #include "common.h"
 #include "i2c.h"
 #include "logger.h"
+#include "bno055.h"
 
 #define PROCESS_PERIOD_MS    1000
+
+struct bno055_t bno055;
 
 typedef struct {
   uint32_t last_ticks;
@@ -46,10 +49,67 @@ static void hw_init(void)
   i2c_init(&s.i2c_instance, I2C1, &i2c_config);
 }
 
+static inline int8_t write(uint8_t dev_addr, uint8_t reg_addr, uint8_t *reg_data, uint8_t cnt)
+{
+  i2c_write(&s.i2c_instance, dev_addr, reg_addr, reg_data, (uint16_t)cnt);
+  return 0;
+}
+
+static inline int8_t read(uint8_t dev_addr, uint8_t reg_addr, uint8_t *reg_data, uint8_t cnt)
+{
+  i2c_read(&s.i2c_instance, dev_addr, reg_addr, reg_data, (uint16_t)cnt);
+  return 0;
+}
+
+static inline void delay(u32 ms)
+{
+  delay_ms((uint32_t) ms);
+}
+
+static void bno_init(void)
+{
+  bno055.bus_write = write;
+  bno055.bus_read = read;
+  bno055.delay_msec = delay;
+  bno055.dev_addr = BNO055_I2C_ADDR1;
+
+  ERR_CHECK(bno055_init(&bno055));
+    
+  ERR_CHECK(bno055_set_power_mode(BNO055_POWER_MODE_NORMAL));
+}
+
+static void get_data(void)
+{
+  ERR_CHECK(bno055_set_operation_mode(BNO055_OPERATION_MODE_AMG));
+
+  int16_t accel_datax = 0;
+  uint32_t ret = 0;
+  ret |= bno055_read_accel_x(&accel_datax);
+  // ret |= bno055_read_accel_y(&accel_datay);
+  // ret |= bno055_read_accel_z(&accel_dataz);
+  // ret |= bno055_read_accel_xyz(&accel_xyz);
+
+  // ret |= bno055_read_mag_x(&mag_datax);
+  // ret |= bno055_read_mag_y(&mag_datay);
+  // ret |= bno055_read_mag_z(&mag_dataz);
+  // ret |= bno055_read_mag_xyz(&mag_xyz);
+
+  // ret |= bno055_read_gyro_x(&gyro_datax);
+  // ret |= bno055_read_gyro_y(&gyro_datay);
+  // ret |= bno055_read_gyro_z(&gyro_dataz);
+  // ret |= bno055_read_gyro_xyz(&gyro_xyz);
+  ERR_CHECK(ret);
+  LOG_INFO("accel datax: %d\r\n", accel_datax);
+}
+
 void imu_init(void)
 {
   hw_init();
+  bno_init();
+
 }
+
+
 
 void imu_process(void)
 {
@@ -67,4 +127,7 @@ void imu_process(void)
 
 
   LOG_DEBUG("imu process\r\n");
+
+  get_data(); 
 }
+

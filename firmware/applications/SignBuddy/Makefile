@@ -24,6 +24,7 @@ HAL_SOURCES = \
 	$(HAL_ROOT)/Src/stm32l0xx_ll_usart.c \
 
 LIB_SOURCES = \
+	$(LIB_ROOT)/bno055/bno055.c \
 	$(LIB_ROOT)/fast_fifo/fifo.c \
 	$(LIB_ROOT)/system_time/system_time.c \
 
@@ -48,6 +49,7 @@ C_INCLUDES = \
 	-I$(PROJ_ROOT) \
 	-I$(LIB_ROOT)/system_time \
 	-I$(LIB_ROOT)/fast_fifo \
+	-I$(LIB_ROOT)/bno055 \
 
 STARTUP_FILE = startup_stm32l053xx.s
 
