@@ -15,7 +15,7 @@ static bool writing = false;
 static void uart_init(void)
 {
   LL_GPIO_InitTypeDef gpio_config = { 0 };
-  BLE_UART_CONFIG uart_config = { 0 };
+  LL_LPUART_InitTypeDef uart_config = { 0 };
 
   BLE_UART_CLK_EN();
   BLE_UART_GPIO_CLK_EN();
@@ -32,16 +32,16 @@ static void uart_init(void)
   NVIC_EnableIRQ(BLE_UART_IRQn);
 
   uart_config.BaudRate = 9600;
-  uart_config.DataWidth = BLE_UART_DATAWIDTH;
-  uart_config.StopBits = BLE_UART_STOPBITS;
-  uart_config.Parity = BLE_UART_PARITY;
-  uart_config.TransferDirection = BLE_UART_DIRECTION;
-  uart_config.HardwareFlowControl = BLE_UART_FLOWCTRL;
-  BLE_UART_Init(BLE_UART, &uart_config);
-  BLE_UART_Enable(BLE_UART);
+  uart_config.DataWidth = LL_LPUART_DATAWIDTH_8B;
+  uart_config.StopBits = LL_LPUART_STOPBITS_1;
+  uart_config.Parity = LL_LPUART_PARITY_NONE;
+  uart_config.TransferDirection = LL_LPUART_DIRECTION_TX_RX;
+  uart_config.HardwareFlowControl = LL_LPUART_HWCONTROL_NONE;
+  LL_LPUART_Init(BLE_UART, &uart_config);
+  LL_LPUART_Enable(BLE_UART);
 
-  BLE_UART_EnableIT_RXNE(BLE_UART);
-  BLE_UART_EnableIT_TC(BLE_UART);
+  LL_LPUART_EnableIT_RXNE(BLE_UART);
+  LL_LPUART_EnableIT_TC(BLE_UART);
 }
 
 static inline void tx(void)
@@ -49,7 +49,7 @@ static inline void tx(void)
   uint8_t write_byte;
 
   if (fifo_pop(&tx_fifo, &write_byte, 1) == 1) {
-    BLE_UART_TX(BLE_UART, write_byte);
+    LL_LPUART_TransmitData8(BLE_UART, write_byte);
     writing = true;
   }
 }
@@ -88,15 +88,15 @@ void BLE_UART_IRQHandler(void)
 {
   DISABLE_IRQ();
   uint8_t data;
-  if (BLE_UART_IsActiveFlag_RXNE(BLE_UART)) {
-    data = BLE_UART_RX(BLE_UART);
+  if (LL_LPUART_IsActiveFlag_RXNE(BLE_UART)) {
+    data = LL_LPUART_ReceiveData8(BLE_UART);
     // TODO: make sure this is correct flag to clear
-    BLE_UART_ClearFlag_NE(BLE_UART);
+    LL_LPUART_ClearFlag_NE(BLE_UART);
     fifo_push(&rx_fifo, &data, 1);
   }
-  if (BLE_UART_IsActiveFlag_TC(BLE_UART)) {
+  if (LL_LPUART_IsActiveFlag_TC(BLE_UART)) {
     writing = false;
-    BLE_UART_ClearFlag_TC(BLE_UART);
+    LL_LPUART_ClearFlag_TC(BLE_UART);
     tx();
   }
   ENABLE_IRQ();

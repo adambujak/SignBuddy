@@ -32,7 +32,7 @@ static void hw_init(void)
   gpio_config.Alternate = LOG_UART_GPIO_AF;
   LL_GPIO_Init(LOG_UART_GPIO_PORT, &gpio_config);
 
-  uart_config.BaudRate = LOG_UART_BAUDRATE;
+  uart_config.BaudRate = 115200;
   uart_config.DataWidth = LL_USART_DATAWIDTH_8B;
   uart_config.StopBits = LL_USART_STOPBITS_1;
   uart_config.Parity = LL_USART_PARITY_NONE;
