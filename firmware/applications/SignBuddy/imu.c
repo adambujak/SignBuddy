@@ -53,19 +53,19 @@ static void hw_init(void)
 
 static inline int8_t write(uint8_t dev_addr, uint8_t reg_addr, uint8_t *reg_data, uint8_t cnt)
 {
-  i2c_write(&s.i2c_instance, dev_addr << 1, reg_addr, reg_data, (uint16_t)cnt);
+  i2c_write(&s.i2c_instance, dev_addr << 1, reg_addr, reg_data, (uint16_t) cnt);
   return 0;
 }
 
 static inline int8_t read(uint8_t dev_addr, uint8_t reg_addr, uint8_t *reg_data, uint8_t cnt)
 {
-  i2c_read(&s.i2c_instance, dev_addr << 1, reg_addr, reg_data, (uint16_t)cnt);
+  i2c_read(&s.i2c_instance, dev_addr << 1, reg_addr, reg_data, (uint16_t) cnt);
   return 0;
 }
 
 static inline void delay(u32 ms)
 {
-  delay_ms((uint32_t)ms);
+  delay_ms((uint32_t) ms);
 }
 
 static void bno_init(void)

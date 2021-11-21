@@ -22,7 +22,7 @@ static void read(I2C_TypeDef *handle, uint8_t *rx_data)
 
 int i2c_write(i2c_t *instance, uint8_t slave_addr, uint8_t reg_addr, const uint8_t *data, uint16_t length)
 {
-  I2C_TypeDef *handle = (I2C_TypeDef *)instance->handle;
+  I2C_TypeDef *handle = (I2C_TypeDef *) instance->handle;
 
   LL_I2C_HandleTransfer(handle,
                         slave_addr,
@@ -45,7 +45,7 @@ int i2c_write(i2c_t *instance, uint8_t slave_addr, uint8_t reg_addr, const uint8
 
 int i2c_read(i2c_t *instance, uint8_t slave_addr, uint8_t reg_addr, uint8_t *data, uint16_t length)
 {
-  I2C_TypeDef *handle = (I2C_TypeDef *)instance->handle;
+  I2C_TypeDef *handle = (I2C_TypeDef *) instance->handle;
 
   i2c_write(instance, slave_addr, reg_addr, NULL, 0);
 
