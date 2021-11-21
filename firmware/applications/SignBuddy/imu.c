@@ -8,14 +8,13 @@
 
 #define PROCESS_PERIOD_MS    1000
 
-struct bno055_t bno055;
-struct bno055_accel_t bno055_accel_xyz;
-struct bno055_mag_t bno055_mag_xyz;
-struct bno055_gyro_t bno055_gyro_xyz;
-
 typedef struct {
   uint32_t last_ticks;
   i2c_t    i2c_instance;
+  struct   bno055_t       bno055;
+  struct   bno055_accel_t bno055_accel_xyz;
+  struct   bno055_mag_t   bno055_mag_xyz;
+  struct   bno055_gyro_t  bno055_gyro_xyz;
 } state_t;
 
 static state_t s;
@@ -70,12 +69,12 @@ static inline void delay(u32 ms)
 
 static void bno_init(void)
 {
-  bno055.bus_write = write;
-  bno055.bus_read = read;
-  bno055.delay_msec = delay;
-  bno055.dev_addr = BNO055_I2C_ADDR1;
+  s.bno055.bus_write = write;
+  s.bno055.bus_read = read;
+  s.bno055.delay_msec = delay;
+  s.bno055.dev_addr = BNO055_I2C_ADDR1;
 
-  ERR_CHECK(bno055_init(&bno055));
+  ERR_CHECK(bno055_init(&s.bno055));
 
   ERR_CHECK(bno055_set_power_mode(BNO055_POWER_MODE_NORMAL));
 }
@@ -85,20 +84,20 @@ static void get_data(void)
   ERR_CHECK(bno055_set_operation_mode(BNO055_OPERATION_MODE_AMG));
 
   uint32_t ret = 0;
-  ret |= bno055_read_accel_xyz(&bno055_accel_xyz);
-  ret |= bno055_read_mag_xyz(&bno055_mag_xyz);
-  ret |= bno055_read_gyro_xyz(&bno055_gyro_xyz);
+  ret |= bno055_read_accel_xyz(&s.bno055_accel_xyz);
+  ret |= bno055_read_mag_xyz(&s.bno055_mag_xyz);
+  ret |= bno055_read_gyro_xyz(&s.bno055_gyro_xyz);
   ERR_CHECK(ret);
 
-  LOG_INFO("Accel datax: %d\r\n", bno055_accel_xyz.x);
-  LOG_INFO("Accel datay: %d\r\n", bno055_accel_xyz.y);
-  LOG_INFO("Accel dataz: %d\r\n", bno055_accel_xyz.z);
-  LOG_INFO("Mag datax: %d\r\n", bno055_mag_xyz.x);
-  LOG_INFO("Mag datay: %d\r\n", bno055_mag_xyz.y);
-  LOG_INFO("Mag dataz: %d\r\n", bno055_mag_xyz.z);
-  LOG_INFO("Gyro datax: %d\r\n", bno055_gyro_xyz.x);
-  LOG_INFO("Gyro datay: %d\r\n", bno055_gyro_xyz.y);
-  LOG_INFO("Gyro dataz: %d\r\n", bno055_gyro_xyz.z);
+  LOG_INFO("Accel datax: %d\r\n", s.bno055_accel_xyz.x);
+  LOG_INFO("Accel datay: %d\r\n", s.bno055_accel_xyz.y);
+  LOG_INFO("Accel dataz: %d\r\n", s.bno055_accel_xyz.z);
+  LOG_INFO("Mag datax: %d\r\n", s.bno055_mag_xyz.x);
+  LOG_INFO("Mag datay: %d\r\n", s.bno055_mag_xyz.y);
+  LOG_INFO("Mag dataz: %d\r\n", s.bno055_mag_xyz.z);
+  LOG_INFO("Gyro datax: %d\r\n", s.bno055_gyro_xyz.x);
+  LOG_INFO("Gyro datay: %d\r\n", s.bno055_gyro_xyz.y);
+  LOG_INFO("Gyro dataz: %d\r\n", s.bno055_gyro_xyz.z);
 }
 
 void imu_init(void)
