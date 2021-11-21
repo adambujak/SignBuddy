@@ -48,15 +48,15 @@
 #include "stm32l0xx.h"
 
 #if !defined  (HSE_VALUE)
-  #define HSE_VALUE    ((uint32_t)8000000U) /*!< Value of the External oscillator in Hz */
+  #define HSE_VALUE    ((uint32_t) 8000000U) /*!< Value of the External oscillator in Hz */
 #endif /* HSE_VALUE */
 
 #if !defined  (MSI_VALUE)
-  #define MSI_VALUE    ((uint32_t)2097152U) /*!< Value of the Internal oscillator in Hz*/
+  #define MSI_VALUE    ((uint32_t) 2097152U) /*!< Value of the Internal oscillator in Hz*/
 #endif /* MSI_VALUE */
 
 #if !defined  (HSI_VALUE)
-  #define HSI_VALUE    ((uint32_t)16000000U) /*!< Value of the Internal oscillator in Hz*/
+  #define HSI_VALUE    ((uint32_t) 16000000U) /*!< Value of the Internal oscillator in Hz*/
 #endif /* HSI_VALUE */
 
 
@@ -137,22 +137,22 @@ const uint8_t PLLMulTable[9] = { 3U, 4U, 6U, 8U, 12U, 16U, 24U, 32U, 48U };
 void SystemInit(void)
 {
 /*!< Set MSION bit */
-  RCC->CR |= (uint32_t)0x00000100U;
+  RCC->CR |= (uint32_t) 0x00000100U;
 
   /*!< Reset SW[1:0], HPRE[3:0], PPRE1[2:0], PPRE2[2:0], MCOSEL[2:0] and MCOPRE[2:0] bits */
-  RCC->CFGR &= (uint32_t)0x88FF400CU;
+  RCC->CFGR &= (uint32_t) 0x88FF400CU;
 
   /*!< Reset HSION, HSIDIVEN, HSEON, CSSON and PLLON bits */
-  RCC->CR &= (uint32_t)0xFEF6FFF6U;
+  RCC->CR &= (uint32_t) 0xFEF6FFF6U;
 
   /*!< Reset HSI48ON  bit */
-  RCC->CRRCR &= (uint32_t)0xFFFFFFFEU;
+  RCC->CRRCR &= (uint32_t) 0xFFFFFFFEU;
 
   /*!< Reset HSEBYP bit */
-  RCC->CR &= (uint32_t)0xFFFBFFFFU;
+  RCC->CR &= (uint32_t) 0xFFFBFFFFU;
 
   /*!< Reset PLLSRC, PLLMUL[3:0] and PLLDIV[1:0] bits */
-  RCC->CFGR &= (uint32_t)0xFF02FFFFU;
+  RCC->CFGR &= (uint32_t) 0xFF02FFFFU;
 
   /*!< Disable all interrupts */
   RCC->CIER = 0x00000000U;
@@ -244,12 +244,12 @@ void SystemCoreClockUpdate(void)
         SystemCoreClock = (((HSI_VALUE / 4U) * pllmul) / plldiv);
       }
       else{
-        SystemCoreClock = (((HSI_VALUE)*pllmul) / plldiv);
+        SystemCoreClock = (((HSI_VALUE) *pllmul) / plldiv);
       }
     }
     else{
       /* HSE selected as PLL clock entry */
-      SystemCoreClock = (((HSE_VALUE)*pllmul) / plldiv);
+      SystemCoreClock = (((HSE_VALUE) *pllmul) / plldiv);
     }
     break;
   }
