@@ -9,6 +9,9 @@
 #define PROCESS_PERIOD_MS    1000
 
 struct bno055_t bno055;
+struct bno055_accel_t bno055_accel_xyz;
+struct bno055_mag_t bno055_mag_xyz;
+struct bno055_gyro_t bno055_gyro_xyz;
 
 typedef struct {
   uint32_t last_ticks;
@@ -63,7 +66,7 @@ static inline int8_t read(uint8_t dev_addr, uint8_t reg_addr, uint8_t *reg_data,
 
 static inline void delay(u32 ms)
 {
-  delay_ms((uint32_t) ms);
+  delay_ms((uint32_t)ms);
 }
 
 static void bno_init(void)
@@ -74,7 +77,7 @@ static void bno_init(void)
   bno055.dev_addr = BNO055_I2C_ADDR1;
 
   ERR_CHECK(bno055_init(&bno055));
-    
+
   ERR_CHECK(bno055_set_power_mode(BNO055_POWER_MODE_NORMAL));
 }
 
@@ -82,34 +85,28 @@ static void get_data(void)
 {
   ERR_CHECK(bno055_set_operation_mode(BNO055_OPERATION_MODE_AMG));
 
-  int16_t accel_datax = 0;
   uint32_t ret = 0;
-  ret |= bno055_read_accel_x(&accel_datax);
-  // ret |= bno055_read_accel_y(&accel_datay);
-  // ret |= bno055_read_accel_z(&accel_dataz);
-  // ret |= bno055_read_accel_xyz(&accel_xyz);
-
-  // ret |= bno055_read_mag_x(&mag_datax);
-  // ret |= bno055_read_mag_y(&mag_datay);
-  // ret |= bno055_read_mag_z(&mag_dataz);
-  // ret |= bno055_read_mag_xyz(&mag_xyz);
-
-  // ret |= bno055_read_gyro_x(&gyro_datax);
-  // ret |= bno055_read_gyro_y(&gyro_datay);
-  // ret |= bno055_read_gyro_z(&gyro_dataz);
-  // ret |= bno055_read_gyro_xyz(&gyro_xyz);
+  ret |= bno055_read_accel_xyz(&bno055_accel_xyz);
+  ret |= bno055_read_mag_xyz(&bno055_mag_xyz);
+  ret |= bno055_read_gyro_xyz(&bno055_gyro_xyz);
   ERR_CHECK(ret);
-  LOG_INFO("accel datax: %d\r\n", accel_datax);
+
+  LOG_INFO("Accel datax: %d\r\n", bno055_accel_xyz.x);
+  LOG_INFO("Accel datay: %d\r\n", bno055_accel_xyz.y);
+  LOG_INFO("Accel dataz: %d\r\n", bno055_accel_xyz.z);
+  LOG_INFO("Mag datax: %d\r\n", bno055_mag_xyz.x);
+  LOG_INFO("Mag datay: %d\r\n", bno055_mag_xyz.y);
+  LOG_INFO("Mag dataz: %d\r\n", bno055_mag_xyz.z);
+  LOG_INFO("Gyro datax: %d\r\n", bno055_gyro_xyz.x);
+  LOG_INFO("Gyro datay: %d\r\n", bno055_gyro_xyz.y);
+  LOG_INFO("Gyro dataz: %d\r\n", bno055_gyro_xyz.z);
 }
 
 void imu_init(void)
 {
   hw_init();
   bno_init();
-
 }
-
-
 
 void imu_process(void)
 {
@@ -124,10 +121,7 @@ void imu_process(void)
   i2c_read(&s.i2c_instance, 0x28 << 1, 0x0, &read_val, 1);
 
   LOG_INFO("i2c read: %d\r\n", read_val);
-
-
   LOG_DEBUG("imu process\r\n");
 
-  get_data(); 
+  get_data();
 }
-
