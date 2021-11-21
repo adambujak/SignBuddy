@@ -22,8 +22,8 @@ static state_t s;
 
 static void hw_init(void)
 {
-  LL_IOP_GRP1_EnableClock(LL_IOP_GRP1_PERIPH_GPIOB);
-  LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_I2C1);
+  IMU_I2C_CLK_EN();
+  IMU_I2C_GPIO_CLK_EN();
 
   LL_GPIO_InitTypeDef gpio_config = { 0 };
   gpio_config.Pin = LL_GPIO_PIN_6 | LL_GPIO_PIN_7;
@@ -35,10 +35,10 @@ static void hw_init(void)
   LL_GPIO_Init(GPIOB, &gpio_config);
 
   LL_I2C_InitTypeDef i2c_config = { 0 };
-  LL_I2C_EnableAutoEndMode(I2C1);
-  LL_I2C_DisableOwnAddress2(I2C1);
-  LL_I2C_DisableGeneralCall(I2C1);
-  LL_I2C_EnableClockStretching(I2C1);
+  LL_I2C_EnableAutoEndMode(IMU_I2C);
+  LL_I2C_DisableOwnAddress2(IMU_I2C);
+  LL_I2C_DisableGeneralCall(IMU_I2C);
+  LL_I2C_EnableClockStretching(IMU_I2C);
   i2c_config.PeripheralMode = LL_I2C_MODE_I2C;
   i2c_config.Timing = 0x00707CBB;
   i2c_config.AnalogFilter = LL_I2C_ANALOGFILTER_ENABLE;
@@ -46,10 +46,9 @@ static void hw_init(void)
   i2c_config.OwnAddress1 = 0;
   i2c_config.TypeAcknowledge = LL_I2C_ACK;
   i2c_config.OwnAddrSize = LL_I2C_OWNADDRESS1_7BIT;
-  LL_I2C_Init(I2C1, &i2c_config);
-  LL_I2C_SetOwnAddress2(I2C1, 0, LL_I2C_OWNADDRESS2_NOMASK);
+  LL_I2C_SetOwnAddress2(IMU_I2C, 0, LL_I2C_OWNADDRESS2_NOMASK);
 
-  i2c_init(&s.i2c_instance, I2C1, &i2c_config);
+  i2c_init(&s.i2c_instance, IMU_I2C, &i2c_config);
 }
 
 static inline int8_t write(uint8_t dev_addr, uint8_t reg_addr, uint8_t *reg_data, uint8_t cnt)

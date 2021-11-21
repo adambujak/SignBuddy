@@ -73,9 +73,7 @@
 /* I2C */
 #define IMU_I2C                   I2C1
 #define IMU_I2C_CLK_SRC()         LL_RCC_SetI2CClockSource(LL_RCC_I2C1_CLKSOURCE_PCLK1);
-
-/* I2C */
-#define IMU_I2C                   I2C1
-#define IMU_I2C_CLK_SRC()         LL_RCC_SetI2CClockSource(LL_RCC_I2C1_CLKSOURCE_PCLK1);
+#define IMU_I2C_CLK_EN()          LL_IOP_GRP1_EnableClock(LL_IOP_GRP1_PERIPH_GPIOB);
+#define IMU_I2C_GPIO_CLK_EN()     LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_I2C1);
 
 #endif // NUCLEO_BOARD_H
