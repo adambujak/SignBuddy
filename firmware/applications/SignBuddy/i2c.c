@@ -5,24 +5,20 @@
 
 static void write(I2C_TypeDef *handle, const uint8_t *tx_data)
 {
-  while (!LL_I2C_IsActiveFlag_STOP(handle)) {
-    if (LL_I2C_IsActiveFlag_TXIS(handle)) {
-      LL_I2C_TransmitData8(handle, *tx_data);
-    }
+  if (LL_I2C_IsActiveFlag_TXE(handle)) {
+    LL_I2C_TransmitData8(handle, *tx_data);
+    while (!LL_I2C_IsActiveFlag_TXE(handle) && !LL_I2C_IsActiveFlag_STOP(handle));
   }
-
-  LL_I2C_ClearFlag_STOP(handle);
 }
 
 static void read(I2C_TypeDef *handle, uint8_t *rx_data)
 {
-  while (!LL_I2C_IsActiveFlag_STOP(handle)) {
-    if (LL_I2C_IsActiveFlag_RXNE(handle)) {
-      *rx_data = LL_I2C_ReceiveData8(handle);
-    }
+  while (!LL_I2C_IsActiveFlag_RXNE(handle) && !LL_I2C_IsActiveFlag_STOP(handle));
+
+  if (LL_I2C_IsActiveFlag_RXNE(handle)) {
+    *rx_data = LL_I2C_ReceiveData8(handle);
   }
 
-  LL_I2C_ClearFlag_STOP(handle);
 }
 
 int i2c_write(i2c_t *instance, uint8_t slave_addr, uint8_t reg_addr, const uint8_t *data, uint16_t length)
@@ -41,6 +37,10 @@ int i2c_write(i2c_t *instance, uint8_t slave_addr, uint8_t reg_addr, const uint8
   for (uint32_t i = 0; i < length; i++) {
     write(handle, &data[i]);
   }
+
+  while (!LL_I2C_IsActiveFlag_STOP(handle));
+  LL_I2C_ClearFlag_STOP(handle);
+
   return 0;
 }
 
@@ -48,14 +48,7 @@ int i2c_read(i2c_t *instance, uint8_t slave_addr, uint8_t reg_addr, uint8_t *dat
 {
   I2C_TypeDef *handle = (I2C_TypeDef *)instance->handle;
 
-  LL_I2C_HandleTransfer(handle,
-                        slave_addr,
-                        LL_I2C_ADDRSLAVE_7BIT,
-                        1,
-                        LL_I2C_MODE_AUTOEND,
-                        LL_I2C_GENERATE_START_WRITE);
-
-  write(handle, &reg_addr);
+  i2c_write(instance, slave_addr, reg_addr, NULL, 0);
 
   LL_I2C_HandleTransfer(handle,
                         slave_addr,
@@ -67,6 +60,10 @@ int i2c_read(i2c_t *instance, uint8_t slave_addr, uint8_t reg_addr, uint8_t *dat
   for (uint32_t i = 0; i < length; i++) {
     read(handle, &data[i]);
   }
+
+  while (!LL_I2C_IsActiveFlag_STOP(handle));
+  LL_I2C_ClearFlag_STOP(handle);
+
   return 0;
 }
 
