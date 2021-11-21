@@ -9,8 +9,8 @@
 #define PROCESS_PERIOD_MS    1000
 
 typedef struct {
-  uint32_t last_ticks;
-  i2c_t    i2c_instance;
+  uint32_t                last_ticks;
+  i2c_t                   i2c_instance;
   struct   bno055_t       bno055;
   struct   bno055_accel_t bno055_accel_xyz;
   struct   bno055_mag_t   bno055_mag_xyz;
