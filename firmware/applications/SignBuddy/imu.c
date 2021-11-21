@@ -115,11 +115,5 @@ void imu_process(void)
   }
   s.last_ticks = time;
 
-  uint8_t read_val;
-  i2c_read(&s.i2c_instance, 0x28 << 1, 0x0, &read_val, 1);
-
-  LOG_INFO("i2c read: %d\r\n", read_val);
-  LOG_DEBUG("imu process\r\n");
-
   get_data();
 }
