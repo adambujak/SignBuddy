@@ -11,7 +11,7 @@ void logger_write(char *string)
     string[length - 1] = '\0';
   }
 
-  log_uart_write((uint8_t *)string, (uint32_t)length);
+  log_uart_write((uint8_t *) string, (uint32_t) length);
 
 #if LOG_MODE_BLOCKING
   while (log_uart_is_writing());
