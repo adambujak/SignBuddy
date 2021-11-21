@@ -40,7 +40,7 @@ static void hw_init(void)
   LL_I2C_DisableGeneralCall(IMU_I2C);
   LL_I2C_EnableClockStretching(IMU_I2C);
   i2c_config.PeripheralMode = LL_I2C_MODE_I2C;
-  i2c_config.Timing = 0x00707CBB;
+  i2c_config.Timing = 0x00300F38;
   i2c_config.AnalogFilter = LL_I2C_ANALOGFILTER_ENABLE;
   i2c_config.DigitalFilter = 0;
   i2c_config.OwnAddress1 = 0;
