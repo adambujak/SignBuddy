@@ -3,7 +3,7 @@
 #include "common.h"
 #include "logger.h"
 
-static void write(I2C_TypeDef *handle, const uint8_t *tx_data)
+static void write_byte(I2C_TypeDef *handle, const uint8_t *tx_data)
 {
   if (LL_I2C_IsActiveFlag_TXE(handle)) {
     LL_I2C_TransmitData8(handle, *tx_data);
@@ -11,7 +11,7 @@ static void write(I2C_TypeDef *handle, const uint8_t *tx_data)
   }
 }
 
-static void read(I2C_TypeDef *handle, uint8_t *rx_data)
+static void read_byte(I2C_TypeDef *handle, uint8_t *rx_data)
 {
   while (!LL_I2C_IsActiveFlag_RXNE(handle) && !LL_I2C_IsActiveFlag_STOP(handle));
 
@@ -31,10 +31,10 @@ int i2c_write(i2c_t *instance, uint8_t slave_addr, uint8_t reg_addr, const uint8
                         LL_I2C_MODE_AUTOEND,
                         LL_I2C_GENERATE_START_WRITE);
 
-  write(handle, &reg_addr);
+  write_byte(handle, &reg_addr);
 
   for (uint32_t i = 0; i < length; i++) {
-    write(handle, &data[i]);
+    write_byte(handle, &data[i]);
   }
 
   while (!LL_I2C_IsActiveFlag_STOP(handle));
@@ -57,7 +57,7 @@ int i2c_read(i2c_t *instance, uint8_t slave_addr, uint8_t reg_addr, uint8_t *dat
                         LL_I2C_GENERATE_START_READ);
 
   for (uint32_t i = 0; i < length; i++) {
-    read(handle, &data[i]);
+    read_byte(handle, &data[i]);
   }
 
   while (!LL_I2C_IsActiveFlag_STOP(handle));
