@@ -34,10 +34,6 @@ static void hw_init(void)
   LL_GPIO_Init(IMU_I2C_GPIO_PORT, &gpio_config);
 
   LL_I2C_InitTypeDef i2c_config = { 0 };
-  LL_I2C_EnableAutoEndMode(IMU_I2C);
-  LL_I2C_DisableOwnAddress2(IMU_I2C);
-  LL_I2C_DisableGeneralCall(IMU_I2C);
-  LL_I2C_EnableClockStretching(IMU_I2C);
   i2c_config.PeripheralMode = LL_I2C_MODE_I2C;
   i2c_config.Timing = 0x00300F38;
   i2c_config.AnalogFilter = LL_I2C_ANALOGFILTER_ENABLE;
@@ -45,7 +41,6 @@ static void hw_init(void)
   i2c_config.OwnAddress1 = 0;
   i2c_config.TypeAcknowledge = LL_I2C_ACK;
   i2c_config.OwnAddrSize = LL_I2C_OWNADDRESS1_7BIT;
-  LL_I2C_SetOwnAddress2(IMU_I2C, 0, LL_I2C_OWNADDRESS2_NOMASK);
 
   i2c_init(&state.i2c_instance, IMU_I2C, &i2c_config);
 }
