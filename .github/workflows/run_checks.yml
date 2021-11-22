@@ -23,19 +23,23 @@ jobs:
         echo "Exited with '$?'"
 
     - name: Run Unit Tests
+      if: always()
       run: make test -C firmware
 
     - name: Build the nucleo firmware
+      if: always()
       run: |
         bash firmware/tools/compile.sh NUCLEO
         echo "Exited with '$?'"
 
     - name: Clean the firmware
+      if: always()
       run: |
         sudo make clean -C firmware
         echo "Exited with '$?'"
 
     - name: Check Code Formatting
+      if: always()
       run: make format_check -C firmware
 
   test_app:
