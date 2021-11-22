@@ -17,7 +17,7 @@ typedef struct {
   struct   bno055_gyro_t  bno055_gyro_xyz;
 } state_t;
 
-static state_t state;
+static state_t s;
 
 static void hw_init(void)
 {
@@ -42,18 +42,18 @@ static void hw_init(void)
   i2c_config.TypeAcknowledge = LL_I2C_ACK;
   i2c_config.OwnAddrSize = LL_I2C_OWNADDRESS1_7BIT;
 
-  i2c_init(&state.i2c_instance, IMU_I2C, &i2c_config);
+  i2c_init(&s.i2c_instance, IMU_I2C, &i2c_config);
 }
 
-static inline int8_t write(uint8_t slave_addr, uint8_t reg_addr, uint8_t *data, uint8_t length)
+static inline int8_t bus_write(uint8_t slave_addr, uint8_t reg_addr, uint8_t *data, uint8_t length)
 {
-  i2c_write(&state.i2c_instance, slave_addr << 1, reg_addr, data, (uint16_t) length);
+  i2c_write(&s.i2c_instance, slave_addr << 1, reg_addr, data, (uint16_t) length);
   return 0;
 }
 
-static inline int8_t read(uint8_t slave_addr, uint8_t reg_addr, uint8_t *data, uint8_t length)
+static inline int8_t bus_read(uint8_t slave_addr, uint8_t reg_addr, uint8_t *data, uint8_t length)
 {
-  i2c_read(&state.i2c_instance, slave_addr << 1, reg_addr, data, (uint16_t) length);
+  i2c_read(&s.i2c_instance, slave_addr << 1, reg_addr, data, (uint16_t) length);
   return 0;
 }
 
@@ -64,12 +64,12 @@ static inline void delay(u32 ms)
 
 static void bno_init(void)
 {
-  state.bno055.bus_write = write;
-  state.bno055.bus_read = read;
-  state.bno055.delay_msec = delay;
-  state.bno055.dev_addr = BNO055_I2C_ADDR1;
+  s.bno055.bus_write = bus_write;
+  s.bno055.bus_read = bus_read;
+  s.bno055.delay_msec = delay;
+  s.bno055.dev_addr = BNO055_I2C_ADDR1;
 
-  ERR_CHECK(bno055_init(&state.bno055));
+  ERR_CHECK(bno055_init(&s.bno055));
 
   ERR_CHECK(bno055_set_power_mode(BNO055_POWER_MODE_NORMAL));
 }
@@ -79,20 +79,20 @@ static void get_data(void)
   ERR_CHECK(bno055_set_operation_mode(BNO055_OPERATION_MODE_AMG));
 
   uint32_t ret = 0;
-  ret |= bno055_read_accel_xyz(&state.bno055_accel_xyz);
-  ret |= bno055_read_mag_xyz(&state.bno055_mag_xyz);
-  ret |= bno055_read_gyro_xyz(&state.bno055_gyro_xyz);
+  ret |= bno055_read_accel_xyz(&s.bno055_accel_xyz);
+  ret |= bno055_read_mag_xyz(&s.bno055_mag_xyz);
+  ret |= bno055_read_gyro_xyz(&s.bno055_gyro_xyz);
   ERR_CHECK(ret);
 
-  LOG_INFO("Accel datax: %d\r\n", state.bno055_accel_xyz.x);
-  LOG_INFO("Accel datay: %d\r\n", state.bno055_accel_xyz.y);
-  LOG_INFO("Accel dataz: %d\r\n", state.bno055_accel_xyz.z);
-  LOG_INFO("Magnt datax: %d\r\n", state.bno055_mag_xyz.x);
-  LOG_INFO("Magnt datay: %d\r\n", state.bno055_mag_xyz.y);
-  LOG_INFO("Magnt dataz: %d\r\n", state.bno055_mag_xyz.z);
-  LOG_INFO("Gyros datax: %d\r\n", state.bno055_gyro_xyz.x);
-  LOG_INFO("Gyros datay: %d\r\n", state.bno055_gyro_xyz.y);
-  LOG_INFO("Gyros dataz: %d\r\n", state.bno055_gyro_xyz.z);
+  LOG_INFO("Accel datax: %d\r\n", s.bno055_accel_xyz.x);
+  LOG_INFO("Accel datay: %d\r\n", s.bno055_accel_xyz.y);
+  LOG_INFO("Accel dataz: %d\r\n", s.bno055_accel_xyz.z);
+  LOG_INFO("Magnt datax: %d\r\n", s.bno055_mag_xyz.x);
+  LOG_INFO("Magnt datay: %d\r\n", s.bno055_mag_xyz.y);
+  LOG_INFO("Magnt dataz: %d\r\n", s.bno055_mag_xyz.z);
+  LOG_INFO("Gyros datax: %d\r\n", s.bno055_gyro_xyz.x);
+  LOG_INFO("Gyros datay: %d\r\n", s.bno055_gyro_xyz.y);
+  LOG_INFO("Gyros dataz: %d\r\n", s.bno055_gyro_xyz.z);
 }
 
 void imu_init(void)
@@ -105,10 +105,10 @@ void imu_process(void)
 {
   uint32_t time = system_time_get();
 
-  if (system_time_cmp_ms(state.last_ticks, time) < PROCESS_PERIOD_MS) {
+  if (system_time_cmp_ms(s.last_ticks, time) < PROCESS_PERIOD_MS) {
     return;
   }
-  state.last_ticks = time;
+  s.last_ticks = time;
 
   get_data();
 }
