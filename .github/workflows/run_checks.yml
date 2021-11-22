@@ -13,8 +13,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+
     - name: Update submodules
       run: git submodule update --init --recursive
+
     - name: Run Unit Tests
       run: make test -C firmware
 
@@ -24,16 +26,20 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+
     - name: Update submodules
       run: git submodule update --init --recursive
+
     - name: Build docker image
       run: |
         bash firmware/tools/build_docker_image.sh
         echo "Exited with '$?'"
+
     - name: Build the nucleo firmware
       run: |
         bash firmware/tools/compile.sh NUCLEO
         echo "Exited with '$?'"
+
     - name: Clean the firmware
       run: |
         sudo make clean -C firmware
@@ -46,6 +52,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+
+    - name: Build docker image
+      run: bash firmware/tools/build_docker_image.sh
+
     - name: Check Code Formatting
       run: make format_check -C firmware
 
