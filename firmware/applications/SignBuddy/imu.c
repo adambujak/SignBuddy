@@ -17,7 +17,7 @@ typedef struct {
   struct   bno055_gyro_t  bno055_gyro_xyz;
 } state_t;
 
-static state_t s;
+static state_t state;
 
 static void hw_init(void)
 {
@@ -25,40 +25,40 @@ static void hw_init(void)
   IMU_I2C_GPIO_CLK_EN();
 
   LL_GPIO_InitTypeDef gpio_config = { 0 };
-  gpio_config.Pin = LL_GPIO_PIN_6 | LL_GPIO_PIN_7;
-  gpio_config.Mode = LL_GPIO_MODE_ALTERNATE;
-  gpio_config.Speed = LL_GPIO_SPEED_FREQ_VERY_HIGH;
-  gpio_config.OutputType = LL_GPIO_OUTPUT_OPENDRAIN;
-  gpio_config.Pull = LL_GPIO_PULL_NO;
-  gpio_config.Alternate = LL_GPIO_AF_1;
-  LL_GPIO_Init(GPIOB, &gpio_config);
+  gpio_config.Pin         = IMU_I2C_SCL_PIN | IMU_I2C_SDA_PIN;
+  gpio_config.Mode        = LL_GPIO_MODE_ALTERNATE;
+  gpio_config.Speed       = LL_GPIO_SPEED_FREQ_VERY_HIGH;
+  gpio_config.OutputType  = LL_GPIO_OUTPUT_OPENDRAIN;
+  gpio_config.Pull        = LL_GPIO_PULL_NO;
+  gpio_config.Alternate   = IMU_I2C_GPIO_AF;
+  LL_GPIO_Init(IMU_I2C_GPIO_PORT, &gpio_config);
 
   LL_I2C_InitTypeDef i2c_config = { 0 };
-  LL_I2C_EnableAutoEndMode(IMU_I2C);
-  LL_I2C_DisableOwnAddress2(IMU_I2C);
-  LL_I2C_DisableGeneralCall(IMU_I2C);
+  LL_I2C_EnableAutoEndMode    (IMU_I2C);
+  LL_I2C_DisableOwnAddress2   (IMU_I2C);
+  LL_I2C_DisableGeneralCall   (IMU_I2C);
   LL_I2C_EnableClockStretching(IMU_I2C);
-  i2c_config.PeripheralMode = LL_I2C_MODE_I2C;
-  i2c_config.Timing = 0x00300F38;
-  i2c_config.AnalogFilter = LL_I2C_ANALOGFILTER_ENABLE;
-  i2c_config.DigitalFilter = 0;
-  i2c_config.OwnAddress1 = 0;
-  i2c_config.TypeAcknowledge = LL_I2C_ACK;
-  i2c_config.OwnAddrSize = LL_I2C_OWNADDRESS1_7BIT;
+  i2c_config.PeripheralMode   = LL_I2C_MODE_I2C;
+  i2c_config.Timing           = 0x00300F38;
+  i2c_config.AnalogFilter     = LL_I2C_ANALOGFILTER_ENABLE;
+  i2c_config.DigitalFilter    = 0;
+  i2c_config.OwnAddress1      = 0;
+  i2c_config.TypeAcknowledge  = LL_I2C_ACK;
+  i2c_config.OwnAddrSize      = LL_I2C_OWNADDRESS1_7BIT;
   LL_I2C_SetOwnAddress2(IMU_I2C, 0, LL_I2C_OWNADDRESS2_NOMASK);
 
-  i2c_init(&s.i2c_instance, IMU_I2C, &i2c_config);
+  i2c_init(&state.i2c_instance, IMU_I2C, &i2c_config);
 }
 
 static inline int8_t write(uint8_t slave_addr, uint8_t reg_addr, uint8_t *data, uint8_t length)
 {
-  i2c_write(&s.i2c_instance, slave_addr << 1, reg_addr, data, (uint16_t) length);
+  i2c_write(&state.i2c_instance, slave_addr << 1, reg_addr, data, (uint16_t) length);
   return 0;
 }
 
 static inline int8_t read(uint8_t slave_addr, uint8_t reg_addr, uint8_t *data, uint8_t length)
 {
-  i2c_read(&s.i2c_instance, slave_addr << 1, reg_addr, data, (uint16_t) length);
+  i2c_read(&state.i2c_instance, slave_addr << 1, reg_addr, data, (uint16_t) length);
   return 0;
 }
 
@@ -69,12 +69,12 @@ static inline void delay(u32 ms)
 
 static void bno_init(void)
 {
-  s.bno055.bus_write    = write;
-  s.bno055.bus_read     = read;
-  s.bno055.delay_msec   = delay;
-  s.bno055.dev_addr     = BNO055_I2C_ADDR1;
+  state.bno055.bus_write    = write;
+  state.bno055.bus_read     = read;
+  state.bno055.delay_msec   = delay;
+  state.bno055.dev_addr     = BNO055_I2C_ADDR1;
 
-  ERR_CHECK(bno055_init(&s.bno055));
+  ERR_CHECK(bno055_init(&state.bno055));
 
   ERR_CHECK(bno055_set_power_mode(BNO055_POWER_MODE_NORMAL));
 }
@@ -84,20 +84,20 @@ static void get_data(void)
   ERR_CHECK(bno055_set_operation_mode(BNO055_OPERATION_MODE_AMG));
 
   uint32_t ret = 0;
-  ret |= bno055_read_accel_xyz  (&s.bno055_accel_xyz);
-  ret |= bno055_read_mag_xyz    (&s.bno055_mag_xyz);
-  ret |= bno055_read_gyro_xyz   (&s.bno055_gyro_xyz);
+  ret |= bno055_read_accel_xyz  (&state.bno055_accel_xyz);
+  ret |= bno055_read_mag_xyz    (&state.bno055_mag_xyz);
+  ret |= bno055_read_gyro_xyz   (&state.bno055_gyro_xyz);
   ERR_CHECK(ret);
 
-  LOG_INFO("Accel datax: %d\r\n", s.bno055_accel_xyz.x);
-  LOG_INFO("Accel datay: %d\r\n", s.bno055_accel_xyz.y);
-  LOG_INFO("Accel dataz: %d\r\n", s.bno055_accel_xyz.z);
-  LOG_INFO("Magnt datax: %d\r\n", s.bno055_mag_xyz.x);
-  LOG_INFO("Magnt datay: %d\r\n", s.bno055_mag_xyz.y);
-  LOG_INFO("Magnt dataz: %d\r\n", s.bno055_mag_xyz.z);
-  LOG_INFO("Gyros datax: %d\r\n", s.bno055_gyro_xyz.x);
-  LOG_INFO("Gyros datay: %d\r\n", s.bno055_gyro_xyz.y);
-  LOG_INFO("Gyros dataz: %d\r\n", s.bno055_gyro_xyz.z);
+  LOG_INFO("Accel datax: %d\r\n", state.bno055_accel_xyz.x);
+  LOG_INFO("Accel datay: %d\r\n", state.bno055_accel_xyz.y);
+  LOG_INFO("Accel dataz: %d\r\n", state.bno055_accel_xyz.z);
+  LOG_INFO("Magnt datax: %d\r\n", state.bno055_mag_xyz.x);
+  LOG_INFO("Magnt datay: %d\r\n", state.bno055_mag_xyz.y);
+  LOG_INFO("Magnt dataz: %d\r\n", state.bno055_mag_xyz.z);
+  LOG_INFO("Gyros datax: %d\r\n", state.bno055_gyro_xyz.x);
+  LOG_INFO("Gyros datay: %d\r\n", state.bno055_gyro_xyz.y);
+  LOG_INFO("Gyros dataz: %d\r\n", state.bno055_gyro_xyz.z);
 }
 
 void imu_init(void)
@@ -110,10 +110,10 @@ void imu_process(void)
 {
   uint32_t time = system_time_get();
 
-  if (system_time_cmp_ms(s.last_ticks, time) < PROCESS_PERIOD_MS) {
+  if (system_time_cmp_ms(state.last_ticks, time) < PROCESS_PERIOD_MS) {
     return;
   }
-  s.last_ticks = time;
+  state.last_ticks = time;
 
   get_data();
 }
