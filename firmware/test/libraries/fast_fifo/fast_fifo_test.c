@@ -133,7 +133,7 @@ void test_write_more_than_size_of_buffer(void)
   memset(write_data, 1, SIZE * 2);
   assert_buffer_is_val(write_data, SIZE * 2, 1);
 
-  TEST_ASSERT_EQUAL(0, fifo_push(&fifo, write_data, SIZE * 2));
+  TEST_ASSERT_EQUAL(1, fifo_push(&fifo, write_data, SIZE * 2));
   TEST_ASSERT_EQUAL(0, fifo_bytes_used_cnt_get(&fifo));
 
   assert_buffer_is_val(buffer, SIZE, 0);
