@@ -7,22 +7,9 @@ on:
     branches: [ master ]
 
 jobs:
-  run_tests:
+  test_firmware:
     runs-on: ubuntu-latest
     if: always()
-
-    steps:
-    - uses: actions/checkout@v2
-
-    - name: Update submodules
-      run: git submodule update --init --recursive
-
-    - name: Run Unit Tests
-      run: make test -C firmware
-
-  build:
-    needs: run_tests
-    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
@@ -35,6 +22,9 @@ jobs:
         bash firmware/tools/build_docker_image.sh
         echo "Exited with '$?'"
 
+    - name: Run Unit Tests
+      run: make test -C firmware
+
     - name: Build the nucleo firmware
       run: |
         bash firmware/tools/compile.sh NUCLEO
@@ -45,18 +35,15 @@ jobs:
         sudo make clean -C firmware
         echo "Exited with '$?'"
 
-  format_check:
-    needs: build
+    - name: Check Code Formatting
+      run: make format_check -C firmware
+
+  test_app:
     runs-on: ubuntu-latest
     if: always()
 
     steps:
     - uses: actions/checkout@v2
 
-    - name: Build docker image
-      run: bash firmware/tools/build_docker_image.sh
-
-    - name: Check Code Formatting
-      run: make format_check -C firmware
-
-
+    - name: Build Android app
+      run: cd software && ./gradlew build
