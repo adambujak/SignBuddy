@@ -7,6 +7,7 @@
 #include "sensors.h"
 #include "system_time.h"
 #include "adc.h"
+#include "imu.h"
 #include "ble_uart.h"
 #include "sensors.h"
 
@@ -52,8 +53,10 @@ void sysclk_init(void)
   LL_Init1msTick(SYSCLK_FREQ);
 
   LL_SetSystemCoreClock(SYSCLK_FREQ);
+
   BLE_UART_CLK_SRC();
   LOG_UART_CLK_SRC();
+  IMU_I2C_CLK_SRC();
 }
 
 static void board_bringup(void)
@@ -93,12 +96,14 @@ int main(void)
   sensors_init();
   ble_uart_init();
   adc_init();
+  imu_init();
 
   LOG_INFO("App started\r\n");
 
   while (1) {
     led_process();
     sensors_process();
+    imu_process();
   }
 }
 
