@@ -50,15 +50,15 @@ static void hw_init(void)
   i2c_init(&s.i2c_instance, IMU_I2C, &i2c_config);
 }
 
-static inline int8_t write(uint8_t dev_addr, uint8_t reg_addr, uint8_t *reg_data, uint8_t cnt)
+static inline int8_t write(uint8_t slave_addr, uint8_t reg_addr, uint8_t *data, uint8_t length)
 {
-  i2c_write(&s.i2c_instance, dev_addr << 1, reg_addr, reg_data, (uint16_t) cnt);
+  i2c_write(&s.i2c_instance, slave_addr << 1, reg_addr, data, (uint16_t) length);
   return 0;
 }
 
-static inline int8_t read(uint8_t dev_addr, uint8_t reg_addr, uint8_t *reg_data, uint8_t cnt)
+static inline int8_t read(uint8_t slave_addr, uint8_t reg_addr, uint8_t *data, uint8_t length)
 {
-  i2c_read(&s.i2c_instance, dev_addr << 1, reg_addr, reg_data, (uint16_t) cnt);
+  i2c_read(&s.i2c_instance, slave_addr << 1, reg_addr, data, (uint16_t) length);
   return 0;
 }
 
@@ -69,10 +69,10 @@ static inline void delay(u32 ms)
 
 static void bno_init(void)
 {
-  s.bno055.bus_write = write;
-  s.bno055.bus_read = read;
-  s.bno055.delay_msec = delay;
-  s.bno055.dev_addr = BNO055_I2C_ADDR1;
+  s.bno055.bus_write    = write;
+  s.bno055.bus_read     = read;
+  s.bno055.delay_msec   = delay;
+  s.bno055.dev_addr     = BNO055_I2C_ADDR1;
 
   ERR_CHECK(bno055_init(&s.bno055));
 
@@ -84,20 +84,20 @@ static void get_data(void)
   ERR_CHECK(bno055_set_operation_mode(BNO055_OPERATION_MODE_AMG));
 
   uint32_t ret = 0;
-  ret |= bno055_read_accel_xyz(&s.bno055_accel_xyz);
-  ret |= bno055_read_mag_xyz(&s.bno055_mag_xyz);
-  ret |= bno055_read_gyro_xyz(&s.bno055_gyro_xyz);
+  ret |= bno055_read_accel_xyz  (&s.bno055_accel_xyz);
+  ret |= bno055_read_mag_xyz    (&s.bno055_mag_xyz);
+  ret |= bno055_read_gyro_xyz   (&s.bno055_gyro_xyz);
   ERR_CHECK(ret);
 
   LOG_INFO("Accel datax: %d\r\n", s.bno055_accel_xyz.x);
   LOG_INFO("Accel datay: %d\r\n", s.bno055_accel_xyz.y);
   LOG_INFO("Accel dataz: %d\r\n", s.bno055_accel_xyz.z);
-  LOG_INFO("Mag datax: %d\r\n", s.bno055_mag_xyz.x);
-  LOG_INFO("Mag datay: %d\r\n", s.bno055_mag_xyz.y);
-  LOG_INFO("Mag dataz: %d\r\n", s.bno055_mag_xyz.z);
-  LOG_INFO("Gyro datax: %d\r\n", s.bno055_gyro_xyz.x);
-  LOG_INFO("Gyro datay: %d\r\n", s.bno055_gyro_xyz.y);
-  LOG_INFO("Gyro dataz: %d\r\n", s.bno055_gyro_xyz.z);
+  LOG_INFO("Magnt datax: %d\r\n", s.bno055_mag_xyz.x);
+  LOG_INFO("Magnt datay: %d\r\n", s.bno055_mag_xyz.y);
+  LOG_INFO("Magnt dataz: %d\r\n", s.bno055_mag_xyz.z);
+  LOG_INFO("Gyros datax: %d\r\n", s.bno055_gyro_xyz.x);
+  LOG_INFO("Gyros datay: %d\r\n", s.bno055_gyro_xyz.y);
+  LOG_INFO("Gyros dataz: %d\r\n", s.bno055_gyro_xyz.z);
 }
 
 void imu_init(void)
