@@ -32,7 +32,9 @@ jobs:
 
     - name: Build docker image
       run: |
+        ls /var/lib/docker
         bash firmware/tools/build_docker_image.sh
+        ls /var/lib/docker
         echo "Exited with '$?'"
 
     - name: Build the nucleo firmware

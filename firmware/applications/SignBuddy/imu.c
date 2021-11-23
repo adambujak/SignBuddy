@@ -72,6 +72,16 @@ static void bno_init(void)
   ERR_CHECK(bno055_init(&s.bno055));
 
   ERR_CHECK(bno055_set_power_mode(BNO055_POWER_MODE_NORMAL));
+
+  delay_ms(1000);
+  uint16_t sw_rev_id;
+  ERR_CHECK(bno055_read_sw_rev_id(&sw_rev_id));
+
+  uint8_t lsb = (uint8_t) sw_rev_id;
+  uint8_t msb = (uint8_t) (sw_rev_id >> 8);
+
+  LOG_INFO("IMU SW REV ID: %d %d.%d\r\n", sw_rev_id, msb, lsb);
+  delay_ms(1000);
 }
 
 static void get_data(void)
@@ -84,15 +94,15 @@ static void get_data(void)
   ret |= bno055_read_gyro_xyz(&s.bno055_gyro_xyz);
   ERR_CHECK(ret);
 
-  LOG_INFO("Accel datax: %d\r\n", s.bno055_accel_xyz.x);
-  LOG_INFO("Accel datay: %d\r\n", s.bno055_accel_xyz.y);
-  LOG_INFO("Accel dataz: %d\r\n", s.bno055_accel_xyz.z);
-  LOG_INFO("Magnt datax: %d\r\n", s.bno055_mag_xyz.x);
-  LOG_INFO("Magnt datay: %d\r\n", s.bno055_mag_xyz.y);
-  LOG_INFO("Magnt dataz: %d\r\n", s.bno055_mag_xyz.z);
-  LOG_INFO("Gyros datax: %d\r\n", s.bno055_gyro_xyz.x);
-  LOG_INFO("Gyros datay: %d\r\n", s.bno055_gyro_xyz.y);
-  LOG_INFO("Gyros dataz: %d\r\n", s.bno055_gyro_xyz.z);
+  //LOG_INFO("Accel datax: %d\r\n", s.bno055_accel_xyz.x);
+  //LOG_INFO("Accel datay: %d\r\n", s.bno055_accel_xyz.y);
+  //LOG_INFO("Accel dataz: %d\r\n", s.bno055_accel_xyz.z);
+  //LOG_INFO("Magnt datax: %d\r\n", s.bno055_mag_xyz.x);
+  //LOG_INFO("Magnt datay: %d\r\n", s.bno055_mag_xyz.y);
+  //LOG_INFO("Magnt dataz: %d\r\n", s.bno055_mag_xyz.z);
+  //LOG_INFO("Gyros datax: %d\r\n", s.bno055_gyro_xyz.x);
+  //LOG_INFO("Gyros datay: %d\r\n", s.bno055_gyro_xyz.y);
+  //LOG_INFO("Gyros dataz: %d\r\n", s.bno055_gyro_xyz.z);
 }
 
 void imu_init(void)
