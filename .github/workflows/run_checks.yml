@@ -7,19 +7,6 @@ on:
     branches: [ master ]
 
 jobs:
-  run_tests:
-    runs-on: ubuntu-latest
-    if: always()
-
-    steps:
-    - uses: actions/checkout@v2
-
-    - name: Update submodules
-      run: git submodule update --init --recursive
-
-    - name: Run Unit Tests
-      run: make test -C firmware
-
   build:
     needs: run_tests
     runs-on: ubuntu-latest
@@ -32,9 +19,9 @@ jobs:
 
     - name: Build docker image
       run: |
-        ls /var/lib/docker
+        sudo ls /var/lib/docker
         bash firmware/tools/build_docker_image.sh
-        ls /var/lib/docker
+        sudo ls /var/lib/docker
         echo "Exited with '$?'"
 
     - name: Build the nucleo firmware
@@ -60,5 +47,18 @@ jobs:
 
     - name: Check Code Formatting
       run: make format_check -C firmware
+
+  run_tests:
+    runs-on: ubuntu-latest
+    if: always()
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Update submodules
+      run: git submodule update --init --recursive
+
+    - name: Run Unit Tests
+      run: make test -C firmware
 
 
