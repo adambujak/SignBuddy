@@ -39,32 +39,3 @@ jobs:
         sudo make clean -C firmware
         echo "Exited with '$?'"
 
-  format_check:
-    needs: build
-    runs-on: ubuntu-latest
-    if: always()
-
-    steps:
-    - uses: actions/checkout@v2
-
-    - name: Build docker image
-      run: bash firmware/tools/build_docker_image.sh
-
-    - name: Check Code Formatting
-      run: make format_check -C firmware
-
-  run_tests:
-    needs: format_check
-    runs-on: ubuntu-latest
-    if: always()
-
-    steps:
-    - uses: actions/checkout@v2
-
-    - name: Update submodules
-      run: git submodule update --init --recursive
-
-    - name: Run Unit Tests
-      run: make test -C firmware
-
-
