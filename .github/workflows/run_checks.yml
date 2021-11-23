@@ -16,11 +16,17 @@ jobs:
     - name: Update submodules
       run: git submodule update --init --recursive
 
+    - name: Cache Docker
+      id: cache-docker
+      uses: actions/cache@v2
+      with:
+        path: /var/lib/docker
+        key: ${{ runner.os }}-docker
+
     - name: Build docker image
+      if: steps.cache-docker.outputs.cache-hit != 'true'
       run: |
-        sudo ls /var/lib/docker
         bash firmware/tools/build_docker_image.sh
-        sudo ls /var/lib/docker
         echo "Exited with '$?'"
 
     - name: Build the nucleo firmware
