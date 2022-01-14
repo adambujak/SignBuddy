@@ -4,12 +4,27 @@
 
     <application
         android:allowBackup="true"
+        android:fullBackupContent="@xml/backup_descriptor"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.SignBuddy"
-        android:fullBackupContent="@xml/backup_descriptor">
+        android:theme="@style/Theme.SignBuddy">
+        <activity
+            android:name=".ALessonActivity"
+            android:exported="false"
+            android:label="A"
+            android:theme="@style/Theme.SignBuddy.NoActionBar" />
+        <activity
+            android:name=".AlphabetActivity"
+            android:exported="false"
+            android:label="Select a Letter"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".LessonActivity"
+            android:exported="false"
+            android:label="Select a Letter"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">
