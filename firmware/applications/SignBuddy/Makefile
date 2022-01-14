@@ -16,6 +16,7 @@ PROJ_ROOT = $(FIRMWARE_ROOT)/applications/SignBuddy
 HAL_SOURCES = \
 	$(HAL_ROOT)/Src/stm32l0xx_ll_adc.c \
 	$(HAL_ROOT)/Src/stm32l0xx_ll_gpio.c \
+	$(HAL_ROOT)/Src/stm32l0xx_ll_i2c.c \
 	$(HAL_ROOT)/Src/stm32l0xx_ll_lpuart.c \
 	$(HAL_ROOT)/Src/stm32l0xx_ll_rcc.c \
 	$(HAL_ROOT)/Src/stm32l0xx_ll_tim.c \
@@ -23,6 +24,7 @@ HAL_SOURCES = \
 	$(HAL_ROOT)/Src/stm32l0xx_ll_usart.c \
 
 LIB_SOURCES = \
+	$(LIB_ROOT)/bno055/bno055.c \
 	$(LIB_ROOT)/fast_fifo/fifo.c \
 	$(LIB_ROOT)/system_time/system_time.c \
 
@@ -31,6 +33,8 @@ C_SOURCES = \
 	adc.c \
 	ble_uart.c \
 	gpio.c \
+	i2c.c \
+	imu.c \
 	log_uart.c \
 	logger.c \
 	sensors.c \
@@ -45,6 +49,7 @@ C_INCLUDES = \
 	-I$(PROJ_ROOT) \
 	-I$(LIB_ROOT)/system_time \
 	-I$(LIB_ROOT)/fast_fifo \
+	-I$(LIB_ROOT)/bno055 \
 
 STARTUP_FILE = startup_stm32l053xx.s
 
@@ -153,14 +158,19 @@ $(BUILD_DIR)/%.hex: $(BUILD_DIR)/%.elf | $(BUILD_DIR)
 	
 $(BUILD_DIR)/%.bin: $(BUILD_DIR)/%.elf | $(BUILD_DIR)
 	$(BIN) $< $@	
-	
+
 $(BUILD_DIR):
 	mkdir $@		
+
+FLASH_SCRIPT = $(realpath $(PROJ_ROOT))/flash_stm.jlink
 
 flash: all
 	# retry st-flash on failure
 	st-flash write $(BUILD_DIR)/$(TARGET).bin 0x8000000 || st-flash write $(BUILD_DIR)/$(TARGET).bin 0x8000000
 	st-flash reset
+
+flash_jlink:
+	JLinkExe -device STM32L053R8 -CommandFile $(FLASH_SCRIPT)
 
 clean:
 	-rm -fR $(BUILD_DIR)

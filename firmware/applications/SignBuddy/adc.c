@@ -3,7 +3,7 @@
 #include "board.h"
 #include "common.h"
 
-#define VREF                                 ((uint32_t)3300)
+#define VREF                                 ((uint32_t) 3300)
 #define ADC_DELAY_CALIB_ENABLE_CPU_CYCLES    (LL_ADC_DELAY_CALIB_ENABLE_ADC_CYCLES * 32)
 #define VAR_CONVERTED_DATA_INIT_VALUE        (__LL_ADC_DIGITAL_SCALE(LL_ADC_RESOLUTION_12B) + 1)
 

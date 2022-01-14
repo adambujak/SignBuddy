@@ -30,7 +30,7 @@ static void fill_buffer_random(uint8_t *buffer, uint32_t size)
 
 static void print_buffer(uint8_t *buffer, uint32_t size)
 {
-  (void)buffer;
+  (void) buffer;
   LOG_DEBUG("\n{\n");
   for (uint32_t i = 0; i < size; i++) {
     LOG_DEBUG("%x, ", buffer[i]);
@@ -40,7 +40,7 @@ static void print_buffer(uint8_t *buffer, uint32_t size)
 
 static void print_buffer_detailed(uint8_t *buffer, uint32_t size)
 {
-  (void)buffer;
+  (void) buffer;
   LOG_DEBUG("\n{\n");
   for (uint32_t i = 0; i < size; i++) {
     LOG_DEBUG("[%u]: %x, \n", i, buffer[i]);
