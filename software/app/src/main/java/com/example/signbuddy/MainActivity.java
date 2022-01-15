@@ -29,9 +29,16 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
     public void openLessonActivity(){
         Intent intent = new Intent(this, LessonActivity.class);
         startActivity(intent);
+    }
+
+    public void openQuizMenu(View v){
+        Intent intent = new Intent(this, QuizActivity.class);
+        startActivity(intent);
+
     }
     public void launchBLE(View v){
         Context context = getApplicationContext();

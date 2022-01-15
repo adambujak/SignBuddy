@@ -3,9 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/ramsh/OneDrive/Documents/GitHub/SignBuddy/software/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.18205128205128204" />
+        <entry key="..\:/Users/ramsh/OneDrive/Documents/GitHub/SignBuddy/software/app/src/main/res/drawable/ic_launcher_background.xml" value="0.18205128205128204" />
         <entry key="..\:/Users/ramsh/OneDrive/Documents/GitHub/SignBuddy/software/app/src/main/res/layout/activity_alesson.xml" value="0.16880341880341881" />
+        <entry key="..\:/Users/ramsh/OneDrive/Documents/GitHub/SignBuddy/software/app/src/main/res/layout/activity_alphabet.xml" value="0.4466666666666667" />
         <entry key="..\:/Users/ramsh/OneDrive/Documents/GitHub/SignBuddy/software/app/src/main/res/layout/activity_ble.xml" value="0.16880341880341881" />
+        <entry key="..\:/Users/ramsh/OneDrive/Documents/GitHub/SignBuddy/software/app/src/main/res/layout/activity_lesson.xml" value="0.30128205128205127" />
         <entry key="..\:/Users/ramsh/OneDrive/Documents/GitHub/SignBuddy/software/app/src/main/res/layout/activity_main.xml" value="0.4466666666666667" />
+        <entry key="..\:/Users/ramsh/OneDrive/Documents/GitHub/SignBuddy/software/app/src/main/res/layout/activity_quiz.xml" value="0.20341880341880342" />
+        <entry key="..\:/Users/ramsh/OneDrive/Documents/GitHub/SignBuddy/software/app/src/main/res/layout/activity_quiz2.xml" value="0.16880341880341881" />
       </map>
     </option>
   </component>
