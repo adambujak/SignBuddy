@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SignBuddy">
         <activity
+            android:name=".BleActivity"
+            android:exported="false" />
+        <activity
             android:name=".ALessonActivity"
             android:exported="false"
             android:label="A"
@@ -24,7 +27,7 @@
             android:name=".LessonActivity"
             android:exported="false"
             android:label="Select a Letter"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

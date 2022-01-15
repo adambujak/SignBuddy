@@ -1,0 +1,18 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">8dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="fragment_mqtt_edit_title_width">70dp</dimen>
+    <dimen name="fragment_mqtt_edit_longtitle_width">120dp</dimen>
+
+
+    <!-- Image Transfer -->
+    <dimen name="imagetransfer_values_minwidth">170dp</dimen>
+    <dimen name="alertview_embedded_edittext_horizontalmargin">20dp</dimen>
+
+    <dimen name="imagetransfer_resolutiondialog_width">340dp</dimen>
+    <dimen name="imagetransfer_resolutiondialog_height">500dp</dimen>
+
+
+</resources>

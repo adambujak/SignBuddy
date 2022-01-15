@@ -10,7 +10,7 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
 
     private Button buttonLesson;
-
+    private Button bleconnect;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,5 +30,8 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, LessonActivity.class);
         startActivity(intent);
     }
-
+    public void launchBLE(View v){
+        Intent intent = new Intent(this, BleActivity.class);
+        startActivity(intent);
+    }
 }
