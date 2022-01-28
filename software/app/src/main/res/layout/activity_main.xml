@@ -7,12 +7,11 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/bleconnect"
+        android:id="@+id/buttonConnect"
         android:layout_width="142dp"
         android:layout_height="55dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
-        android:onClick="launchBLE"
         android:text="@string/connect_to_device"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="200dp"
-        android:text="Welcome to SignBuddy"
+        android:text="@string/welcome_to_sign_buddy"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,7 +33,6 @@
         android:layout_width="142dp"
         android:layout_height="55dp"
         android:layout_marginTop="150dp"
-        android:onClick="openQuizMenu"
         android:text="@string/quiz_mode"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -67,11 +65,12 @@
         android:id="@+id/imageView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:contentDescription="@string/image_of_the_sign_buddy_logo"
         app:layout_constraintBottom_toTopOf="@+id/buttonQuiz"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bleconnect"
+        app:layout_constraintTop_toBottomOf="@+id/buttonConnect"
         app:srcCompat="@drawable/signbuddylogo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

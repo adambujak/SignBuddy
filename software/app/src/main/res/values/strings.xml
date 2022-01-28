@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SignBuddy</string>
+    <string name="app_name">Sign Buddy</string>
     <string name="title_activity_alesson">ALessonActivity</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
@@ -12,4 +12,6 @@
     <string name="quiz_mode">Quiz Mode</string>
     <string name="lesson_mode">Lesson Mode</string>
     <string name="connect_to_device">Connect to Device</string>
+    <string name="welcome_to_sign_buddy">Welcome to Sign Buddy</string>
+    <string name="image_of_the_sign_buddy_logo">Image of the Sign Buddy logo</string>
 </resources>
