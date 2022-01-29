@@ -7,18 +7,19 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/buttonConnect"
+        android:id="@+id/connectButton"
         android:layout_width="142dp"
         android:layout_height="55dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:text="@string/connect_to_device"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/welcomeMsg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="200dp"
@@ -29,7 +30,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/buttonQuiz"
+        android:id="@+id/quizButton"
         android:layout_width="142dp"
         android:layout_height="55dp"
         android:layout_marginTop="150dp"
@@ -37,10 +38,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/welcomeMsg" />
 
     <Button
-        android:id="@+id/buttonLesson"
+        android:id="@+id/lessonButton"
         android:layout_width="144dp"
         android:layout_height="57dp"
         android:layout_marginTop="16dp"
@@ -48,29 +49,32 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonQuiz" />
-
-    <androidx.constraintlayout.widget.Group
-        android:id="@+id/group"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <androidx.constraintlayout.widget.Group
-        android:id="@+id/group3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:constraint_referenced_ids="buttonQuiz" />
+        app:layout_constraintTop_toBottomOf="@+id/quizButton" />
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/image_of_the_sign_buddy_logo"
-        app:layout_constraintBottom_toTopOf="@+id/buttonQuiz"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/quizButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonConnect"
+        app:layout_constraintTop_toBottomOf="@+id/connectButton"
         app:srcCompat="@drawable/signbuddylogo" />
+
+    <ProgressBar
+        android:id="@+id/connectProgress"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:max="100"
+        android:progress="0"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/connectButton"
+        app:layout_constraintStart_toEndOf="@+id/connectButton"
+        app:layout_constraintTop_toTopOf="@+id/connectButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

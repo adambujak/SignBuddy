@@ -14,4 +14,11 @@
     <string name="connect_to_device">Connect to Device</string>
     <string name="welcome_to_sign_buddy">Welcome to Sign Buddy</string>
     <string name="image_of_the_sign_buddy_logo">Image of the Sign Buddy logo</string>
+    <string name="scan_for_devices">Scan for devices</string>
+    <string name="scanning">Scanning</string>
+    <string name="BLE_not_supported">BLE not supported</string>
+    <string name="enable_bluetooth">Enable bluetooth</string>
+    <string name="enabling_bluetooth">Enabling bluetooth</string>
+    <string name="connecting">Connecting</string>
+    <string name="connected">Connected</string>
 </resources>
