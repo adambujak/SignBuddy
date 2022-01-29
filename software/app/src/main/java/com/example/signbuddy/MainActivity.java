@@ -15,14 +15,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button buttonLesson = (Button) findViewById(R.id.buttonLesson);
-        buttonLesson.setOnClickListener(v -> openLessonActivity());
+        buttonLesson.setOnClickListener(this::openLessonActivity);
 
         Button buttonConnect = (Button) findViewById(R.id.buttonConnect);
         buttonConnect.setOnClickListener(this::openBLEMenu);
 
     }
 
-    public void openLessonActivity() {
+    public void openLessonActivity(View v) {
         Intent intent = new Intent(this, LessonActivity.class);
         startActivity(intent);
     }
