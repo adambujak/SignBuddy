@@ -22,10 +22,10 @@
         android:id="@+id/welcomeMsg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="128dp"
         android:text="@string/welcome_to_sign_buddy"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -33,35 +33,35 @@
         android:id="@+id/quizButton"
         android:layout_width="142dp"
         android:layout_height="55dp"
-        android:layout_marginTop="150dp"
         android:text="@string/quiz_mode"
+        app:layout_constraintBottom_toTopOf="@+id/lessonButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcomeMsg" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/lessonButton"
         android:layout_width="144dp"
         android:layout_height="57dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginBottom="80dp"
         android:text="@string/lesson_mode"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/quizButton" />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="259dp"
+        android:layout_height="175dp"
+        android:adjustViewBounds="false"
         android:contentDescription="@string/image_of_the_sign_buddy_logo"
+        android:cropToPadding="false"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toTopOf="@+id/quizButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/connectButton"
+        app:layout_constraintTop_toBottomOf="@+id/welcomeMsg"
+        app:layout_constraintVertical_bias="0.359"
         app:srcCompat="@drawable/signbuddylogo" />
 
     <ProgressBar
