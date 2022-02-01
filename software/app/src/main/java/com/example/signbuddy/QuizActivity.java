@@ -10,12 +10,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 
-
 public class QuizActivity extends AppCompatActivity {
     ListView listView;
 
     //data for list
-    String[] categoryTypes = { "Alphabet", "Colours", "Education", "Emotions", "Family", "Food", "Sports", "Time", "Weather", "Work"};
+    String[] categoryTypes = {"Alphabet", "Colours", "Education", "Emotions", "Family", "Food", "Sports", "Time", "Weather", "Work"};
 
 
     @Override
@@ -36,7 +35,7 @@ public class QuizActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if(position == 0) {
+                if (position == 0) {
                     //clicked alphabet
                     //go from main activity to alphabet activity
                     startActivity(new Intent(QuizActivity.this, AlphabetActivity.class));
