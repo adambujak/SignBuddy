@@ -82,19 +82,18 @@
 #define IMU_I2C_GPIO_CLK_EN()     LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_I2C1);
 
 /* TSC */
-#define TSC_ELECTRODE_PORT   GPIOC
-#define TSC_ELECTRODE_PIN    LL_GPIO_PIN_5
-#define TSC_ELECTRODE_AF     LL_GPIO_AF_3
-#define TSC_ELECTRODE_IO     TSC_GROUP3_IO1
+#define TSC_ELECTRODE_PORT        GPIOC
+#define TSC_ELECTRODE_PIN         LL_GPIO_PIN_5
+#define TSC_ELECTRODE_AF          LL_GPIO_AF_3
+#define TSC_ELECTRODE_IO          TSC_GROUP3_IO1
 
-#define TSC_SAMPLER_PORT     GPIOB
-#define TSC_SAMPLER_PIN      LL_GPIO_PIN_2
-#define TSC_SAMPLER_AF       LL_GPIO_AF_3
-#define TSC_SAMPLER_IO       TSC_GROUP3_IO4
+#define TSC_SAMPLER_PORT          GPIOB
+#define TSC_SAMPLER_PIN           LL_GPIO_PIN_2
+#define TSC_SAMPLER_AF            LL_GPIO_AF_3
+#define TSC_SAMPLER_IO            TSC_GROUP3_IO4
 
-#define TSC_CLK_EN()         LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_TSC)
-#define TSC_GPIO_CLK_EN()    LL_IOP_GRP1_EnableClock(LL_IOP_GRP1_PERIPH_GPIOB); \
-                             LL_IOP_GRP1_EnableClock(LL_IOP_GRP1_PERIPH_GPIOC)
+#define TSC_CLK_EN()              LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_TSC)
+#define TSC_GPIO_CLK_EN()         LL_IOP_GRP1_EnableClock(LL_IOP_GRP1_PERIPH_GPIOB); \
+  LL_IOP_GRP1_EnableClock(LL_IOP_GRP1_PERIPH_GPIOC)
 
 #endif // NUCLEO_BOARD_H
-

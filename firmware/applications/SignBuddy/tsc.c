@@ -3,8 +3,8 @@
 #include "board.h"
 #include "common.h"
 
-#define CHANNEL_IOS TSC_ELECTRODE_IO
-#define SAMPLING_IOS TSC_SAMPLER_IO
+#define CHANNEL_IOS     TSC_ELECTRODE_IO
+#define SAMPLING_IOS    TSC_SAMPLER_IO
 
 typedef struct {
   TSC_HandleTypeDef tsc;
@@ -64,7 +64,7 @@ void tsc_init(void)
 uint32_t tsc_get_value(void)
 {
   HAL_TSC_IODischarge(&s.tsc, ENABLE);
-  delay_ms(5);
+  delay_ms(1);
 
   if (HAL_TSC_Start(&s.tsc) != HAL_OK) {
     error_handler();
@@ -84,7 +84,8 @@ uint32_t tsc_get_value(void)
 void tsc_config(void)
 {
   TSC_IOConfigTypeDef io_config;
-  io_config.ChannelIOs  = CHANNEL_IOS;
+
+  io_config.ChannelIOs = CHANNEL_IOS;
   io_config.SamplingIOs = SAMPLING_IOS;
   HAL_TSC_IOConfig(&s.tsc, &io_config);
 }
