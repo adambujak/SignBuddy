@@ -110,7 +110,7 @@ extern "C" {
 #endif /* LSE_STARTUP_TIMEOUT */
 
 /* Tip: To avoid modifying this file each time you need to use different HSE,
-*  ===  you can define the HSE value in your toolchain compiler preprocessor. */
+ *  ===  you can define the HSE value in your toolchain compiler preprocessor. */
 
 /* ########################### System Configuration ######################### */
 
