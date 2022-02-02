@@ -10,8 +10,8 @@
 #endif
 
 /* Struct definitions */
-typedef struct _TestMessage { 
-    int32_t dummy_data; 
+typedef struct _TestMessage {
+  int32_t dummy_data;
 } TestMessage;
 
 
@@ -20,25 +20,25 @@ extern "C" {
 #endif
 
 /* Initializer values for message structs */
-#define TestMessage_init_default                 {0}
-#define TestMessage_init_zero                    {0}
+#define TestMessage_init_default      { 0 }
+#define TestMessage_init_zero         { 0 }
 
 /* Field tags (for use in manual encoding/decoding) */
-#define TestMessage_dummy_data_tag               1
+#define TestMessage_dummy_data_tag    1
 
 /* Struct field encoding specification for nanopb */
 #define TestMessage_FIELDLIST(X, a) \
-X(a, STATIC,   REQUIRED, INT32,    dummy_data,        1)
-#define TestMessage_CALLBACK NULL
-#define TestMessage_DEFAULT NULL
+  X(a, STATIC, REQUIRED, INT32, dummy_data, 1)
+#define TestMessage_CALLBACK    NULL
+#define TestMessage_DEFAULT     NULL
 
 extern const pb_msgdesc_t TestMessage_msg;
 
 /* Defines for backwards compatibility with code written before nanopb-0.4.0 */
-#define TestMessage_fields &TestMessage_msg
+#define TestMessage_fields    &TestMessage_msg
 
 /* Maximum encoded size of messages (where known) */
-#define TestMessage_size                         11
+#define TestMessage_size      11
 
 #ifdef __cplusplus
 } /* extern "C" */
