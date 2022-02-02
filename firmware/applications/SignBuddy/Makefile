@@ -13,6 +13,11 @@ HAL_ROOT = $(SDK_ROOT)/Drivers/STM32L0xx_HAL_Driver
 LIB_ROOT = $(FIRMWARE_ROOT)/libraries
 PROJ_ROOT = $(FIRMWARE_ROOT)/applications/SignBuddy
 
+NANOPB_ROOT = $(FIRMWARE_ROOT)/dependencies/nanopb
+NANOPB_GENERATOR = $(NANOPB_ROOT)/generator
+PROTO_FILE = $(PROJ_ROOT)/SignBuddy.proto
+PROTO_SOURCE = $(PROJ_ROOT)/SignBuddy.pb.c
+
 HAL_SOURCES = \
 	$(HAL_ROOT)/Src/stm32l0xx_ll_adc.c \
 	$(HAL_ROOT)/Src/stm32l0xx_ll_gpio.c \
@@ -39,6 +44,7 @@ C_SOURCES = \
 	logger.c \
 	sensors.c \
 	system_stm32l0xx.c \
+	$(PROTO_SOURCE) \
 	$(LIB_SOURCES) \
 	$(HAL_SOURCES) \
 
@@ -50,6 +56,7 @@ C_INCLUDES = \
 	-I$(LIB_ROOT)/system_time \
 	-I$(LIB_ROOT)/fast_fifo \
 	-I$(LIB_ROOT)/bno055 \
+	-I$(NANOPB_ROOT) \
 
 STARTUP_FILE = startup_stm32l053xx.s
 
@@ -174,6 +181,9 @@ flash_jlink:
 
 clean:
 	-rm -fR $(BUILD_DIR)
-  
+
+$(PROTO_SOURCE): $(PROTO_FILE)
+	python3 $(NANOPB_GENERATOR)/protoc --plugin=protoc-gen-nanopb=$(NANOPB_GENERATOR)/protoc-gen-nanopb --nanopb_out=. $< --proto_path=$(PROJ_ROOT)
+
 -include $(wildcard $(BUILD_DIR)/*.d)
 
