@@ -8,6 +8,7 @@
 #include "system_time.h"
 #include "adc.h"
 #include "imu.h"
+#include "tsc.h"
 #include "ble_uart.h"
 #include "sensors.h"
 
@@ -67,6 +68,8 @@ static void board_bringup(void)
   sysclk_init();
 
   gpio_init();
+
+  HAL_Init();
 }
 
 static void led_process(void)
@@ -97,6 +100,7 @@ int main(void)
   ble_uart_init();
   adc_init();
   imu_init();
+  tsc_init();
 
   LOG_INFO("App started\r\n");
 
@@ -116,4 +120,9 @@ void error_handler(void)
     gpio_led_set(1);
     for (uint32_t i = 0; i < 1000000; i++);
   }
+}
+
+void SysTick_Handler(void)
+{
+  HAL_IncTick();
 }
