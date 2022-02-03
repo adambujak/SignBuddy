@@ -4,6 +4,7 @@
 #include "ble_uart.h"
 #include "common.h"
 #include "logger.h"
+#include "tsc.h"
 
 #include <stdlib.h>
 
@@ -40,6 +41,7 @@ void tx_flex_data(flex_data_t *data)
 void sensors_init(void)
 {
   s.last_ticks = system_time_get();
+  tsc_config();
 }
 
 void sensors_process(void)
@@ -55,4 +57,6 @@ void sensors_process(void)
   ERR_CHECK(get_flex_data(&flex_data));
 
   tx_flex_data(&flex_data);
+  uint32_t touch_val = tsc_get_value();
+  LOG_INFO("Touch sense: %u\r\n", touch_val);
 }

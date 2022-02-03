@@ -27,6 +27,9 @@ HAL_SOURCES = \
 	$(HAL_ROOT)/Src/stm32l0xx_ll_tim.c \
 	$(HAL_ROOT)/Src/stm32l0xx_ll_utils.c \
 	$(HAL_ROOT)/Src/stm32l0xx_ll_usart.c \
+	$(HAL_ROOT)/Src/stm32l0xx_hal.c \
+	$(HAL_ROOT)/Src/stm32l0xx_hal_cortex.c \
+	$(HAL_ROOT)/Src/stm32l0xx_hal_tsc.c \
 
 LIB_SOURCES = \
 	$(LIB_ROOT)/bno055/bno055.c \
@@ -44,6 +47,7 @@ C_SOURCES = \
 	logger.c \
 	sensors.c \
 	system_stm32l0xx.c \
+	tsc.c \
 	$(PROTO_SOURCE) \
 	$(LIB_SOURCES) \
 	$(HAL_SOURCES) \
@@ -103,6 +107,7 @@ AS_DEFS =
 C_DEFS +=  \
 	-D$(CHIPSET_DEF) \
 	-D$(BOARD_DEF) \
+	-DUSE_HAL_DRIVER \
 	-DUSE_FULL_LL_DRIVER \
 
 
