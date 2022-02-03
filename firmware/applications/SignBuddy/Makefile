@@ -14,8 +14,6 @@ LIB_ROOT = $(FIRMWARE_ROOT)/libraries
 PROJ_ROOT = $(FIRMWARE_ROOT)/applications/SignBuddy
 
 NANOPB_ROOT = $(FIRMWARE_ROOT)/dependencies/nanopb
-NANOPB_GENERATOR = $(NANOPB_ROOT)/generator
-PROTO_FILE = $(PROJ_ROOT)/SignBuddy.proto
 PROTO_SOURCE = $(PROJ_ROOT)/SignBuddy.pb.c
 
 HAL_SOURCES = \
@@ -181,9 +179,6 @@ flash_jlink:
 
 clean:
 	-rm -fR $(BUILD_DIR)
-
-$(PROTO_SOURCE): $(PROTO_FILE)
-	python3 $(NANOPB_GENERATOR)/protoc --plugin=protoc-gen-nanopb=$(NANOPB_GENERATOR)/protoc-gen-nanopb --nanopb_out=. $< --proto_path=$(PROJ_ROOT)
 
 -include $(wildcard $(BUILD_DIR)/*.d)
 

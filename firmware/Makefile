@@ -8,9 +8,13 @@ default: nucleo
 clean: 
 	rm -rf $(APPLICATION_ROOT)/$(OUTPUT)
 
-nucleo:
+nucleo: 
 	@echo "Compiling SignBudy for nucleo..."
 	@./tools/compile.sh NUCLEO
+
+proto:
+	@echo "Generating proto source..."
+	@./tools/build_proto.sh
 
 test:
 	@echo "Running tests..."
