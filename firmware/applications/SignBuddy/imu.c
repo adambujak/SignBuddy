@@ -68,14 +68,12 @@ static void bno_init(void)
   s.bno055.dev_addr = BNO055_I2C_ADDR1;
 
   ERR_CHECK(bno055_init(&s.bno055));
-
   ERR_CHECK(bno055_set_power_mode(BNO055_POWER_MODE_NORMAL));
+  ERR_CHECK(bno055_set_operation_mode(BNO055_OPERATION_MODE_NDOF));
 }
 
 static void get_data(void)
 {
-  ERR_CHECK(bno055_set_operation_mode(BNO055_OPERATION_MODE_NDOF));
-
   uint32_t ret = 0;
   ret |= bno055_read_quaternion_wxyz(&s.bno055_quat_wxyz);
   ERR_CHECK(ret);
