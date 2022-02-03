@@ -1,7 +1,5 @@
 #! /bin/bash
 
-BOARD_VERSION="${1:-NUCLEO}"
-
 IMAGE_NAME="buildenv"
 
 GIT_ROOT=$(git rev-parse --show-toplevel)
