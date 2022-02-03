@@ -9,9 +9,9 @@
 #define PROCESS_PERIOD_MS    1000
 
 typedef struct {
-  uint32_t                last_ticks;
-  i2c_t                   i2c_instance;
-  struct   bno055_t       bno055;
+  uint32_t                     last_ticks;
+  i2c_t                        i2c_instance;
+  struct   bno055_t            bno055;
   struct   bno055_quaternion_t bno055_quat_wxyz;
 } state_t;
 
@@ -75,6 +75,7 @@ static void bno_init(void)
 static void get_data(void)
 {
   uint32_t ret = 0;
+
   ret |= bno055_read_quaternion_wxyz(&s.bno055_quat_wxyz);
   ERR_CHECK(ret);
 
