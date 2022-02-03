@@ -2,9 +2,18 @@
 #define COMMON_H
 
 #include "system_time.h"
+#include "task_config.h"
+
+#include "FreeRTOS.h"
+#include "queue.h"
+#include "semphr.h"
+#include "task.h"
+#include "timers.h"
 
 void error_handler(void);
 void delay_ms(uint32_t ms);
+void rtos_delay_ms(uint32_t ms);
+void OSSysTick_Handler(void);
 
 #define RET_OK                0
 #define RET_ERR               1
@@ -17,6 +26,14 @@ void delay_ms(uint32_t ms);
   do {                      \
     int retval = (x);       \
     if (retval != RET_OK) { \
+      error_handler();      \
+    }                       \
+  } while (0)
+
+#define RTOS_ERR_CHECK(x)   \
+  do {                      \
+    int retval = (x);       \
+    if (retval != pdPASS) { \
       error_handler();      \
     }                       \
   } while (0)

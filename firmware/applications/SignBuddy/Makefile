@@ -10,11 +10,24 @@ FIRMWARE_ROOT = ../..
 SDK_ROOT = $(FIRMWARE_ROOT)/dependencies/STM32CubeL0
 HAL_ROOT = $(SDK_ROOT)/Drivers/STM32L0xx_HAL_Driver
 
+FREERTOS_ROOT = $(FIRMWARE_ROOT)/dependencies/freertos_kernel
+FREERTOS_PORTABLE = $(FREERTOS_ROOT)/portable/GCC/ARM_CM0
+
 LIB_ROOT = $(FIRMWARE_ROOT)/libraries
 PROJ_ROOT = $(FIRMWARE_ROOT)/applications/SignBuddy
 
 NANOPB_ROOT = $(FIRMWARE_ROOT)/dependencies/nanopb
 PROTO_SOURCE = $(PROJ_ROOT)/SignBuddy.pb.c
+
+FREERTOS_SOURCES = \
+	$(FREERTOS_ROOT)/tasks.c \
+	$(FREERTOS_ROOT)/queue.c \
+	$(FREERTOS_ROOT)/list.c \
+	$(FREERTOS_ROOT)/timers.c \
+	$(FREERTOS_ROOT)/event_groups.c \
+	$(FREERTOS_ROOT)/stream_buffer.c \
+	$(FREERTOS_ROOT)/portable/MemMang/heap_3.c \
+	$(FREERTOS_PORTABLE)/port.c \
 
 HAL_SOURCES = \
 	$(HAL_ROOT)/Src/stm32l0xx_ll_adc.c \
@@ -27,7 +40,9 @@ HAL_SOURCES = \
 	$(HAL_ROOT)/Src/stm32l0xx_ll_usart.c \
 	$(HAL_ROOT)/Src/stm32l0xx_hal.c \
 	$(HAL_ROOT)/Src/stm32l0xx_hal_cortex.c \
+	$(HAL_ROOT)/Src/stm32l0xx_hal_rcc.c \
 	$(HAL_ROOT)/Src/stm32l0xx_hal_tsc.c \
+
 
 LIB_SOURCES = \
 	$(LIB_ROOT)/bno055/bno055.c \
@@ -49,6 +64,7 @@ C_SOURCES = \
 	$(PROTO_SOURCE) \
 	$(LIB_SOURCES) \
 	$(HAL_SOURCES) \
+	$(FREERTOS_SOURCES) \
 
 C_INCLUDES = \
 	-I$(SDK_ROOT)/Drivers/CMSIS/Device/ST/STM32L0xx/Include \
@@ -59,6 +75,8 @@ C_INCLUDES = \
 	-I$(LIB_ROOT)/fast_fifo \
 	-I$(LIB_ROOT)/bno055 \
 	-I$(NANOPB_ROOT) \
+	-I$(FREERTOS_ROOT)/include \
+	-I$(FREERTOS_PORTABLE) \
 
 STARTUP_FILE = startup_stm32l053xx.s
 
