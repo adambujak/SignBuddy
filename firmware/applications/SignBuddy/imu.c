@@ -9,10 +9,15 @@
 #define PROCESS_PERIOD_MS    1000
 
 typedef struct {
-  uint32_t                     last_ticks;
-  i2c_t                        i2c_instance;
-  struct   bno055_t            bno055;
-  struct   bno055_quaternion_t bno055_quat_wxyz;
+  uint32_t                       last_ticks;
+  uint8_t                        sys_calib_stat;
+  uint8_t                        mag_calib_stat;
+  uint8_t                        accel_calib_stat;
+  uint8_t                        gyro_calib_stat;
+  i2c_t                          i2c_instance;
+  struct   bno055_t              bno055;
+  struct   bno055_quaternion_t   bno055_quat_wxyz;
+  struct   bno055_linear_accel_t bno055_acce_xyz;
 } state_t;
 
 static state_t s;
@@ -76,13 +81,25 @@ static void get_data(void)
 {
   uint32_t ret = 0;
 
+  ret |= bno055_get_sys_calib_stat(&s.sys_calib_stat);
+  ret |= bno055_get_mag_calib_stat(&s.mag_calib_stat);
+  ret |= bno055_get_accel_calib_stat(&s.accel_calib_stat);
+  ret |= bno055_get_gyro_calib_stat(&s.gyro_calib_stat);
   ret |= bno055_read_quaternion_wxyz(&s.bno055_quat_wxyz);
+  ret |= bno055_read_linear_accel_xyz(&s.bno055_acce_xyz);
   ERR_CHECK(ret);
 
-  LOG_INFO("Quat dataw: %d\r\n", s.bno055_quat_wxyz.w);
-  LOG_INFO("Quat datax: %d\r\n", s.bno055_quat_wxyz.x);
-  LOG_INFO("Quat datay: %d\r\n", s.bno055_quat_wxyz.y);
-  LOG_INFO("Quat dataz: %d\r\n", s.bno055_quat_wxyz.z);
+  LOG_INFO("Syst calib: %d\r\n", s.sys_calib_stat);
+  LOG_INFO("Magt calib: %d\r\n", s.mag_calib_stat);
+  LOG_INFO("Accl calib: %d\r\n", s.accel_calib_stat);
+  LOG_INFO("Gyro calib: %d\r\n", s.gyro_calib_stat);
+  LOG_INFO("Quat dataW: %d\r\n", s.bno055_quat_wxyz.w);
+  LOG_INFO("Quat dataX: %d\r\n", s.bno055_quat_wxyz.x);
+  LOG_INFO("Quat dataY: %d\r\n", s.bno055_quat_wxyz.y);
+  LOG_INFO("Quat dataZ: %d\r\n", s.bno055_quat_wxyz.z);
+  LOG_INFO("Acce dataX: %d\r\n", s.bno055_acce_xyz.x);
+  LOG_INFO("Acce dataY: %d\r\n", s.bno055_acce_xyz.y);
+  LOG_INFO("Acce dataZ: %d\r\n", s.bno055_acce_xyz.z);
 }
 
 void imu_init(void)
