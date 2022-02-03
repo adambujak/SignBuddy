@@ -9,12 +9,10 @@
 #define PROCESS_PERIOD_MS    1000
 
 typedef struct {
-  uint32_t                last_ticks;
-  i2c_t                   i2c_instance;
-  struct   bno055_t       bno055;
-  struct   bno055_accel_t bno055_accel_xyz;
-  struct   bno055_mag_t   bno055_mag_xyz;
-  struct   bno055_gyro_t  bno055_gyro_xyz;
+  uint32_t                     last_ticks;
+  i2c_t                        i2c_instance;
+  struct   bno055_t            bno055;
+  struct   bno055_quaternion_t bno055_quat_wxyz;
 } state_t;
 
 static state_t s;
@@ -70,29 +68,21 @@ static void bno_init(void)
   s.bno055.dev_addr = BNO055_I2C_ADDR1;
 
   ERR_CHECK(bno055_init(&s.bno055));
-
   ERR_CHECK(bno055_set_power_mode(BNO055_POWER_MODE_NORMAL));
+  ERR_CHECK(bno055_set_operation_mode(BNO055_OPERATION_MODE_NDOF));
 }
 
 static void get_data(void)
 {
-  ERR_CHECK(bno055_set_operation_mode(BNO055_OPERATION_MODE_AMG));
-
   uint32_t ret = 0;
-  ret |= bno055_read_accel_xyz(&s.bno055_accel_xyz);
-  ret |= bno055_read_mag_xyz(&s.bno055_mag_xyz);
-  ret |= bno055_read_gyro_xyz(&s.bno055_gyro_xyz);
+
+  ret |= bno055_read_quaternion_wxyz(&s.bno055_quat_wxyz);
   ERR_CHECK(ret);
 
-  LOG_INFO("Accel datax: %d\r\n", s.bno055_accel_xyz.x);
-  LOG_INFO("Accel datay: %d\r\n", s.bno055_accel_xyz.y);
-  LOG_INFO("Accel dataz: %d\r\n", s.bno055_accel_xyz.z);
-  LOG_INFO("Magnt datax: %d\r\n", s.bno055_mag_xyz.x);
-  LOG_INFO("Magnt datay: %d\r\n", s.bno055_mag_xyz.y);
-  LOG_INFO("Magnt dataz: %d\r\n", s.bno055_mag_xyz.z);
-  LOG_INFO("Gyros datax: %d\r\n", s.bno055_gyro_xyz.x);
-  LOG_INFO("Gyros datay: %d\r\n", s.bno055_gyro_xyz.y);
-  LOG_INFO("Gyros dataz: %d\r\n", s.bno055_gyro_xyz.z);
+  LOG_INFO("Quat dataw: %d\r\n", s.bno055_quat_wxyz.w);
+  LOG_INFO("Quat datax: %d\r\n", s.bno055_quat_wxyz.x);
+  LOG_INFO("Quat datay: %d\r\n", s.bno055_quat_wxyz.y);
+  LOG_INFO("Quat dataz: %d\r\n", s.bno055_quat_wxyz.z);
 }
 
 void imu_init(void)
