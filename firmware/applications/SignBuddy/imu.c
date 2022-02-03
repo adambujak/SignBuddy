@@ -79,6 +79,7 @@ static void bno_init(void)
 static void get_data(void)
 {
   uint32_t ret = 0;
+
   ret |= bno055_get_sys_calib_stat(&s.sys_calib_stat);
   ret |= bno055_get_mag_calib_stat(&s.mag_calib_stat);
   ret |= bno055_get_accel_calib_stat(&s.accel_calib_stat);
