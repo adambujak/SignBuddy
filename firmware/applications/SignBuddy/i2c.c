@@ -5,7 +5,7 @@
 
 #define I2C_MAX_TIMEOUT    10
 
-static uint8_t write_byte(I2C_TypeDef *handle, const uint8_t *tx_data)
+static int8_t write_byte(I2C_TypeDef *handle, const uint8_t *tx_data)
 {
   uint8_t timeout = I2C_MAX_TIMEOUT;
 
@@ -29,7 +29,7 @@ static uint8_t write_byte(I2C_TypeDef *handle, const uint8_t *tx_data)
   return RET_OK;
 }
 
-static uint8_t read_byte(I2C_TypeDef *handle, uint8_t *rx_data)
+static int8_t read_byte(I2C_TypeDef *handle, uint8_t *rx_data)
 {
   uint8_t timeout = I2C_MAX_TIMEOUT;
 
@@ -54,7 +54,7 @@ static uint8_t read_byte(I2C_TypeDef *handle, uint8_t *rx_data)
   return RET_OK;
 }
 
-uint8_t i2c_write(i2c_t *instance, uint8_t slave_addr, uint8_t reg_addr, const uint8_t *data, uint16_t length)
+int8_t i2c_write(i2c_t *instance, uint8_t slave_addr, uint8_t reg_addr, const uint8_t *data, uint16_t length)
 {
   I2C_TypeDef *handle = (I2C_TypeDef *) instance->handle;
 
@@ -77,7 +77,7 @@ uint8_t i2c_write(i2c_t *instance, uint8_t slave_addr, uint8_t reg_addr, const u
   return RET_OK;
 }
 
-uint8_t i2c_read(i2c_t *instance, uint8_t slave_addr, uint8_t reg_addr, uint8_t *data, uint16_t length)
+int8_t i2c_read(i2c_t *instance, uint8_t slave_addr, uint8_t reg_addr, uint8_t *data, uint16_t length)
 {
   I2C_TypeDef *handle = (I2C_TypeDef *) instance->handle;
 

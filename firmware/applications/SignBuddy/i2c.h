@@ -8,7 +8,7 @@ typedef struct {
 } i2c_t;
 
 void i2c_init(i2c_t *instance, void *hw_i2c_handle, LL_I2C_InitTypeDef *config);
-uint8_t i2c_write(i2c_t *instance, uint8_t slave_addr, uint8_t reg_addr, const uint8_t *data, uint16_t length);
-uint8_t i2c_read(i2c_t *instance, uint8_t slave_addr, uint8_t reg_addr, uint8_t *data, uint16_t length);
+int8_t i2c_write(i2c_t *instance, uint8_t slave_addr, uint8_t reg_addr, const uint8_t *data, uint16_t length);
+int8_t i2c_read(i2c_t *instance, uint8_t slave_addr, uint8_t reg_addr, uint8_t *data, uint16_t length);
 
 #endif // I2C_H
