@@ -12,7 +12,7 @@ typedef struct {
   // TODO add these
   // uint32_t electrode_measurement[TSC_ELECTRODE_CNT];
   // uint32_t calibration_value[TSC_ELECTRODE_CNT];
-  uint32_t          electrode_measurement;
+  int8_t            touch_value;
   TaskHandle_t      task_handle;
   void (*callback)(void);
 } state_t;
@@ -54,7 +54,7 @@ static void hw_init(void)
   electrode_pin_init(TSC_ELECTRODE_PIN, TSC_ELECTRODE_PORT);
 }
 
-static void tsc_config(void)
+static void io_config(void)
 {
   TSC_IOConfigTypeDef io_config;
 
@@ -63,7 +63,16 @@ static void tsc_config(void)
   HAL_TSC_IOConfig(&s.tsc, &io_config);
 }
 
-static void tsc_read(void)
+static inline int convert_value_to_touch(uint32_t value)
+{
+  if (value < 6000) {
+    return 1;
+  }
+
+  return 0;
+}
+
+static int read_value(uint32_t *value)
 {
   if (HAL_TSC_Start(&s.tsc) != HAL_OK) {
     error_handler();
@@ -71,15 +80,35 @@ static void tsc_read(void)
 
   while (HAL_TSC_GetState(&s.tsc) == HAL_TSC_STATE_BUSY);
 
+  // if max cnt err occured return fail
+  uint32_t isr_val = TSC->ISR;
+
+  if (isr_val & TSC_ISR_MCEF) {
+    return RET_ERR;
+  }
+
   __HAL_TSC_CLEAR_FLAG(&s.tsc, (TSC_FLAG_EOA | TSC_FLAG_MCE));
 
-  uint32_t val;
+
   if (HAL_TSC_GroupGetStatus(&s.tsc, TSC_GROUP3_IDX) == TSC_GROUP_COMPLETED) {
-    val = HAL_TSC_GroupGetValue(&s.tsc, TSC_GROUP3_IDX);
+    *value = HAL_TSC_GroupGetValue(&s.tsc, TSC_GROUP3_IDX);
   }
-  s.electrode_measurement = val;
-  LOG_DEBUG("tsc meas done: %lu\r\n", val);
-  s.callback();
+  return RET_OK;
+}
+
+static inline void sample_data(void)
+{
+  uint32_t value;
+
+  if (read_value(&value) == RET_OK) {
+    s.touch_value = convert_value_to_touch(value);
+  }
+  else {
+    s.touch_value = 0;
+  }
+
+  io_config();
+  HAL_TSC_IODischarge(&s.tsc, ENABLE);
 }
 
 static void tsc_task(void *arg)
@@ -87,10 +116,8 @@ static void tsc_task(void *arg)
   while (1) {
     // wait to be notified
     ulTaskNotifyTake(pdFALSE, portMAX_DELAY);
-    tsc_read();
-
-    tsc_config();
-    HAL_TSC_IODischarge(&s.tsc, ENABLE);
+    sample_data();
+    s.callback();
   }
 }
 
@@ -133,11 +160,7 @@ void tsc_start_read(void)
 
 void tsc_get_value(int8_t *measurement)
 {
-  if (s.electrode_measurement < 4000) {
-    *measurement = 1;
-  } else {
-    *measurement = 0;
-  }
+  *measurement = s.touch_value;
 }
 
 void tsc_callback_register(void (*callback)(void))

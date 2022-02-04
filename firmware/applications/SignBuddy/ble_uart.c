@@ -73,6 +73,7 @@ int ble_uart_read(uint8_t *data, uint32_t length)
 {
   DISABLE_IRQ();
   int ret = fifo_pop(&rx_fifo, data, length);
+
   ENABLE_IRQ();
   return ret;
 }
@@ -88,6 +89,7 @@ void BLE_UART_IRQHandler(void)
 {
   DISABLE_IRQ();
   uint8_t data;
+
   if (LL_LPUART_IsActiveFlag_RXNE(BLE_UART)) {
     data = LL_LPUART_ReceiveData8(BLE_UART);
     // TODO: make sure this is correct flag to clear

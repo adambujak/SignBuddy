@@ -79,8 +79,6 @@ static void sensors_task(void *arg)
       LOG_ERROR("TIMEOUT waiting for sensor data\r\n");
     }
     else {
-      LOG_DEBUG("Data ready\r\n");
-
       int8_t tsc_val;
       tsc_get_value(&tsc_val);
       LOG_DEBUG("touch sensor val: %d\r\n", (int) tsc_val);
