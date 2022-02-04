@@ -2,41 +2,99 @@
 
 #include "board.h"
 #include "common.h"
+#include "logger.h"
 
 #define CHANNEL_IOS     TSC_ELECTRODE_IO
 #define SAMPLING_IOS    TSC_SAMPLER_IO
 
 typedef struct {
   TSC_HandleTypeDef tsc;
+  // TODO add these
+  // uint32_t electrode_measurement[TSC_ELECTRODE_CNT];
+  // uint32_t calibration_value[TSC_ELECTRODE_CNT];
+  uint32_t          electrode_measurement;
+  TaskHandle_t      task_handle;
+  void (*callback)(void);
 } state_t;
 
 static state_t s;
+
+static inline void sampler_pin_init(uint32_t pin, GPIO_TypeDef *port)
+{
+  LL_GPIO_InitTypeDef gpio_config = { 0 };
+
+  gpio_config.Pin = pin;
+  gpio_config.Mode = LL_GPIO_MODE_ALTERNATE;
+  gpio_config.Speed = LL_GPIO_SPEED_FREQ_LOW;
+  gpio_config.OutputType = LL_GPIO_OUTPUT_OPENDRAIN;
+  gpio_config.Pull = LL_GPIO_PULL_NO;
+  gpio_config.Alternate = TSC_SAMPLER_AF;
+  LL_GPIO_Init(port, &gpio_config);
+}
+
+static inline void electrode_pin_init(uint32_t pin, GPIO_TypeDef *port)
+{
+  LL_GPIO_InitTypeDef gpio_config = { 0 };
+
+  gpio_config.Pin = pin;
+  gpio_config.Mode = LL_GPIO_MODE_ALTERNATE;
+  gpio_config.Speed = LL_GPIO_SPEED_FREQ_LOW;
+  gpio_config.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
+  gpio_config.Pull = LL_GPIO_PULL_NO;
+  gpio_config.Alternate = TSC_ELECTRODE_AF;
+  LL_GPIO_Init(port, &gpio_config);
+}
 
 static void hw_init(void)
 {
   TSC_CLK_EN();
   TSC_GPIO_CLK_EN();
 
-  LL_GPIO_InitTypeDef gpio_config = { 0 };
-
-  gpio_config.Pin = TSC_ELECTRODE_PIN;
-  gpio_config.Mode = LL_GPIO_MODE_ALTERNATE;
-  gpio_config.Speed = LL_GPIO_SPEED_FREQ_LOW;
-  gpio_config.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
-  gpio_config.Pull = LL_GPIO_PULL_NO;
-  gpio_config.Alternate = TSC_ELECTRODE_AF;
-  LL_GPIO_Init(TSC_ELECTRODE_PORT, &gpio_config);
-
-  gpio_config.Pin = TSC_SAMPLER_PIN;
-  gpio_config.Mode = LL_GPIO_MODE_ALTERNATE;
-  gpio_config.Speed = LL_GPIO_SPEED_FREQ_LOW;
-  gpio_config.OutputType = LL_GPIO_OUTPUT_OPENDRAIN;
-  gpio_config.Pull = LL_GPIO_PULL_NO;
-  gpio_config.Alternate = TSC_SAMPLER_AF;
-  LL_GPIO_Init(TSC_SAMPLER_PORT, &gpio_config);
+  sampler_pin_init(TSC_SAMPLER_PIN, TSC_SAMPLER_PORT);
+  electrode_pin_init(TSC_ELECTRODE_PIN, TSC_ELECTRODE_PORT);
 }
 
-void tsc_init(void)
+static void tsc_config(void)
+{
+  TSC_IOConfigTypeDef io_config;
+
+  io_config.ChannelIOs = CHANNEL_IOS;
+  io_config.SamplingIOs = SAMPLING_IOS;
+  HAL_TSC_IOConfig(&s.tsc, &io_config);
+}
+
+static void tsc_read(void)
+{
+  if (HAL_TSC_Start(&s.tsc) != HAL_OK) {
+    error_handler();
+  }
+
+  while (HAL_TSC_GetState(&s.tsc) == HAL_TSC_STATE_BUSY);
+
+  __HAL_TSC_CLEAR_FLAG(&s.tsc, (TSC_FLAG_EOA | TSC_FLAG_MCE));
+
+  uint32_t val;
+  if (HAL_TSC_GroupGetStatus(&s.tsc, TSC_GROUP3_IDX) == TSC_GROUP_COMPLETED) {
+    val = HAL_TSC_GroupGetValue(&s.tsc, TSC_GROUP3_IDX);
+  }
+  s.electrode_measurement = val;
+  LOG_DEBUG("tsc meas done: %lu\r\n", val);
+  s.callback();
+}
+
+static void tsc_task(void *arg)
+{
+  while (1) {
+    // wait to be notified
+    ulTaskNotifyTake(pdFALSE, portMAX_DELAY);
+    tsc_read();
+
+    tsc_config();
+    HAL_TSC_IODischarge(&s.tsc, ENABLE);
+  }
+}
+
+void tsc_task_setup(void)
 {
   hw_init();
 
@@ -61,31 +119,27 @@ void tsc_init(void)
   }
 }
 
-uint32_t tsc_get_value(void)
+void tsc_task_start(void)
 {
-  HAL_TSC_IODischarge(&s.tsc, ENABLE);
-  delay_ms(1);
+  BaseType_t task_status = xTaskCreate(tsc_task, "tsc", TSC_STACK_SIZE, NULL, TSC_TASK_PRIORITY, &s.task_handle);
 
-  if (HAL_TSC_Start(&s.tsc) != HAL_OK) {
-    error_handler();
-  }
-
-  while (HAL_TSC_GetState(&s.tsc) == HAL_TSC_STATE_BUSY);
-
-  __HAL_TSC_CLEAR_FLAG(&s.tsc, (TSC_FLAG_EOA | TSC_FLAG_MCE));
-
-  uint32_t val;
-  if (HAL_TSC_GroupGetStatus(&s.tsc, TSC_GROUP3_IDX) == TSC_GROUP_COMPLETED) {
-    val = HAL_TSC_GroupGetValue(&s.tsc, TSC_GROUP3_IDX);
-  }
-  return val;
+  RTOS_ERR_CHECK(task_status);
 }
 
-void tsc_config(void)
+void tsc_start_read(void)
 {
-  TSC_IOConfigTypeDef io_config;
+  RTOS_ERR_CHECK(xTaskNotifyGive(s.task_handle));
+}
 
-  io_config.ChannelIOs = CHANNEL_IOS;
-  io_config.SamplingIOs = SAMPLING_IOS;
-  HAL_TSC_IOConfig(&s.tsc, &io_config);
+void tsc_get_value(int8_t *measurement)
+{
+  if (s.electrode_measurement < 4000) {
+    *measurement = 1;
+  }
+  *measurement = 0;
+}
+
+void tsc_callback_register(void (*callback)(void))
+{
+  s.callback = callback;
 }

@@ -9,6 +9,7 @@
 #include "semphr.h"
 #include "task.h"
 #include "timers.h"
+#include "event_groups.h"
 
 void error_handler(void);
 void delay_ms(uint32_t ms);

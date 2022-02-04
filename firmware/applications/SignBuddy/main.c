@@ -109,6 +109,7 @@ int main(void)
   log_uart_init();
   ble_uart_init();
 
+  tsc_task_setup();
   sensors_task_setup();
 
   LOG_INFO("App started\r\n");
@@ -121,6 +122,7 @@ int main(void)
                              NULL));
 
   sensors_task_start();
+  tsc_task_start();
 
   os_start();
 }
