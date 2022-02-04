@@ -4,8 +4,8 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-#define BLE_UART_TX_BUFFER_SIZE    512
-#define BLE_UART_RX_BUFFER_SIZE    512
+#define BLE_UART_TX_BUFFER_SIZE    256
+#define BLE_UART_RX_BUFFER_SIZE    64
 
 /** Receive transmission from the bluetooth uart module
  * @retval    Byte of data received
