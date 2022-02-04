@@ -5,13 +5,9 @@
 
 
 /* Initialize tsc module */
-void tsc_task_setup(void);
-void tsc_task_start(void);
-void tsc_start_read(void);
+void tsc_init(void);
 
-// register data ready callback
-void tsc_callback_register(void (*callback)(void));
-
-void tsc_get_value(int8_t *measurement);
+uint32_t tsc_get_value(void);
+void tsc_config(void);
 
 #endif // TSC_H
