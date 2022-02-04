@@ -67,6 +67,7 @@ uint32_t system_time_get(void)
 {
   DISABLE_IRQ();
   uint32_t time = (AUTORELOAD * s.overrun_cnt) + SYSTEM_TIME_TIMER->CNT;
+
   ENABLE_IRQ();
   return time;
 }
