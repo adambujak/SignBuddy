@@ -4,14 +4,17 @@
 #include "common.h"
 #include "logger.h"
 
-#define CHANNEL_IOS     TSC_ELECTRODE_IO
-#define SAMPLING_IOS    TSC_SAMPLER_IO
+#define CALIBRATION_SAMPLES    8
+#define TOUCH_TRIGGER_LEVEL    50
+
+#define CHANNEL_IOS            TSC_ELECTRODE_IO
+#define SAMPLING_IOS           TSC_SAMPLER_IO
 
 typedef struct {
   TSC_HandleTypeDef tsc;
   // TODO add these
   // uint32_t electrode_measurement[TSC_ELECTRODE_CNT];
-  // uint32_t calibration_value[TSC_ELECTRODE_CNT];
+  uint32_t          calibration_value;
   int8_t            touch_value;
   TaskHandle_t      task_handle;
   void (*callback)(void);
@@ -65,10 +68,11 @@ static void io_config(void)
 
 static inline int convert_value_to_touch(uint32_t value)
 {
-  if (value < 6000) {
-    return 1;
+  if (value < s.calibration_value) {
+    if (s.calibration_value - value > TOUCH_TRIGGER_LEVEL) {
+      return 1;
+    }
   }
-
   return 0;
 }
 
@@ -101,12 +105,42 @@ static inline void sample_data(void)
   uint32_t value;
 
   if (read_value(&value) == RET_OK) {
+    //LOG_DEBUG("tsc value: %lu cal: %lu\r\n", value, s.calibration_value);
     s.touch_value = convert_value_to_touch(value);
   }
   else {
     s.touch_value = 0;
   }
 
+  io_config();
+  HAL_TSC_IODischarge(&s.tsc, ENABLE);
+}
+
+static void calibrate(void)
+{
+  uint32_t calibration_value = 0;
+
+  for (int i = 0; i < CALIBRATION_SAMPLES; i++) {
+    // TODO find bug
+    // if log is added here, lower values are read (closer to what is seen during sampling)
+    io_config();
+    HAL_TSC_IODischarge(&s.tsc, ENABLE);
+
+    rtos_delay_ms(10);
+
+    uint32_t value;
+
+    if (read_value(&value) == RET_OK) {
+      calibration_value += value / CALIBRATION_SAMPLES;
+    }
+    else {
+      // set to max value
+      calibration_value = 0xFFFFFFFF;
+    }
+  }
+  s.calibration_value = calibration_value;
+
+  // discharge before we start sampling again
   io_config();
   HAL_TSC_IODischarge(&s.tsc, ENABLE);
 }
@@ -144,6 +178,8 @@ void tsc_task_setup(void)
   if (HAL_TSC_Init(&s.tsc) != HAL_OK) {
     error_handler();
   }
+
+  calibrate();
 }
 
 void tsc_task_start(void)
