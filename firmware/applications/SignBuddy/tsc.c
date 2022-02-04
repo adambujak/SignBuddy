@@ -128,15 +128,16 @@ void tsc_task_start(void)
 
 void tsc_start_read(void)
 {
-  RTOS_ERR_CHECK(xTaskNotifyGive(s.task_handle));
+  xTaskNotifyGive(s.task_handle);
 }
 
 void tsc_get_value(int8_t *measurement)
 {
   if (s.electrode_measurement < 4000) {
     *measurement = 1;
+  } else {
+    *measurement = 0;
   }
-  *measurement = 0;
 }
 
 void tsc_callback_register(void (*callback)(void))
