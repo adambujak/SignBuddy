@@ -4,8 +4,7 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-#define LOG_UART_TX_BUFFER_SIZE    512
-#define LOG_UART_RX_BUFFER_SIZE    512
+#define LOG_UART_TX_BUFFER_SIZE    128
 
 void log_uart_init(void);
 void log_uart_write(uint8_t *data, uint32_t length);
