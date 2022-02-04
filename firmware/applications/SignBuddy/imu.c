@@ -28,7 +28,6 @@ static void hw_init(void)
   IMU_I2C_GPIO_CLK_EN();
 
   LL_GPIO_InitTypeDef gpio_config = { 0 };
-
   gpio_config.Pin = IMU_I2C_SCL_PIN | IMU_I2C_SDA_PIN;
   gpio_config.Mode = LL_GPIO_MODE_ALTERNATE;
   gpio_config.Speed = LL_GPIO_SPEED_FREQ_VERY_HIGH;
@@ -38,7 +37,6 @@ static void hw_init(void)
   LL_GPIO_Init(IMU_I2C_GPIO_PORT, &gpio_config);
 
   LL_I2C_InitTypeDef i2c_config = { 0 };
-
   i2c_config.PeripheralMode = LL_I2C_MODE_I2C;
   i2c_config.Timing = 0x00300F38;
   i2c_config.AnalogFilter = LL_I2C_ANALOGFILTER_ENABLE;
