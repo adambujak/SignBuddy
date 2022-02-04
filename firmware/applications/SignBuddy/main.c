@@ -12,6 +12,14 @@
 #include "ble_uart.h"
 #include "sensors.h"
 
+static uint8_t os_started = 0;
+
+static void os_start(void)
+{
+  os_started = 1;
+  vTaskStartScheduler();
+}
+
 void delay_us(uint32_t us)
 {
   uint32_t start_time = system_time_get();
@@ -26,7 +34,17 @@ void delay_ms(uint32_t ms)
   while (system_time_cmp_ms(start_time, system_time_get()) < ms);
 }
 
-void sysclk_init(void)
+void rtos_delay_ms(uint32_t ms)
+{
+  if (os_started) {
+    vTaskDelay(ms);
+  }
+  else {
+    delay_ms(ms);
+  }
+}
+
+static void sysclk_init(void)
 {
   LL_FLASH_SetLatency(LL_FLASH_LATENCY_1);
   while (LL_FLASH_GetLatency() != LL_FLASH_LATENCY_1);
@@ -67,26 +85,20 @@ static void board_bringup(void)
 
   sysclk_init();
 
-  gpio_init();
-
   HAL_Init();
+
+  gpio_init();
 }
 
-static void led_process(void)
+static void leds_task(void *arg)
 {
-  static uint32_t last_ticks = 0;
-  static uint32_t led_state = 0;
+  uint8_t led_state = 0;
 
-  uint32_t time = system_time_get();
-
-  if (system_time_cmp_ms(last_ticks, time) < 1000) {
-    return;
+  while (1) {
+    led_state = (led_state + 1) % 2;
+    rtos_delay_ms(1000);
+    gpio_led_set(led_state);
   }
-  last_ticks = time;
-  led_state = (led_state + 1) % 2;
-  gpio_led_set(led_state);
-
-  LOG_INFO("LED process\r\n");
 }
 
 int main(void)
@@ -95,20 +107,22 @@ int main(void)
   // init early
   system_time_init();
   log_uart_init();
-
-  sensors_init();
   ble_uart_init();
-  adc_init();
-  imu_init();
-  tsc_init();
+
+  sensors_task_setup();
 
   LOG_INFO("App started\r\n");
 
-  while (1) {
-    led_process();
-    sensors_process();
-    imu_process();
-  }
+  RTOS_ERR_CHECK(xTaskCreate(leds_task,
+                             "led_task",
+                             128,
+                             NULL,
+                             4,
+                             NULL));
+
+  sensors_task_start();
+
+  os_start();
 }
 
 void error_handler(void)
@@ -125,4 +139,13 @@ void error_handler(void)
 void SysTick_Handler(void)
 {
   HAL_IncTick();
+  if (os_started) {
+    OSSysTick_Handler();
+  }
+}
+
+void vApplicationStackOverflowHook(TaskHandle_t xTask, char *pcTaskName)
+{
+  LOG_ERROR("Stack Overflow");
+  error_handler();
 }

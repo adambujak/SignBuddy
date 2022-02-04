@@ -3,6 +3,7 @@
 #include "adc.h"
 #include "ble_uart.h"
 #include "common.h"
+#include "imu.h"
 #include "logger.h"
 #include "tsc.h"
 
@@ -16,12 +17,12 @@ typedef struct {
 } flex_data_t;
 
 typedef struct {
-  uint32_t last_ticks;
+  TaskHandle_t sensors_task_handle;
 } state_t;
 
 static state_t s;
 
-int get_flex_data(flex_data_t *data)
+static int get_flex_data(flex_data_t *data)
 {
   for (int i = 0; i < FLEX_SENSOR_CNT; i++) {
     adc_enable();
@@ -31,32 +32,47 @@ int get_flex_data(flex_data_t *data)
   return RET_OK;
 }
 
-void tx_flex_data(flex_data_t *data)
+static void tx_flex_data(flex_data_t *data)
 {
   for (int i = 0; i < FLEX_SENSOR_CNT; i++) {
     LOG_INFO("Reading: %hu\n\r", data->sensor_data[i]);
   }
 }
 
-void sensors_init(void)
+static void sensors_task(void *arg)
 {
-  s.last_ticks = system_time_get();
-  tsc_config();
+  while (1) {
+    flex_data_t flex_data;
+    ERR_CHECK(get_flex_data(&flex_data));
+
+    tx_flex_data(&flex_data);
+    uint32_t touch_val = tsc_get_value();
+    LOG_INFO("Touch sense: %lu\r\n", touch_val);
+
+    imu_process();
+    rtos_delay_ms(500);
+  }
 }
 
-void sensors_process(void)
+void sensors_task_setup(void)
 {
-  uint32_t time = system_time_get();
+  adc_init();
+  imu_init();
+  tsc_init();
 
-  if (system_time_cmp_ms(s.last_ticks, time) < PROCESS_PERIOD_MS) {
-    return;
-  }
-  s.last_ticks = time;
+  tsc_config();
 
-  flex_data_t flex_data;
-  ERR_CHECK(get_flex_data(&flex_data));
+  LOG_DEBUG("Sensors Initialized\r\n");
+}
 
-  tx_flex_data(&flex_data);
-  uint32_t touch_val = tsc_get_value();
-  LOG_INFO("Touch sense: %u\r\n", touch_val);
+void sensors_task_start(void)
+{
+  BaseType_t task_status = xTaskCreate(sensors_task,
+                                       "sensors_task",
+                                       SENSORS_STACK_SIZE,
+                                       NULL,
+                                       sensors_TASK_PRIORITY,
+                                       &s.sensors_task_handle);
+
+  RTOS_ERR_CHECK(task_status);
 }
