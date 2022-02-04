@@ -69,7 +69,7 @@ static void io_config(void)
 static inline int convert_value_to_touch(uint32_t value)
 {
   if (value < s.calibration_value) {
-    if (s.calibration_value - value > TOUCH_TRIGGER_LEVEL) {
+    if ((s.calibration_value - value) > TOUCH_TRIGGER_LEVEL) {
       return 1;
     }
   }
