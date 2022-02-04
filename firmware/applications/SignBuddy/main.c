@@ -149,3 +149,8 @@ void vApplicationStackOverflowHook(TaskHandle_t xTask, char *pcTaskName)
   LOG_ERROR("Stack Overflow");
   error_handler();
 }
+
+void assert_failed(uint8_t* file, uint32_t line)
+{
+  LOG_ERROR("\r\nassert_failed(). file: %s, line: %ld\r\n", file, line);
+}
