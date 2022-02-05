@@ -78,8 +78,8 @@
 #define FLEX_LITTLE_PORT          GPIOB
 #define FLEX_LITTLE_PIN           LL_GPIO_PIN_0
 #define FLEX_LITTLE_CHANNEL       LL_ADC_CHANNEL_8
-#define FLEX_GPIO_CLK_EN()        do { LL_IOP_GRP1_EnableClock(LL_IOP_GRP1_PERIPH_GPIOA); LL_IOP_GRP1_EnableClock( \
-                                         LL_IOP_GRP1_PERIPH_GPIOB); } while (0)
+#define FLEX_GPIO_CLK_EN()        LL_IOP_GRP1_EnableClock(LL_IOP_GRP1_PERIPH_GPIOA); \
+  LL_IOP_GRP1_EnableClock(LL_IOP_GRP1_PERIPH_GPIOB);
 
 /* I2C */
 #define IMU_I2C                   I2C1
