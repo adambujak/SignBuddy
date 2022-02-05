@@ -1,16 +1,14 @@
 #include "board.h"
 #include "ble_uart.h"
 #include "common.h"
+#include "flex.h"
 #include "gpio.h"
+#include "imu.h"
 #include "log_uart.h"
 #include "logger.h"
 #include "sensors.h"
 #include "system_time.h"
-#include "adc.h"
-#include "imu.h"
 #include "tsc.h"
-#include "ble_uart.h"
-#include "sensors.h"
 
 static uint8_t os_started = 0;
 
@@ -109,6 +107,7 @@ int main(void)
   log_uart_init();
   ble_uart_init();
 
+  flex_task_setup();
   tsc_task_setup();
   sensors_task_setup();
 
@@ -123,6 +122,7 @@ int main(void)
 
   sensors_task_start();
   tsc_task_start();
+  flex_task_start();
 
   os_start();
 }

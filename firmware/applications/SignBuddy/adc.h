@@ -3,11 +3,6 @@
 
 #include <stdint.h>
 
-/** Read data from the adc
- * @retval    Data from the adc in mVolt
- */
-uint16_t adc_read(void);
-
 /* Initialize adc module */
 void adc_init(void);
 
@@ -16,5 +11,8 @@ void adc_enable(void);
 
 /* Disable adc module */
 void adc_disable(void);
+
+/* Start adc conversion */
+void adc_start_conversion(void);
 
 #endif // ADC_H

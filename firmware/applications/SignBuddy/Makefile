@@ -53,6 +53,8 @@ C_SOURCES = \
 	main.c \
 	adc.c \
 	ble_uart.c \
+	dma.c \
+	flex.c \
 	gpio.c \
 	i2c.c \
 	imu.c \
