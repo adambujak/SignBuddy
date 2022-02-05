@@ -4,11 +4,31 @@
 #include "common.h"
 #include "logger.h"
 
-#define CALIBRATION_SAMPLES    8
-#define TOUCH_TRIGGER_LEVEL    50
+#define TOUCH_SENSOR_0                 TSC_GROUP3_CHANNEL0
+#define TOUCH_SENSOR_1                 TSC_GROUP4_CHANNEL0
+#define TOUCH_SENSOR_2                 TSC_GROUP4_CHANNEL1
+#define TOUCH_SENSOR_3                 TSC_GROUP5_CHANNEL0
+#define TOUCH_SENSOR_4                 TSC_GROUP5_CHANNEL1
+#define TOUCH_SENSOR_5                 TSC_GROUP6_CHANNEL0
+#define TOUCH_SENSOR_6                 TSC_GROUP6_CHANNEL1
+#define TOUCH_SENSOR_7                 TSC_GROUP7_CHANNEL0
+#define TOUCH_SENSOR_8                 TSC_GROUP7_CHANNEL1
+#define TOUCH_SENSOR_9                 TSC_GROUP8_CHANNEL0
+#define TOUCH_SENSOR_10                TSC_GROUP8_CHANNEL1
 
-#define CHANNEL_IOS            TSC_ELECTRODE_IO
-#define SAMPLING_IOS           TSC_SAMPLER_IO
+#define TOUCH_SENSOR_CNT               11
+
+#define SENSOR_PORT(group, channel)    TSC_GROUP ## group ## _CHANNEL ## channel ## _PORT
+#define SENSOR_PIN(group, channel)     TSC_GROUP ## group ## _CHANNEL ## channel ## _PIN
+
+#define SAMPLER_PORT(group)            TSC_GROUP ## group ## _SAMPLER_PORT
+#define SAMPLER_PIN(group)             TSC_GROUP ## group ## _SAMPLER_PIN
+
+#define CALIBRATION_SAMPLES            8
+#define TOUCH_TRIGGER_LEVEL            50
+
+#define CHANNEL_IOS                    TSC_GROUP8_CHANNEL1_IO
+#define SAMPLING_IOS                   TSC_GROUP8_SAMPLER_IO
 
 typedef struct {
   TSC_HandleTypeDef tsc;
@@ -53,8 +73,24 @@ static void hw_init(void)
   TSC_CLK_EN();
   TSC_GPIO_CLK_EN();
 
-  sampler_pin_init(TSC_SAMPLER_PIN, TSC_SAMPLER_PORT);
-  electrode_pin_init(TSC_ELECTRODE_PIN, TSC_ELECTRODE_PORT);
+  electrode_pin_init(SENSOR_PIN(3, 0), SENSOR_PORT(3, 0));
+  electrode_pin_init(SENSOR_PIN(4, 0), SENSOR_PORT(4, 0));
+  electrode_pin_init(SENSOR_PIN(4, 1), SENSOR_PORT(4, 1));
+  electrode_pin_init(SENSOR_PIN(5, 0), SENSOR_PORT(5, 0));
+  electrode_pin_init(SENSOR_PIN(5, 1), SENSOR_PORT(5, 1));
+  electrode_pin_init(SENSOR_PIN(6, 0), SENSOR_PORT(6, 0));
+  electrode_pin_init(SENSOR_PIN(6, 1), SENSOR_PORT(6, 1));
+  electrode_pin_init(SENSOR_PIN(7, 0), SENSOR_PORT(7, 0));
+  electrode_pin_init(SENSOR_PIN(7, 1), SENSOR_PORT(7, 1));
+  electrode_pin_init(SENSOR_PIN(8, 0), SENSOR_PORT(8, 0));
+  electrode_pin_init(SENSOR_PIN(8, 1), SENSOR_PORT(8, 1));
+
+  sampler_pin_init(SAMPLER_PIN(3), SAMPLER_PORT(3));
+  sampler_pin_init(SAMPLER_PIN(4), SAMPLER_PORT(4));
+  sampler_pin_init(SAMPLER_PIN(5), SAMPLER_PORT(5));
+  sampler_pin_init(SAMPLER_PIN(6), SAMPLER_PORT(6));
+  sampler_pin_init(SAMPLER_PIN(7), SAMPLER_PORT(7));
+  sampler_pin_init(SAMPLER_PIN(8), SAMPLER_PORT(8));
 }
 
 static void io_config(void)
@@ -172,9 +208,9 @@ void tsc_task_setup(void)
   s.tsc.Init.SynchroPinPolarity = TSC_SYNC_POLARITY_FALLING;
   s.tsc.Init.AcquisitionMode = TSC_ACQ_MODE_NORMAL;
   s.tsc.Init.MaxCountInterrupt = DISABLE;
-  s.tsc.Init.ChannelIOs = TSC_ELECTRODE_IO;
+  s.tsc.Init.ChannelIOs = TSC_GROUP8_CHANNEL1_IO;
   s.tsc.Init.ShieldIOs = 0;
-  s.tsc.Init.SamplingIOs = TSC_SAMPLER_IO;
+  s.tsc.Init.SamplingIOs = TSC_GROUP8_SAMPLER_IO;
 
   if (HAL_TSC_Init(&s.tsc) != HAL_OK) {
     error_handler();
