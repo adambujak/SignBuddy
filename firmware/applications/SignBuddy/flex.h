@@ -3,6 +3,8 @@
 
 #include <stdint.h>
 
+#define FLEX_SENSOR_CNT    5
+
 /* Initialize flex module */
 void flex_task_setup(void);
 void flex_task_start(void);
