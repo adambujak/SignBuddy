@@ -106,7 +106,6 @@ int main(void)
   // init early
   system_time_init();
   log_uart_init();
-  ble_uart_init();
 
   flex_task_setup();
   tsc_task_setup();

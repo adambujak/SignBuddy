@@ -10,8 +10,8 @@ void flex_task_setup(void);
 void flex_task_start(void);
 void flex_start_read(void);
 
-/* DMA data transfer complete callback */
-void dma_data_ready_cb(void);
+/* DMA ADC data transfer complete callback */
+void adc_data_ready_cb(void);
 
 /* Register data ready callback */
 void flex_callback_register(void (*callback)(void));

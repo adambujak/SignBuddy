@@ -34,7 +34,7 @@ static void hw_init(void)
   flex_pin_init(FLEX_RING_PIN, FLEX_RING_PORT);
   flex_pin_init(FLEX_LITTLE_PIN, FLEX_LITTLE_PORT);
 
-  dma_init((uint32_t) &s.flex_values, FLEX_SENSOR_CNT);
+  dma_adc_init((uint32_t) &s.flex_values, FLEX_SENSOR_CNT);
   adc_init();
 }
 
@@ -59,7 +59,7 @@ static void flex_task(void *arg)
   }
 }
 
-void dma_data_ready_cb(void)
+void adc_data_ready_cb(void)
 {
   vTaskNotifyGiveFromISR(s.task_handle, 0);
 }
