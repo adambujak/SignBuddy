@@ -6,4 +6,16 @@
 #error Regenerate this file with the current version of nanopb generator.
 #endif
 
-PB_BIND(TestMessage, TestMessage, AUTO)
+PB_BIND(GestureData, GestureData, AUTO)
+
+
+PB_BIND(Sample, Sample, AUTO)
+
+
+PB_BIND(Sample_IMUData, Sample_IMUData, AUTO)
+
+
+PB_BIND(Sample_FlexData, Sample_FlexData, AUTO)
+
+
+PB_BIND(Sample_TouchData, Sample_TouchData, AUTO)

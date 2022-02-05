@@ -1,5 +1,47 @@
 syntax = "proto2";
 
-message TestMessage {
-	required int32 dummy_data = 1;
+message GestureData {
+    required string letter = 1;
+    repeated Sample samples = 2;
+}
+
+message Sample {
+    required uint32 sample_id = 1;
+
+    message IMUData {
+        required sint32 eul_p = 1;
+        required sint32 eul_r = 2;
+        required sint32 eul_y = 3;
+        required sint32 lin_acc_x = 4;
+        required sint32 lin_acc_y = 5;
+        required sint32 lin_acc_z = 6;
+    }
+
+    required IMUData imuData = 2;
+
+    message FlexData {
+        required uint32 flex_thumb = 1;
+        required uint32 flex_index = 2;
+        required uint32 flex_middle = 3;
+        required uint32 flex_ring = 4;
+        required uint32 flex_little = 5;
+    }
+
+    required FlexData flexData = 3;
+
+    message TouchData {
+        required bool touch1 = 1;
+        required bool touch2 = 2;
+        required bool touch3 = 3;
+        required bool touch4 = 4;
+        required bool touch5 = 5;
+        required bool touch6 = 6;
+        required bool touch7 = 7;
+        required bool touch8 = 8;
+        required bool touch9 = 9;
+        required bool touch10 = 10;
+        required bool touch11 = 11;
+    }
+
+    required TouchData touchData = 4;
 }
