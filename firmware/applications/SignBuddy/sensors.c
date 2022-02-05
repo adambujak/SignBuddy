@@ -22,6 +22,8 @@
 #define TIMEOUT_MS           40
 #define TIMEOUT_TICKS        pdMS_TO_TICKS(TIMEOUT_MS)
 
+#define SAMPLING_PERIOD      1000
+
 typedef struct {
   uint16_t sensor_data[FLEX_SENSOR_CNT];
 } flex_data_t;
@@ -29,6 +31,7 @@ typedef struct {
 typedef struct {
   TaskHandle_t       sensors_task_handle;
   EventGroupHandle_t data_ready_event_group;
+  TimerHandle_t      sampling_timer;
 } state_t;
 
 static state_t s;
@@ -55,6 +58,11 @@ static void tx_flex_data(flex_data_t *data)
   }
 }
 
+void sampling_timer_cb(TimerHandle_t xTimer)
+{
+  xTaskNotifyGive(s.sensors_task_handle);
+}
+
 static void sensors_task(void *arg)
 {
   s.data_ready_event_group = xEventGroupCreate();
@@ -62,7 +70,16 @@ static void sensors_task(void *arg)
     LOG_ERROR("Event Group Creation Failed\r\n");
   }
 
+  s.sampling_timer = xTimerCreate("sampling_timer", pdMS_TO_TICKS(SAMPLING_PERIOD), pdTRUE, NULL, sampling_timer_cb);
+  if (s.sampling_timer == NULL) {
+    LOG_ERROR("Sampling timer creation failed\r\n");
+  }
+
+  // TODO Timer start should be triggered by message received from BLE
+  RTOS_ERR_CHECK(xTimerStart(s.sampling_timer, 0));
+
   while (1) {
+    ulTaskNotifyTake(pdFALSE, portMAX_DELAY);
     flex_data_t flex_data;
     ERR_CHECK(get_flex_data(&flex_data));
 
@@ -83,7 +100,6 @@ static void sensors_task(void *arg)
       tsc_get_value(&tsc_val);
       LOG_DEBUG("touch sensor val: %d\r\n", (int) tsc_val);
     }
-    rtos_delay_ms(500);
   }
 }
 
