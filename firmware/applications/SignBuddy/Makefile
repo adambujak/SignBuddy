@@ -59,6 +59,7 @@ C_SOURCES = \
 	adc.c \
 	ble_uart.c \
 	comms.c \
+	crc.c \
 	dma.c \
 	flex.c \
 	gpio.c \

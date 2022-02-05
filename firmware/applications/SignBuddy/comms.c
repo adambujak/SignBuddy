@@ -1,6 +1,7 @@
 #include "comms.h"
 
 #include "common.h"
+#include "crc.h"
 #include "logger.h"
 #include "pb_encode.h"
 #include "SignBuddy.pb.h"
@@ -9,7 +10,7 @@
 
 typedef struct __attribute__((__packed__)) {
   uint8_t length;
-  uint8_t protobuf[Sample_size];
+  uint8_t sample[Sample_size];
   uint32_t crc;
 } packet_t;
 
@@ -40,11 +41,12 @@ static void comms_task(void *arg)
     // TODO Check for message received
 
     if (s.tx_dr == 1) {
-      pb_ostream_t stream = pb_ostream_from_buffer((pb_byte_t *) &s.packet.protobuf, Sample_size);
+      pb_ostream_t stream = pb_ostream_from_buffer((pb_byte_t *) s.packet.sample, Sample_size);
       pb_encode(&stream, &Sample_msg, &s.sample);
       pb_get_encoded_size((size_t *) &s.packet.length, &Sample_msg, &s.sample);
       clear_tx_dr();
       LOG_DEBUG("Encoded packet length: %d\r\n", s.packet.length);
+      s.packet.crc = compute_crc(s.packet.sample, s.packet.length);
     }
   }
 }
