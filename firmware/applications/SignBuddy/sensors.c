@@ -40,7 +40,7 @@ static void tsc_data_ready_cb(void)
 static void flex_data_ready_cb(void)
 {
   xEventGroupSetBits(s.data_ready_event_group, FLEX_DR_EVENT);
-  }
+}
 
 void sampling_timer_cb(TimerHandle_t xTimer)
 {
@@ -90,6 +90,7 @@ static void sensors_task(void *arg)
       for (uint8_t i = 0; i < 5; i++) {
         flex_get_value(&flex_val, i);
         LOG_DEBUG("Flex_%hu val: %hu\r\n", i + 1, flex_val);
+      }
     }
   }
 }
