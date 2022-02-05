@@ -44,6 +44,11 @@ static void flex_data_ready_cb(void)
   xEventGroupSetBits(s.data_ready_event_group, FLEX_DR_EVENT);
 }
 
+static void imu_data_ready_cb(void)
+{
+  xEventGroupSetBits(s.data_ready_event_group, IMU_DR_EVENT);
+}
+
 static void sampling_timer_cb(TimerHandle_t xTimer)
 {
   xTaskNotifyGive(s.sensors_task_handle);
@@ -55,7 +60,7 @@ static void touch_data_get(void)
 
   tsc_get_value(tsc_vals);
   for (int i = 0; i < TOUCH_SENSOR_CNT; i++) {
-    LOG_DEBUG("touch sensor val %d: %d\r\n", i, (int) tsc_vals[i]);
+    //   LOG_DEBUG("touch sensor val %d: %d\r\n", i, (int) tsc_vals[i]);
   }
   s.sample.touchData.touch1 = tsc_vals[0];
   s.sample.touchData.touch2 = tsc_vals[1];
@@ -70,7 +75,7 @@ static void flex_data_get(void)
   for (uint8_t i = 0; i < FLEX_SENSOR_CNT; i++) {
     flex_get_value(&flex_val, i);
     *flex_ptr = flex_val;
-    LOG_DEBUG("Flex_%hu val: %lu\r\n", i + 1, *flex_ptr);
+//    LOG_DEBUG("Flex_%hu val: %lu\r\n", i + 1, *flex_ptr);
     flex_ptr++;
   }
 }
@@ -98,23 +103,21 @@ static void sensors_task(void *arg)
       RTOS_ERR_CHECK(xTimerStop(s.sampling_timer, 0));
       s.sample.sample_id = 0;
     }
+
     ulTaskNotifyTake(pdFALSE, portMAX_DELAY);
+
+    imu_start_read();
+    tsc_start_read();
     flex_start_read();
 
-    tsc_start_read();
-
-//    imu_process();
-
-    // TODO Change bits to wait for to all when added
     EventBits_t event_bits;
     event_bits = xEventGroupWaitBits(s.data_ready_event_group,
-                                     TSC_DR_EVENT | FLEX_DR_EVENT,
+                                     ALL_DR_EVENTS,
                                      pdTRUE,
                                      pdTRUE,
                                      TIMEOUT_TICKS);
 
-    // TODO change bits here too, and add proper handling of this scenario
-    if (event_bits != (TSC_DR_EVENT | FLEX_DR_EVENT)) {
+    if (event_bits != (ALL_DR_EVENTS)) {
       LOG_ERROR("TIMEOUT waiting for sensor data\r\n");
     }
     else {
@@ -122,7 +125,9 @@ static void sensors_task(void *arg)
 
       touch_data_get();
       flex_data_get();
+      imu_data_get(&s.sample.imuData);
     }
+
     comms_tx_sample(&s.sample);
     s.sample.sample_id++;
   }
@@ -130,10 +135,10 @@ static void sensors_task(void *arg)
 
 void sensors_task_setup(void)
 {
-  imu_init();
-
+  LOG_DEBUG("Sensors Initialized\r\n");
   flex_callback_register(flex_data_ready_cb);
   tsc_callback_register(tsc_data_ready_cb);
+  imu_callback_register(imu_data_ready_cb);
 }
 
 void sensors_task_start(void)

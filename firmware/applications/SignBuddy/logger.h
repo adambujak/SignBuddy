@@ -5,7 +5,7 @@
 
 void logger_write(char *string);
 
-#define LOG_MAX_STRING_LEN    128
+#define LOG_MAX_STRING_LEN    64
 
 #define LOG_LEVEL_DEBUG       1
 #define LOG_LEVEL_INFO        2

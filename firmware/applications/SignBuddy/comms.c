@@ -12,7 +12,7 @@
 
 #include <stdlib.h>
 
-#define COMMS_TX_BUFFER_SIZE    512
+#define COMMS_TX_BUFFER_SIZE    128
 
 #define SYNC                    0x16
 

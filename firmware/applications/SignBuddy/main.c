@@ -93,22 +93,22 @@ int main(void)
 
   flex_task_setup();
   tsc_task_setup();
+  imu_task_setup();
   sensors_task_setup();
   comms_task_setup();
 
   LOG_INFO("App started\r\n");
 
-  RTOS_ERR_CHECK(xTaskCreate(leds_task,
-                             "led",
-                             128,
-                             NULL,
-                             4,
-                             NULL));
+  //RTOS_ERR_CHECK(xTaskCreate(leds_task, "led", 64, NULL, 4, NULL));
 
   comms_task_start();
   sensors_task_start();
+
   tsc_task_start();
+
   flex_task_start();
+
+  imu_task_start();
 
   os_start();
 }
@@ -134,6 +134,7 @@ void SysTick_Handler(void)
 
 void vApplicationStackOverflowHook(TaskHandle_t xTask, char *pcTaskName)
 {
+  __asm__ ("BKPT");
   LOG_ERROR("Stack Overflow");
   error_handler();
 }

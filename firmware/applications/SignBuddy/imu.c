@@ -6,17 +6,13 @@
 #include "logger.h"
 #include "bno055.h"
 
-#define PROCESS_PERIOD_MS    1000
-
 typedef struct {
-  uint8_t                        sys_calib_stat;
-  uint8_t                        mag_calib_stat;
-  uint8_t                        accel_calib_stat;
-  uint8_t                        gyro_calib_stat;
+  TaskHandle_t                   task_handle;
   i2c_t                          i2c_instance;
   struct   bno055_t              bno055;
-  struct   bno055_quaternion_t   bno055_quat_wxyz;
+  struct   bno055_euler_t        bno055_euler_hrp;
   struct   bno055_linear_accel_t bno055_acce_xyz;
+  void (*callback)(void);
 } state_t;
 
 static state_t s;
@@ -45,6 +41,15 @@ static void hw_init(void)
   i2c_config.OwnAddrSize = LL_I2C_OWNADDRESS1_7BIT;
 
   i2c_init(&s.i2c_instance, IMU_I2C, &i2c_config);
+}
+
+static inline void sample_data(void)
+{
+  uint8_t ret = 0;
+
+  ret |= bno055_read_euler_hrp(&s.bno055_euler_hrp);
+  ret |= bno055_read_linear_accel_xyz(&s.bno055_acce_xyz);
+  ERR_CHECK(ret);
 }
 
 static inline int8_t bus_write(uint8_t slave_addr, uint8_t reg_addr, uint8_t *data, uint8_t length)
@@ -76,38 +81,47 @@ static void bno_init(void)
   ERR_CHECK(bno055_set_operation_mode(BNO055_OPERATION_MODE_NDOF));
 }
 
-static void get_data(void)
+static void imu_task(void *arg)
 {
-  uint32_t ret = 0;
-
-  ret |= bno055_get_sys_calib_stat(&s.sys_calib_stat);
-  ret |= bno055_get_mag_calib_stat(&s.mag_calib_stat);
-  ret |= bno055_get_accel_calib_stat(&s.accel_calib_stat);
-  ret |= bno055_get_gyro_calib_stat(&s.gyro_calib_stat);
-  ret |= bno055_read_quaternion_wxyz(&s.bno055_quat_wxyz);
-  ret |= bno055_read_linear_accel_xyz(&s.bno055_acce_xyz);
-  ERR_CHECK(ret);
-
-  LOG_INFO("Syst calib: %d\r\n", s.sys_calib_stat);
-  LOG_INFO("Magt calib: %d\r\n", s.mag_calib_stat);
-  LOG_INFO("Accl calib: %d\r\n", s.accel_calib_stat);
-  LOG_INFO("Gyro calib: %d\r\n", s.gyro_calib_stat);
-  LOG_INFO("Quat dataW: %d\r\n", s.bno055_quat_wxyz.w);
-  LOG_INFO("Quat dataX: %d\r\n", s.bno055_quat_wxyz.x);
-  LOG_INFO("Quat dataY: %d\r\n", s.bno055_quat_wxyz.y);
-  LOG_INFO("Quat dataZ: %d\r\n", s.bno055_quat_wxyz.z);
-  LOG_INFO("Acce dataX: %d\r\n", s.bno055_acce_xyz.x);
-  LOG_INFO("Acce dataY: %d\r\n", s.bno055_acce_xyz.y);
-  LOG_INFO("Acce dataZ: %d\r\n", s.bno055_acce_xyz.z);
+  while (1) {
+    ulTaskNotifyTake(pdFALSE, portMAX_DELAY);
+    sample_data();
+    s.callback();
+  }
 }
 
-void imu_init(void)
+void imu_task_setup(void)
 {
   hw_init();
   bno_init();
 }
 
-void imu_process(void)
+void imu_task_start(void)
 {
-  get_data();
+  RTOS_ERR_CHECK(xTaskCreate(imu_task,
+                             "imu",
+                             IMU_STACK_SIZE,
+                             NULL,
+                             IMU_TASK_PRIORITY,
+                             &s.task_handle));
+}
+
+void imu_start_read(void)
+{
+  xTaskNotifyGive(s.task_handle);
+}
+
+void imu_data_get(Sample_IMUData *data)
+{
+  data->eul_y = s.bno055_euler_hrp.h;
+  data->eul_r = s.bno055_euler_hrp.r;
+  data->eul_p = s.bno055_euler_hrp.p;
+  data->lin_acc_x = s.bno055_acce_xyz.x;
+  data->lin_acc_y = s.bno055_acce_xyz.y;
+  data->lin_acc_z = s.bno055_acce_xyz.z;
+}
+
+void imu_callback_register(void (*callback)(void))
+{
+  s.callback = callback;
 }
