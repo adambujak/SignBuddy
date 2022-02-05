@@ -63,22 +63,22 @@
 #define LOG_UART_GPIO_CLK_EN()      LL_IOP_GRP1_EnableClock(LL_IOP_GRP1_PERIPH_GPIOA)
 
 /* FLEX */
-#define FLEX_THUMB_PORT           GPIOA
-#define FLEX_THUMB_PIN            LL_GPIO_PIN_0
-#define FLEX_THUMB_CHANNEL        LL_ADC_CHANNEL_0
-#define FLEX_INDEX_PORT           GPIOA
-#define FLEX_INDEX_PIN            LL_GPIO_PIN_1
-#define FLEX_INDEX_CHANNEL        LL_ADC_CHANNEL_1
-#define FLEX_MIDDLE_PORT          GPIOA
-#define FLEX_MIDDLE_PIN           LL_GPIO_PIN_6
-#define FLEX_MIDDLE_CHANNEL       LL_ADC_CHANNEL_6
-#define FLEX_RING_PORT            GPIOA
-#define FLEX_RING_PIN             LL_GPIO_PIN_7
-#define FLEX_RING_CHANNEL         LL_ADC_CHANNEL_7
-#define FLEX_LITTLE_PORT          GPIOB
-#define FLEX_LITTLE_PIN           LL_GPIO_PIN_0
-#define FLEX_LITTLE_CHANNEL       LL_ADC_CHANNEL_8
-#define FLEX_GPIO_CLK_EN()        LL_IOP_GRP1_EnableClock(LL_IOP_GRP1_PERIPH_GPIOA); \
+#define FLEX_THUMB_PORT             GPIOA
+#define FLEX_THUMB_PIN              LL_GPIO_PIN_0
+#define FLEX_THUMB_CHANNEL          LL_ADC_CHANNEL_0
+#define FLEX_INDEX_PORT             GPIOA
+#define FLEX_INDEX_PIN              LL_GPIO_PIN_1
+#define FLEX_INDEX_CHANNEL          LL_ADC_CHANNEL_1
+#define FLEX_MIDDLE_PORT            GPIOA
+#define FLEX_MIDDLE_PIN             LL_GPIO_PIN_6
+#define FLEX_MIDDLE_CHANNEL         LL_ADC_CHANNEL_6
+#define FLEX_RING_PORT              GPIOA
+#define FLEX_RING_PIN               LL_GPIO_PIN_7
+#define FLEX_RING_CHANNEL           LL_ADC_CHANNEL_7
+#define FLEX_LITTLE_PORT            GPIOB
+#define FLEX_LITTLE_PIN             LL_GPIO_PIN_0
+#define FLEX_LITTLE_CHANNEL         LL_ADC_CHANNEL_8
+#define FLEX_GPIO_CLK_EN()          LL_IOP_GRP1_EnableClock(LL_IOP_GRP1_PERIPH_GPIOA); \
   LL_IOP_GRP1_EnableClock(LL_IOP_GRP1_PERIPH_GPIOB);
 
 /* I2C */

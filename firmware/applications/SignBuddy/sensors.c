@@ -78,7 +78,7 @@ static void sensors_task(void *arg)
 
     tsc_start_read();
 
-    //imu_process();
+//    imu_process();
 
     // TODO Change bits to wait for to all when added
     EventBits_t event_bits;
@@ -94,17 +94,21 @@ static void sensors_task(void *arg)
     }
     else {
       LOG_DEBUG("Sample_id: %lu\r\n", s.sample.sample_id);
-      int8_t tsc_val;
-      tsc_get_value(&tsc_val);
-      s.sample.touchData.touch1 = tsc_val;
-      LOG_DEBUG("touch sensor val: %d\r\n", s.sample.touchData.touch1);
+
+      int8_t tsc_vals[TOUCH_SENSOR_CNT];
+      tsc_get_value(tsc_vals);
+      for (int i = 0; i < TOUCH_SENSOR_CNT; i++) {
+        LOG_DEBUG("touch sensor val %d: %d\r\n", i, (int) tsc_vals[i]);
+      }
+
       uint16_t flex_val;
-      uint32_t *flex_Ptr = (uint32_t *) &s.sample.flexData;
+      uint32_t *flex_ptr = (uint32_t *) &s.sample.flexData;
+
       for (uint8_t i = 0; i < FLEX_SENSOR_CNT; i++) {
         flex_get_value(&flex_val, i);
-        *flex_Ptr = flex_val;
-        LOG_DEBUG("Flex_%hu val: %lu\r\n", i + 1, *flex_Ptr);
-        flex_Ptr++;
+        *flex_ptr = flex_val;
+        LOG_DEBUG("Flex_%hu val: %lu\r\n", i + 1, *flex_ptr);
+        flex_ptr++;
       }
     }
     comms_tx_data(&s.sample);
