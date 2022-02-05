@@ -1,6 +1,7 @@
 #include "board.h"
 #include "ble_uart.h"
 #include "common.h"
+#include "comms.h"
 #include "flex.h"
 #include "gpio.h"
 #include "imu.h"
@@ -110,6 +111,7 @@ int main(void)
   flex_task_setup();
   tsc_task_setup();
   sensors_task_setup();
+  comms_task_setup();
 
   LOG_INFO("App started\r\n");
 
@@ -120,6 +122,7 @@ int main(void)
                              4,
                              NULL));
 
+  comms_task_start();
   sensors_task_start();
   tsc_task_start();
   flex_task_start();

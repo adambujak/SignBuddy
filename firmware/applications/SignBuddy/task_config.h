@@ -3,10 +3,12 @@
 
 // higher number is higher priority
 #define SENSORS_TASK_PRIORITY    (tskIDLE_PRIORITY + 3)
+#define COMMS_TASK_PRIORITY      (tskIDLE_PRIORITY + 3)
 #define TSC_TASK_PRIORITY        (tskIDLE_PRIORITY + 4)
 #define FLEX_TASK_PRIORITY       (tskIDLE_PRIORITY + 4)
 
-#define SENSORS_STACK_SIZE       512
+#define SENSORS_STACK_SIZE       256
+#define COMMS_STACK_SIZE         256
 #define TSC_STACK_SIZE           256
 #define FLEX_STACK_SIZE          256
 

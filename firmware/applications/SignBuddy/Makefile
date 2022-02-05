@@ -17,6 +17,11 @@ LIB_ROOT = $(FIRMWARE_ROOT)/libraries
 PROJ_ROOT = $(FIRMWARE_ROOT)/applications/SignBuddy
 
 NANOPB_ROOT = $(FIRMWARE_ROOT)/dependencies/nanopb
+
+PB_SOURCES = \
+	$(NANOPB_ROOT)/pb_common.c \
+	$(NANOPB_ROOT)/pb_encode.c \
+
 PROTO_SOURCE = $(PROJ_ROOT)/SignBuddy.pb.c
 
 FREERTOS_SOURCES = \
@@ -53,6 +58,7 @@ C_SOURCES = \
 	main.c \
 	adc.c \
 	ble_uart.c \
+	comms.c \
 	dma.c \
 	flex.c \
 	gpio.c \
@@ -67,6 +73,7 @@ C_SOURCES = \
 	$(LIB_SOURCES) \
 	$(HAL_SOURCES) \
 	$(FREERTOS_SOURCES) \
+	$(PB_SOURCES) \
 
 C_INCLUDES = \
 	-I$(SDK_ROOT)/Drivers/CMSIS/Device/ST/STM32L0xx/Include \

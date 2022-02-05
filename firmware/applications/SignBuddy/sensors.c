@@ -23,7 +23,7 @@
 #define TIMEOUT_MS           40
 #define TIMEOUT_TICKS        pdMS_TO_TICKS(TIMEOUT_MS)
 
-#define SAMPLING_PERIOD      50
+#define SAMPLING_PERIOD      1000
 #define MAX_SAMPLES          40
 
 typedef struct {
@@ -31,6 +31,7 @@ typedef struct {
   EventGroupHandle_t data_ready_event_group;
   TimerHandle_t      sampling_timer;
   Sample             sample;
+  void (*callback)(void);
 } state_t;
 
 static state_t s;
@@ -105,8 +106,25 @@ static void sensors_task(void *arg)
         flex_Ptr++;
       }
     }
+    s.callback();
+    ulTaskNotifyTake(pdFALSE, portMAX_DELAY);
     s.sample.sample_id++;
   }
+}
+
+static void sensors_callback_register(void (*callback)(void))
+{
+  s.callback = callback;
+}
+
+void comms_data_recvd_cb(void)
+{
+  xTaskNotifyGive(s.sensors_task_handle);
+}
+
+void get_sensor_data(Sample *sample)
+{
+  *sample = s.sample;
 }
 
 void sensors_task_setup(void)
@@ -116,6 +134,7 @@ void sensors_task_setup(void)
   LOG_DEBUG("Sensors Initialized\r\n");
   flex_callback_register(flex_data_ready_cb);
   tsc_callback_register(tsc_data_ready_cb);
+  sensors_callback_register(sensors_data_ready_cb);
 }
 
 void sensors_task_start(void)
