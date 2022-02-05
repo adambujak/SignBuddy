@@ -116,7 +116,7 @@ int main(void)
   LOG_INFO("App started\r\n");
 
   RTOS_ERR_CHECK(xTaskCreate(leds_task,
-                             "led_task",
+                             "led",
                              128,
                              NULL,
                              4,

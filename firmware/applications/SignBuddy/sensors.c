@@ -3,6 +3,7 @@
 #include "adc.h"
 #include "ble_uart.h"
 #include "common.h"
+#include "comms.h"
 #include "flex.h"
 #include "imu.h"
 #include "logger.h"
@@ -31,7 +32,6 @@ typedef struct {
   EventGroupHandle_t data_ready_event_group;
   TimerHandle_t      sampling_timer;
   Sample             sample;
-  void (*callback)(void);
 } state_t;
 
 static state_t s;
@@ -53,6 +53,7 @@ void sampling_timer_cb(TimerHandle_t xTimer)
 
 static void sensors_task(void *arg)
 {
+  LOG_INFO("sens: task started\r\n");
   s.data_ready_event_group = xEventGroupCreate();
   if (s.data_ready_event_group == NULL) {
     LOG_ERROR("Event Group Creation Failed\r\n");
@@ -106,35 +107,17 @@ static void sensors_task(void *arg)
         flex_Ptr++;
       }
     }
-    s.callback();
-    ulTaskNotifyTake(pdFALSE, portMAX_DELAY);
+    comms_tx_data(&s.sample);
     s.sample.sample_id++;
   }
-}
-
-static void sensors_callback_register(void (*callback)(void))
-{
-  s.callback = callback;
-}
-
-void comms_data_recvd_cb(void)
-{
-  xTaskNotifyGive(s.sensors_task_handle);
-}
-
-void get_sensor_data(Sample *sample)
-{
-  *sample = s.sample;
 }
 
 void sensors_task_setup(void)
 {
   imu_init();
 
-  LOG_DEBUG("Sensors Initialized\r\n");
   flex_callback_register(flex_data_ready_cb);
   tsc_callback_register(tsc_data_ready_cb);
-  sensors_callback_register(sensors_data_ready_cb);
 }
 
 void sensors_task_start(void)

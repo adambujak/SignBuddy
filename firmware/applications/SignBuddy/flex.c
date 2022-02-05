@@ -4,6 +4,7 @@
 #include "board.h"
 #include "dma.h"
 #include "common.h"
+#include "logger.h"
 
 #define VREF    ((uint32_t) 3300)
 
@@ -50,6 +51,7 @@ static inline void sample_data(void)
 
 static void flex_task(void *arg)
 {
+  LOG_INFO("flex: task started\r\n");
   while (1) {
     ulTaskNotifyTake(pdFALSE, portMAX_DELAY);
     sample_data();

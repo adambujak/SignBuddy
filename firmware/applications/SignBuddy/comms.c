@@ -3,7 +3,6 @@
 #include "common.h"
 #include "logger.h"
 #include "pb_encode.h"
-#include "sensors.h"
 #include "SignBuddy.pb.h"
 
 #include <stdlib.h>
@@ -16,42 +15,48 @@ typedef struct __attribute__((__packed__)) {
 
 typedef struct {
   TaskHandle_t task_handle;
+  uint8_t      tx_dr;
   Sample       sample;
   packet_t     packet;
-  void (*callback)(void);
 } state_t;
 
 static state_t s;
 
-void sensors_data_ready_cb(void)
+static inline void set_tx_dr(void)
 {
-  xTaskNotifyGive(s.task_handle);
+  s.tx_dr = 1;
+}
+
+static inline void clear_tx_dr(void)
+{
+  s.tx_dr = 0;
 }
 
 static void comms_task(void *arg)
 {
-  LOG_INFO("Comms task started\r\n");
+  LOG_INFO("comms: task started\r\n");
 
   while (1) {
-    ulTaskNotifyTake(pdFALSE, portMAX_DELAY);
-    get_sensor_data(&s.sample);
-    pb_ostream_t stream = pb_ostream_from_buffer((pb_byte_t *) &s.packet.protobuf, Sample_size);
-    pb_encode(&stream, &Sample_msg, &s.sample);
-    pb_get_encoded_size((size_t *) &s.packet.length, &Sample_msg, &s.sample);
-    LOG_INFO("Encoded packet length: %d\r\n", s.packet.length);
-    s.callback();
+    // TODO Check for message received
+
+    if (s.tx_dr == 1) {
+      pb_ostream_t stream = pb_ostream_from_buffer((pb_byte_t *) &s.packet.protobuf, Sample_size);
+      pb_encode(&stream, &Sample_msg, &s.sample);
+      pb_get_encoded_size((size_t *) &s.packet.length, &Sample_msg, &s.sample);
+      clear_tx_dr();
+      LOG_INFO("Encoded packet length: %d\r\n", s.packet.length);
+    }
   }
 }
 
-static void comms_callback_register(void (*callback)(void))
+void comms_tx_data(Sample *sample)
 {
-  s.callback = callback;
+  s.sample = *sample;
+  set_tx_dr();
 }
 
 void comms_task_setup(void)
-{
-  comms_callback_register(comms_data_recvd_cb);
-}
+{}
 
 void comms_task_start(void)
 {
