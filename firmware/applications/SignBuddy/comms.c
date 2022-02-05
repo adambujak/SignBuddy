@@ -44,7 +44,7 @@ static void comms_task(void *arg)
       pb_encode(&stream, &Sample_msg, &s.sample);
       pb_get_encoded_size((size_t *) &s.packet.length, &Sample_msg, &s.sample);
       clear_tx_dr();
-      LOG_INFO("Encoded packet length: %d\r\n", s.packet.length);
+      LOG_DEBUG("Encoded packet length: %d\r\n", s.packet.length);
     }
   }
 }
