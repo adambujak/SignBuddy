@@ -37,7 +37,8 @@ static void comms_task(void *arg)
     get_sensor_data(&s.sample);
     pb_ostream_t stream = pb_ostream_from_buffer((pb_byte_t *) &s.packet.protobuf, Sample_size);
     pb_encode(&stream, &Sample_msg, &s.sample);
-    LOG_INFO("%s\r\n", s.packet.protobuf);
+    pb_get_encoded_size((size_t *) &s.packet.length, &Sample_msg, &s.sample);
+    LOG_INFO("Encoded packet length: %d\r\n", s.packet.length);
     s.callback();
   }
 }
