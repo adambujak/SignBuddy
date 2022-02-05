@@ -6,6 +6,7 @@
 #include "flex.h"
 #include "imu.h"
 #include "logger.h"
+#include "SignBuddy.pb.h"
 #include "tsc.h"
 
 #include <stdlib.h>
@@ -22,12 +23,14 @@
 #define TIMEOUT_MS           40
 #define TIMEOUT_TICKS        pdMS_TO_TICKS(TIMEOUT_MS)
 
-#define SAMPLING_PERIOD      1000
+#define SAMPLING_PERIOD      50
+#define MAX_SAMPLES          40
 
 typedef struct {
   TaskHandle_t       sensors_task_handle;
   EventGroupHandle_t data_ready_event_group;
   TimerHandle_t      sampling_timer;
+  Sample             sample;
 } state_t;
 
 static state_t s;
@@ -59,10 +62,15 @@ static void sensors_task(void *arg)
     LOG_ERROR("Sampling timer creation failed\r\n");
   }
 
+  s.sample.sample_id = 1;
+
   // TODO Timer start should be triggered by message received from BLE
   RTOS_ERR_CHECK(xTimerStart(s.sampling_timer, 0));
 
   while (1) {
+    if (s.sample.sample_id > MAX_SAMPLES) {
+      RTOS_ERR_CHECK(xTimerStop(s.sampling_timer, 0));
+    }
     ulTaskNotifyTake(pdFALSE, portMAX_DELAY);
     flex_start_read();
 
@@ -83,15 +91,21 @@ static void sensors_task(void *arg)
       LOG_ERROR("TIMEOUT waiting for sensor data\r\n");
     }
     else {
+      LOG_DEBUG("Sample_id: %lu\r\n", s.sample.sample_id);
       int8_t tsc_val;
       tsc_get_value(&tsc_val);
-      LOG_DEBUG("touch sensor val: %d\r\n", (int) tsc_val);
+      s.sample.touchData.touch1 = tsc_val;
+      LOG_DEBUG("touch sensor val: %d\r\n", s.sample.touchData.touch1);
       uint16_t flex_val;
-      for (uint8_t i = 0; i < 5; i++) {
+      uint32_t *flex_Ptr = (uint32_t *) &s.sample.flexData;
+      for (uint8_t i = 0; i < FLEX_SENSOR_CNT; i++) {
         flex_get_value(&flex_val, i);
-        LOG_DEBUG("Flex_%hu val: %hu\r\n", i + 1, flex_val);
+        *flex_Ptr = flex_val;
+        LOG_DEBUG("Flex_%hu val: %lu\r\n", i + 1, *flex_Ptr);
+        flex_Ptr++;
       }
     }
+    s.sample.sample_id++;
   }
 }
 

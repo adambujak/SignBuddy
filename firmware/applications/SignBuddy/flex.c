@@ -5,9 +5,7 @@
 #include "dma.h"
 #include "common.h"
 
-#define VREF               ((uint32_t) 3300)
-
-#define FLEX_SENSOR_CNT    5
+#define VREF    ((uint32_t) 3300)
 
 typedef struct {
   uint16_t     flex_values[FLEX_SENSOR_CNT];
