@@ -19,11 +19,11 @@
 
 #define SYSCLK_FREQ                     24000000
 
-#define SYSTEM_TIME_PRIORITY            4
-#define ADC_PRIORITY                    5
-#define DMA_PRIORITY                    6
-#define BLE_UART_PRIORITY               9
-#define LOG_UART_PRIORITY               10
+#define SYSTEM_TIME_PRIORITY            0
+#define ADC_PRIORITY                    1
+#define DMA_PRIORITY                    2
+#define BLE_UART_PRIORITY               3
+#define LOG_UART_PRIORITY               3
 
 /* LED */
 #define LED1_PORT                       GPIOA
