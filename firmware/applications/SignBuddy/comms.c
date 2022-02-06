@@ -20,14 +20,14 @@ typedef struct __attribute__((__packed__)) {
 } packet_t;
 
 typedef struct {
-  TaskHandle_t task_handle;
-  Sample       sample;
-  packet_t     packet;
-  uint8_t      sample_ready;
-  uint8_t      packet_ready;
-  uint8_t      tx_buffer[COMMS_TX_BUFFER_SIZE];
-  fifo_t       tx_fifo;
-  //SemaphoreHandle_t sample_mutex;
+  TaskHandle_t      task_handle;
+  Sample            sample;
+  packet_t          packet;
+  uint8_t           sample_ready;
+  uint8_t           packet_ready;
+  uint8_t           tx_buffer[COMMS_TX_BUFFER_SIZE];
+  fifo_t            tx_fifo;
+  SemaphoreHandle_t sample_mutex;
 } state_t;
 
 static state_t s;
@@ -117,13 +117,15 @@ static void comms_task(void *arg)
 {
   LOG_INFO("comms: task started\r\n");
 
+  s.sample_mutex = xSemaphoreCreateMutex();
+
   while (1) {
     /* Create packet if new sample ready and last packet ingested */
-    //xSemaphoreTake(s.sample_mutex, portMAX_DELAY);
+    xSemaphoreTake(s.sample_mutex, portMAX_DELAY);
     if ((s.sample_ready == 1) && (s.packet_ready == 0)) {
       create_packet();
     }
-    //xSemaphoreGive(s.sample_mutex);
+    xSemaphoreGive(s.sample_mutex);
 
     /* Ingest packet into tx buffer if packet ready and tx buffer has enough space */
     if ((s.packet_ready == 1) && (fifo_bytes_unused_cnt_get(&s.tx_fifo) >= sizeof(s.packet))) {
@@ -144,17 +146,16 @@ static void comms_task(void *arg)
 
 void comms_tx_data(Sample *sample)
 {
-  //xSemaphoreTake(s.sample_mutex, portMAX_DELAY);
+  xSemaphoreTake(s.sample_mutex, portMAX_DELAY);
   s.sample = *sample;
   set_sample_ready();
-  //xSemaphoreGive(s.sample_mutex);
+  xSemaphoreGive(s.sample_mutex);
 }
 
 void comms_task_setup(void)
 {
   hw_init();
   fifo_init(&s.tx_fifo, s.tx_buffer, COMMS_TX_BUFFER_SIZE);
-  //s.sample_mutex = xSemaphoreCreateMutex();
 }
 
 void comms_task_start(void)
