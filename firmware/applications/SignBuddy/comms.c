@@ -11,7 +11,7 @@
 
 #include <stdlib.h>
 
-#define COMMS_TX_BUFFER_SIZE    256
+#define COMMS_TX_BUFFER_SIZE    512
 
 typedef struct __attribute__((__packed__)) {
   uint8_t length;
