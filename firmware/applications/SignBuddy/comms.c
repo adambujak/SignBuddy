@@ -59,7 +59,6 @@ static void hw_init(void)
 
 static void rx()
 {
-  LOG_INFO("comms: process rx\r\n");
   DISABLE_IRQ();
   uint8_t cmd = LL_LPUART_ReceiveData8(BLE_UART);
   ENABLE_IRQ();
