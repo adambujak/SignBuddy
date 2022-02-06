@@ -20,13 +20,13 @@ typedef struct __attribute__((__packed__)) {
 } packet_t;
 
 typedef struct {
-  TaskHandle_t      task_handle;
-  Sample            sample;
-  packet_t          packet;
-  uint8_t           sample_ready;
-  uint8_t           packet_ready;
-  uint8_t           tx_buffer[COMMS_TX_BUFFER_SIZE];
-  fifo_t            tx_fifo;
+  TaskHandle_t task_handle;
+  Sample       sample;
+  packet_t     packet;
+  uint8_t      sample_ready;
+  uint8_t      packet_ready;
+  uint8_t      tx_buffer[COMMS_TX_BUFFER_SIZE];
+  fifo_t       tx_fifo;
   //SemaphoreHandle_t sample_mutex;
 } state_t;
 
