@@ -20,9 +20,6 @@ static void uart_init(void)
   gpio_config.Alternate = BLE_UART_GPIO_AF;
   LL_GPIO_Init(BLE_UART_GPIO_PORT, &gpio_config);
 
-  NVIC_SetPriority(BLE_UART_IRQn, BLE_UART_PRIORITY);
-  NVIC_EnableIRQ(BLE_UART_IRQn);
-
   uart_config.BaudRate = 9600;
   uart_config.DataWidth = LL_LPUART_DATAWIDTH_8B;
   uart_config.StopBits = LL_LPUART_STOPBITS_1;
@@ -33,30 +30,7 @@ static void uart_init(void)
   LL_LPUART_Enable(BLE_UART);
 }
 
-void ble_uart_enable_it(void)
-{
-  LL_LPUART_EnableIT_RXNE(BLE_UART);
-  LL_LPUART_EnableIT_TXE(BLE_UART);
-  LL_LPUART_EnableIT_TC(BLE_UART);
-}
-
 void ble_uart_init(void)
 {
   uart_init();
-}
-
-void BLE_UART_IRQHandler(void)
-{
-  DISABLE_IRQ();
-  if (LL_LPUART_IsActiveFlag_RXNE(BLE_UART)) {
-    comms_rx_data_ready_cb();
-  }
-  if (LL_LPUART_IsActiveFlag_TXE(BLE_UART)) {
-    comms_tx_empty_cb();
-  }
-  if (LL_LPUART_IsActiveFlag_TC(BLE_UART)) {
-    LL_LPUART_ClearFlag_TC(BLE_UART);
-    comms_tx_data_clear_cb();
-  }
-  ENABLE_IRQ();
 }
