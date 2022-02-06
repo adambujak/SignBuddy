@@ -2,7 +2,6 @@
 
 #include "board.h"
 #include "common.h"
-#include "comms.h"
 
 static void uart_init(void)
 {
