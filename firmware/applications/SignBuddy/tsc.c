@@ -12,18 +12,18 @@
 #define CHANNEL0                       0
 #define CHANNEL1                       1
 
-#define TOUCH_SENSOR_0                 TSC_GROUP3_CHANNEL0
-#define TOUCH_SENSOR_1                 TSC_GROUP4_CHANNEL0
-#define TOUCH_SENSOR_2                 TSC_GROUP5_CHANNEL0
-#define TOUCH_SENSOR_3                 TSC_GROUP6_CHANNEL0
-#define TOUCH_SENSOR_4                 TSC_GROUP7_CHANNEL0
-#define TOUCH_SENSOR_5                 TSC_GROUP8_CHANNEL0
+#define TOUCH_SENSOR_0                 0   // TSC_GROUP3_CHANNEL0
+#define TOUCH_SENSOR_1                 1   // TSC_GROUP4_CHANNEL0
+#define TOUCH_SENSOR_2                 2   // TSC_GROUP5_CHANNEL0
+#define TOUCH_SENSOR_3                 3   // TSC_GROUP6_CHANNEL0
+#define TOUCH_SENSOR_4                 4   // TSC_GROUP7_CHANNEL0
+#define TOUCH_SENSOR_5                 5   // TSC_GROUP8_CHANNEL0
 
-#define TOUCH_SENSOR_6                 TSC_GROUP4_CHANNEL1
-#define TOUCH_SENSOR_7                 TSC_GROUP5_CHANNEL1
-#define TOUCH_SENSOR_8                 TSC_GROUP6_CHANNEL1
-#define TOUCH_SENSOR_9                 TSC_GROUP7_CHANNEL1
-#define TOUCH_SENSOR_10                TSC_GROUP8_CHANNEL1
+#define TOUCH_SENSOR_6                 6   // TSC_GROUP4_CHANNEL1
+#define TOUCH_SENSOR_7                 7   // TSC_GROUP5_CHANNEL1
+#define TOUCH_SENSOR_8                 8   // TSC_GROUP6_CHANNEL1
+#define TOUCH_SENSOR_9                 9   // TSC_GROUP7_CHANNEL1
+#define TOUCH_SENSOR_10                10  // TSC_GROUP8_CHANNEL1
 
 
 #define SENSOR_PORT(group, channel)    TSC_GROUP ## group ## _CHANNEL ## channel ## _PORT
@@ -197,7 +197,6 @@ static int run_sampler(void)
   return RET_OK;
 }
 
-
 // offset is the offset in the touch value array for the channel
 static void fetch_channel_values(uint8_t channel, uint8_t min_group, uint8_t max_group, uint8_t offset)
 {
@@ -236,7 +235,6 @@ static int calibrate_channel(uint8_t channel, uint8_t min_group, uint8_t max_gro
     rtos_delay_ms(10);
 
     if (run_sampler() == RET_OK) {
-
       uint32_t value;
       int index = offset;
 
