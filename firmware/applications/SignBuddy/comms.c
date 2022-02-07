@@ -39,7 +39,6 @@ typedef struct {
   packet_footer_t   packet_footer;
   Sample            sample;
   uint8_t           sample_buffer[Sample_size];
-  uint8_t          *packed_sample_ptr;
   volatile uint8_t  sample_ready;
   volatile uint8_t  packet_ready;
   uint8_t           tx_buffer[COMMS_TX_BUFFER_SIZE];
@@ -75,9 +74,8 @@ static void rx()
 static void ingest_packet()
 {
   fifo_push(&s.tx_fifo, (uint8_t *) &s.packet_header, sizeof(packet_header_t));
-  fifo_push(&s.tx_fifo, s.packed_sample_ptr, s.packet_header.length);
+  fifo_push(&s.tx_fifo, s.sample_buffer, s.packet_header.length);
   fifo_push(&s.tx_fifo, (uint8_t *) &s.packet_footer, sizeof(packet_footer_t));
-  free(s.packed_sample_ptr);
   s.packet_ready = 0;
 }
 
@@ -88,10 +86,8 @@ static void packetize_sample()
   pb_encode(&stream, &Sample_msg, &s.sample);
   s.sample_ready = 0;
   s.packet_header.length = stream.bytes_written;
-  s.packed_sample_ptr = malloc(s.packet_header.length);
   s.packet_header.mid = MID_SAMPLE;
-  memcpy(s.packed_sample_ptr, &s.sample_buffer, s.packet_header.length);
-  s.packet_footer.crc = compute_crc(s.packed_sample_ptr, s.packet_header.length);
+  s.packet_footer.crc = compute_crc(s.sample_buffer, s.packet_header.length);
   s.packet_ready = 1;
   /* If tx buffer has room, ingest the packet immediately */
   if (fifo_bytes_unused_cnt_get(&s.tx_fifo) >= PACKET_SIZE) {
