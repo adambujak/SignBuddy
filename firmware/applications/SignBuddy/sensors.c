@@ -24,7 +24,7 @@
 #define TIMEOUT_MS           40
 #define TIMEOUT_TICKS        pdMS_TO_TICKS(TIMEOUT_MS)
 
-#define SAMPLING_PERIOD      1000
+#define SAMPLING_PERIOD      50
 #define MAX_SAMPLES          40
 
 typedef struct {
