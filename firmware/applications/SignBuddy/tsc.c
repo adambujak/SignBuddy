@@ -147,11 +147,11 @@ static void io_config(uint8_t channel)
 {
   TSC_IOConfigTypeDef io_config = { 0 };
 
-  if (channel == 0) {
+  if (channel == CHANNEL0) {
     io_config.ChannelIOs = CHANNEL0_IOS;
     io_config.SamplingIOs = SAMPLING0_IOS;
   }
-  else {
+  else if (channel == CHANNEL1) {
     io_config.ChannelIOs = CHANNEL1_IOS;
     io_config.SamplingIOs = SAMPLING1_IOS;
   }
@@ -176,26 +176,15 @@ static void get_group_value(uint8_t group, uint32_t *value)
   }
 }
 
-// offset is the offset in the touch value array for the channel
-static void get_channel_values(uint8_t min_group, uint8_t max_group, uint8_t offset)
-{
-  uint32_t value;
-  int index = offset;
-
-  for (int i = min_group; i <= max_group; i++) {
-    get_group_value(i, &value);
-    s.touch_values[index] = convert_value_to_touch(value, index);
-    index++;
-  }
-}
-
 static int run_sampler(void)
 {
   if (HAL_TSC_Start(&s.tsc) != HAL_OK) {
     error_handler();
   }
 
-  while (HAL_TSC_GetState(&s.tsc) == HAL_TSC_STATE_BUSY);
+  while (HAL_TSC_GetState(&s.tsc) == HAL_TSC_STATE_BUSY) {
+    taskYIELD();
+  }
 
   // if max cnt err occured return fail
   uint32_t isr_val = TSC->ISR;
@@ -208,80 +197,73 @@ static int run_sampler(void)
   return RET_OK;
 }
 
-static inline void sample_data(void)
+
+// offset is the offset in the touch value array for the channel
+static void fetch_channel_values(uint8_t channel, uint8_t min_group, uint8_t max_group, uint8_t offset)
 {
-  memset(s.touch_values, 0, sizeof(s.touch_values));
-
-  if (run_sampler() == RET_OK) {
-    get_channel_values(CHANNEL0_MIN_GROUP, CHANNEL0_MAX_GROUP, 0);
-  }
-  else {
-    LOG_WARN("WARNING: TSC MAX CNT REACHED\r\n");
-  }
-
-  io_config(CHANNEL1);
+  io_config(channel);
   HAL_TSC_IODischarge(&s.tsc, ENABLE);
   rtos_delay_ms(1);
 
+  int index = offset;
+  uint32_t value;
   if (run_sampler() == RET_OK) {
-    get_channel_values(CHANNEL1_MIN_GROUP, CHANNEL1_MAX_GROUP, CHANNEL0_CNT);
+    for (int i = min_group; i <= max_group; i++) {
+      get_group_value(i, &value);
+      s.touch_values[index] = convert_value_to_touch(value, index);
+      index++;
+    }
   }
   else {
     LOG_WARN("WARNING: TSC MAX CNT REACHED\r\n");
   }
-
-
-  io_config(CHANNEL0);
-  HAL_TSC_IODischarge(&s.tsc, ENABLE);
 }
 
-static void calibrate_channel_values(uint8_t min_group, uint8_t max_group, uint8_t offset)
+static inline void sample_data(void)
 {
-  uint32_t value;
-  int index = offset;
+  memset(s.touch_values, 0, sizeof(s.touch_values));
+  fetch_channel_values(CHANNEL0, CHANNEL0_MIN_GROUP, CHANNEL0_MAX_GROUP, 0);
+  fetch_channel_values(CHANNEL1, CHANNEL1_MIN_GROUP, CHANNEL1_MAX_GROUP, CHANNEL0_CNT);
+}
 
-  for (int i = min_group; i <= max_group; i++) {
-    get_group_value(i, &value);
-    s.calibration_values[index] += value / CALIBRATION_SAMPLES;
-    index++;
+static int calibrate_channel(uint8_t channel, uint8_t min_group, uint8_t max_group, uint8_t offset)
+{
+  for (int i = 0; i < CALIBRATION_SAMPLES; i++) {
+    // TODO find bug
+    // if log is added here, lower values are read (closer to what is seen during sampling)
+    io_config(channel);
+    HAL_TSC_IODischarge(&s.tsc, ENABLE);
+    rtos_delay_ms(10);
+
+    if (run_sampler() == RET_OK) {
+
+      uint32_t value;
+      int index = offset;
+
+      for (int i = min_group; i <= max_group; i++) {
+        get_group_value(i, &value);
+        s.calibration_values[index] += value / CALIBRATION_SAMPLES;
+        index++;
+      }
+    }
+    else {
+      LOG_WARN("WARNING: TSC MAX CNT REACHED\r\n");
+      // set to max value
+      memset(s.calibration_values, 0xFF, sizeof(s.calibration_values));
+      return RET_ERR;
+    }
   }
+  return RET_OK;
 }
 
 static void calibrate(void)
 {
   memset(s.calibration_values, 0, sizeof(s.calibration_values));
 
-  for (int i = 0; i < CALIBRATION_SAMPLES; i++) {
-    // TODO find bug
-    // if log is added here, lower values are read (closer to what is seen during sampling)
-    io_config(CHANNEL0);
-    HAL_TSC_IODischarge(&s.tsc, ENABLE);
-    rtos_delay_ms(10);
-
-    if (run_sampler() == RET_OK) {
-      calibrate_channel_values(CHANNEL0_MIN_GROUP, CHANNEL0_MAX_GROUP, 0);
-    }
-    else {
-      LOG_WARN("WARNING: TSC MAX CNT REACHED\r\n");
-      // set to max value
-      memset(s.calibration_values, 0xFF, sizeof(s.calibration_values));
-      return;
-    }
-
-    io_config(CHANNEL1);
-    HAL_TSC_IODischarge(&s.tsc, ENABLE);
-    rtos_delay_ms(10);
-
-    if (run_sampler() == RET_OK) {
-      calibrate_channel_values(CHANNEL1_MIN_GROUP, CHANNEL1_MAX_GROUP, CHANNEL0_CNT);
-    }
-    else {
-      LOG_WARN("WARNING: TSC MAX CNT REACHED\r\n");
-      // set to max value
-      memset(s.calibration_values, 0xFF, sizeof(s.calibration_values));
-      return;
-    }
+  if (calibrate_channel(CHANNEL0, CHANNEL0_MIN_GROUP, CHANNEL0_MAX_GROUP, 0) != RET_OK) {
+    return;
   }
+  calibrate_channel(CHANNEL1, CHANNEL1_MIN_GROUP, CHANNEL1_MAX_GROUP, CHANNEL0_CNT);
 }
 
 static void tsc_task(void *arg)
@@ -320,10 +302,6 @@ void tsc_task_setup(void)
   }
 
   calibrate();
-
-  // discharge before we start sampling again
-  io_config(CHANNEL0);
-  HAL_TSC_IODischarge(&s.tsc, ENABLE);
 }
 
 void tsc_task_start(void)
