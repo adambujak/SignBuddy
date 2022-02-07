@@ -13,17 +13,17 @@
 #include <stdlib.h>
 
 // DATA READY EVENTS
-#define TSC_DR_EVENT         (1 << 0)
-#define FLEX_DR_EVENT        (1 << 1)
-#define IMU_DR_EVENT         (1 << 2)
+#define TSC_DR_EVENT       (1 << 0)
+#define FLEX_DR_EVENT      (1 << 1)
+#define IMU_DR_EVENT       (1 << 2)
 
-#define ALL_DR_EVENTS        (TSC_DR_EVENT | FLEX_DR_EVENT | IMU_DR_EVENT)
+#define ALL_DR_EVENTS      (TSC_DR_EVENT | FLEX_DR_EVENT | IMU_DR_EVENT)
 
-#define TIMEOUT_MS           40
-#define TIMEOUT_TICKS        pdMS_TO_TICKS(TIMEOUT_MS)
+#define TIMEOUT_MS         40
+#define TIMEOUT_TICKS      pdMS_TO_TICKS(TIMEOUT_MS)
 
-#define SAMPLING_PERIOD      50
-#define MAX_SAMPLES          40
+#define SAMPLING_PERIOD    50
+#define MAX_SAMPLES        40
 
 typedef struct {
   TaskHandle_t       sensors_task_handle;
