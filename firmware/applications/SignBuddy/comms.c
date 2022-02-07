@@ -81,13 +81,12 @@ static void ingest_packet()
 
 static void packetize_sample()
 {
-  s.msg.id = MID_SAMPLE;
   pb_ostream_t stream = pb_ostream_from_buffer((pb_byte_t *) s.packet.msg, MAX_MSG_SIZE);
 
   pb_encode(&stream, &Message_msg, &s.msg);
   s.msg_ready = 0;
   s.packet.header.length = stream.bytes_written;
-  s.packet.header.crc = compute_crc(s.packet.msg, s.packet.header.length);
+  s.packet.header.crc = crc_compute(s.packet.msg, s.packet.header.length);
   s.packet_ready = 1;
   ingest_packet();
 }
@@ -135,6 +134,7 @@ static void comms_task(void *arg)
 void comms_tx_sample(Sample *sample)
 {
   xSemaphoreTake(s.sample_mutex, portMAX_DELAY);
+  s.msg.id = MID_SAMPLE;
   s.msg.payload.sample = *sample;
   s.msg.which_payload = Message_sample_tag;
   s.msg_ready = 1;
@@ -143,6 +143,7 @@ void comms_tx_sample(Sample *sample)
 
 void comms_tx_status(Status *status)
 {
+  s.msg.id = MID_STATUS;
   s.msg.payload.status = *status;
   s.msg.which_payload = Message_status_tag;
   s.msg_ready = 1;
