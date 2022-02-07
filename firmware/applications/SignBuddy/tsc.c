@@ -141,6 +141,26 @@ static void hw_init(void)
   sampler_pin_init(SAMPLER_PIN(6), SAMPLER_PORT(6));
   sampler_pin_init(SAMPLER_PIN(7), SAMPLER_PORT(7));
   sampler_pin_init(SAMPLER_PIN(8), SAMPLER_PORT(8));
+
+  s.tsc.Instance = TSC;
+  s.tsc.Init.CTPulseHighLength = TSC_CTPH_2CYCLES;
+  s.tsc.Init.CTPulseLowLength = TSC_CTPL_2CYCLES;
+  s.tsc.Init.SpreadSpectrum = DISABLE;
+  s.tsc.Init.SpreadSpectrumDeviation = 1;
+  s.tsc.Init.SpreadSpectrumPrescaler = TSC_SS_PRESC_DIV1;
+  s.tsc.Init.PulseGeneratorPrescaler = TSC_PG_PRESC_DIV4;
+  s.tsc.Init.MaxCountValue = TSC_MCV_8191;
+  s.tsc.Init.IODefaultMode = TSC_IODEF_OUT_PP_LOW;
+  s.tsc.Init.SynchroPinPolarity = TSC_SYNC_POLARITY_FALLING;
+  s.tsc.Init.AcquisitionMode = TSC_ACQ_MODE_NORMAL;
+  s.tsc.Init.MaxCountInterrupt = DISABLE;
+  s.tsc.Init.ChannelIOs = 0;
+  s.tsc.Init.ShieldIOs = 0;
+  s.tsc.Init.SamplingIOs = 0;
+
+  if (HAL_TSC_Init(&s.tsc) != HAL_OK) {
+    error_handler();
+  }
 }
 
 static void io_config(uint8_t channel)
@@ -278,26 +298,6 @@ static void tsc_task(void *arg)
 void tsc_task_setup(void)
 {
   hw_init();
-
-  s.tsc.Instance = TSC;
-  s.tsc.Init.CTPulseHighLength = TSC_CTPH_2CYCLES;
-  s.tsc.Init.CTPulseLowLength = TSC_CTPL_2CYCLES;
-  s.tsc.Init.SpreadSpectrum = DISABLE;
-  s.tsc.Init.SpreadSpectrumDeviation = 1;
-  s.tsc.Init.SpreadSpectrumPrescaler = TSC_SS_PRESC_DIV1;
-  s.tsc.Init.PulseGeneratorPrescaler = TSC_PG_PRESC_DIV4;
-  s.tsc.Init.MaxCountValue = TSC_MCV_8191;
-  s.tsc.Init.IODefaultMode = TSC_IODEF_OUT_PP_LOW;
-  s.tsc.Init.SynchroPinPolarity = TSC_SYNC_POLARITY_FALLING;
-  s.tsc.Init.AcquisitionMode = TSC_ACQ_MODE_NORMAL;
-  s.tsc.Init.MaxCountInterrupt = DISABLE;
-  s.tsc.Init.ChannelIOs = 0;
-  s.tsc.Init.ShieldIOs = 0;
-  s.tsc.Init.SamplingIOs = 0;
-
-  if (HAL_TSC_Init(&s.tsc) != HAL_OK) {
-    error_handler();
-  }
 
   calibrate();
 }
