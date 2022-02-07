@@ -72,9 +72,11 @@ static void rx()
 
 static void ingest_packet()
 {
-  fifo_push(&s.tx_fifo, (uint8_t *) &s.packet.header, sizeof(packet_header_t));
-  fifo_push(&s.tx_fifo, s.packet.payload, s.packet.header.payload_length);
-  s.packet_ready = 0;
+  if (fifo_bytes_unused_cnt_get(&s.tx_fifo) >= PACKET_SIZE) {
+    fifo_push(&s.tx_fifo, (uint8_t *) &s.packet.header, sizeof(packet_header_t));
+    fifo_push(&s.tx_fifo, s.packet.payload, s.packet.header.payload_length);
+    s.packet_ready = 0;
+  }
 }
 
 static void packetize_sample()
@@ -87,10 +89,7 @@ static void packetize_sample()
   s.packet.header.message_id = MID_SAMPLE;
   s.packet.header.crc = compute_crc(s.packet.payload, s.packet.header.payload_length);
   s.packet_ready = 1;
-  /* If tx buffer has room, ingest the packet immediately */
-  if (fifo_bytes_unused_cnt_get(&s.tx_fifo) >= PACKET_SIZE) {
-    ingest_packet();
-  }
+  ingest_packet();
 }
 
 static void tx(void)
@@ -116,8 +115,8 @@ static void comms_task(void *arg)
     }
     xSemaphoreGive(s.sample_mutex);
 
-    /* Ingest packet into tx buffer if packet ready and tx buffer has enough space */
-    if ((s.packet_ready == 1) && (fifo_bytes_unused_cnt_get(&s.tx_fifo) >= PACKET_SIZE)) {
+    /* Ingest packet into tx buffer if packet ready*/
+    if (s.packet_ready == 1) {
       ingest_packet();
     }
 
