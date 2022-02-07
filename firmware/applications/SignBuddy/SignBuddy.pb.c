@@ -9,6 +9,9 @@
 PB_BIND(GestureData, GestureData, AUTO)
 
 
+PB_BIND(Message, Message, AUTO)
+
+
 PB_BIND(Sample, Sample, AUTO)
 
 
@@ -19,3 +22,6 @@ PB_BIND(Sample_FlexData, Sample_FlexData, AUTO)
 
 
 PB_BIND(Sample_TouchData, Sample_TouchData, AUTO)
+
+
+PB_BIND(Status, Status, AUTO)

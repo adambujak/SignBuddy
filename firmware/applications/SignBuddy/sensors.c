@@ -107,7 +107,7 @@ static void sensors_task(void *arg)
         flex_Ptr++;
       }
     }
-    comms_tx_data(&s.sample);
+    comms_tx_sample(&s.sample);
     s.sample.sample_id++;
   }
 }
