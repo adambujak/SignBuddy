@@ -19,7 +19,7 @@ static void uart_init(void)
   gpio_config.Alternate = BLE_UART_GPIO_AF;
   LL_GPIO_Init(BLE_UART_GPIO_PORT, &gpio_config);
 
-  uart_config.BaudRate = 115200;
+  uart_config.BaudRate = 28800;
   uart_config.DataWidth = LL_LPUART_DATAWIDTH_8B;
   uart_config.StopBits = LL_LPUART_STOPBITS_1;
   uart_config.Parity = LL_LPUART_PARITY_NONE;
