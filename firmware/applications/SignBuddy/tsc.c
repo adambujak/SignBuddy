@@ -147,6 +147,7 @@ static void calibrate(void)
 
 static void tsc_task(void *arg)
 {
+  LOG_INFO("tsc: task started\r\n");
   while (1) {
     // wait to be notified
     ulTaskNotifyTake(pdFALSE, portMAX_DELAY);

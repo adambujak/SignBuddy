@@ -3,6 +3,7 @@
 #include "adc.h"
 #include "ble_uart.h"
 #include "common.h"
+#include "comms.h"
 #include "flex.h"
 #include "imu.h"
 #include "logger.h"
@@ -11,25 +12,24 @@
 
 #include <stdlib.h>
 
-#define PROCESS_PERIOD_MS    1000
-
 // DATA READY EVENTS
-#define TSC_DR_EVENT         (1 << 0)
-#define FLEX_DR_EVENT        (1 << 1)
-#define IMU_DR_EVENT         (1 << 2)
+#define TSC_DR_EVENT       (1 << 0)
+#define FLEX_DR_EVENT      (1 << 1)
+#define IMU_DR_EVENT       (1 << 2)
 
-#define ALL_DR_EVENTS        (TSC_DR_EVENT | FLEX_DR_EVENT | IMU_DR_EVENT)
+#define ALL_DR_EVENTS      (TSC_DR_EVENT | FLEX_DR_EVENT | IMU_DR_EVENT)
 
-#define TIMEOUT_MS           40
-#define TIMEOUT_TICKS        pdMS_TO_TICKS(TIMEOUT_MS)
+#define TIMEOUT_MS         40
+#define TIMEOUT_TICKS      pdMS_TO_TICKS(TIMEOUT_MS)
 
-#define SAMPLING_PERIOD      50
-#define MAX_SAMPLES          40
+#define SAMPLING_PERIOD    50
+#define MAX_SAMPLES        40
+
+TimerHandle_t sampling_timer;
 
 typedef struct {
   TaskHandle_t       sensors_task_handle;
   EventGroupHandle_t data_ready_event_group;
-  TimerHandle_t      sampling_timer;
   Sample             sample;
 } state_t;
 
@@ -52,24 +52,26 @@ void sampling_timer_cb(TimerHandle_t xTimer)
 
 static void sensors_task(void *arg)
 {
+  LOG_INFO("sens: task started\r\n");
   s.data_ready_event_group = xEventGroupCreate();
   if (s.data_ready_event_group == NULL) {
     LOG_ERROR("Event Group Creation Failed\r\n");
   }
 
-  s.sampling_timer = xTimerCreate("sampling_timer", pdMS_TO_TICKS(SAMPLING_PERIOD), pdTRUE, NULL, sampling_timer_cb);
-  if (s.sampling_timer == NULL) {
+  sampling_timer = xTimerCreate("sampling_timer", pdMS_TO_TICKS(SAMPLING_PERIOD), pdTRUE, NULL, sampling_timer_cb);
+  if (sampling_timer == NULL) {
     LOG_ERROR("Sampling timer creation failed\r\n");
   }
 
   s.sample.sample_id = 1;
 
   // TODO Timer start should be triggered by message received from BLE
-  RTOS_ERR_CHECK(xTimerStart(s.sampling_timer, 0));
+  RTOS_ERR_CHECK(xTimerStart(sampling_timer, 0));
 
   while (1) {
     if (s.sample.sample_id > MAX_SAMPLES) {
-      RTOS_ERR_CHECK(xTimerStop(s.sampling_timer, 0));
+      RTOS_ERR_CHECK(xTimerStop(sampling_timer, 0));
+      s.sample.sample_id = 0;
     }
     ulTaskNotifyTake(pdFALSE, portMAX_DELAY);
     flex_start_read();
@@ -105,6 +107,7 @@ static void sensors_task(void *arg)
         flex_Ptr++;
       }
     }
+    comms_tx_data(&s.sample);
     s.sample.sample_id++;
   }
 }
@@ -113,7 +116,6 @@ void sensors_task_setup(void)
 {
   imu_init();
 
-  LOG_DEBUG("Sensors Initialized\r\n");
   flex_callback_register(flex_data_ready_cb);
   tsc_callback_register(tsc_data_ready_cb);
 }

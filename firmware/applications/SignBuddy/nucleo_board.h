@@ -4,6 +4,7 @@
 #include "stm32l0xx_ll_adc.h"
 #include "stm32l0xx_ll_bus.h"
 #include "stm32l0xx_ll_cortex.h"
+#include "stm32l0xx_ll_crc.h"
 #include "stm32l0xx_ll_dma.h"
 #include "stm32l0xx_ll_exti.h"
 #include "stm32l0xx_ll_gpio.h"
@@ -22,7 +23,6 @@
 #define SYSTEM_TIME_PRIORITY            0
 #define ADC_PRIORITY                    1
 #define DMA_PRIORITY                    2
-#define BLE_UART_PRIORITY               3
 #define LOG_UART_PRIORITY               3
 
 /* LED */
@@ -38,12 +38,12 @@
 
 /* BLE UART */
 #define BLE_UART                        LPUART1
-#define BLE_UART_IRQn                   RNG_LPUART1_IRQn
-#define BLE_UART_IRQHandler             RNG_LPUART1_IRQHandler
 #define BLE_UART_GPIO_PORT              GPIOC
 #define BLE_UART_TX_PIN                 LL_GPIO_PIN_4
 #define BLE_UART_RX_PIN                 LL_GPIO_PIN_5
 #define BLE_UART_GPIO_AF                LL_GPIO_AF_2
+#define BLE_UART_RXNE()                 LL_LPUART_IsActiveFlag_RXNE(LPUART1)
+#define BLE_UART_TXE()                  LL_LPUART_IsActiveFlag_TXE(LPUART1)
 #define BLE_UART_CLK_SRC()              LL_RCC_SetLPUARTClockSource(LL_RCC_LPUART1_CLKSOURCE_PCLK1)
 #define BLE_UART_CLK_EN()               LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_LPUART1)
 #define BLE_UART_GPIO_CLK_EN()          LL_IOP_GRP1_EnableClock(LL_IOP_GRP1_PERIPH_GPIOC)

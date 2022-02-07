@@ -1,6 +1,7 @@
 #include "board.h"
 #include "ble_uart.h"
 #include "common.h"
+#include "comms.h"
 #include "flex.h"
 #include "gpio.h"
 #include "imu.h"
@@ -105,21 +106,22 @@ int main(void)
   // init early
   system_time_init();
   log_uart_init();
-  ble_uart_init();
 
   flex_task_setup();
   tsc_task_setup();
   sensors_task_setup();
+  comms_task_setup();
 
   LOG_INFO("App started\r\n");
 
   RTOS_ERR_CHECK(xTaskCreate(leds_task,
-                             "led_task",
+                             "led",
                              128,
                              NULL,
                              4,
                              NULL));
 
+  comms_task_start();
   sensors_task_start();
   tsc_task_start();
   flex_task_start();

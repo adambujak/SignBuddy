@@ -3,7 +3,7 @@
 
 #include <stdint.h>
 
-/* Initialize dma module */
+/* Initialize dma module for adc */
 void dma_init(uint32_t, uint32_t);
 
 #endif // DMA_H
