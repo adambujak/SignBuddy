@@ -24,7 +24,7 @@
 
 typedef struct __attribute__((__packed__)) {
   uint8_t sync_begin;
-  uint8_t mid;
+  uint8_t message_id;
   uint8_t length;
 } packet_header_t;
 
@@ -86,7 +86,7 @@ static void packetize_sample()
   pb_encode(&stream, &Sample_msg, &s.sample);
   s.sample_ready = 0;
   s.packet_header.length = stream.bytes_written;
-  s.packet_header.mid = MID_SAMPLE;
+  s.packet_header.message_id = MID_SAMPLE;
   s.packet_footer.crc = compute_crc(s.sample_buffer, s.packet_header.length);
   s.packet_ready = 1;
   /* If tx buffer has room, ingest the packet immediately */
