@@ -13,16 +13,32 @@
 
 #define COMMS_TX_BUFFER_SIZE    512
 
+#define SYNC_BEGIN              0x16
+#define SYNC_END                0x27
+
+#define MID_SAMPLE              0x01
+
+#define PACKET_SIZE             sizeof(packet_header_t) + s.packet_header.length * sizeof(uint8_t) + \
+  sizeof(packet_footer_t)
+
 typedef struct __attribute__((__packed__)) {
+  uint8_t sync_begin;
+  uint8_t mid;
   uint8_t length;
-  uint8_t sample[Sample_size];
+} packet_header_t;
+
+typedef struct __attribute__((__packed__)) {
   uint32_t crc;
-} packet_t;
+  uint8_t sync_end;
+} packet_footer_t;
 
 typedef struct {
   TaskHandle_t      task_handle;
+  packet_header_t   packet_header;
+  packet_footer_t   packet_footer;
   Sample            sample;
-  packet_t          packet;
+  uint8_t           sample_buffer[Sample_size];
+  uint8_t          *packed_sample_ptr;
   volatile uint8_t  sample_ready;
   volatile uint8_t  packet_ready;
   uint8_t           tx_buffer[COMMS_TX_BUFFER_SIZE];
@@ -64,21 +80,27 @@ static void rx()
 
 static void ingest_packet()
 {
-  fifo_push(&s.tx_fifo, (uint8_t *) &s.packet, sizeof(s.packet));
+  fifo_push(&s.tx_fifo, (uint8_t *) &s.packet_header, sizeof(packet_header_t));
+  fifo_push(&s.tx_fifo, s.packed_sample_ptr, s.packet_header.length);
+  fifo_push(&s.tx_fifo, (uint8_t *) &s.packet_footer, sizeof(packet_footer_t));
+  free(s.packed_sample_ptr);
   s.packet_ready = 0;
 }
 
-static void create_packet()
+static void packetize_sample()
 {
-  pb_ostream_t stream = pb_ostream_from_buffer((pb_byte_t *) s.packet.sample, Sample_size);
+  pb_ostream_t stream = pb_ostream_from_buffer((pb_byte_t *) s.sample_buffer, Sample_size);
 
   pb_encode(&stream, &Sample_msg, &s.sample);
-  pb_get_encoded_size((size_t *) &s.packet.length, &Sample_msg, &s.sample);
   s.sample_ready = 0;
-  s.packet.crc = compute_crc(s.packet.sample, s.packet.length);
+  s.packet_header.length = stream.bytes_written;
+  s.packed_sample_ptr = malloc(s.packet_header.length);
+  s.packet_header.mid = MID_SAMPLE;
+  memcpy(s.packed_sample_ptr, &s.sample_buffer, s.packet_header.length);
+  s.packet_footer.crc = compute_crc(s.packed_sample_ptr, s.packet_header.length);
   s.packet_ready = 1;
   /* If tx buffer has room, ingest the packet immediately */
-  if (fifo_bytes_unused_cnt_get(&s.tx_fifo) >= sizeof(s.packet)) {
+  if (fifo_bytes_unused_cnt_get(&s.tx_fifo) >= PACKET_SIZE) {
     ingest_packet();
   }
 }
@@ -102,12 +124,12 @@ static void comms_task(void *arg)
     /* Create packet if new sample ready and last packet ingested */
     xSemaphoreTake(s.sample_mutex, portMAX_DELAY);
     if ((s.sample_ready == 1) && (s.packet_ready == 0)) {
-      create_packet();
+      packetize_sample();
     }
     xSemaphoreGive(s.sample_mutex);
 
     /* Ingest packet into tx buffer if packet ready and tx buffer has enough space */
-    if ((s.packet_ready == 1) && (fifo_bytes_unused_cnt_get(&s.tx_fifo) >= sizeof(s.packet))) {
+    if ((s.packet_ready == 1) && (fifo_bytes_unused_cnt_get(&s.tx_fifo) >= PACKET_SIZE)) {
       ingest_packet();
     }
 
@@ -135,6 +157,8 @@ void comms_task_setup(void)
 {
   hw_init();
   fifo_init(&s.tx_fifo, s.tx_buffer, COMMS_TX_BUFFER_SIZE);
+  s.packet_header.sync_begin = SYNC_BEGIN;
+  s.packet_footer.sync_end = SYNC_END;
 }
 
 void comms_task_start(void)
