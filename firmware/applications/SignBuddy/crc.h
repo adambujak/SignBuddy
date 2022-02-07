@@ -3,8 +3,8 @@
 
 #include <stdint.h>
 
-void init_crc(void);
+void crc_init(void);
 
-uint32_t compute_crc(uint8_t *, uint8_t);
+uint32_t crc_compute(uint8_t *, uint8_t);
 
 #endif // CRC_H

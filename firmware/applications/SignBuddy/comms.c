@@ -87,7 +87,8 @@ static void packetize_sample()
   s.sample_ready = 0;
   s.packet.header.payload_length = stream.bytes_written;
   s.packet.header.message_id = MID_SAMPLE;
-  s.packet.header.crc = compute_crc(s.packet.payload, s.packet.header.payload_length);
+  s.packet.header.crc = crc_compute(s.packet.payload, s.packet.header.payload_length);
+
   s.packet_ready = 1;
   ingest_packet();
 }
@@ -143,6 +144,7 @@ void comms_tx_data(Sample *sample)
 void comms_task_setup(void)
 {
   hw_init();
+  crc_init();
   fifo_init(&s.tx_fifo, s.tx_buffer, COMMS_TX_BUFFER_SIZE);
   s.packet.header.sync = SYNC;
 }
