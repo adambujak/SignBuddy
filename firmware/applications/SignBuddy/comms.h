@@ -6,6 +6,7 @@
 void comms_task_setup(void);
 void comms_task_start(void);
 
-void comms_tx_data(Sample *);
+void comms_tx_sample(Sample *);
+void comms_tx_status(Status *);
 
 #endif // COMMS_H

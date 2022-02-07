@@ -5,6 +5,14 @@ message GestureData {
     repeated Sample samples = 2;
 }
 
+message Message {
+    required uint32 id = 1;
+    oneof payload {
+        Sample sample = 2;
+        Status status = 3;
+    }
+}
+
 message Sample {
     required uint32 sample_id = 1;
 
@@ -44,4 +52,12 @@ message Sample {
     }
 
     required TouchData touchData = 4;
+}
+
+message Status {
+    required uint32 battery_voltage = 1;
+    required uint32 imu_sys_calib_stat = 2;
+    required uint32 imu_mag_calib_stat = 3;
+    required uint32 imu_acc_calib_status = 4;
+    required uint32 imu_gyro_calib_status = 5;
 }
