@@ -23,34 +23,14 @@ typedef struct {
   TaskHandle_t      task_handle;
   Sample            sample;
   packet_t          packet;
-  uint8_t           sample_ready;
-  uint8_t           packet_ready;
+  volatile uint8_t  sample_ready;
+  volatile uint8_t  packet_ready;
   uint8_t           tx_buffer[COMMS_TX_BUFFER_SIZE];
   fifo_t            tx_fifo;
   SemaphoreHandle_t sample_mutex;
 } state_t;
 
 static state_t s;
-
-static inline void set_sample_ready(void)
-{
-  s.sample_ready = 1;
-}
-
-static inline void clear_sample_ready(void)
-{
-  s.sample_ready = 0;
-}
-
-static inline void set_packet_ready(void)
-{
-  s.packet_ready = 1;
-}
-
-static inline void clear_packet_ready(void)
-{
-  s.packet_ready = 0;
-}
 
 static void hw_init(void)
 {
@@ -85,7 +65,7 @@ static void rx()
 static void ingest_packet()
 {
   fifo_push(&s.tx_fifo, (uint8_t *) &s.packet, sizeof(s.packet));
-  clear_packet_ready();
+  s.packet_ready = 0;
 }
 
 static void create_packet()
@@ -94,9 +74,9 @@ static void create_packet()
 
   pb_encode(&stream, &Sample_msg, &s.sample);
   pb_get_encoded_size((size_t *) &s.packet.length, &Sample_msg, &s.sample);
-  clear_sample_ready();
+  s.sample_ready = 0;
   s.packet.crc = compute_crc(s.packet.sample, s.packet.length);
-  set_packet_ready();
+  s.packet_ready = 1;
   /* If tx buffer has room, ingest the packet immediately */
   if (fifo_bytes_unused_cnt_get(&s.tx_fifo) >= sizeof(s.packet)) {
     ingest_packet();
@@ -147,7 +127,7 @@ void comms_tx_data(Sample *sample)
 {
   xSemaphoreTake(s.sample_mutex, portMAX_DELAY);
   s.sample = *sample;
-  set_sample_ready();
+  s.sample_ready = 1;
   xSemaphoreGive(s.sample_mutex);
 }
 
