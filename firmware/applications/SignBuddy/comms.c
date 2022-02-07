@@ -7,6 +7,7 @@
 #include "fifo.h"
 #include "logger.h"
 #include "pb_encode.h"
+#include "sensors.h"
 #include "SignBuddy.pb.h"
 
 #include <stdlib.h>
@@ -60,16 +61,9 @@ static void rx()
   ENABLE_IRQ();
 
   switch (cmd) {
-  case 0:
-    LOG_DEBUG("comms: cmd 1\r\n");
-    break;
-
-  case 1:
-    LOG_DEBUG("comms: cmd 2\r\n");
-    break;
-
-  case 2:
-    LOG_DEBUG("comms: cmd 3\r\n");
+  case 's':
+    LOG_DEBUG("comms: start sampling\r\n");
+    RTOS_ERR_CHECK(xTimerStart(sampling_timer, 0));
     break;
 
   default:
