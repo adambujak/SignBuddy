@@ -25,10 +25,10 @@
 #define SAMPLING_PERIOD    50
 #define MAX_SAMPLES        40
 
-TimerHandle_t sampling_timer;
 
 typedef struct {
   TaskHandle_t       sensors_task_handle;
+  TimerHandle_t      sampling_timer;
   EventGroupHandle_t data_ready_event_group;
   Sample             sample;
 } state_t;
@@ -58,19 +58,19 @@ static void sensors_task(void *arg)
     LOG_ERROR("Event Group Creation Failed\r\n");
   }
 
-  sampling_timer = xTimerCreate("sampling_timer", pdMS_TO_TICKS(SAMPLING_PERIOD), pdTRUE, NULL, sampling_timer_cb);
-  if (sampling_timer == NULL) {
+  s.sampling_timer = xTimerCreate("sampling_timer", pdMS_TO_TICKS(SAMPLING_PERIOD), pdTRUE, NULL, sampling_timer_cb);
+  if (s.sampling_timer == NULL) {
     LOG_ERROR("Sampling timer creation failed\r\n");
   }
 
   s.sample.sample_id = 1;
 
   // TODO Timer start should be triggered by message received from BLE
-  RTOS_ERR_CHECK(xTimerStart(sampling_timer, 0));
+  RTOS_ERR_CHECK(xTimerStart(s.sampling_timer, 0));
 
   while (1) {
     if (s.sample.sample_id > MAX_SAMPLES) {
-      RTOS_ERR_CHECK(xTimerStop(sampling_timer, 0));
+      RTOS_ERR_CHECK(xTimerStop(s.sampling_timer, 0));
       s.sample.sample_id = 0;
     }
     ulTaskNotifyTake(pdFALSE, portMAX_DELAY);
@@ -130,4 +130,9 @@ void sensors_task_start(void)
                                        &s.sensors_task_handle);
 
   RTOS_ERR_CHECK(task_status);
+}
+
+void sensors_sampling_timer_start(void)
+{
+  RTOS_ERR_CHECK(xTimerStart(s.sampling_timer, 0));
 }
