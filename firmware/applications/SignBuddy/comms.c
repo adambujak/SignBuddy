@@ -14,31 +14,30 @@
 
 #define COMMS_TX_BUFFER_SIZE    512
 
-#define SYNC_BEGIN              0x16
-#define SYNC_END                0x27
+#define SYNC                    0x16
 
 #define MID_SAMPLE              0x01
 
-#define PACKET_SIZE             sizeof(packet_header_t) + s.packet_header.length * sizeof(uint8_t) + \
-  sizeof(packet_footer_t)
+#define PACKET_SIZE             sizeof(packet_header_t) + s.packet.header.payload_length
+
+#define MAX_PAYLOAD             Sample_size
 
 typedef struct __attribute__((__packed__)) {
-  uint8_t sync_begin;
+  uint8_t sync;
   uint8_t message_id;
-  uint8_t length;
+  uint8_t payload_length;
+  uint32_t crc;
 } packet_header_t;
 
 typedef struct __attribute__((__packed__)) {
-  uint32_t crc;
-  uint8_t sync_end;
-} packet_footer_t;
+  packet_header_t header;
+  uint8_t payload[MAX_PAYLOAD];
+} packet_t;
 
 typedef struct {
   TaskHandle_t      task_handle;
-  packet_header_t   packet_header;
-  packet_footer_t   packet_footer;
   Sample            sample;
-  uint8_t           sample_buffer[Sample_size];
+  packet_t          packet;
   volatile uint8_t  sample_ready;
   volatile uint8_t  packet_ready;
   uint8_t           tx_buffer[COMMS_TX_BUFFER_SIZE];
@@ -73,21 +72,20 @@ static void rx()
 
 static void ingest_packet()
 {
-  fifo_push(&s.tx_fifo, (uint8_t *) &s.packet_header, sizeof(packet_header_t));
-  fifo_push(&s.tx_fifo, s.sample_buffer, s.packet_header.length);
-  fifo_push(&s.tx_fifo, (uint8_t *) &s.packet_footer, sizeof(packet_footer_t));
+  fifo_push(&s.tx_fifo, (uint8_t *) &s.packet.header, sizeof(packet_header_t));
+  fifo_push(&s.tx_fifo, s.packet.payload, s.packet.header.payload_length);
   s.packet_ready = 0;
 }
 
 static void packetize_sample()
 {
-  pb_ostream_t stream = pb_ostream_from_buffer((pb_byte_t *) s.sample_buffer, Sample_size);
+  pb_ostream_t stream = pb_ostream_from_buffer((pb_byte_t *) s.packet.payload, Sample_size);
 
   pb_encode(&stream, &Sample_msg, &s.sample);
   s.sample_ready = 0;
-  s.packet_header.length = stream.bytes_written;
-  s.packet_header.message_id = MID_SAMPLE;
-  s.packet_footer.crc = compute_crc(s.sample_buffer, s.packet_header.length);
+  s.packet.header.payload_length = stream.bytes_written;
+  s.packet.header.message_id = MID_SAMPLE;
+  s.packet.header.crc = compute_crc(s.packet.payload, s.packet.header.payload_length);
   s.packet_ready = 1;
   /* If tx buffer has room, ingest the packet immediately */
   if (fifo_bytes_unused_cnt_get(&s.tx_fifo) >= PACKET_SIZE) {
@@ -147,8 +145,7 @@ void comms_task_setup(void)
 {
   hw_init();
   fifo_init(&s.tx_fifo, s.tx_buffer, COMMS_TX_BUFFER_SIZE);
-  s.packet_header.sync_begin = SYNC_BEGIN;
-  s.packet_footer.sync_end = SYNC_END;
+  s.packet.header.sync = SYNC;
 }
 
 void comms_task_start(void)
