@@ -12,8 +12,6 @@
 
 #include <stdlib.h>
 
-#define PROCESS_PERIOD_MS    1000
-
 // DATA READY EVENTS
 #define TSC_DR_EVENT         (1 << 0)
 #define FLEX_DR_EVENT        (1 << 1)
