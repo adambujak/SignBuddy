@@ -39,8 +39,8 @@
 /* BLE UART */
 #define BLE_UART                        LPUART1
 #define BLE_UART_GPIO_PORT              GPIOC
-#define BLE_UART_TX_PIN                 LL_GPIO_PIN_4
-#define BLE_UART_RX_PIN                 LL_GPIO_PIN_5
+#define BLE_UART_TX_PIN                 LL_GPIO_PIN_10
+#define BLE_UART_RX_PIN                 LL_GPIO_PIN_11
 #define BLE_UART_GPIO_AF                LL_GPIO_AF_2
 #define BLE_UART_RXNE()                 LL_LPUART_IsActiveFlag_RXNE(LPUART1)
 #define BLE_UART_TXE()                  LL_LPUART_IsActiveFlag_TXE(LPUART1)
