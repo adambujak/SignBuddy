@@ -5,7 +5,7 @@
 
 void logger_write(char *string);
 
-#define LOG_MAX_STRING_LEN    128
+#define LOG_MAX_STRING_LEN    64
 
 #define LOG_LEVEL_DEBUG       1
 #define LOG_LEVEL_INFO        2
@@ -16,10 +16,6 @@ void logger_write(char *string);
 #ifndef LOG_LEVEL
 #define LOG_LEVEL             LOG_LEVEL_DEBUG
 #endif // LOG_LEVEL
-
-#ifndef LOG_MODE_BLOCKING
-#define LOG_MODE_BLOCKING    1
-#endif // LOG_MODE_BLOCKING
 
 #define LOGX(fmt, ...)                   \
   do {                                   \
