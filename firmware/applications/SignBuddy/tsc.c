@@ -202,9 +202,7 @@ static int run_sampler(void)
     error_handler();
   }
 
-  while (HAL_TSC_GetState(&s.tsc) == HAL_TSC_STATE_BUSY) {
-    taskYIELD();
-  }
+  while (HAL_TSC_GetState(&s.tsc) == HAL_TSC_STATE_BUSY);
 
   // if max cnt err occured return fail
   uint32_t isr_val = TSC->ISR;
