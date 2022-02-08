@@ -8,12 +8,6 @@
 #include <stdbool.h>
 #include <string.h>
 
-static uint8_t tx_buffer[LOG_UART_TX_BUFFER_SIZE];
-
-static fifo_t tx_fifo;
-
-static bool writing = false;
-
 static void hw_init(void)
 {
   LL_USART_InitTypeDef uart_config = { 0 };
@@ -42,51 +36,22 @@ static void hw_init(void)
 
   LL_USART_ConfigAsyncMode(LOG_UART);
   LL_USART_Enable(LOG_UART);
-
-  LL_USART_EnableIT_TC(LOG_UART);
-
-  NVIC_SetPriority(LOG_UART_IRQn, LOG_UART_PRIORITY);
-  NVIC_EnableIRQ(LOG_UART_IRQn);
 }
 
-static inline void tx(void)
+static inline void tx(uint8_t write_byte)
 {
-  uint8_t write_byte;
-
-  if (fifo_pop(&tx_fifo, &write_byte, 1) == 1) {
-    LL_USART_TransmitData8(LOG_UART, write_byte);
-    writing = true;
-  }
-}
-
-bool log_uart_is_writing(void)
-{
-  return writing;
+  LL_USART_TransmitData8(LOG_UART, write_byte);
+  while (!LL_USART_IsActiveFlag_TC(LOG_UART));
 }
 
 void log_uart_write(uint8_t *data, uint32_t length)
 {
-  DISABLE_IRQ();
-  fifo_push(&tx_fifo, data, length);
-  if (!writing) {
-    tx();
+  for (uint32_t i = 0; i < length; i++) {
+    tx(data[i]);
   }
-  ENABLE_IRQ();
 }
 
 void log_uart_init(void)
 {
   hw_init();
-  fifo_init(&tx_fifo, tx_buffer, LOG_UART_TX_BUFFER_SIZE);
-}
-
-void LOG_UART_IRQHandler(void)
-{
-  DISABLE_IRQ();
-  if (LL_USART_IsActiveFlag_TC(LOG_UART)) {
-    writing = false;
-    LL_USART_ClearFlag_TC(LOG_UART);
-    tx();
-  }
-  ENABLE_IRQ();
 }
