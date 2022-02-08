@@ -109,6 +109,5 @@ void imu_init(void)
 
 void imu_process(void)
 {
-
   get_data();
 }
