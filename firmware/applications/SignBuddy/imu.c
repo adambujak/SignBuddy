@@ -9,7 +9,6 @@
 #define PROCESS_PERIOD_MS    1000
 
 typedef struct {
-  uint32_t                       last_ticks;
   uint8_t                        sys_calib_stat;
   uint8_t                        mag_calib_stat;
   uint8_t                        accel_calib_stat;
@@ -62,7 +61,7 @@ static inline int8_t bus_read(uint8_t slave_addr, uint8_t reg_addr, uint8_t *dat
 
 static inline void delay(u32 ms)
 {
-  delay_ms((uint32_t) ms);
+  rtos_delay_ms((uint32_t) ms);
 }
 
 static void bno_init(void)
@@ -110,12 +109,6 @@ void imu_init(void)
 
 void imu_process(void)
 {
-  uint32_t time = system_time_get();
-
-  if (system_time_cmp_ms(s.last_ticks, time) < PROCESS_PERIOD_MS) {
-    return;
-  }
-  s.last_ticks = time;
 
   get_data();
 }

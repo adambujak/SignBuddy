@@ -8,7 +8,6 @@
 #include "log_uart.h"
 #include "logger.h"
 #include "sensors.h"
-#include "system_time.h"
 #include "tsc.h"
 
 static uint8_t os_started = 0;
@@ -19,27 +18,13 @@ static void os_start(void)
   vTaskStartScheduler();
 }
 
-void delay_us(uint32_t us)
-{
-  uint32_t start_time = system_time_get();
-
-  while (system_time_cmp_us(start_time, system_time_get()) < us);
-}
-
-void delay_ms(uint32_t ms)
-{
-  uint32_t start_time = system_time_get();
-
-  while (system_time_cmp_ms(start_time, system_time_get()) < ms);
-}
-
 void rtos_delay_ms(uint32_t ms)
 {
   if (os_started) {
     vTaskDelay(ms);
   }
   else {
-    delay_ms(ms);
+    HAL_Delay(ms);
   }
 }
 
@@ -104,7 +89,6 @@ int main(void)
 {
   board_bringup();
   // init early
-  system_time_init();
   log_uart_init();
 
   flex_task_setup();
