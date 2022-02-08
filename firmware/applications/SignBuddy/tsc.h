@@ -3,6 +3,8 @@
 
 #include <stdint.h>
 
+#include <SignBuddy.pb.h>
+
 #define TOUCH_SENSOR_CNT    3
 
 /* Initialize tsc module */
@@ -13,6 +15,6 @@ void tsc_start_read(void);
 // register data ready callback
 void tsc_callback_register(void (*callback)(void));
 
-void tsc_get_value(int8_t touch_values[TOUCH_SENSOR_CNT]);
+void tsc_data_get(Sample_TouchData *data);
 
 #endif // TSC_H

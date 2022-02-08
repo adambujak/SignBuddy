@@ -54,19 +54,6 @@ static void sampling_timer_cb(TimerHandle_t xTimer)
   xTaskNotifyGive(s.sensors_task_handle);
 }
 
-static void touch_data_get(void)
-{
-  int8_t tsc_vals[TOUCH_SENSOR_CNT];
-
-  tsc_get_value(tsc_vals);
-  for (int i = 0; i < TOUCH_SENSOR_CNT; i++) {
-    //   LOG_DEBUG("touch sensor val %d: %d\r\n", i, (int) tsc_vals[i]);
-  }
-  s.sample.touchData.touch1 = tsc_vals[0];
-  s.sample.touchData.touch2 = tsc_vals[1];
-  s.sample.touchData.touch3 = tsc_vals[2];
-}
-
 static void sensors_task(void *arg)
 {
   LOG_INFO("sens: task started\r\n");
@@ -110,7 +97,9 @@ static void sensors_task(void *arg)
     else {
       LOG_DEBUG("Sample_id: %lu\r\n", s.sample.sample_id);
 
-      touch_data_get();
+      tsc_data_get(&s.sample.touchData);
+      LOG_DEBUG("tsc: %lx\r\n", s.sample.touchData.touch_values);
+
       flex_data_get(&s.sample.flexData);
       imu_data_get(&s.sample.imuData);
     }
