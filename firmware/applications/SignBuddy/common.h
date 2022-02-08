@@ -1,7 +1,6 @@
 #ifndef COMMON_H
 #define COMMON_H
 
-#include "system_time.h"
 #include "task_config.h"
 
 #include "FreeRTOS.h"

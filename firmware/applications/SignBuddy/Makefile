@@ -52,7 +52,6 @@ HAL_SOURCES = \
 LIB_SOURCES = \
 	$(LIB_ROOT)/bno055/bno055.c \
 	$(LIB_ROOT)/fast_fifo/fifo.c \
-	$(LIB_ROOT)/system_time/system_time.c \
 
 C_SOURCES = \
 	main.c \
@@ -81,7 +80,6 @@ C_INCLUDES = \
 	-I$(SDK_ROOT)/Drivers/CMSIS/Include \
 	-I$(HAL_ROOT)/Inc \
 	-I$(PROJ_ROOT) \
-	-I$(LIB_ROOT)/system_time \
 	-I$(LIB_ROOT)/fast_fifo \
 	-I$(LIB_ROOT)/bno055 \
 	-I$(NANOPB_ROOT) \
