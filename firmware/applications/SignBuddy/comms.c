@@ -61,7 +61,7 @@ static void rx()
   switch (cmd) {
   case 's':
     LOG_DEBUG("comms: start sampling\r\n");
-    RTOS_ERR_CHECK(xTimerStart(sampling_timer, 0));
+    sensors_sampling_timer_start();
     break;
 
   default:
