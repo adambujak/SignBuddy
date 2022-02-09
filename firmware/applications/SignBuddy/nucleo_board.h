@@ -78,9 +78,9 @@
 
 /* I2C */
 #define IMU_I2C                     I2C1
-#define IMU_I2C_SCL_PIN             LL_GPIO_PIN_6
-#define IMU_I2C_SDA_PIN             LL_GPIO_PIN_7
-#define IMU_I2C_GPIO_AF             LL_GPIO_AF_1
+#define IMU_I2C_SCL_PIN             LL_GPIO_PIN_8
+#define IMU_I2C_SDA_PIN             LL_GPIO_PIN_9
+#define IMU_I2C_GPIO_AF             LL_GPIO_AF_4
 #define IMU_I2C_GPIO_PORT           GPIOB
 #define IMU_I2C_CLK_SRC()           LL_RCC_SetI2CClockSource(LL_RCC_I2C1_CLKSOURCE_PCLK1);
 #define IMU_I2C_CLK_EN()            LL_IOP_GRP1_EnableClock(LL_IOP_GRP1_PERIPH_GPIOB);
