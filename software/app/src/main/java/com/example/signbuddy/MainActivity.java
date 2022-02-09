@@ -26,7 +26,6 @@ import com.clj.fastble.data.BleDevice;
 import com.clj.fastble.exception.BleException;
 import com.clj.fastble.scan.BleScanRuleConfig;
 
-import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -35,8 +34,10 @@ public class MainActivity extends AppCompatActivity {
     private ProgressBar connectProgress;
     private final int FINE_LOCATION_CODE = 1;
     private BleDevice SignBuddy;
+    private final String ble_name = "Sign Buddy BLE";
     private final String uuid_service = "6E400001-B5A3-F393-E0A9-E50E24DCCA9E";
     private final String uuid_characteristic_notify = "6E400003-B5A3-F393-E0A9-E50E24DCCA9E";
+    private int byteCount = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -127,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onScanning(BleDevice bleDevice) {
                     String name = bleDevice.getName();
-                    if (name != null && name.equals("Adafruit Bluefruit LE")) {
+                    if (name != null && name.equals(ble_name)) {
                         SignBuddy = bleDevice;
                         BleManager.getInstance().connect(SignBuddy, new BleGattCallback() {
                             @Override
@@ -161,8 +162,13 @@ public class MainActivity extends AppCompatActivity {
 
                                     @Override
                                     public void onCharacteristicChanged(byte[] data) {
-                                        String msg = new String(data, StandardCharsets.UTF_8);
-                                        Log.i("Sign Buddy", msg);
+                                        StringBuilder sb = new StringBuilder();
+                                        for (byte b : data) {
+                                            sb.append(String.format("%02X ", b));
+                                            byteCount++;
+                                        }
+                                        Log.i("Sign Buddy", sb.toString());
+                                        Log.i("Sign Buddy", String.valueOf(byteCount));
                                     }
                                 });
                             }
