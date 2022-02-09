@@ -3,7 +3,7 @@
 
 #include <stdint.h>
 
-#include <SignBuddy.pb.h>
+#include <sign_buddy.pb.h>
 
 #define TOUCH_SENSOR_CNT    12
 
@@ -15,6 +15,6 @@ void tsc_start_read(void);
 // register data ready callback
 void tsc_callback_register(void (*callback)(void));
 
-void tsc_data_get(Sample_TouchData *data);
+void tsc_data_get(SBPSample_TouchData *data);
 
 #endif // TSC_H

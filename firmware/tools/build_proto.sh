@@ -11,7 +11,7 @@ bash $BUILD_DOCKER_SCRIPT
 
 docker create -it -v $FIRMWARE_ROOT:/workspace --name env $IMAGE_NAME bash > /dev/null
 docker start env > /dev/null
-docker exec -i env bash -c "cd /workspace/applications/SignBuddy && python3 $NANOPB_ROOT/protoc --plugin=protoc-gen-nanopb=$NANOPB_ROOT/protoc-gen-nanopb --nanopb_out=. SignBuddy.proto --proto_path=."
+docker exec -i env bash -c "cd /workspace/applications/SignBuddy && python3 $NANOPB_ROOT/protoc --plugin=protoc-gen-nanopb=$NANOPB_ROOT/protoc-gen-nanopb --nanopb_out=. sign_buddy.proto --proto_path=."
 BUILD_STATUS=$?
 docker rm -f env > /dev/null
 

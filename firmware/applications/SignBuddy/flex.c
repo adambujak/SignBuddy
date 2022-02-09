@@ -89,7 +89,7 @@ void flex_start_read(void)
   xTaskNotifyGive(s.task_handle);
 }
 
-void flex_data_get(Sample_FlexData *data)
+void flex_data_get(SBPSample_FlexData *data)
 {
   data->flex_thumb = s.flex_values[FLEX_SENSOR_THUMB];
   data->flex_index = s.flex_values[FLEX_SENSOR_INDEX];

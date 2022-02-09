@@ -3,7 +3,7 @@
 
 #include <stdint.h>
 
-#include "SignBuddy.pb.h"
+#include "sign_buddy.pb.h"
 
 /* Initialize flex module */
 void flex_task_setup(void);
@@ -17,6 +17,6 @@ void adc_data_ready_cb(void);
 void flex_callback_register(void (*callback)(void));
 
 /* Get flex sensor data */
-void flex_data_get(Sample_FlexData *);
+void flex_data_get(SBPSample_FlexData *);
 
 #endif // FLEX_H

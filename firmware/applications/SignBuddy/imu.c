@@ -111,7 +111,7 @@ void imu_start_read(void)
   xTaskNotifyGive(s.task_handle);
 }
 
-void imu_data_get(Sample_IMUData *data)
+void imu_data_get(SBPSample_IMUData *data)
 {
   data->eul_h = s.bno055_euler_hrp.h;
   data->eul_r = s.bno055_euler_hrp.r;
