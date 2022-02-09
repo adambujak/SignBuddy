@@ -16,5 +16,7 @@
 
 /* IRQ CONFIGS */
 // lower number is higher priority - lowest priority is 3 - max is 0
+#define ADC_PRIORITY    1
+#define DMA_PRIORITY    2
 
 #endif // TASK_CONFIG_H
