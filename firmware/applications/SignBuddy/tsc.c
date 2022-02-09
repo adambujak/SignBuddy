@@ -19,11 +19,12 @@
 #define TOUCH_SENSOR_4                 4   // TSC_GROUP7_CHANNEL0
 #define TOUCH_SENSOR_5                 5   // TSC_GROUP8_CHANNEL0
 
-#define TOUCH_SENSOR_6                 6   // TSC_GROUP4_CHANNEL1
-#define TOUCH_SENSOR_7                 7   // TSC_GROUP5_CHANNEL1
-#define TOUCH_SENSOR_8                 8   // TSC_GROUP6_CHANNEL1
-#define TOUCH_SENSOR_9                 9   // TSC_GROUP7_CHANNEL1
-#define TOUCH_SENSOR_10                10  // TSC_GROUP8_CHANNEL1
+#define TOUCH_SENSOR_6                 6   // TSC_GROUP3_CHANNEL1
+#define TOUCH_SENSOR_7                 7   // TSC_GROUP4_CHANNEL1
+#define TOUCH_SENSOR_8                 8   // TSC_GROUP5_CHANNEL1
+#define TOUCH_SENSOR_9                 9   // TSC_GROUP6_CHANNEL1
+#define TOUCH_SENSOR_10                10  // TSC_GROUP7_CHANNEL1
+#define TOUCH_SENSOR_11                11  // TSC_GROUP8_CHANNEL1
 
 
 #define SENSOR_PORT(group, channel)    TSC_GROUP ## group ## _CHANNEL ## channel ## _PORT
@@ -34,53 +35,28 @@
 #define SAMPLER_PIN(group)             TSC_GROUP ## group ## _SAMPLER_PIN
 #define SAMPLER_IO(group)              TSC_GROUP ## group ## _SAMPLER_IO
 
-// TODO when all sensors are available uncomment this and change numbers to enum
-// since numbers are a source of a bug
-
-/*
- #define TOUCH_SENSOR_CNT               11
- * // group info about all sensors on IO = 0
- #define CHANNEL0_MIN_GROUP             3
- #define CHANNEL0_MAX_GROUP             8
- #define CHANNEL0_CNT                   6
- *
- * // group info about all sensors on IO = 1
- #define CHANNEL1_MIN_GROUP             4
- #define CHANNEL1_MAX_GROUP             8
- #define CHANNEL1_CNT                   5
- *
- *
- #define CHANNEL0_IOS                   (SENSOR_IO(3, 0) | SENSOR_IO(4, 0) | SENSOR_IO(5, 0) | \
- *                                      SENSOR_IO(6, 0) | SENSOR_IO(7, 0) | SENSOR_IO(8, 0))
- *
- *
- #define CHANNEL1_IOS                   (SENSOR_IO(4, 1) | SENSOR_IO(5, 1) | SENSOR_IO(6, 1) | \
- *                                      SENSOR_IO(7, 1) | SENSOR_IO(8, 1))
- *
- #define SAMPLING0_IOS                  (SAMPLER_IO(3) | SAMPLER_IO(4) | SAMPLER_IO(5) | \
- *                                      SAMPLER_IO(6) | SAMPLER_IO(7) | SAMPLER_IO(8))
- *
- #define SAMPLING1_IOS                  (SAMPLER_IO(4) | SAMPLER_IO(5) | SAMPLER_IO(6) | \
- *                                      SAMPLER_IO(7) | SAMPLER_IO(8))
- */
-// group info about all sensors on IO = 0
-#define CHANNEL0_MIN_GROUP    TSC_GROUP3_IDX
-#define CHANNEL0_MAX_GROUP    TSC_GROUP4_IDX
-#define CHANNEL0_CNT          ((CHANNEL0_MAX_GROUP - CHANNEL0_MIN_GROUP) + 1)
 
 // group info about all sensors on IO = 1
-#define CHANNEL1_MIN_GROUP    TSC_GROUP4_IDX
-#define CHANNEL1_MAX_GROUP    TSC_GROUP4_IDX
+#define CHANNEL1_MIN_GROUP    TSC_GROUP3_IDX
+#define CHANNEL1_MAX_GROUP    TSC_GROUP8_IDX
 #define CHANNEL1_CNT          ((CHANNEL1_MAX_GROUP - CHANNEL1_MIN_GROUP) + 1)
 
-#define CHANNEL0_IOS          (SENSOR_IO(3, 0) | SENSOR_IO(4, 0))
+// group info about all sensors on IO = 0
+#define CHANNEL0_MIN_GROUP    TSC_GROUP3_IDX
+#define CHANNEL0_MAX_GROUP    TSC_GROUP8_IDX
+#define CHANNEL0_CNT          ((CHANNEL0_MAX_GROUP - CHANNEL0_MIN_GROUP) + 1)
 
-#define CHANNEL1_IOS          (SENSOR_IO(4, 1))
+#define CHANNEL0_IOS          (SENSOR_IO(3, 0) | SENSOR_IO(4, 0) | SENSOR_IO(5, 0) | \
+                               SENSOR_IO(6, 0) | SENSOR_IO(7, 0) | SENSOR_IO(8, 0))
 
-#define SAMPLING0_IOS         (SAMPLER_IO(3) | SAMPLER_IO(4))
+#define CHANNEL1_IOS          (SENSOR_IO(3, 1) | SENSOR_IO(4, 1) | SENSOR_IO(5, 1) | \
+                               SENSOR_IO(6, 1) | SENSOR_IO(7, 1) | SENSOR_IO(8, 1))
 
-#define SAMPLING1_IOS         (SAMPLER_IO(4))
+#define SAMPLING0_IOS         (SAMPLER_IO(3) | SAMPLER_IO(4) | SAMPLER_IO(5) | \
+                               SAMPLER_IO(6) | SAMPLER_IO(7) | SAMPLER_IO(8))
 
+#define SAMPLING1_IOS         (SAMPLER_IO(3) | SAMPLER_IO(4) | SAMPLER_IO(5) | \
+                               SAMPLER_IO(6) | SAMPLER_IO(7) | SAMPLER_IO(8))
 
 typedef struct {
   TSC_HandleTypeDef tsc;
@@ -124,6 +100,7 @@ static void hw_init(void)
   TSC_GPIO_CLK_EN();
 
   electrode_pin_init(SENSOR_PIN(3, 0), SENSOR_PORT(3, 0));
+  electrode_pin_init(SENSOR_PIN(3, 1), SENSOR_PORT(3, 1));
   electrode_pin_init(SENSOR_PIN(4, 0), SENSOR_PORT(4, 0));
   electrode_pin_init(SENSOR_PIN(4, 1), SENSOR_PORT(4, 1));
   electrode_pin_init(SENSOR_PIN(5, 0), SENSOR_PORT(5, 0));
