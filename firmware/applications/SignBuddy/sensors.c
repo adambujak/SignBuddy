@@ -98,7 +98,7 @@ static void sensors_task(void *arg)
       LOG_DEBUG("Sample_id: %lu\r\n", s.sample.sample_id);
 
       tsc_data_get(&s.sample.touchData);
-      LOG_DEBUG("tsc: %lx\r\n", s.sample.touchData.touch_values);
+      LOG_DEBUG("tsc: %d\r\n", s.sample.touchData.touch1);
 
       flex_data_get(&s.sample.flexData);
       imu_data_get(&s.sample.imuData);

@@ -316,7 +316,18 @@ void tsc_start_read(void)
 
 void tsc_data_get(Sample_TouchData *data)
 {
-  data->touch_values = (uint32_t) s.touch_values;
+  data->touch1 = (s.touch_values >> 0) & 0x1;
+  data->touch2 = (s.touch_values >> 1) & 0x1;
+  data->touch3 = (s.touch_values >> 2) & 0x1;
+  data->touch4 = (s.touch_values >> 3) & 0x1;
+  data->touch5 = (s.touch_values >> 4) & 0x1;
+  data->touch6 = (s.touch_values >> 5) & 0x1;
+  data->touch7 = (s.touch_values >> 6) & 0x1;
+  data->touch8 = (s.touch_values >> 7) & 0x1;
+  data->touch9 = (s.touch_values >> 8) & 0x1;
+  data->touch10 = (s.touch_values >> 9) & 0x1;
+  data->touch11 = (s.touch_values >> 10) & 0x1;
+  data->touch12 = (s.touch_values >> 11) & 0x1;
 }
 
 void tsc_callback_register(void (*callback)(void))

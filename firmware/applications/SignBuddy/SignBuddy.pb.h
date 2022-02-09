@@ -33,7 +33,18 @@ typedef struct _Sample_IMUData {
 } Sample_IMUData;
 
 typedef struct _Sample_TouchData {
-  uint32_t touch_values;
+  bool touch1;
+  bool touch2;
+  bool touch3;
+  bool touch4;
+  bool touch5;
+  bool touch6;
+  bool touch7;
+  bool touch8;
+  bool touch9;
+  bool touch10;
+  bool touch11;
+  bool touch12;
 } Sample_TouchData;
 
 typedef struct _Status {
@@ -66,50 +77,61 @@ extern "C" {
 #endif
 
 /* Initializer values for message structs */
-#define GestureData_init_default             { { { NULL }, NULL }, { { NULL }, NULL } }
-#define Message_init_default                 { 0, 0, { Sample_init_default } }
-#define Sample_init_default                  { 0, Sample_IMUData_init_default, Sample_FlexData_init_default, \
-                                               Sample_TouchData_init_default }
-#define Sample_IMUData_init_default          { 0, 0, 0, 0, 0, 0 }
-#define Sample_FlexData_init_default         { 0, 0, 0, 0, 0 }
-#define Sample_TouchData_init_default        { 0 }
-#define Status_init_default                  { 0, 0, 0, 0, 0 }
-#define GestureData_init_zero                { { { NULL }, NULL }, { { NULL }, NULL } }
-#define Message_init_zero                    { 0, 0, { Sample_init_zero } }
-#define Sample_init_zero                     { 0, Sample_IMUData_init_zero, Sample_FlexData_init_zero, \
-                                               Sample_TouchData_init_zero }
-#define Sample_IMUData_init_zero             { 0, 0, 0, 0, 0, 0 }
-#define Sample_FlexData_init_zero            { 0, 0, 0, 0, 0 }
-#define Sample_TouchData_init_zero           { 0 }
-#define Status_init_zero                     { 0, 0, 0, 0, 0 }
+#define GestureData_init_default            { { { NULL }, NULL }, { { NULL }, NULL } }
+#define Message_init_default                { 0, 0, { Sample_init_default } }
+#define Sample_init_default                 { 0, Sample_IMUData_init_default, Sample_FlexData_init_default, \
+                                              Sample_TouchData_init_default }
+#define Sample_IMUData_init_default         { 0, 0, 0, 0, 0, 0 }
+#define Sample_FlexData_init_default        { 0, 0, 0, 0, 0 }
+#define Sample_TouchData_init_default       { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }
+#define Status_init_default                 { 0, 0, 0, 0, 0 }
+#define GestureData_init_zero               { { { NULL }, NULL }, { { NULL }, NULL } }
+#define Message_init_zero                   { 0, 0, { Sample_init_zero } }
+#define Sample_init_zero                    { 0, Sample_IMUData_init_zero, Sample_FlexData_init_zero, \
+                                              Sample_TouchData_init_zero }
+#define Sample_IMUData_init_zero            { 0, 0, 0, 0, 0, 0 }
+#define Sample_FlexData_init_zero           { 0, 0, 0, 0, 0 }
+#define Sample_TouchData_init_zero          { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }
+#define Status_init_zero                    { 0, 0, 0, 0, 0 }
 
 /* Field tags (for use in manual encoding/decoding) */
-#define GestureData_letter_tag               1
-#define GestureData_samples_tag              2
-#define Sample_FlexData_flex_thumb_tag       1
-#define Sample_FlexData_flex_index_tag       2
-#define Sample_FlexData_flex_middle_tag      3
-#define Sample_FlexData_flex_ring_tag        4
-#define Sample_FlexData_flex_little_tag      5
-#define Sample_IMUData_eul_h_tag             1
-#define Sample_IMUData_eul_r_tag             2
-#define Sample_IMUData_eul_p_tag             3
-#define Sample_IMUData_lin_acc_x_tag         4
-#define Sample_IMUData_lin_acc_y_tag         5
-#define Sample_IMUData_lin_acc_z_tag         6
-#define Sample_TouchData_touch_values_tag    1
-#define Status_battery_voltage_tag           1
-#define Status_imu_sys_calib_stat_tag        2
-#define Status_imu_mag_calib_stat_tag        3
-#define Status_imu_acc_calib_status_tag      4
-#define Status_imu_gyro_calib_status_tag     5
-#define Sample_sample_id_tag                 1
-#define Sample_imuData_tag                   2
-#define Sample_flexData_tag                  3
-#define Sample_touchData_tag                 4
-#define Message_id_tag                       1
-#define Message_sample_tag                   2
-#define Message_status_tag                   3
+#define GestureData_letter_tag              1
+#define GestureData_samples_tag             2
+#define Sample_FlexData_flex_thumb_tag      1
+#define Sample_FlexData_flex_index_tag      2
+#define Sample_FlexData_flex_middle_tag     3
+#define Sample_FlexData_flex_ring_tag       4
+#define Sample_FlexData_flex_little_tag     5
+#define Sample_IMUData_eul_h_tag            1
+#define Sample_IMUData_eul_r_tag            2
+#define Sample_IMUData_eul_p_tag            3
+#define Sample_IMUData_lin_acc_x_tag        4
+#define Sample_IMUData_lin_acc_y_tag        5
+#define Sample_IMUData_lin_acc_z_tag        6
+#define Sample_TouchData_touch1_tag         1
+#define Sample_TouchData_touch2_tag         2
+#define Sample_TouchData_touch3_tag         3
+#define Sample_TouchData_touch4_tag         4
+#define Sample_TouchData_touch5_tag         5
+#define Sample_TouchData_touch6_tag         6
+#define Sample_TouchData_touch7_tag         7
+#define Sample_TouchData_touch8_tag         8
+#define Sample_TouchData_touch9_tag         9
+#define Sample_TouchData_touch10_tag        10
+#define Sample_TouchData_touch11_tag        11
+#define Sample_TouchData_touch12_tag        12
+#define Status_battery_voltage_tag          1
+#define Status_imu_sys_calib_stat_tag       2
+#define Status_imu_mag_calib_stat_tag       3
+#define Status_imu_acc_calib_status_tag     4
+#define Status_imu_gyro_calib_status_tag    5
+#define Sample_sample_id_tag                1
+#define Sample_imuData_tag                  2
+#define Sample_flexData_tag                 3
+#define Sample_touchData_tag                4
+#define Message_id_tag                      1
+#define Message_sample_tag                  2
+#define Message_status_tag                  3
 
 /* Struct field encoding specification for nanopb */
 #define GestureData_FIELDLIST(X, a)           \
@@ -158,8 +180,19 @@ extern "C" {
 #define Sample_FlexData_CALLBACK          NULL
 #define Sample_FlexData_DEFAULT           NULL
 
-#define Sample_TouchData_FIELDLIST(X, a) \
-  X(a, STATIC, REQUIRED, UINT32, touch_values, 1)
+#define Sample_TouchData_FIELDLIST(X, a)    \
+  X(a, STATIC, REQUIRED, BOOL, touch1, 1)   \
+  X(a, STATIC, REQUIRED, BOOL, touch2, 2)   \
+  X(a, STATIC, REQUIRED, BOOL, touch3, 3)   \
+  X(a, STATIC, REQUIRED, BOOL, touch4, 4)   \
+  X(a, STATIC, REQUIRED, BOOL, touch5, 5)   \
+  X(a, STATIC, REQUIRED, BOOL, touch6, 6)   \
+  X(a, STATIC, REQUIRED, BOOL, touch7, 7)   \
+  X(a, STATIC, REQUIRED, BOOL, touch8, 8)   \
+  X(a, STATIC, REQUIRED, BOOL, touch9, 9)   \
+  X(a, STATIC, REQUIRED, BOOL, touch10, 10) \
+  X(a, STATIC, REQUIRED, BOOL, touch11, 11) \
+  X(a, STATIC, REQUIRED, BOOL, touch12, 12)
 #define Sample_TouchData_CALLBACK         NULL
 #define Sample_TouchData_DEFAULT          NULL
 
@@ -191,11 +224,11 @@ extern const pb_msgdesc_t Status_msg;
 
 /* Maximum encoded size of messages (where known) */
 /* GestureData_size depends on runtime parameters */
-#define Message_size             92
+#define Message_size             110
 #define Sample_FlexData_size     30
 #define Sample_IMUData_size      36
-#define Sample_TouchData_size    6
-#define Sample_size              84
+#define Sample_TouchData_size    24
+#define Sample_size              102
 #define Status_size              30
 
 #ifdef __cplusplus

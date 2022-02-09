@@ -38,7 +38,18 @@ message Sample {
     required FlexData flexData = 3;
 
     message TouchData {
-        required uint32 touch_values = 1;
+        required bool touch1 = 1;
+        required bool touch2 = 2;
+        required bool touch3 = 3;
+        required bool touch4 = 4;
+        required bool touch5 = 5;
+        required bool touch6 = 6;
+        required bool touch7 = 7;
+        required bool touch8 = 8;
+        required bool touch9 = 9;
+        required bool touch10 = 10;
+        required bool touch11 = 11;
+        required bool touch12 = 12;
     }
 
     required TouchData touchData = 4;
