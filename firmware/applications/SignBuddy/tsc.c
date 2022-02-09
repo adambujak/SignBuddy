@@ -46,17 +46,17 @@
 #define CHANNEL0_MAX_GROUP    TSC_GROUP8_IDX
 #define CHANNEL0_CNT          ((CHANNEL0_MAX_GROUP - CHANNEL0_MIN_GROUP) + 1)
 
-#define CHANNEL0_IOS                   (SENSOR_IO(3, 0) | SENSOR_IO(4, 0) | SENSOR_IO(5, 0) | \
-                                        SENSOR_IO(6, 0) | SENSOR_IO(7, 0) | SENSOR_IO(8, 0))
+#define CHANNEL0_IOS          (SENSOR_IO(3, 0) | SENSOR_IO(4, 0) | SENSOR_IO(5, 0) | \
+                               SENSOR_IO(6, 0) | SENSOR_IO(7, 0) | SENSOR_IO(8, 0))
 
-#define CHANNEL1_IOS                   (SENSOR_IO(3, 1) | SENSOR_IO(4, 1) | SENSOR_IO(5, 1) | \
-                                        SENSOR_IO(6, 1) | SENSOR_IO(7, 1) | SENSOR_IO(8, 1))
+#define CHANNEL1_IOS          (SENSOR_IO(3, 1) | SENSOR_IO(4, 1) | SENSOR_IO(5, 1) | \
+                               SENSOR_IO(6, 1) | SENSOR_IO(7, 1) | SENSOR_IO(8, 1))
 
-#define SAMPLING0_IOS                  (SAMPLER_IO(3) | SAMPLER_IO(4) | SAMPLER_IO(5) | \
-                                        SAMPLER_IO(6) | SAMPLER_IO(7) | SAMPLER_IO(8))
+#define SAMPLING0_IOS         (SAMPLER_IO(3) | SAMPLER_IO(4) | SAMPLER_IO(5) | \
+                               SAMPLER_IO(6) | SAMPLER_IO(7) | SAMPLER_IO(8))
 
-#define SAMPLING1_IOS                  (SAMPLER_IO(3) | SAMPLER_IO(4) | SAMPLER_IO(5) | \
-                                        SAMPLER_IO(6) | SAMPLER_IO(7) | SAMPLER_IO(8))
+#define SAMPLING1_IOS         (SAMPLER_IO(3) | SAMPLER_IO(4) | SAMPLER_IO(5) | \
+                               SAMPLER_IO(6) | SAMPLER_IO(7) | SAMPLER_IO(8))
 
 typedef struct {
   TSC_HandleTypeDef tsc;
