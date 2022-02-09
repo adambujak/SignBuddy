@@ -94,8 +94,8 @@ void flex_data_get(Sample_FlexData *data)
   data->flex_thumb = s.flex_values[FLEX_SENSOR_THUMB];
   data->flex_index = s.flex_values[FLEX_SENSOR_INDEX];
   data->flex_middle = s.flex_values[FLEX_SENSOR_MIDDLE];
-  data->flex_ring = s.flex_values[FLEX_SENSOR_LITTLE];
-  data->flex_little = s.flex_values[FLEX_SENSOR_INDEX];
+  data->flex_ring = s.flex_values[FLEX_SENSOR_RING];
+  data->flex_little = s.flex_values[FLEX_SENSOR_LITTLE];
 }
 
 void flex_callback_register(void (*callback)(void))
