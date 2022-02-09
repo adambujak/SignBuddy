@@ -113,7 +113,7 @@ void imu_start_read(void)
 
 void imu_data_get(Sample_IMUData *data)
 {
-  data->eul_y = s.bno055_euler_hrp.h;
+  data->eul_h = s.bno055_euler_hrp.h;
   data->eul_r = s.bno055_euler_hrp.r;
   data->eul_p = s.bno055_euler_hrp.p;
   data->lin_acc_x = s.bno055_acce_xyz.x;
