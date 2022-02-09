@@ -20,11 +20,6 @@
 
 #define SYSCLK_FREQ                     24000000
 
-#define SYSTEM_TIME_PRIORITY            0
-#define ADC_PRIORITY                    1
-#define DMA_PRIORITY                    2
-#define LOG_UART_PRIORITY               3
-
 /* LED */
 #define LED1_PORT                       GPIOA
 #define LED1_PIN                        LL_GPIO_PIN_5
