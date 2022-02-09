@@ -49,6 +49,7 @@ message Sample {
         required bool touch9 = 9;
         required bool touch10 = 10;
         required bool touch11 = 11;
+        required bool touch12 = 12;
     }
 
     required TouchData touchData = 4;

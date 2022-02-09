@@ -85,8 +85,8 @@
 typedef struct {
   TSC_HandleTypeDef tsc;
   TaskHandle_t      task_handle;
+  uint16_t          touch_values;
   uint32_t          calibration_values[TOUCH_SENSOR_CNT];
-  int8_t            touch_values[TOUCH_SENSOR_CNT];
   void (*callback)(void);
 } state_t;
 
@@ -163,7 +163,7 @@ static void hw_init(void)
   }
 }
 
-static void io_config(uint8_t channel)
+static inline void io_config(uint8_t channel)
 {
   TSC_IOConfigTypeDef io_config = { 0 };
 
@@ -189,14 +189,14 @@ static inline int convert_value_to_touch(uint32_t value, int index)
   return 0;
 }
 
-static void get_group_value(uint8_t group, uint32_t *value)
+static inline void get_group_value(uint8_t group, uint32_t *value)
 {
   if (HAL_TSC_GroupGetStatus(&s.tsc, group) == TSC_GROUP_COMPLETED) {
     *value = HAL_TSC_GroupGetValue(&s.tsc, group);
   }
 }
 
-static int run_sampler(void)
+static inline int run_sampler(void)
 {
   if (HAL_TSC_Start(&s.tsc) != HAL_OK) {
     error_handler();
@@ -227,7 +227,9 @@ static void fetch_channel_values(uint8_t channel, uint8_t min_group, uint8_t max
   if (run_sampler() == RET_OK) {
     for (int i = min_group; i <= max_group; i++) {
       get_group_value(i, &value);
-      s.touch_values[index] = convert_value_to_touch(value, index);
+      if (convert_value_to_touch(value, index) == 1) {
+        s.touch_values |= (1 << index);
+      }
       index++;
     }
   }
@@ -238,7 +240,7 @@ static void fetch_channel_values(uint8_t channel, uint8_t min_group, uint8_t max
 
 static inline void sample_data(void)
 {
-  memset(s.touch_values, 0, sizeof(s.touch_values));
+  s.touch_values = 0;
   fetch_channel_values(CHANNEL0, CHANNEL0_MIN_GROUP, CHANNEL0_MAX_GROUP, 0);
   fetch_channel_values(CHANNEL1, CHANNEL1_MIN_GROUP, CHANNEL1_MAX_GROUP, CHANNEL0_CNT);
 }
@@ -312,9 +314,20 @@ void tsc_start_read(void)
   xTaskNotifyGive(s.task_handle);
 }
 
-void tsc_get_value(int8_t touch_values[TOUCH_SENSOR_CNT])
+void tsc_data_get(Sample_TouchData *data)
 {
-  memcpy(touch_values, s.touch_values, sizeof(s.touch_values));
+  data->touch1 = (s.touch_values >> 0) & 0x1;
+  data->touch2 = (s.touch_values >> 1) & 0x1;
+  data->touch3 = (s.touch_values >> 2) & 0x1;
+  data->touch4 = (s.touch_values >> 3) & 0x1;
+  data->touch5 = (s.touch_values >> 4) & 0x1;
+  data->touch6 = (s.touch_values >> 5) & 0x1;
+  data->touch7 = (s.touch_values >> 6) & 0x1;
+  data->touch8 = (s.touch_values >> 7) & 0x1;
+  data->touch9 = (s.touch_values >> 8) & 0x1;
+  data->touch10 = (s.touch_values >> 9) & 0x1;
+  data->touch11 = (s.touch_values >> 10) & 0x1;
+  data->touch12 = (s.touch_values >> 11) & 0x1;
 }
 
 void tsc_callback_register(void (*callback)(void))

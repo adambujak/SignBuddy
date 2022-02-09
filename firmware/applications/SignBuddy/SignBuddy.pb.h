@@ -44,6 +44,7 @@ typedef struct _Sample_TouchData {
   bool touch9;
   bool touch10;
   bool touch11;
+  bool touch12;
 } Sample_TouchData;
 
 typedef struct _Status {
@@ -82,7 +83,7 @@ extern "C" {
                                               Sample_TouchData_init_default }
 #define Sample_IMUData_init_default         { 0, 0, 0, 0, 0, 0 }
 #define Sample_FlexData_init_default        { 0, 0, 0, 0, 0 }
-#define Sample_TouchData_init_default       { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }
+#define Sample_TouchData_init_default       { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }
 #define Status_init_default                 { 0, 0, 0, 0, 0 }
 #define GestureData_init_zero               { { { NULL }, NULL }, { { NULL }, NULL } }
 #define Message_init_zero                   { 0, 0, { Sample_init_zero } }
@@ -90,7 +91,7 @@ extern "C" {
                                               Sample_TouchData_init_zero }
 #define Sample_IMUData_init_zero            { 0, 0, 0, 0, 0, 0 }
 #define Sample_FlexData_init_zero           { 0, 0, 0, 0, 0 }
-#define Sample_TouchData_init_zero          { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }
+#define Sample_TouchData_init_zero          { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }
 #define Status_init_zero                    { 0, 0, 0, 0, 0 }
 
 /* Field tags (for use in manual encoding/decoding) */
@@ -118,6 +119,7 @@ extern "C" {
 #define Sample_TouchData_touch9_tag         9
 #define Sample_TouchData_touch10_tag        10
 #define Sample_TouchData_touch11_tag        11
+#define Sample_TouchData_touch12_tag        12
 #define Status_battery_voltage_tag          1
 #define Status_imu_sys_calib_stat_tag       2
 #define Status_imu_mag_calib_stat_tag       3
@@ -189,7 +191,8 @@ extern "C" {
   X(a, STATIC, REQUIRED, BOOL, touch8, 8)   \
   X(a, STATIC, REQUIRED, BOOL, touch9, 9)   \
   X(a, STATIC, REQUIRED, BOOL, touch10, 10) \
-  X(a, STATIC, REQUIRED, BOOL, touch11, 11)
+  X(a, STATIC, REQUIRED, BOOL, touch11, 11) \
+  X(a, STATIC, REQUIRED, BOOL, touch12, 12)
 #define Sample_TouchData_CALLBACK         NULL
 #define Sample_TouchData_DEFAULT          NULL
 
@@ -221,11 +224,11 @@ extern const pb_msgdesc_t Status_msg;
 
 /* Maximum encoded size of messages (where known) */
 /* GestureData_size depends on runtime parameters */
-#define Message_size             108
+#define Message_size             110
 #define Sample_FlexData_size     30
 #define Sample_IMUData_size      36
-#define Sample_TouchData_size    22
-#define Sample_size              100
+#define Sample_TouchData_size    24
+#define Sample_size              102
 #define Status_size              30
 
 #ifdef __cplusplus
