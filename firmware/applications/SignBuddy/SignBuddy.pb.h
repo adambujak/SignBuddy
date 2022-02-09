@@ -24,9 +24,9 @@ typedef struct _Sample_FlexData {
 } Sample_FlexData;
 
 typedef struct _Sample_IMUData {
-  int32_t eul_p;
+  int32_t eul_h;
   int32_t eul_r;
-  int32_t eul_y;
+  int32_t eul_p;
   int32_t lin_acc_x;
   int32_t lin_acc_y;
   int32_t lin_acc_z;
@@ -101,9 +101,9 @@ extern "C" {
 #define Sample_FlexData_flex_middle_tag     3
 #define Sample_FlexData_flex_ring_tag       4
 #define Sample_FlexData_flex_little_tag     5
-#define Sample_IMUData_eul_p_tag            1
+#define Sample_IMUData_eul_h_tag            1
 #define Sample_IMUData_eul_r_tag            2
-#define Sample_IMUData_eul_y_tag            3
+#define Sample_IMUData_eul_p_tag            3
 #define Sample_IMUData_lin_acc_x_tag        4
 #define Sample_IMUData_lin_acc_y_tag        5
 #define Sample_IMUData_lin_acc_z_tag        6
@@ -160,9 +160,9 @@ extern "C" {
 #define Sample_touchData_MSGTYPE          Sample_TouchData
 
 #define Sample_IMUData_FIELDLIST(X, a)         \
-  X(a, STATIC, REQUIRED, SINT32, eul_p, 1)     \
+  X(a, STATIC, REQUIRED, SINT32, eul_h, 1)     \
   X(a, STATIC, REQUIRED, SINT32, eul_r, 2)     \
-  X(a, STATIC, REQUIRED, SINT32, eul_y, 3)     \
+  X(a, STATIC, REQUIRED, SINT32, eul_p, 3)     \
   X(a, STATIC, REQUIRED, SINT32, lin_acc_x, 4) \
   X(a, STATIC, REQUIRED, SINT32, lin_acc_y, 5) \
   X(a, STATIC, REQUIRED, SINT32, lin_acc_z, 6)

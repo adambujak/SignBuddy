@@ -17,9 +17,9 @@ message Sample {
     required uint32 sample_id = 1;
 
     message IMUData {
-        required sint32 eul_p = 1;
+        required sint32 eul_h = 1;
         required sint32 eul_r = 2;
-        required sint32 eul_y = 3;
+        required sint32 eul_p = 3;
         required sint32 lin_acc_x = 4;
         required sint32 lin_acc_y = 5;
         required sint32 lin_acc_z = 6;

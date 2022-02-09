@@ -74,17 +74,6 @@ static void board_bringup(void)
   gpio_init();
 }
 
-static void leds_task(void *arg)
-{
-  uint8_t led_state = 0;
-
-  while (1) {
-    led_state = (led_state + 1) % 2;
-    rtos_delay_ms(1000);
-    gpio_led_set(led_state);
-  }
-}
-
 int main(void)
 {
   board_bringup();
@@ -93,22 +82,20 @@ int main(void)
 
   flex_task_setup();
   tsc_task_setup();
+  imu_task_setup();
   sensors_task_setup();
   comms_task_setup();
 
   LOG_INFO("App started\r\n");
 
-  RTOS_ERR_CHECK(xTaskCreate(leds_task,
-                             "led",
-                             128,
-                             NULL,
-                             4,
-                             NULL));
-
   comms_task_start();
   sensors_task_start();
+
   tsc_task_start();
+
   flex_task_start();
+
+  imu_task_start();
 
   os_start();
 }
@@ -134,6 +121,7 @@ void SysTick_Handler(void)
 
 void vApplicationStackOverflowHook(TaskHandle_t xTask, char *pcTaskName)
 {
+  __asm__ ("BKPT");
   LOG_ERROR("Stack Overflow");
   error_handler();
 }
