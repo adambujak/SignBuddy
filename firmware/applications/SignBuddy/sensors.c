@@ -67,19 +67,6 @@ static void touch_data_get(void)
   s.sample.touchData.touch3 = tsc_vals[2];
 }
 
-static void flex_data_get(void)
-{
-  uint16_t flex_val;
-  uint32_t *flex_ptr = (uint32_t *) &s.sample.flexData;
-
-  for (uint8_t i = 0; i < FLEX_SENSOR_CNT; i++) {
-    flex_get_value(&flex_val, i);
-    *flex_ptr = flex_val;
-//    LOG_DEBUG("Flex_%hu val: %lu\r\n", i + 1, *flex_ptr);
-    flex_ptr++;
-  }
-}
-
 static void sensors_task(void *arg)
 {
   LOG_INFO("sens: task started\r\n");
@@ -124,7 +111,7 @@ static void sensors_task(void *arg)
       LOG_DEBUG("Sample_id: %lu\r\n", s.sample.sample_id);
 
       touch_data_get();
-      flex_data_get();
+      flex_data_get(&s.sample.flexData);
       imu_data_get(&s.sample.imuData);
     }
 
