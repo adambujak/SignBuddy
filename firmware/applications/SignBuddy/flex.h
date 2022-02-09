@@ -3,7 +3,7 @@
 
 #include <stdint.h>
 
-#define FLEX_SENSOR_CNT    5
+#include "SignBuddy.pb.h"
 
 /* Initialize flex module */
 void flex_task_setup(void);
@@ -16,7 +16,7 @@ void adc_data_ready_cb(void);
 /* Register data ready callback */
 void flex_callback_register(void (*callback)(void));
 
-/* Get flex sensor value */
-void flex_get_value(uint16_t *, uint8_t);
+/* Get flex sensor data */
+void flex_data_get(Sample_FlexData *);
 
 #endif // FLEX_H

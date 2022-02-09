@@ -6,7 +6,15 @@
 #include "common.h"
 #include "logger.h"
 
-#define VREF    ((uint32_t) 3300)
+#define VREF                  ((uint32_t) 3300)
+
+#define FLEX_SENSOR_CNT       5
+
+#define FLEX_SENSOR_THUMB     0
+#define FLEX_SENSOR_INDEX     1
+#define FLEX_SENSOR_MIDDLE    2
+#define FLEX_SENSOR_RING      3
+#define FLEX_SENSOR_LITTLE    4
 
 typedef struct {
   uint16_t     flex_values[FLEX_SENSOR_CNT];
@@ -81,9 +89,13 @@ void flex_start_read(void)
   xTaskNotifyGive(s.task_handle);
 }
 
-void flex_get_value(uint16_t *measurement, uint8_t index)
+void flex_data_get(Sample_FlexData *data)
 {
-  *measurement = s.flex_values[index];
+  data->flex_thumb = s.flex_values[FLEX_SENSOR_THUMB];
+  data->flex_index = s.flex_values[FLEX_SENSOR_INDEX];
+  data->flex_middle = s.flex_values[FLEX_SENSOR_MIDDLE];
+  data->flex_ring = s.flex_values[FLEX_SENSOR_LITTLE];
+  data->flex_little = s.flex_values[FLEX_SENSOR_INDEX];
 }
 
 void flex_callback_register(void (*callback)(void))
