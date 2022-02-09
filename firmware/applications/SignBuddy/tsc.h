@@ -5,7 +5,7 @@
 
 #include <SignBuddy.pb.h>
 
-#define TOUCH_SENSOR_CNT    3
+#define TOUCH_SENSOR_CNT    12
 
 /* Initialize tsc module */
 void tsc_task_setup(void);
