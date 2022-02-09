@@ -7,7 +7,7 @@
 #include "flex.h"
 #include "imu.h"
 #include "logger.h"
-#include "SignBuddy.pb.h"
+#include "sign_buddy.pb.h"
 #include "tsc.h"
 
 #include <stdlib.h>
@@ -29,7 +29,7 @@ typedef struct {
   TaskHandle_t       sensors_task_handle;
   TimerHandle_t      sampling_timer;
   EventGroupHandle_t data_ready_event_group;
-  Sample             sample;
+  SBPSample          sample;
 } state_t;
 
 static state_t s;
@@ -97,9 +97,9 @@ static void sensors_task(void *arg)
     else {
       LOG_DEBUG("Sample_id: %lu\r\n", s.sample.sample_id);
 
-      tsc_data_get(&s.sample.touchData);
-      flex_data_get(&s.sample.flexData);
-      imu_data_get(&s.sample.imuData);
+      tsc_data_get(&s.sample.touch_data);
+      flex_data_get(&s.sample.flex_data);
+      imu_data_get(&s.sample.imu_data);
     }
 
     comms_tx_sample(&s.sample);

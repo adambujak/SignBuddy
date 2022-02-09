@@ -8,7 +8,6 @@
 #include "logger.h"
 #include "pb_encode.h"
 #include "sensors.h"
-#include "SignBuddy.pb.h"
 
 #include <stdlib.h>
 
@@ -21,7 +20,7 @@
 
 #define PACKET_SIZE             sizeof(packet_header_t) + s.packet.header.length
 
-#define MAX_MSG_SIZE            Message_size
+#define MAX_MSG_SIZE            SBPMessage_size
 
 typedef struct __attribute__((__packed__)) {
   uint8_t sync;
@@ -36,7 +35,7 @@ typedef struct __attribute__((__packed__)) {
 
 typedef struct {
   TaskHandle_t      task_handle;
-  Message           msg;
+  SBPMessage        msg;
   volatile uint8_t  msg_ready;
   packet_t          packet;
   volatile uint8_t  packet_ready;
@@ -83,7 +82,7 @@ static void packetize_sample()
 {
   pb_ostream_t stream = pb_ostream_from_buffer((pb_byte_t *) s.packet.msg, MAX_MSG_SIZE);
 
-  pb_encode(&stream, &Message_msg, &s.msg);
+  pb_encode(&stream, &SBPMessage_msg, &s.msg);
   s.msg_ready = 0;
   s.packet.header.length = stream.bytes_written;
   s.packet.header.crc = crc_compute(s.packet.msg, s.packet.header.length);
@@ -131,21 +130,21 @@ static void comms_task(void *arg)
   }
 }
 
-void comms_tx_sample(Sample *sample)
+void comms_tx_sample(SBPSample *sample)
 {
   xSemaphoreTake(s.sample_mutex, portMAX_DELAY);
   s.msg.id = MID_SAMPLE;
   s.msg.payload.sample = *sample;
-  s.msg.which_payload = Message_sample_tag;
+  s.msg.which_payload = SBPMessage_sample_tag;
   s.msg_ready = 1;
   xSemaphoreGive(s.sample_mutex);
 }
 
-void comms_tx_status(Status *status)
+void comms_tx_status(SBPStatus *status)
 {
   s.msg.id = MID_STATUS;
   s.msg.payload.status = *status;
-  s.msg.which_payload = Message_status_tag;
+  s.msg.which_payload = SBPMessage_status_tag;
   s.msg_ready = 1;
 }
 

@@ -22,7 +22,7 @@ PB_SOURCES = \
 	$(NANOPB_ROOT)/pb_common.c \
 	$(NANOPB_ROOT)/pb_encode.c \
 
-PROTO_SOURCE = $(PROJ_ROOT)/SignBuddy.pb.c
+PROTO_SOURCE = $(PROJ_ROOT)/sign_buddy.pb.c
 
 FREERTOS_SOURCES = \
 	$(FREERTOS_ROOT)/tasks.c \

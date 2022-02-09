@@ -291,20 +291,20 @@ void tsc_start_read(void)
   xTaskNotifyGive(s.task_handle);
 }
 
-void tsc_data_get(Sample_TouchData *data)
+void tsc_data_get(SBPSample_TouchData *data)
 {
-  data->touch1 = (s.touch_values >> 0) & 0x1;
-  data->touch2 = (s.touch_values >> 1) & 0x1;
-  data->touch3 = (s.touch_values >> 2) & 0x1;
-  data->touch4 = (s.touch_values >> 3) & 0x1;
-  data->touch5 = (s.touch_values >> 4) & 0x1;
-  data->touch6 = (s.touch_values >> 5) & 0x1;
-  data->touch7 = (s.touch_values >> 6) & 0x1;
-  data->touch8 = (s.touch_values >> 7) & 0x1;
-  data->touch9 = (s.touch_values >> 8) & 0x1;
-  data->touch10 = (s.touch_values >> 9) & 0x1;
-  data->touch11 = (s.touch_values >> 10) & 0x1;
-  data->touch12 = (s.touch_values >> 11) & 0x1;
+  data->touch_1 = (s.touch_values >> 0) & 0x1;
+  data->touch_2 = (s.touch_values >> 1) & 0x1;
+  data->touch_3 = (s.touch_values >> 2) & 0x1;
+  data->touch_4 = (s.touch_values >> 3) & 0x1;
+  data->touch_5 = (s.touch_values >> 4) & 0x1;
+  data->touch_6 = (s.touch_values >> 5) & 0x1;
+  data->touch_7 = (s.touch_values >> 6) & 0x1;
+  data->touch_8 = (s.touch_values >> 7) & 0x1;
+  data->touch_9 = (s.touch_values >> 8) & 0x1;
+  data->touch_10 = (s.touch_values >> 9) & 0x1;
+  data->touch_11 = (s.touch_values >> 10) & 0x1;
+  data->touch_12 = (s.touch_values >> 11) & 0x1;
 }
 
 void tsc_callback_register(void (*callback)(void))

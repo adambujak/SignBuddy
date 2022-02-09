@@ -1,0 +1,64 @@
+syntax = "proto2";
+
+message SBPGestureData {
+    required string letter = 1;
+    repeated SBPSample samples = 2;
+}
+
+message SBPMessage {
+    required uint32 id = 1;
+    oneof payload {
+        SBPSample sample = 2;
+        SBPStatus status = 3;
+    }
+}
+
+message SBPSample {
+    required uint32 sample_id = 1;
+
+    message IMUData {
+        required sint32 eul_h = 1;
+        required sint32 eul_r = 2;
+        required sint32 eul_p = 3;
+        required sint32 lin_acc_x = 4;
+        required sint32 lin_acc_y = 5;
+        required sint32 lin_acc_z = 6;
+    }
+
+    required IMUData imu_data = 2;
+
+    message FlexData {
+        required uint32 flex_thumb = 1;
+        required uint32 flex_index = 2;
+        required uint32 flex_middle = 3;
+        required uint32 flex_ring = 4;
+        required uint32 flex_little = 5;
+    }
+
+    required FlexData flex_data = 3;
+
+    message TouchData {
+        required bool touch_1 = 1;
+        required bool touch_2 = 2;
+        required bool touch_3 = 3;
+        required bool touch_4 = 4;
+        required bool touch_5 = 5;
+        required bool touch_6 = 6;
+        required bool touch_7 = 7;
+        required bool touch_8 = 8;
+        required bool touch_9 = 9;
+        required bool touch_10 = 10;
+        required bool touch_11 = 11;
+        required bool touch_12 = 12;
+    }
+
+    required TouchData touch_data = 4;
+}
+
+message SBPStatus {
+    required uint32 battery_voltage = 1;
+    required uint32 imu_sys_calib_status = 2;
+    required uint32 imu_mag_calib_status = 3;
+    required uint32 imu_acc_calib_status = 4;
+    required uint32 imu_gyro_calib_status = 5;
+}
