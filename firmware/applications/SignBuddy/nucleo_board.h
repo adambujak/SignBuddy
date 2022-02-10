@@ -26,16 +26,16 @@
 #define GPIO_LED_CLK_EN()               LL_IOP_GRP1_EnableClock(LL_IOP_GRP1_PERIPH_GPIOC)
 
 /* BLE UART */
-#define BLE_UART                        LPUART1
-#define BLE_UART_GPIO_PORT              GPIOC
-#define BLE_UART_TX_PIN                 LL_GPIO_PIN_10
-#define BLE_UART_RX_PIN                 LL_GPIO_PIN_11
-#define BLE_UART_GPIO_AF                LL_GPIO_AF_0
-#define BLE_UART_RXNE()                 LL_LPUART_IsActiveFlag_RXNE(LPUART1)
-#define BLE_UART_TXE()                  LL_LPUART_IsActiveFlag_TXE(LPUART1)
-#define BLE_UART_CLK_SRC()              LL_RCC_SetLPUARTClockSource(LL_RCC_LPUART1_CLKSOURCE_PCLK1)
-#define BLE_UART_CLK_EN()               LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_LPUART1)
-#define BLE_UART_GPIO_CLK_EN()          LL_IOP_GRP1_EnableClock(LL_IOP_GRP1_PERIPH_GPIOC)
+#define BLE_UART                        USART2
+#define BLE_UART_GPIO_PORT              GPIOA
+#define BLE_UART_TX_PIN                 LL_GPIO_PIN_14
+#define BLE_UART_RX_PIN                 LL_GPIO_PIN_15
+#define BLE_UART_GPIO_AF                LL_GPIO_AF_4
+#define BLE_UART_RXNE()                 LL_USART_IsActiveFlag_RXNE(USART2)
+#define BLE_UART_TXE()                  LL_USART_IsActiveFlag_TXE(USART2)
+#define BLE_UART_CLK_SRC()              LL_RCC_SetUSARTClockSource(LL_RCC_USART2_CLKSOURCE_PCLK1)
+#define BLE_UART_CLK_EN()               LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_USART2)
+#define BLE_UART_GPIO_CLK_EN()          LL_IOP_GRP1_EnableClock(LL_IOP_GRP1_PERIPH_GPIOA)
 
 
 /* LOG UART */
