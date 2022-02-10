@@ -84,11 +84,11 @@ int main(void)
   tsc_task_setup();
   imu_task_setup();
   sensors_task_setup();
-  comms_task_setup();
+//  comms_task_setup();
 
   LOG_INFO("App started\r\n");
 
-  comms_task_start();
+//  comms_task_start();
   sensors_task_start();
 
   tsc_task_start();

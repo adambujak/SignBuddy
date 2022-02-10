@@ -11,20 +11,22 @@
 
 #define CHANNEL0                       0
 #define CHANNEL1                       1
+#define CHANNEL2                       2
 
-#define TOUCH_SENSOR_0                 0   // TSC_GROUP3_CHANNEL0
+#define TOUCH_SENSOR_0                 0   // TSC_GROUP2_CHANNEL0
 #define TOUCH_SENSOR_1                 1   // TSC_GROUP4_CHANNEL0
 #define TOUCH_SENSOR_2                 2   // TSC_GROUP5_CHANNEL0
 #define TOUCH_SENSOR_3                 3   // TSC_GROUP6_CHANNEL0
-#define TOUCH_SENSOR_4                 4   // TSC_GROUP7_CHANNEL0
-#define TOUCH_SENSOR_5                 5   // TSC_GROUP8_CHANNEL0
 
-#define TOUCH_SENSOR_6                 6   // TSC_GROUP3_CHANNEL1
-#define TOUCH_SENSOR_7                 7   // TSC_GROUP4_CHANNEL1
-#define TOUCH_SENSOR_8                 8   // TSC_GROUP5_CHANNEL1
-#define TOUCH_SENSOR_9                 9   // TSC_GROUP6_CHANNEL1
-#define TOUCH_SENSOR_10                10  // TSC_GROUP7_CHANNEL1
-#define TOUCH_SENSOR_11                11  // TSC_GROUP8_CHANNEL1
+#define TOUCH_SENSOR_4                 4   // TSC_GROUP2_CHANNEL2
+#define TOUCH_SENSOR_5                 5   // TSC_GROUP4_CHANNEL2
+#define TOUCH_SENSOR_6                 6   // TSC_GROUP5_CHANNEL2
+#define TOUCH_SENSOR_7                 7   // TSC_GROUP6_CHANNEL2
+
+#define TOUCH_SENSOR_8                 8   // TSC_GROUP2_CHANNEL2
+#define TOUCH_SENSOR_9                 9   // TSC_GROUP4_CHANNEL2
+#define TOUCH_SENSOR_10                10  // TSC_GROUP5_CHANNEL2
+#define TOUCH_SENSOR_11                11  // TSC_GROUP6_CHANNEL2
 
 
 #define SENSOR_PORT(group, channel)    TSC_GROUP ## group ## _CHANNEL ## channel ## _PORT
@@ -35,28 +37,27 @@
 #define SAMPLER_PIN(group)             TSC_GROUP ## group ## _SAMPLER_PIN
 #define SAMPLER_IO(group)              TSC_GROUP ## group ## _SAMPLER_IO
 
+#define CHANNEL0_IOS          (SENSOR_IO(2, 0) | SENSOR_IO(4, 0) | SENSOR_IO(5, 0) | SENSOR_IO(6, 0))
+#define CHANNEL1_IOS          (SENSOR_IO(2, 1) | SENSOR_IO(4, 1) | SENSOR_IO(5, 1) | SENSOR_IO(6, 1))
+#define CHANNEL2_IOS          (SENSOR_IO(2, 2) | SENSOR_IO(4, 2) | SENSOR_IO(5, 2) | SENSOR_IO(6, 2))
 
-// group info about all sensors on IO = 1
-#define CHANNEL1_MIN_GROUP    TSC_GROUP3_IDX
-#define CHANNEL1_MAX_GROUP    TSC_GROUP8_IDX
-#define CHANNEL1_CNT          ((CHANNEL1_MAX_GROUP - CHANNEL1_MIN_GROUP) + 1)
+#define SAMPLING0_IOS         (SAMPLER_IO(2) | SAMPLER_IO(4) | SAMPLER_IO(5) | SAMPLER_IO(6))
+#define SAMPLING1_IOS         (SAMPLER_IO(2) | SAMPLER_IO(4) | SAMPLER_IO(5) | SAMPLER_IO(6))
+#define SAMPLING2_IOS         (SAMPLER_IO(2) | SAMPLER_IO(4) | SAMPLER_IO(5) | SAMPLER_IO(6))
 
-// group info about all sensors on IO = 0
-#define CHANNEL0_MIN_GROUP    TSC_GROUP3_IDX
-#define CHANNEL0_MAX_GROUP    TSC_GROUP8_IDX
-#define CHANNEL0_CNT          ((CHANNEL0_MAX_GROUP - CHANNEL0_MIN_GROUP) + 1)
+#define CHANNELS_PER_GROUP 4
+#define CHANNELS_CNT 3
 
-#define CHANNEL0_IOS          (SENSOR_IO(3, 0) | SENSOR_IO(4, 0) | SENSOR_IO(5, 0) | \
-                               SENSOR_IO(6, 0) | SENSOR_IO(7, 0) | SENSOR_IO(8, 0))
+static const uint8_t CHANNEL0_GROUPS[] = {TSC_GROUP2_IDX, TSC_GROUP4_IDX, TSC_GROUP5_IDX, TSC_GROUP6_IDX};
+static const uint8_t CHANNEL1_GROUPS[] = {TSC_GROUP2_IDX, TSC_GROUP4_IDX, TSC_GROUP5_IDX, TSC_GROUP6_IDX};
+static const uint8_t CHANNEL2_GROUPS[] = {TSC_GROUP2_IDX, TSC_GROUP4_IDX, TSC_GROUP5_IDX, TSC_GROUP6_IDX};
 
-#define CHANNEL1_IOS          (SENSOR_IO(3, 1) | SENSOR_IO(4, 1) | SENSOR_IO(5, 1) | \
-                               SENSOR_IO(6, 1) | SENSOR_IO(7, 1) | SENSOR_IO(8, 1))
+static const uint8_t CHANNEL0_IDS[] = {TOUCH_SENSOR_0, TOUCH_SENSOR_1, TOUCH_SENSOR_2, TOUCH_SENSOR_3};
+static const uint8_t CHANNEL1_IDS[] = {TOUCH_SENSOR_4, TOUCH_SENSOR_5, TOUCH_SENSOR_6, TOUCH_SENSOR_7};
+static const uint8_t CHANNEL2_IDS[] = {TOUCH_SENSOR_8, TOUCH_SENSOR_9, TOUCH_SENSOR_10, TOUCH_SENSOR_11};
 
-#define SAMPLING0_IOS         (SAMPLER_IO(3) | SAMPLER_IO(4) | SAMPLER_IO(5) | \
-                               SAMPLER_IO(6) | SAMPLER_IO(7) | SAMPLER_IO(8))
-
-#define SAMPLING1_IOS         (SAMPLER_IO(3) | SAMPLER_IO(4) | SAMPLER_IO(5) | \
-                               SAMPLER_IO(6) | SAMPLER_IO(7) | SAMPLER_IO(8))
+static uint8_t const * const CHANNEL_IDS[CHANNELS_CNT] = {CHANNEL0_IDS, CHANNEL1_IDS, CHANNEL2_IDS};
+static uint8_t const * const CHANNEL_GROUPS[CHANNELS_CNT] = {CHANNEL0_GROUPS, CHANNEL1_GROUPS, CHANNEL2_GROUPS};
 
 typedef struct {
   TSC_HandleTypeDef tsc;
@@ -99,25 +100,23 @@ static void hw_init(void)
   TSC_CLK_EN();
   TSC_GPIO_CLK_EN();
 
-  electrode_pin_init(SENSOR_PIN(3, 0), SENSOR_PORT(3, 0));
-  electrode_pin_init(SENSOR_PIN(3, 1), SENSOR_PORT(3, 1));
+  electrode_pin_init(SENSOR_PIN(2, 0), SENSOR_PORT(2, 0));
+  electrode_pin_init(SENSOR_PIN(2, 1), SENSOR_PORT(2, 1));
+  electrode_pin_init(SENSOR_PIN(2, 2), SENSOR_PORT(2, 2));
   electrode_pin_init(SENSOR_PIN(4, 0), SENSOR_PORT(4, 0));
   electrode_pin_init(SENSOR_PIN(4, 1), SENSOR_PORT(4, 1));
+  electrode_pin_init(SENSOR_PIN(4, 2), SENSOR_PORT(4, 2));
   electrode_pin_init(SENSOR_PIN(5, 0), SENSOR_PORT(5, 0));
   electrode_pin_init(SENSOR_PIN(5, 1), SENSOR_PORT(5, 1));
+  electrode_pin_init(SENSOR_PIN(5, 2), SENSOR_PORT(5, 2));
   electrode_pin_init(SENSOR_PIN(6, 0), SENSOR_PORT(6, 0));
   electrode_pin_init(SENSOR_PIN(6, 1), SENSOR_PORT(6, 1));
-  electrode_pin_init(SENSOR_PIN(7, 0), SENSOR_PORT(7, 0));
-  electrode_pin_init(SENSOR_PIN(7, 1), SENSOR_PORT(7, 1));
-  electrode_pin_init(SENSOR_PIN(8, 0), SENSOR_PORT(8, 0));
-  electrode_pin_init(SENSOR_PIN(8, 1), SENSOR_PORT(8, 1));
+  electrode_pin_init(SENSOR_PIN(6, 2), SENSOR_PORT(6, 2));
 
-  sampler_pin_init(SAMPLER_PIN(3), SAMPLER_PORT(3));
+  sampler_pin_init(SAMPLER_PIN(2), SAMPLER_PORT(2));
   sampler_pin_init(SAMPLER_PIN(4), SAMPLER_PORT(4));
   sampler_pin_init(SAMPLER_PIN(5), SAMPLER_PORT(5));
   sampler_pin_init(SAMPLER_PIN(6), SAMPLER_PORT(6));
-  sampler_pin_init(SAMPLER_PIN(7), SAMPLER_PORT(7));
-  sampler_pin_init(SAMPLER_PIN(8), SAMPLER_PORT(8));
 
   s.tsc.Instance = TSC;
   s.tsc.Init.CTPulseHighLength = TSC_CTPH_2CYCLES;
@@ -152,6 +151,10 @@ static inline void io_config(uint8_t channel)
     io_config.ChannelIOs = CHANNEL1_IOS;
     io_config.SamplingIOs = SAMPLING1_IOS;
   }
+  else if (channel == CHANNEL2) {
+    io_config.ChannelIOs = CHANNEL2_IOS;
+    io_config.SamplingIOs = SAMPLING2_IOS;
+  }
 
   HAL_TSC_IOConfig(&s.tsc, &io_config);
 }
@@ -173,8 +176,12 @@ static inline void get_group_value(uint8_t group, uint32_t *value)
   }
 }
 
-static inline int run_sampler(void)
+static inline int run_sampler(uint8_t channel)
 {
+  io_config(channel);
+  HAL_TSC_IODischarge(&s.tsc, ENABLE);
+  rtos_delay_ms(1);
+
   if (HAL_TSC_Start(&s.tsc) != HAL_OK) {
     error_handler();
   }
@@ -192,22 +199,18 @@ static inline int run_sampler(void)
   return RET_OK;
 }
 
-// offset is the offset in the touch value array for the channel
-static void fetch_channel_values(uint8_t channel, uint8_t min_group, uint8_t max_group, uint8_t offset)
+static void sample_channel(uint8_t channel)
 {
-  io_config(channel);
-  HAL_TSC_IODischarge(&s.tsc, ENABLE);
-  rtos_delay_ms(1);
+  if (run_sampler(channel) == RET_OK) {
+    uint8_t const *groups = CHANNEL_GROUPS[channel];
+    uint8_t const *ids = CHANNEL_IDS[channel];
 
-  int index = offset;
-  uint32_t value;
-  if (run_sampler() == RET_OK) {
-    for (int i = min_group; i <= max_group; i++) {
-      get_group_value(i, &value);
-      if (convert_value_to_touch(value, index) == 1) {
-        s.touch_values |= (1 << index);
+    for (int i = 0; i < CHANNELS_PER_GROUP; i++) {
+      uint32_t value;
+      get_group_value(groups[i], &value);
+      if (convert_value_to_touch(value, ids[i]) == 1) {
+        s.touch_values |= (1 << ids[i]);
       }
-      index++;
     }
   }
   else {
@@ -218,27 +221,26 @@ static void fetch_channel_values(uint8_t channel, uint8_t min_group, uint8_t max
 static inline void sample_data(void)
 {
   s.touch_values = 0;
-  fetch_channel_values(CHANNEL0, CHANNEL0_MIN_GROUP, CHANNEL0_MAX_GROUP, 0);
-  fetch_channel_values(CHANNEL1, CHANNEL1_MIN_GROUP, CHANNEL1_MAX_GROUP, CHANNEL0_CNT);
+
+  sample_channel(CHANNEL0);
+  sample_channel(CHANNEL1);
+  sample_channel(CHANNEL2);
 }
 
-static int calibrate_channel(uint8_t channel, uint8_t min_group, uint8_t max_group, uint8_t offset)
+static int calibrate_channel(uint8_t channel)
 {
   for (int i = 0; i < CALIBRATION_SAMPLES; i++) {
     // TODO find bug
     // if log is added here, lower values are read (closer to what is seen during sampling)
-    io_config(channel);
-    HAL_TSC_IODischarge(&s.tsc, ENABLE);
-    rtos_delay_ms(10);
 
-    if (run_sampler() == RET_OK) {
-      uint32_t value;
-      int index = offset;
+    if (run_sampler(channel) == RET_OK) {
+      uint8_t const *groups = CHANNEL_GROUPS[channel];
+      uint8_t const *ids = CHANNEL_IDS[channel];
 
-      for (int i = min_group; i <= max_group; i++) {
-        get_group_value(i, &value);
-        s.calibration_values[index] += value / CALIBRATION_SAMPLES;
-        index++;
+      for (int i = 0; i < CHANNELS_PER_GROUP; i++) {
+        uint32_t value;
+        get_group_value(groups[i], &value);
+        s.calibration_values[ids[i]] += value / CALIBRATION_SAMPLES;
       }
     }
     else {
@@ -255,10 +257,17 @@ static void calibrate(void)
 {
   memset(s.calibration_values, 0, sizeof(s.calibration_values));
 
-  if (calibrate_channel(CHANNEL0, CHANNEL0_MIN_GROUP, CHANNEL0_MAX_GROUP, 0) != RET_OK) {
+  if (calibrate_channel(CHANNEL0) != RET_OK) {
     return;
   }
-  calibrate_channel(CHANNEL1, CHANNEL1_MIN_GROUP, CHANNEL1_MAX_GROUP, CHANNEL0_CNT);
+
+  if (calibrate_channel(CHANNEL1) != RET_OK) {
+    return;
+  }
+
+  if (calibrate_channel(CHANNEL2) != RET_OK) {
+    return;
+  }
 }
 
 static void tsc_task(void *arg)
