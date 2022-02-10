@@ -73,10 +73,10 @@ static void sensors_task(void *arg)
   RTOS_ERR_CHECK(xTimerStart(s.sampling_timer, 0));
 
   while (1) {
-//    if (s.sample.sample_id > MAX_SAMPLES) {
-//      RTOS_ERR_CHECK(xTimerStop(s.sampling_timer, 0));
-//      s.sample.sample_id = 0;
-//    }
+    if (s.sample.sample_id > MAX_SAMPLES) {
+      RTOS_ERR_CHECK(xTimerStop(s.sampling_timer, 0));
+      s.sample.sample_id = 0;
+    }
 
     ulTaskNotifyTake(pdFALSE, portMAX_DELAY);
 
@@ -102,7 +102,7 @@ static void sensors_task(void *arg)
       imu_data_get(&s.sample.imu_data);
     }
 
-//    comms_tx_sample(&s.sample);
+    comms_tx_sample(&s.sample);
     s.sample.sample_id++;
   }
 }
