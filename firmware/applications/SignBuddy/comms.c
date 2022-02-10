@@ -54,7 +54,7 @@ static void hw_init(void)
 static void rx()
 {
   DISABLE_IRQ();
-  uint8_t cmd = LL_LPUART_ReceiveData8(BLE_UART);
+  uint8_t cmd = LL_USART_ReceiveData8(BLE_UART);
   ENABLE_IRQ();
 
   switch (cmd) {
@@ -95,7 +95,7 @@ static void tx(void)
   DISABLE_IRQ();
   uint8_t data;
   fifo_pop(&s.tx_fifo, &data, 1);
-  LL_LPUART_TransmitData8(BLE_UART, data);
+  LL_USART_TransmitData8(BLE_UART, data);
   ENABLE_IRQ();
 }
 
