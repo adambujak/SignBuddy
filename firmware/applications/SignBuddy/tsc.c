@@ -18,10 +18,10 @@
 #define TOUCH_SENSOR_2                 2   // TSC_GROUP5_CHANNEL0
 #define TOUCH_SENSOR_3                 3   // TSC_GROUP6_CHANNEL0
 
-#define TOUCH_SENSOR_4                 4   // TSC_GROUP2_CHANNEL2
-#define TOUCH_SENSOR_5                 5   // TSC_GROUP4_CHANNEL2
-#define TOUCH_SENSOR_6                 6   // TSC_GROUP5_CHANNEL2
-#define TOUCH_SENSOR_7                 7   // TSC_GROUP6_CHANNEL2
+#define TOUCH_SENSOR_4                 4   // TSC_GROUP2_CHANNEL1
+#define TOUCH_SENSOR_5                 5   // TSC_GROUP4_CHANNEL1
+#define TOUCH_SENSOR_6                 6   // TSC_GROUP5_CHANNEL1
+#define TOUCH_SENSOR_7                 7   // TSC_GROUP6_CHANNEL1
 
 #define TOUCH_SENSOR_8                 8   // TSC_GROUP2_CHANNEL2
 #define TOUCH_SENSOR_9                 9   // TSC_GROUP4_CHANNEL2
