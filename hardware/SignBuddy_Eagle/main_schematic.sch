@@ -547,9 +547,9 @@
 <plain>
 </plain>
 <instances>
-<instance part="U1" gate="A" x="50.8" y="96.52" smashed="yes">
-<attribute name="NAME" x="79.0956" y="105.6386" size="2.0828" layer="95" ratio="6" rot="SR0"/>
-<attribute name="VALUE" x="78.4606" y="103.0986" size="2.0828" layer="96" ratio="6" rot="SR0"/>
+<instance part="U1" gate="A" x="12.7" y="40.64" smashed="yes">
+<attribute name="NAME" x="40.9956" y="49.7586" size="2.0828" layer="95" ratio="6" rot="SR0"/>
+<attribute name="VALUE" x="40.3606" y="47.2186" size="2.0828" layer="96" ratio="6" rot="SR0"/>
 </instance>
 </instances>
 <busses>
