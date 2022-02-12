@@ -1176,21 +1176,6 @@ design rules under a new name.</description>
 <attribute name="TP_SIGNAL_NAME" value="" x="32.004" y="8.636" size="1.778" layer="28" rot="MR0" display="off"/>
 <attribute name="VALUE" x="32.639" y="7.874" size="0.0254" layer="28" rot="MR0"/>
 </element>
-<element name="R20" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" package="0603" package3d_urn="urn:adsk.eagle:package:39650/1" value="10k" x="-1.27" y="-6.604" smashed="yes">
-<attribute name="NAME" x="-1.27" y="-5.842" size="0.6096" layer="25" font="vector" ratio="20" align="bottom-center"/>
-<attribute name="PROD_ID" value="RES-00824" x="-1.27" y="-6.604" size="1.778" layer="27" display="off"/>
-<attribute name="VALUE" x="-1.27" y="-7.366" size="0.6096" layer="27" font="vector" ratio="20" align="top-center"/>
-</element>
-<element name="R21" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" package="0603" package3d_urn="urn:adsk.eagle:package:39650/1" value="10k" x="-1.27" y="-9.906" smashed="yes">
-<attribute name="NAME" x="-1.27" y="-9.144" size="0.6096" layer="25" font="vector" ratio="20" align="bottom-center"/>
-<attribute name="PROD_ID" value="RES-00824" x="-1.27" y="-9.906" size="1.778" layer="27" display="off"/>
-<attribute name="VALUE" x="-1.27" y="-10.668" size="0.6096" layer="27" font="vector" ratio="20" align="top-center"/>
-</element>
-<element name="R22" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" package="0603" package3d_urn="urn:adsk.eagle:package:39650/1" value="1k" x="-1.27" y="-13.208" smashed="yes">
-<attribute name="NAME" x="-1.27" y="-12.446" size="0.6096" layer="25" font="vector" ratio="20" align="bottom-center"/>
-<attribute name="PROD_ID" value="RES-00824" x="-1.27" y="-13.208" size="1.778" layer="27" display="off"/>
-<attribute name="VALUE" x="-1.27" y="-13.97" size="0.6096" layer="27" font="vector" ratio="20" align="top-center"/>
-</element>
 <element name="R23" library="SparkFun-Resistors" library_urn="urn:adsk.eagle:library:532" package="0603" package3d_urn="urn:adsk.eagle:package:39650/1" value="1.5k" x="-1.27" y="-16.51" smashed="yes">
 <attribute name="NAME" x="-1.27" y="-15.748" size="0.6096" layer="25" font="vector" ratio="20" align="bottom-center"/>
 <attribute name="PROD_ID" value="RES-08306" x="-1.27" y="-16.51" size="1.778" layer="27" display="off"/>
