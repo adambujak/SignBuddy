@@ -6333,7 +6333,6 @@ Source: www.kingbright.com</description>
 <wire x1="-35.56" y1="48.26" x2="-27.94" y2="48.26" width="0.1524" layer="91"/>
 <junction x="-35.56" y="48.26"/>
 <pinref part="+3V13" gate="G$1" pin="+3V3"/>
-<wire x1="-27.94" y1="48.26" x2="-27.94" y2="55.88" width="0.1524" layer="91"/>
 <junction x="-27.94" y="48.26"/>
 <wire x1="-27.94" y1="48.26" x2="-27.94" y2="55.88" width="0.1524" layer="91"/>
 </segment>

@@ -3723,6 +3723,7 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <part name="GND15" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device=""/>
 <part name="D2" library="ngspice-simulation" library_urn="urn:adsk.eagle:library:527439" deviceset="LED" device=""/>
 <part name="D1" library="ngspice-simulation" library_urn="urn:adsk.eagle:library:527439" deviceset="LED" device=""/>
+<part name="ADC_TP" library="testpad" library_urn="urn:adsk.eagle:library:385" deviceset="TP" device="B1,27" package3d_urn="urn:adsk.eagle:package:27944/2"/>
 </parts>
 <sheets>
 <sheet>
@@ -3816,6 +3817,10 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <attribute name="VALUE" x="-77.47" y="-81.28" size="1.778" layer="96"/>
 </instance>
 <instance part="U$2" gate="G$1" x="-2.54" y="-73.66" smashed="yes"/>
+<instance part="ADC_TP" gate="G$1" x="-22.86" y="5.08" smashed="yes">
+<attribute name="NAME" x="-24.13" y="6.35" size="1.778" layer="95"/>
+<attribute name="TP_SIGNAL_NAME" x="-21.59" y="3.81" size="1.778" layer="97"/>
+</instance>
 </instances>
 <busses>
 </busses>
@@ -3895,6 +3900,7 @@ new: Attribute TP_SIGNAL_NAME&lt;br&gt;
 <pinref part="U1" gate="A" pin="PB1"/>
 <wire x1="10.16" y1="2.54" x2="-22.86" y2="2.54" width="0.1524" layer="91"/>
 <label x="-7.62" y="2.54" size="1.27" layer="95"/>
+<pinref part="ADC_TP" gate="G$1" pin="TP"/>
 </segment>
 </net>
 <net name="TSC_G4_E2" class="0">
