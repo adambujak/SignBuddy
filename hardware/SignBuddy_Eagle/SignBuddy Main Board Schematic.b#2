@@ -3,7 +3,7 @@
 <eagle version="9.6.2">
 <drawing>
 <settings>
-<setting alwaysvectorfont="no"/>
+<setting alwaysvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
 <grid distance="10" unitdist="mil" unit="mil" style="lines" multiple="1" display="no" altdistance="5" altunitdist="mil" altunit="mil"/>
@@ -52,7 +52,7 @@
 <layer number="42" name="bRestrict" color="1" fill="10" visible="yes" active="yes"/>
 <layer number="43" name="vRestrict" color="2" fill="10" visible="yes" active="yes"/>
 <layer number="44" name="Drills" color="7" fill="1" visible="no" active="yes"/>
-<layer number="45" name="Holes" color="7" fill="1" visible="no" active="yes"/>
+<layer number="45" name="Holes" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="46" name="Milling" color="3" fill="1" visible="no" active="yes"/>
 <layer number="47" name="Measures" color="7" fill="1" visible="no" active="yes"/>
 <layer number="48" name="Document" color="7" fill="1" visible="yes" active="yes"/>
@@ -1497,7 +1497,10 @@ design rules under a new name.</description>
 <signal name="ADC_EXTRA">
 <contactref element="U1" pad="19"/>
 <contactref element="ADC_TP" pad="TP"/>
-<wire x1="41.148" y1="1.27" x2="42.564" y2="8.882" width="0" layer="19" extent="1-1"/>
+<wire x1="42.564" y1="8.882" x2="42.564" y2="5.988" width="0.1524" layer="1"/>
+<wire x1="42.564" y1="5.988" x2="41.91" y2="5.334" width="0.1524" layer="1"/>
+<wire x1="41.91" y1="2.032" x2="41.148" y2="1.27" width="0.1524" layer="1"/>
+<wire x1="41.91" y1="5.334" x2="41.91" y2="2.032" width="0.1524" layer="1"/>
 </signal>
 <signal name="TSC_G4_E2">
 <contactref element="U1" pad="31"/>
@@ -2013,6 +2016,8 @@ design rules under a new name.</description>
 <wire x1="9.0126" y1="21.082" x2="9.5206" y2="20.574" width="0.3048" layer="1"/>
 <wire x1="9.5206" y1="20.574" x2="10.072" y2="20.574" width="0.3048" layer="1"/>
 <contactref element="LED1" pad="A"/>
+<wire x1="38.088" y1="1.016" x2="38.088" y2="2.044" width="0.1524" layer="1"/>
+<wire x1="38.088" y1="2.044" x2="35.56" y2="4.572" width="0.1524" layer="1"/>
 <wire x1="45.125" y1="30.06" x2="38.396" y2="42.512" width="0" layer="19" extent="1-1"/>
 <wire x1="48.28" y1="22.116" x2="45.125" y2="30.06" width="0" layer="19" extent="1-1"/>
 <wire x1="46.564" y1="15.882" x2="48.28" y2="22.116" width="0" layer="19" extent="1-1"/>
@@ -2030,7 +2035,6 @@ design rules under a new name.</description>
 <wire x1="11.772" y1="18.288" x2="11.772" y2="16.002" width="0" layer="19" extent="1-1"/>
 <wire x1="10.072" y1="22.86" x2="9.0126" y2="21.082" width="0" layer="19" extent="1-1"/>
 <wire x1="12.7" y1="4.572" x2="11.772" y2="13.716" width="0" layer="19" extent="1-1"/>
-<wire x1="38.088" y1="1.016" x2="12.7" y2="4.572" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="NRST">
 <contactref element="RESET_BUTTON" pad="1"/>
@@ -2225,17 +2229,28 @@ design rules under a new name.</description>
 <signal name="N$3">
 <contactref element="R24" pad="2"/>
 <contactref element="LED2" pad="C"/>
-<wire x1="50.05" y1="1.016" x2="47.078" y2="1.016" width="0" layer="19" extent="1-1"/>
+<wire x1="50.05" y1="1.016" x2="47.078" y2="1.016" width="0.1524" layer="1"/>
 </signal>
 <signal name="N$17">
 <contactref element="R23" pad="2"/>
 <contactref element="LED1" pad="C"/>
-<wire x1="36.588" y1="1.016" x2="33.87" y2="1.016" width="0" layer="19" extent="1-1"/>
+<wire x1="36.588" y1="1.016" x2="33.87" y2="1.016" width="0.1524" layer="1"/>
 </signal>
 <signal name="LED">
 <contactref element="U1" pad="29"/>
 <contactref element="LED2" pad="A"/>
-<wire x1="51.55" y1="1.016" x2="46.564" y2="12.382" width="0" layer="19" extent="1-1"/>
+<wire x1="46.564" y1="12.382" x2="47.816" y2="12.382" width="0.1524" layer="1"/>
+<wire x1="47.816" y1="12.382" x2="48.26" y2="11.938" width="0.1524" layer="1"/>
+<via x="48.26" y="11.938" extent="1-16" drill="0.35"/>
+<wire x1="48.26" y1="11.938" x2="48.26" y2="8.128" width="0.1524" layer="16"/>
+<via x="48.26" y="8.128" extent="1-16" drill="0.35"/>
+<wire x1="48.26" y1="8.128" x2="49.53" y2="6.858" width="0.1524" layer="1"/>
+<wire x1="49.53" y1="6.858" x2="49.53" y2="4.318" width="0.1524" layer="1"/>
+<via x="49.53" y="4.318" extent="1-16" drill="0.35"/>
+<wire x1="49.53" y1="4.318" x2="51.816" y2="2.032" width="0.1524" layer="16"/>
+<via x="51.816" y="2.032" extent="1-16" drill="0.35"/>
+<wire x1="51.816" y1="2.032" x2="51.816" y2="1.282" width="0.1524" layer="1"/>
+<wire x1="51.816" y1="1.282" x2="51.55" y2="1.016" width="0.1524" layer="1"/>
 </signal>
 </signals>
 <mfgpreviewcolors>
