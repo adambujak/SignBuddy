@@ -25,19 +25,34 @@ import com.clj.fastble.callback.BleScanCallback;
 import com.clj.fastble.data.BleDevice;
 import com.clj.fastble.exception.BleException;
 import com.clj.fastble.scan.BleScanRuleConfig;
+import com.google.protobuf.InvalidProtocolBufferException;
 
+import java.io.ByteArrayOutputStream;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private Button connectButton;
     private ProgressBar connectProgress;
+
     private final int FINE_LOCATION_CODE = 1;
+
     private BleDevice SignBuddy;
+
     private final String ble_name = "Sign Buddy BLE";
     private final String uuid_service = "6E400001-B5A3-F393-E0A9-E50E24DCCA9E";
     private final String uuid_characteristic_notify = "6E400003-B5A3-F393-E0A9-E50E24DCCA9E";
-    private int byteCount = 0;
+
+    private SignBuddyProto.SBPGestureData gestureData;
+
+    private SignBuddyProto.SBPMessage message;
+
+    private ByteArrayOutputStream byteBuffer = new ByteArrayOutputStream();
+
+    private final byte msg_sync = 0x16;
+    private int msg_length;
+    private int skip_crc;
+    private boolean next_byte_is_length;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -162,13 +177,28 @@ public class MainActivity extends AppCompatActivity {
 
                                     @Override
                                     public void onCharacteristicChanged(byte[] data) {
-                                        StringBuilder sb = new StringBuilder();
                                         for (byte b : data) {
-                                            sb.append(String.format("%02X ", b));
-                                            byteCount++;
+                                            if (b == msg_sync && byteBuffer.size() == 0) {
+                                                skip_crc = 4;
+                                                next_byte_is_length = true;
+                                            } else if (next_byte_is_length) {
+                                                msg_length = b;
+                                                next_byte_is_length = false;
+                                            } else if (skip_crc > 0) {
+                                                skip_crc--;
+                                            } else {
+                                                byteBuffer.write(b);
+                                                if (byteBuffer.size() == msg_length) {
+                                                    try {
+                                                        SignBuddyProto.SBPMessage message = SignBuddyProto.SBPMessage.parseFrom(byteBuffer.toByteArray());
+                                                        Log.i("Sign Buddy", message.getSample().getImuData().toString());
+                                                    } catch (InvalidProtocolBufferException e) {
+                                                        e.printStackTrace();
+                                                    }
+                                                    byteBuffer.reset();
+                                                }
+                                            }
                                         }
-                                        Log.i("Sign Buddy", sb.toString());
-                                        Log.i("Sign Buddy", String.valueOf(byteCount));
                                     }
                                 });
                             }
