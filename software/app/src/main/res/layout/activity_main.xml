@@ -17,18 +17,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-    <TextView
-        android:id="@+id/welcomeMsg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="128dp"
-        android:text="@string/welcome_to_sign_buddy"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <Button
         android:id="@+id/quizButton"
         android:layout_width="142dp"
@@ -40,8 +28,8 @@
 
     <Button
         android:id="@+id/lessonButton"
-        android:layout_width="144dp"
-        android:layout_height="57dp"
+        android:layout_width="142dp"
+        android:layout_height="55dp"
         android:layout_marginBottom="80dp"
         android:text="@string/lesson_mode"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -57,11 +45,9 @@
         android:contentDescription="@string/image_of_the_sign_buddy_logo"
         android:cropToPadding="false"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toTopOf="@+id/quizButton"
+        app:layout_constraintBottom_toTopOf="@+id/collectLetter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcomeMsg"
-        app:layout_constraintVertical_bias="0.359"
         app:srcCompat="@drawable/signbuddylogo" />
 
     <ProgressBar
@@ -76,5 +62,28 @@
         app:layout_constraintBottom_toBottomOf="@+id/connectButton"
         app:layout_constraintStart_toEndOf="@+id/connectButton"
         app:layout_constraintTop_toTopOf="@+id/connectButton" />
+
+    <Button
+        android:id="@+id/collectButton"
+        android:layout_width="142dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/collect"
+        app:layout_constraintBottom_toTopOf="@+id/quizButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/collectLetter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:maxLength="1"
+        android:hint="@string/gesture_letter"
+        android:importantForAutofill="no"
+        app:layout_constraintBottom_toTopOf="@+id/collectButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

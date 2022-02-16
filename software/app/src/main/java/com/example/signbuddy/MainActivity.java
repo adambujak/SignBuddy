@@ -15,6 +15,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -22,12 +23,15 @@ import com.clj.fastble.BleManager;
 import com.clj.fastble.callback.BleGattCallback;
 import com.clj.fastble.callback.BleNotifyCallback;
 import com.clj.fastble.callback.BleScanCallback;
+import com.clj.fastble.callback.BleWriteCallback;
 import com.clj.fastble.data.BleDevice;
 import com.clj.fastble.exception.BleException;
 import com.clj.fastble.scan.BleScanRuleConfig;
 import com.google.protobuf.InvalidProtocolBufferException;
 
 import java.io.ByteArrayOutputStream;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -35,24 +39,66 @@ public class MainActivity extends AppCompatActivity {
     private Button connectButton;
     private ProgressBar connectProgress;
 
+    private Button collectButton;
+
     private final int FINE_LOCATION_CODE = 1;
 
     private BleDevice SignBuddy;
 
     private final String ble_name = "Sign Buddy BLE";
     private final String uuid_service = "6E400001-B5A3-F393-E0A9-E50E24DCCA9E";
+    private final String uuid_characteristic_write = "6E400002-B5A3-F393-E0A9-E50E24DCCA9E";
     private final String uuid_characteristic_notify = "6E400003-B5A3-F393-E0A9-E50E24DCCA9E";
 
-    private SignBuddyProto.SBPGestureData gestureData;
 
-    private SignBuddyProto.SBPMessage message;
+    private List<SignBuddyProto.SBPSample> samples = new ArrayList<>();
 
     private ByteArrayOutputStream byteBuffer = new ByteArrayOutputStream();
 
     private final byte msg_sync = 0x16;
+    private final byte mid_sample = 0x01;
     private int msg_length;
     private int skip_crc;
     private boolean next_byte_is_length;
+
+    private String gestureLetter = "DEFAULT";
+
+    private class ParseMessage implements Runnable {
+
+        private byte[] msg;
+
+        public ParseMessage(byte[] msg) {
+            this.msg = msg;
+        }
+
+        public void run() {
+            try {
+                SignBuddyProto.SBPMessage message = SignBuddyProto.SBPMessage.parseFrom(this.msg);
+                if (message.getId() == mid_sample) {
+                    SignBuddyProto.SBPSample sample = message.getSample();
+                    Log.i("Sign Buddy", "NEW SAMPLE");
+                    samples.add(sample);
+                    int max_samples = 40;
+                    Log.i("Sign Buddy", String.valueOf(samples.size()));
+                    if (samples.size() == max_samples) {
+                        SignBuddyProto.SBPGestureData gestureData = SignBuddyProto.SBPGestureData.newBuilder()
+                                .setLetter(gestureLetter)
+                                .addAllSamples(samples)
+                                .build();
+                        samples.clear();
+                        runOnUiThread(() -> {
+                            Toast.makeText(MainActivity.this, "Gesture collected!", Toast.LENGTH_SHORT).show();
+                            collectButton.setEnabled(true);
+                            collectButton.setText(R.string.collect);
+                        });
+                        Log.i("Sign Buddy", "NEW GESTURE");
+                    }
+                }
+            } catch (InvalidProtocolBufferException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,9 +115,12 @@ public class MainActivity extends AppCompatActivity {
         connectButton = findViewById(R.id.connectButton);
         connectButton.setOnClickListener(this::connectButtonCallback);
 
+        collectButton = findViewById(R.id.collectButton);
+        collectButton.setOnClickListener(this::collectButtonCallback);
+
         BleManager.getInstance().init(getApplication());
         BleManager.getInstance()
-                .enableLog(true)
+                .enableLog(false)
                 .setReConnectCount(1, 5000)
                 .setOperateTimeout(5000);
 
@@ -111,6 +160,30 @@ public class MainActivity extends AppCompatActivity {
     private void openQuizActivity(View v) {
         Intent intent = new Intent(this, QuizActivity.class);
         startActivity(intent);
+    }
+
+    private void collectButtonCallback(View v) {
+        EditText collectLetter = (EditText) findViewById(R.id.collectLetter);
+        gestureLetter = collectLetter.getText().toString();
+        if (gestureLetter.matches("")) {
+            Toast.makeText(this, "No letter specified!", Toast.LENGTH_SHORT).show();
+        } else {
+            collectButton.setEnabled(false);
+            collectButton.setText(R.string.collecting);
+            BleManager.getInstance().write(SignBuddy, uuid_service, uuid_characteristic_write, "s".getBytes(StandardCharsets.UTF_8), new BleWriteCallback() {
+                @Override
+                public void onWriteSuccess(int current, int total, byte[] justWrite) {
+                    Toast.makeText(MainActivity.this, "Starting collection!", Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onWriteFailure(BleException exception) {
+                    Toast.makeText(MainActivity.this, "Failed to start collection!", Toast.LENGTH_SHORT).show();
+                    collectButton.setEnabled(true);
+                    collectButton.setText(R.string.collect);
+                }
+            });
+        }
     }
 
     private void connectButtonCallback(View v) {
@@ -189,12 +262,7 @@ public class MainActivity extends AppCompatActivity {
                                             } else {
                                                 byteBuffer.write(b);
                                                 if (byteBuffer.size() == msg_length) {
-                                                    try {
-                                                        SignBuddyProto.SBPMessage message = SignBuddyProto.SBPMessage.parseFrom(byteBuffer.toByteArray());
-                                                        Log.i("Sign Buddy", message.getSample().getImuData().toString());
-                                                    } catch (InvalidProtocolBufferException e) {
-                                                        e.printStackTrace();
-                                                    }
+                                                    new Thread(new ParseMessage(byteBuffer.toByteArray())).start();
                                                     byteBuffer.reset();
                                                 }
                                             }
