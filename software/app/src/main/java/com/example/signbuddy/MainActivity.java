@@ -33,6 +33,7 @@ import java.io.ByteArrayOutputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -50,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
     private final String uuid_characteristic_write = "6E400002-B5A3-F393-E0A9-E50E24DCCA9E";
     private final String uuid_characteristic_notify = "6E400003-B5A3-F393-E0A9-E50E24DCCA9E";
 
+    private ReentrantLock samplesLock = new ReentrantLock();
 
     private List<SignBuddyProto.SBPSample> samples = new ArrayList<>();
 
@@ -77,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
                 if (message.getId() == mid_sample) {
                     SignBuddyProto.SBPSample sample = message.getSample();
                     Log.i("Sign Buddy", "NEW SAMPLE");
+                    samplesLock.lock();
                     samples.add(sample);
                     int max_samples = 40;
                     Log.i("Sign Buddy", String.valueOf(samples.size()));
@@ -93,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
                         });
                         Log.i("Sign Buddy", "NEW GESTURE");
                     }
+                    samplesLock.unlock();
                 }
             } catch (InvalidProtocolBufferException e) {
                 e.printStackTrace();
