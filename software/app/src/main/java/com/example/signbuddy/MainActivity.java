@@ -12,6 +12,7 @@ import android.bluetooth.BluetoothGatt;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -27,9 +28,12 @@ import com.clj.fastble.callback.BleWriteCallback;
 import com.clj.fastble.data.BleDevice;
 import com.clj.fastble.exception.BleException;
 import com.clj.fastble.scan.BleScanRuleConfig;
-import com.google.protobuf.InvalidProtocolBufferException;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
@@ -88,6 +92,25 @@ public class MainActivity extends AppCompatActivity {
                                 .setLetter(gestureLetter)
                                 .addAllSamples(samples)
                                 .build();
+                        Log.i("SignBuddy", gestureData.toString());
+
+                        File file = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+
+                        file = new File(file, "sign_buddy_training_data.txt");
+
+                        if (!file.exists()) {
+                            file.createNewFile();
+                        }
+
+                        PrintWriter writer = new PrintWriter(new OutputStreamWriter(new FileOutputStream(file, true)));
+                        writer.println(gestureData);
+                        writer.println("####################################################");
+                        writer.println("####################################################");
+                        writer.println("####################################################");
+
+                        writer.flush();
+                        writer.close();
+
                         samples.clear();
                         runOnUiThread(() -> {
                             Toast.makeText(MainActivity.this, "Gesture collected!", Toast.LENGTH_SHORT).show();
@@ -98,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     samplesLock.unlock();
                 }
-            } catch (InvalidProtocolBufferException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
@@ -109,10 +132,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button lessonButton = (Button) findViewById(R.id.lessonButton);
+        Button lessonButton = findViewById(R.id.lessonButton);
         lessonButton.setOnClickListener(this::openLessonActivity);
 
-        Button quizButton = (Button) findViewById(R.id.quizButton);
+        Button quizButton = findViewById(R.id.quizButton);
         quizButton.setOnClickListener(this::openQuizActivity);
 
         connectProgress = findViewById(R.id.connectProgress);
@@ -167,7 +190,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void collectButtonCallback(View v) {
-        EditText collectLetter = (EditText) findViewById(R.id.collectLetter);
+        EditText collectLetter = findViewById(R.id.collectLetter);
         gestureLetter = collectLetter.getText().toString();
         if (gestureLetter.matches("")) {
             Toast.makeText(this, "No letter specified!", Toast.LENGTH_SHORT).show();
