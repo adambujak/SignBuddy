@@ -34,98 +34,35 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button connectButton;
-    private ProgressBar connectProgress;
-
-    private Button collectButton;
-
     private final int FINE_LOCATION_CODE = 1;
-
-    private BleDevice SignBuddy;
-
     private final String ble_name = "Sign Buddy BLE";
     private final String uuid_service = "6E400001-B5A3-F393-E0A9-E50E24DCCA9E";
     private final String uuid_characteristic_write = "6E400002-B5A3-F393-E0A9-E50E24DCCA9E";
     private final String uuid_characteristic_notify = "6E400003-B5A3-F393-E0A9-E50E24DCCA9E";
-
-    private ReentrantLock samplesLock = new ReentrantLock();
-
-    private List<SignBuddyProto.SBPSample> samples = new ArrayList<>();
-
-    private ByteArrayOutputStream byteBuffer = new ByteArrayOutputStream();
-
+    private final byte[] cmd_sample_once = {0x01};
+    private final byte[] cmd_sample_periodic = {0x02};
+    private final int max_samples = 40;
     private final byte msg_sync = 0x16;
     private final byte mid_sample = 0x01;
+    private Button connectButton;
+    private ProgressBar connectProgress;
+    private Button collectButton;
+    private BleDevice SignBuddy;
+    private ReentrantLock samplesLock = new ReentrantLock();
+    private List<SignBuddyProto.SBPSample> samples = new ArrayList<>();
+    private ByteArrayOutputStream byteBuffer = new ByteArrayOutputStream();
+    private int num_samples;
     private int msg_length;
     private int skip_crc;
     private boolean next_byte_is_length;
 
     private String gestureLetter = "DEFAULT";
-
-    private class ParseMessage implements Runnable {
-
-        private byte[] msg;
-
-        public ParseMessage(byte[] msg) {
-            this.msg = msg;
-        }
-
-        public void run() {
-            try {
-                SignBuddyProto.SBPMessage message = SignBuddyProto.SBPMessage.parseFrom(this.msg);
-                if (message.getId() == mid_sample) {
-                    SignBuddyProto.SBPSample sample = message.getSample();
-                    Log.i("Sign Buddy", "NEW SAMPLE");
-                    samplesLock.lock();
-                    samples.add(sample);
-                    int max_samples = 40;
-                    Log.i("Sign Buddy", String.valueOf(samples.size()));
-                    if (samples.size() == max_samples) {
-                        SignBuddyProto.SBPGestureData gestureData = SignBuddyProto.SBPGestureData.newBuilder()
-                                .setLetter(gestureLetter)
-                                .addAllSamples(samples)
-                                .build();
-                        Log.i("SignBuddy", gestureData.toString());
-
-                        File file = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
-
-                        file = new File(file, "sign_buddy_training_data.txt");
-
-                        if (!file.exists()) {
-                            file.createNewFile();
-                        }
-
-                        PrintWriter writer = new PrintWriter(new OutputStreamWriter(new FileOutputStream(file, true)));
-                        writer.println(gestureData);
-                        writer.println("####################################################");
-                        writer.println("####################################################");
-                        writer.println("####################################################");
-
-                        writer.flush();
-                        writer.close();
-
-                        samples.clear();
-                        runOnUiThread(() -> {
-                            Toast.makeText(MainActivity.this, "Gesture collected!", Toast.LENGTH_SHORT).show();
-                            collectButton.setEnabled(true);
-                            collectButton.setText(R.string.collect);
-                        });
-                        Log.i("Sign Buddy", "NEW GESTURE");
-                    }
-                    samplesLock.unlock();
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -197,7 +134,15 @@ public class MainActivity extends AppCompatActivity {
         } else {
             collectButton.setEnabled(false);
             collectButton.setText(R.string.collecting);
-            BleManager.getInstance().write(SignBuddy, uuid_service, uuid_characteristic_write, "s".getBytes(StandardCharsets.UTF_8), new BleWriteCallback() {
+            byte[] cmd;
+            if ("jzJZ".contains(gestureLetter)) {
+                num_samples = max_samples;
+                cmd = cmd_sample_periodic;
+            } else {
+                num_samples = 1;
+                cmd = cmd_sample_once;
+            }
+            BleManager.getInstance().write(SignBuddy, uuid_service, uuid_characteristic_write, cmd, new BleWriteCallback() {
                 @Override
                 public void onWriteSuccess(int current, int total, byte[] justWrite) {
                     Toast.makeText(MainActivity.this, "Starting collection!", Toast.LENGTH_SHORT).show();
@@ -334,6 +279,63 @@ public class MainActivity extends AppCompatActivity {
                 connectButton.setVisibility(View.VISIBLE);
             } else {
                 Toast.makeText(this, "Permission DENIED", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    private class ParseMessage implements Runnable {
+
+        private byte[] msg;
+
+        public ParseMessage(byte[] msg) {
+            this.msg = msg;
+        }
+
+        public void run() {
+            try {
+                SignBuddyProto.SBPMessage message = SignBuddyProto.SBPMessage.parseFrom(this.msg);
+                if (message.getId() == mid_sample) {
+                    SignBuddyProto.SBPSample sample = message.getSample();
+                    Log.i("Sign Buddy", "NEW SAMPLE");
+                    samplesLock.lock();
+                    samples.add(sample);
+                    Log.i("Sign Buddy", String.valueOf(samples.size()));
+                    if (samples.size() == num_samples) {
+                        SignBuddyProto.SBPGestureData gestureData = SignBuddyProto.SBPGestureData.newBuilder()
+                                .setLetter(gestureLetter)
+                                .addAllSamples(samples)
+                                .build();
+                        Log.i("SignBuddy", gestureData.toString());
+
+                        File file = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+
+                        file = new File(file, "sign_buddy_training_data.txt");
+
+                        if (!file.exists()) {
+                            file.createNewFile();
+                        }
+
+                        PrintWriter writer = new PrintWriter(new OutputStreamWriter(new FileOutputStream(file, true)));
+                        writer.println(gestureData);
+                        writer.println("####################################################");
+                        writer.println("####################################################");
+                        writer.println("####################################################");
+
+                        writer.flush();
+                        writer.close();
+
+                        samples.clear();
+                        runOnUiThread(() -> {
+                            Toast.makeText(MainActivity.this, "Gesture collected!", Toast.LENGTH_SHORT).show();
+                            collectButton.setEnabled(true);
+                            collectButton.setText(R.string.collect);
+                        });
+                        Log.i("Sign Buddy", "NEW GESTURE");
+                    }
+                    samplesLock.unlock();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }
     }
