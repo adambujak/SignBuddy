@@ -68,8 +68,6 @@ static void sensors_task(void *arg)
     LOG_ERROR("Sampling timer creation failed\r\n");
   }
 
-  s.sample.sample_id = 1;
-
   while (1) {
     ulTaskNotifyTake(pdFALSE, portMAX_DELAY);
 
@@ -110,6 +108,7 @@ void sensors_task_setup(void)
   flex_callback_register(flex_data_ready_cb);
   tsc_callback_register(tsc_data_ready_cb);
   imu_callback_register(imu_data_ready_cb);
+  s.sample.sample_id = 1;
 }
 
 void sensors_task_start(void)
