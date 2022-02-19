@@ -30,6 +30,7 @@ typedef struct {
   TimerHandle_t      sampling_timer;
   EventGroupHandle_t data_ready_event_group;
   SBPSample          sample;
+  uint8_t            max_samples;
 } state_t;
 
 static state_t s;
@@ -69,15 +70,7 @@ static void sensors_task(void *arg)
 
   s.sample.sample_id = 1;
 
-  // TODO Timer start should be triggered by message received from BLE
-  RTOS_ERR_CHECK(xTimerStart(s.sampling_timer, 0));
-
   while (1) {
-    if (s.sample.sample_id > MAX_SAMPLES) {
-      RTOS_ERR_CHECK(xTimerStop(s.sampling_timer, 0));
-      s.sample.sample_id = 0;
-    }
-
     ulTaskNotifyTake(pdFALSE, portMAX_DELAY);
 
     imu_start_read();
@@ -104,6 +97,10 @@ static void sensors_task(void *arg)
 
     comms_tx_sample(&s.sample);
     s.sample.sample_id++;
+    if (s.sample.sample_id > s.max_samples) {
+      RTOS_ERR_CHECK(xTimerStop(s.sampling_timer, 0));
+      s.sample.sample_id = 1;
+    }
   }
 }
 
@@ -130,4 +127,14 @@ void sensors_task_start(void)
 void sensors_sampling_timer_start(void)
 {
   RTOS_ERR_CHECK(xTimerStart(s.sampling_timer, 0));
+}
+
+void sensors_sample_periodic(uint8_t periodic)
+{
+  if (periodic) {
+    s.max_samples = MAX_SAMPLES;
+  }
+  else {
+    s.max_samples = 1;
+  }
 }

@@ -13,6 +13,9 @@
 
 #define COMMS_TX_BUFFER_SIZE    128
 
+#define CMD_SAMPLE_ONCE         0x01
+#define CMD_SAMPLE_PERIODIC     0x02
+
 #define SYNC                    0x16
 
 #define MID_SAMPLE              0x01
@@ -58,8 +61,15 @@ static void rx()
   ENABLE_IRQ();
 
   switch (cmd) {
-  case 's':
-    LOG_DEBUG("comms: start sampling\r\n");
+  case CMD_SAMPLE_ONCE:
+    LOG_DEBUG("comms: sample once\r\n");
+    sensors_sample_periodic(0);
+    sensors_sampling_timer_start();
+    break;
+
+  case CMD_SAMPLE_PERIODIC:
+    LOG_DEBUG("comms: sample periodic\r\n");
+    sensors_sample_periodic(1);
     sensors_sampling_timer_start();
     break;
 
