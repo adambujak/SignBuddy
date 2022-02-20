@@ -21,4 +21,7 @@
     <string name="enabling_bluetooth">Enabling bluetooth</string>
     <string name="connecting">Connecting</string>
     <string name="connected">Connected</string>
+    <string name="collect">Collect</string>
+    <string name="gesture_letter">Gesture letter</string>
+    <string name="collecting">Collecting</string>
 </resources>
