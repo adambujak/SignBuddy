@@ -41,15 +41,16 @@ import java.util.concurrent.locks.ReentrantLock;
 public class MainActivity extends AppCompatActivity {
 
     private final int FINE_LOCATION_CODE = 1;
-    private final String ble_name = "Sign Buddy BLE";
-    private final String uuid_service = "6E400001-B5A3-F393-E0A9-E50E24DCCA9E";
-    private final String uuid_characteristic_write = "6E400002-B5A3-F393-E0A9-E50E24DCCA9E";
-    private final String uuid_characteristic_notify = "6E400003-B5A3-F393-E0A9-E50E24DCCA9E";
-    private final byte[] cmd_sample_once = {0x01};
-    private final byte[] cmd_sample_periodic = {0x02};
-    private final int max_samples = 40;
-    private final byte msg_sync = 0x16;
-    private final byte mid_sample = 0x01;
+    private final String BLE_NAME = "Sign Buddy BLE";
+    private final String UUID_SERVICE = "6E400001-B5A3-F393-E0A9-E50E24DCCA9E";
+    private final String UUID_CHARACTERISTIC_WRITE = "6E400002-B5A3-F393-E0A9-E50E24DCCA9E";
+    private final String UUID_CHARACTERISTIC_NOTIFY = "6E400003-B5A3-F393-E0A9-E50E24DCCA9E";
+    private final byte[] CMD_SAMPLE_ONCE = {0x01};
+    private final byte[] CMD_SAMPLE_PERIODIC = {0x02};
+    private final int MAX_SAMPLES = 40;
+    private final byte MSG_SYNC = 0x16;
+    private final byte MID_SAMPLE = 0x01;
+
     private Button connectButton;
     private ProgressBar connectProgress;
     private Button collectButton;
@@ -61,7 +62,6 @@ public class MainActivity extends AppCompatActivity {
     private int msg_length;
     private int skip_crc;
     private boolean next_byte_is_length;
-
     private String gestureLetter = "DEFAULT";
 
     @Override
@@ -135,14 +135,15 @@ public class MainActivity extends AppCompatActivity {
             collectButton.setEnabled(false);
             collectButton.setText(R.string.collecting);
             byte[] cmd;
+            // If the letter is J or Z then we must do periodic sampling to track movement
             if ("jzJZ".contains(gestureLetter)) {
-                num_samples = max_samples;
-                cmd = cmd_sample_periodic;
+                num_samples = MAX_SAMPLES;
+                cmd = CMD_SAMPLE_PERIODIC;
             } else {
                 num_samples = 1;
-                cmd = cmd_sample_once;
+                cmd = CMD_SAMPLE_ONCE;
             }
-            BleManager.getInstance().write(SignBuddy, uuid_service, uuid_characteristic_write, cmd, new BleWriteCallback() {
+            BleManager.getInstance().write(SignBuddy, UUID_SERVICE, UUID_CHARACTERISTIC_WRITE, cmd, new BleWriteCallback() {
                 @Override
                 public void onWriteSuccess(int current, int total, byte[] justWrite) {
                     Toast.makeText(MainActivity.this, "Starting collection!", Toast.LENGTH_SHORT).show();
@@ -188,7 +189,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onScanning(BleDevice bleDevice) {
                     String name = bleDevice.getName();
-                    if (name != null && name.equals(ble_name)) {
+                    if (name != null && name.equals(BLE_NAME)) {
                         SignBuddy = bleDevice;
                         BleManager.getInstance().connect(SignBuddy, new BleGattCallback() {
                             @Override
@@ -209,7 +210,7 @@ public class MainActivity extends AppCompatActivity {
                                 Toast.makeText(MainActivity.this, "Connected!", Toast.LENGTH_SHORT).show();
                                 connectButton.setText(R.string.connected);
                                 connectProgress.setVisibility(View.GONE);
-                                BleManager.getInstance().notify(SignBuddy, uuid_service, uuid_characteristic_notify, new BleNotifyCallback() {
+                                BleManager.getInstance().notify(SignBuddy, UUID_SERVICE, UUID_CHARACTERISTIC_NOTIFY, new BleNotifyCallback() {
                                     @Override
                                     public void onNotifySuccess() {
 
@@ -223,7 +224,7 @@ public class MainActivity extends AppCompatActivity {
                                     @Override
                                     public void onCharacteristicChanged(byte[] data) {
                                         for (byte b : data) {
-                                            if (b == msg_sync && byteBuffer.size() == 0) {
+                                            if (b == MSG_SYNC && byteBuffer.size() == 0) {
                                                 skip_crc = 4;
                                                 next_byte_is_length = true;
                                             } else if (next_byte_is_length) {
@@ -294,7 +295,7 @@ public class MainActivity extends AppCompatActivity {
         public void run() {
             try {
                 SignBuddyProto.SBPMessage message = SignBuddyProto.SBPMessage.parseFrom(this.msg);
-                if (message.getId() == mid_sample) {
+                if (message.getId() == MID_SAMPLE) {
                     SignBuddyProto.SBPSample sample = message.getSample();
                     Log.i("Sign Buddy", "NEW SAMPLE");
                     samplesLock.lock();
