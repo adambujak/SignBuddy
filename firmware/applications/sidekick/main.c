@@ -224,14 +224,14 @@ static void ble_nus_chars_received_uart_print(uint8_t * p_data, uint16_t data_le
 void uart_event_handle(app_uart_evt_t * p_event)
 {
     uint32_t ret_val;
+    uint8_t data;
 
     switch (p_event->evt_type)
     {
         /**@snippet [Handling data from UART] */
         case APP_UART_DATA_READY:
-            uint8_t data;
             UNUSED_VARIABLE(app_uart_get(&data));
-    
+
             NRF_LOG_DEBUG("Ready to send data over BLE NUS");
 
             do
@@ -242,7 +242,7 @@ void uart_event_handle(app_uart_evt_t * p_event)
                     APP_ERROR_CHECK(ret_val);
                 }
             } while (ret_val == NRF_ERROR_RESOURCES);
-            
+
             break;
 
         /**@snippet [Handling data from UART] */
