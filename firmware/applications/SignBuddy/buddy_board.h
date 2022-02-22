@@ -1,8 +1,6 @@
 #ifndef BUDDY_BOARD_H
 #define BUDDY_BOARD_H
 
-#error buddy
-
 #include "stm32l0xx_ll_adc.h"
 #include "stm32l0xx_ll_bus.h"
 #include "stm32l0xx_ll_cortex.h"
