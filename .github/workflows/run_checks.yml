@@ -38,6 +38,18 @@ jobs:
         sudo make clean -C firmware
         echo "Exited with '$?'"
 
+    - name: Build the buddy firmware
+      if: always()
+      run: |
+        bash firmware/tools/compile.sh BUDDY
+        echo "Exited with '$?'"
+
+    - name: Clean the firmware
+      if: always()
+      run: |
+        sudo make clean -C firmware
+        echo "Exited with '$?'"
+
     - name: Check Code Formatting
       if: always()
       run: make format_check -C firmware
