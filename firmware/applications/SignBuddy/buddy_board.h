@@ -1,5 +1,7 @@
-#ifndef NUCLEO_BOARD_H
-#define NUCLEO_BOARD_H
+#ifndef BUDDY_BOARD_H
+#define BUDDY_BOARD_H
+
+#error buddy
 
 #include "stm32l0xx_ll_adc.h"
 #include "stm32l0xx_ll_bus.h"
@@ -154,4 +156,4 @@
 #define TSC_GPIO_CLK_EN()           LL_IOP_GRP1_EnableClock(LL_IOP_GRP1_PERIPH_GPIOA); \
   LL_IOP_GRP1_EnableClock(LL_IOP_GRP1_PERIPH_GPIOB);                                   \
 
-#endif // NUCLEO_BOARD_H
+#endif // BUDDY_BOARD_H

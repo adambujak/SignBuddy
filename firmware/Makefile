@@ -1,9 +1,9 @@
 APPLICATION_ROOT = applications/SignBuddy
 OUTPUT = _build
 
-default: nucleo
+default: buddy
 
-.PHONY: test clean format format_check flash_nucleo
+.PHONY: test clean format format_check flash_nucleo flash_buddy
 
 clean: 
 	rm -rf $(APPLICATION_ROOT)/$(OUTPUT)
@@ -11,6 +11,10 @@ clean:
 nucleo:
 	@echo "Compiling SignBudy for nucleo..."
 	@./tools/compile.sh NUCLEO
+
+buddy:
+	@echo "Compiling SignBudy for buddy..."
+	@./tools/compile.sh BUDDY
 
 proto:
 	@echo "Generating proto source..."
@@ -33,3 +37,9 @@ flash_nucleo:
 
 flash_nucleo_jlink:
 	@make -C $(APPLICATION_ROOT) flash_jlink BOARD_VERSION=NUCLEO
+
+flash_buddy:
+	@make -C $(APPLICATION_ROOT) flash BOARD_VERSION=BUDDY
+
+flash_buddy_jlink:
+	@make -C $(APPLICATION_ROOT) flash_jlink BOARD_VERSION=BUDDY

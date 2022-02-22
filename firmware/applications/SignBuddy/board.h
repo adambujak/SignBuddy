@@ -11,6 +11,10 @@
 
 #if defined(BOARD_NUCLEO)
 #include "nucleo_board.h"
-#endif // BOARD_DEF
+#endif // BOARD_NUCLEO
+
+#if defined(BOARD_BUDDY)
+#include "buddy_board.h"
+#endif // BOARD_BUDDY
 
 #endif // BOARD_H
