@@ -13,17 +13,18 @@
 #include <stdlib.h>
 
 // DATA READY EVENTS
-#define TSC_DR_EVENT       (1 << 0)
-#define FLEX_DR_EVENT      (1 << 1)
-#define IMU_DR_EVENT       (1 << 2)
+#define TSC_DR_EVENT           (1 << 0)
+#define FLEX_DR_EVENT          (1 << 1)
+#define IMU_DR_EVENT           (1 << 2)
 
-#define ALL_DR_EVENTS      (TSC_DR_EVENT | FLEX_DR_EVENT | IMU_DR_EVENT)
+#define ALL_DR_EVENTS          (TSC_DR_EVENT | FLEX_DR_EVENT | IMU_DR_EVENT)
 
-#define TIMEOUT_MS         40
-#define TIMEOUT_TICKS      pdMS_TO_TICKS(TIMEOUT_MS)
+#define TIMEOUT_MS             40
+#define TIMEOUT_TICKS          pdMS_TO_TICKS(TIMEOUT_MS)
 
-#define SAMPLING_PERIOD    50
-#define MAX_SAMPLES        40
+#define SAMPLING_PERIOD        50
+#define MAX_SAMPLES_STATIC     1
+#define MAX_SAMPLES_DYNAMIC    40
 
 typedef struct {
   TaskHandle_t       sensors_task_handle;
@@ -123,17 +124,16 @@ void sensors_task_start(void)
   RTOS_ERR_CHECK(task_status);
 }
 
-void sensors_sampling_timer_start(void)
+void sensors_sample(sample_method_t method)
 {
-  RTOS_ERR_CHECK(xTimerStart(s.sampling_timer, 0));
-}
+  switch (method) {
+  case SAMPLE_STATIC:
+    s.max_samples = MAX_SAMPLES_STATIC;
+    break;
 
-void sensors_sample_periodic(uint8_t periodic)
-{
-  if (periodic) {
-    s.max_samples = MAX_SAMPLES;
+  case SAMPLE_DYNAMIC:
+    s.max_samples = MAX_SAMPLES_DYNAMIC;
+    break;
   }
-  else {
-    s.max_samples = 1;
-  }
+  RTOS_ERR_CHECK(xTimerStart(s.sampling_timer, 0));
 }
