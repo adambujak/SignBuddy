@@ -89,6 +89,7 @@ static void ingest_packet()
 static void packetize_sample()
 {
   pb_ostream_t stream = pb_ostream_from_buffer((pb_byte_t *) s.packet.msg, MAX_MSG_SIZE);
+
   pb_encode(&stream, &SBPMessage_msg, &s.msg);
 
   s.msg_ready = 0;
