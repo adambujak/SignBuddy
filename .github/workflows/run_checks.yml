@@ -62,4 +62,4 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Build Android app
-      run: cd software && ./gradlew build
+      run: cd software/android_app && ./gradlew build
