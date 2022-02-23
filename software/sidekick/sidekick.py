@@ -1,12 +1,15 @@
 import sys
 import os
+import copy
 import time
 import signal
 import serial
 import serial.tools.list_ports
-import zlib
+import libscrc
 from threading import Thread, Lock, Event
 from enum import Enum
+
+import sign_buddy_pb2 as sbp
 
 sidekick = None
 
@@ -35,16 +38,15 @@ class SBSDecoder():
                 if self.encoded[0] != SYNC_BYTE:
                     self.encoded = self.encoded[1:]
                     continue
-                print('sync found')
 
                 self.currentFrameSize = self.encoded[1]
                 self.state = DecoderParseState.BODY
 
                 self.decodedCRC = 0
-                self.decodedCRC |= self.encoded[2] << 24
-                self.decodedCRC |= self.encoded[3] << 16
-                self.decodedCRC |= self.encoded[4] << 8
-                self.decodedCRC |= self.encoded[5] << 0
+                self.decodedCRC |= self.encoded[2] << 0
+                self.decodedCRC |= self.encoded[3] << 8
+                self.decodedCRC |= self.encoded[4] << 16
+                self.decodedCRC |= self.encoded[5] << 24
 
                 # pop out entire header
                 self.encoded = self.encoded[FRAME_HEADER_SIZE:]
@@ -54,11 +56,8 @@ class SBSDecoder():
                     return
 
                 frameData = self.encoded[0:self.currentFrameSize]
-                calculatedCRC = int(zlib.crc32(frameData))
 
-                print('decodedCRC: ', hex(self.decodedCRC))
-                print('calculatedCRC: ', hex(calculatedCRC))
-                if self.decodedCRC != calculatedCRC:
+                if self.decodedCRC != 0xA5A5A5A5: #hard coded value for now
                     self._soft_reset()
                     continue
 
@@ -162,8 +161,16 @@ class Sidekick(SerialDevice):
     def decoder_init(self):
         self.decoder = SBSDecoder(self.decoder_callback)
 
-    def decoder_callback(self):
-        print('frame complete')
+    def decoder_callback(self, frameData):
+        message = sbp.SBPMessage()
+
+        try:
+            message.ParseFromString(frameData)
+        except:
+            print("ERROR PARSING MESSAGE\r\n");
+
+        print(message)
+
 
 def quit():
     global sidekick

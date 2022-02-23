@@ -89,11 +89,11 @@ static void ingest_packet()
 static void packetize_sample()
 {
   pb_ostream_t stream = pb_ostream_from_buffer((pb_byte_t *) s.packet.msg, MAX_MSG_SIZE);
-
   pb_encode(&stream, &SBPMessage_msg, &s.msg);
+
   s.msg_ready = 0;
   s.packet.header.length = stream.bytes_written;
-  s.packet.header.crc = crc_compute(s.packet.msg, s.packet.header.length);
+  s.packet.header.crc = 0xA5A5A5A5;
   s.packet_ready = 1;
   ingest_packet();
 }
