@@ -18,7 +18,7 @@ buddy:
 
 proto:
 	@echo "Generating proto source..."
-	@./tools/build_proto.sh
+	@./tools/docker_build_proto.sh
 
 test:
 	@echo "Running tests..."
