@@ -79,6 +79,7 @@ int main(void)
   board_bringup();
   // init early
   log_uart_init();
+  rtos_delay_ms(1000);
 
   flex_task_setup();
   tsc_task_setup();
