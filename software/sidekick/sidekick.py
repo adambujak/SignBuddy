@@ -152,7 +152,21 @@ class SerialDevice:
         pass
 
 class Sidekick(SerialDevice):
+    def open_output_file(self, letter):
+        self.outputFile = open("output/{}_{}".format(letter, time.time()), "wb")
+        self.outputEnabled = True
+
+    def save_output_file(self):
+        self.outputFile.close()
+
+    def initialize_sampler(self):
+        self.sampling = False
+        self.current_letter = None
+        self.outputEnabled = False
+
     def read_callback(self, byteData):
+        if self.outputEnabled:
+            self.outputFile.write(byteData)
         self.decoder.decode(byteData)
 
     def write_packet(self, packet):
@@ -169,8 +183,38 @@ class Sidekick(SerialDevice):
         except:
             print("ERROR PARSING MESSAGE\r\n");
 
+        if self.sampling:
+            if message.id == 1:
+                print(self.current_letter)
+
         print(message)
 
+    def start_static_sample(self):
+        cmd = bytearray(b'\x01')
+        self.write_bytes(cmd)
+
+    def start_dynamic_sample(self):
+        cmd = bytearray(b'\x02')
+        self.write_bytes(cmd)
+
+    def sample(self, letter):
+        self.current_letter = letter
+        self.sampling = True
+        self.open_output_file(letter)
+        self.start_dynamic_sample()
+        time.sleep(5)
+        self.save_output_file()
+
+
+def train():
+    global sidekick
+    while (1):
+        print("input letter: ")
+        letter = input()
+        if (ord(letter) < ord('a') or ord(letter) > ord('z')):
+            print('invalid letter')
+            continue
+        sidekick.sample(letter)
 
 def quit():
     global sidekick
@@ -184,34 +228,20 @@ def main():
     connected = False
     ports = serial.tools.list_ports.comports()
 
-    #for i in range(len(ports)):
-    #    if ports[i].product == "STM32 STLink":
-    #        sidekick = Sidekick(ports[i].device, 115200, 1)
-    #        connected = True
-    #        print("Connected to Albus")
-    #        break
-
     if connected == False:
-        # Delete bluetooth port
+
         for i in range(len(ports)):
-            if "Bluetooth" in ports[i].name:
-                ports.pop(i)
-                break
+            print("{}: {}".format(i+1, ports[i].name))
 
-        if len(ports) == 1:
-            selectedPort = 0
-            print("Using port: {}".format(ports[0].name))
-
-        else:
-            for i in range(len(ports)):
-                print("{}: {}".format(i+1, ports[i].name))
-
-            print("Which serial port do you want to use?")
-            selectedPort = int(input()) - 1
+        print("Which serial port do you want to use?")
+        selectedPort = int(input()) - 1
 
         serialPort = ports[selectedPort].device
 
         sidekick = Sidekick(serialPort, 115200, 1)
+        sidekick.initialize_sampler()
         sidekick.decoder_init()
+        train()
+
 
 main()
