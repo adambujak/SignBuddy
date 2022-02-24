@@ -25,6 +25,3 @@ PB_BIND(SBPSample_TouchData, SBPSample_TouchData, AUTO)
 
 
 PB_BIND(SBPStatus, SBPStatus, AUTO)
-
-
-
