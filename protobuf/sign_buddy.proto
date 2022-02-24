@@ -20,12 +20,13 @@ message SBPSample {
   required uint32 sample_id = 1;
 
   message IMUData {
-    required sint32 eul_h = 1;
-    required sint32 eul_r = 2;
-    required sint32 eul_p = 3;
-    required sint32 lin_acc_x = 4;
-    required sint32 lin_acc_y = 5;
-    required sint32 lin_acc_z = 6;
+    required sint32 quat_w = 1;
+    required sint32 quat_x = 2;
+    required sint32 quat_y = 3;
+    required sint32 quat_z = 4;
+    required sint32 lin_acc_x = 5;
+    required sint32 lin_acc_y = 6;
+    required sint32 lin_acc_z = 7;
   }
 
   required IMUData imu_data = 2;
