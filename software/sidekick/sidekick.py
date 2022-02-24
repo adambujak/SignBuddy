@@ -1,11 +1,6 @@
-import sys
-import os
-import copy
 import time
-import signal
 import serial
 import serial.tools.list_ports
-import libscrc
 from threading import Thread, Lock, Event
 from enum import Enum
 
@@ -14,14 +9,16 @@ import sign_buddy_pb2 as sbp
 sidekick = None
 
 SYNC_BYTE = 0x16
-FRAME_HEADER_SIZE = 6 # SYNC + LENGTH + 4 CRC
+FRAME_HEADER_SIZE = 6  # SYNC + LENGTH + 4 CRC
+
 
 class DecoderParseState(Enum):
     HEADER = 0
     BODY = 1
 
+
 # SignBuddy Stream Decoder
-class SBSDecoder():
+class SBSDecoder:
     def __init__(self, callback):
         self.encoded = bytearray()
         self.state = DecoderParseState.HEADER
@@ -55,9 +52,9 @@ class SBSDecoder():
                 if len(self.encoded) < self.currentFrameSize:
                     return
 
-                frameData = self.encoded[0:self.currentFrameSize]
+                frame_data = self.encoded[0:self.currentFrameSize]
 
-                if self.decodedCRC != 0xA5A5A5A5: #hard coded value for now
+                if self.decodedCRC != 0xA5A5A5A5:  # hard coded value for now
                     self._soft_reset()
                     continue
 
@@ -66,8 +63,8 @@ class SBSDecoder():
                 # reset for next packet
                 self._soft_reset()
 
-                #pass to decoder
-                self.callback(frameData)
+                # pass to decoder
+                self.callback(frame_data)
 
     def _soft_reset(self):
         self.state = DecoderParseState.HEADER
@@ -86,10 +83,10 @@ class SBSDecoder():
 
 
 class SerialDevice:
-    def __init__(self, serialPort, baudRate=115200, readSleepTimeMs=1):
+    def __init__(self, serial_port, baud_rate=115200, read_sleep_time_ms=1):
         self.serialMutex = Lock()
-        self.readSleepTime = readSleepTimeMs / 1000;
-        self.serialInstance = serial.Serial(serialPort, baudRate, timeout=0.5)
+        self.readSleepTime = read_sleep_time_ms / 1000
+        self.serialInstance = serial.Serial(serial_port, baud_rate, timeout=0.5)
         self.stopReadEvent = Event()
         self.stopReadEvent.clear()
         self.readThreadInstance = Thread(target=self.read_thread, args=[])
@@ -118,58 +115,59 @@ class SerialDevice:
                 break
             data_buffer = bytes()
             while 1:
-                readData = self.read_raw_char()
-                if readData == bytes(): #empty bytes
+                read_data = self.read_raw_char()
+                if read_data == bytes():  # empty bytes
                     # only send if not empty
                     if data_buffer != bytes():
                         self.read_callback(data_buffer)
                     break
-                data_buffer += readData
+                data_buffer += read_data
                 if len(data_buffer) > self.bufferFlushCount:
                     self.read_callback(data_buffer[0:self.bufferFlushCount])
                     data_buffer = data_buffer[self.bufferFlushCount:]
             time.sleep(self.readSleepTime)
 
-    def write_bytes(self, byteData):
+    def write_bytes(self, byte_data):
         self.serialMutex.acquire()
         maxsize = 31
-        while len(byteData) > maxsize:
-            self.serialInstance.write(byteData[0:maxsize])
-            byteData = byteData[maxsize:]
+        while len(byte_data) > maxsize:
+            self.serialInstance.write(byte_data[0:maxsize])
+            byte_data = byte_data[maxsize:]
             time.sleep(0.001)
 
-        self.serialInstance.write(byteData)
+        self.serialInstance.write(byte_data)
         self.serialMutex.release()
 
     def read_raw_char(self):
         self.serialMutex.acquire()
-        readval = self.serialInstance.read(1)
+        read_val = self.serialInstance.read(1)
         self.serialMutex.release()
-        return readval
+        return read_val
 
-    def read_callback(self):
+    def read_callback(self, byte_data):
         # User should overwrite this in their own class
         pass
 
-class Sidekick(SerialDevice):
-    def read_callback(self, byteData):
-        self.decoder.decode(byteData)
 
-    def write_packet(self, packet):
-        time.sleep(0.001)
+class Sidekick(SerialDevice):
+    def __init__(self, serial_port, baud_rate=115200, read_sleep_time_ms=1):
+        super().__init__(serial_port, baud_rate, read_sleep_time_ms)
+        self.decoder = None
+        self.message = sbp.SBPMessage()
+
+    def read_callback(self, byte_data):
+        self.decoder.decode(byte_data)
 
     def decoder_init(self):
         self.decoder = SBSDecoder(self.decoder_callback)
 
-    def decoder_callback(self, frameData):
-        message = sbp.SBPMessage()
-
+    def decoder_callback(self, frame_data):
         try:
-            message.ParseFromString(frameData)
+            self.message.ParseFromString(frame_data)
         except:
-            print("ERROR PARSING MESSAGE\r\n");
+            print("ERROR PARSING MESSAGE\r\n")
 
-        print(message)
+        print(self.message)
 
 
 def quit():
@@ -178,20 +176,14 @@ def quit():
     del sidekick
     exit(0)
 
+
 def main():
     global sidekick
 
     connected = False
     ports = serial.tools.list_ports.comports()
 
-    #for i in range(len(ports)):
-    #    if ports[i].product == "STM32 STLink":
-    #        sidekick = Sidekick(ports[i].device, 115200, 1)
-    #        connected = True
-    #        print("Connected to Albus")
-    #        break
-
-    if connected == False:
+    if not connected:
         # Delete bluetooth port
         for i in range(len(ports)):
             if "Bluetooth" in ports[i].name:
@@ -199,19 +191,20 @@ def main():
                 break
 
         if len(ports) == 1:
-            selectedPort = 0
+            selected_port = 0
             print("Using port: {}".format(ports[0].name))
 
         else:
             for i in range(len(ports)):
-                print("{}: {}".format(i+1, ports[i].name))
+                print("{}: {}".format(i + 1, ports[i].name))
 
             print("Which serial port do you want to use?")
-            selectedPort = int(input()) - 1
+            selected_port = int(input()) - 1
 
-        serialPort = ports[selectedPort].device
+        serial_port = ports[selected_port].device
 
-        sidekick = Sidekick(serialPort, 115200, 1)
+        sidekick = Sidekick(serial_port, 115200, 1)
         sidekick.decoder_init()
+
 
 main()
