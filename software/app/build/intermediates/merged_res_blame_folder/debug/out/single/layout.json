@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "C:\\Users\\ramsh\\OneDrive\\Documents\\GitHub\\SignBuddy\\software\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\content_alesson.xml",
+        "source": "C:\\Users\\ramsh\\OneDrive\\Documents\\GitHub\\SignBuddy\\software\\app\\src\\main\\res\\layout\\content_alesson.xml"
+    },
+    {
+        "merged": "C:\\Users\\ramsh\\OneDrive\\Documents\\GitHub\\SignBuddy\\software\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_main.xml",
+        "source": "C:\\Users\\ramsh\\OneDrive\\Documents\\GitHub\\SignBuddy\\software\\app\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\ramsh\\OneDrive\\Documents\\GitHub\\SignBuddy\\software\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_alesson.xml",
+        "source": "C:\\Users\\ramsh\\OneDrive\\Documents\\GitHub\\SignBuddy\\software\\app\\src\\main\\res\\layout\\activity_alesson.xml"
+    },
+    {
+        "merged": "C:\\Users\\ramsh\\OneDrive\\Documents\\GitHub\\SignBuddy\\software\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_alphabet.xml",
+        "source": "C:\\Users\\ramsh\\OneDrive\\Documents\\GitHub\\SignBuddy\\software\\app\\src\\main\\res\\layout\\activity_alphabet.xml"
+    },
+    {
+        "merged": "C:\\Users\\ramsh\\OneDrive\\Documents\\GitHub\\SignBuddy\\software\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_quiz.xml",
+        "source": "C:\\Users\\ramsh\\OneDrive\\Documents\\GitHub\\SignBuddy\\software\\app\\src\\main\\res\\layout\\activity_quiz.xml"
+    },
+    {
+        "merged": "C:\\Users\\ramsh\\OneDrive\\Documents\\GitHub\\SignBuddy\\software\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_lesson.xml",
+        "source": "C:\\Users\\ramsh\\OneDrive\\Documents\\GitHub\\SignBuddy\\software\\app\\src\\main\\res\\layout\\activity_lesson.xml"
+    }
+]

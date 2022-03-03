@@ -1,0 +1,345 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml:2:1-46:12
+INJECTED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml:2:1-46:12
+INJECTED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml:2:1-46:12
+INJECTED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml:2:1-46:12
+MERGED from [androidx.databinding:viewbinding:7.0.3] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\aedac3ef7d5f2c617ead8656bf92c449\transformed\jetified-viewbinding-7.0.3\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.navigation:navigation-ui:2.4.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\cfef27dda0d7aaa325049fb2ae689682\transformed\navigation-ui-2.4.0\AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.material:material:1.5.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\e28af2a57da205d1991628495b66e5fc\transformed\material-1.5.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.3] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\a33d520c58fa7860ced27355a344e679\transformed\constraintlayout-2.1.3\AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.appcompat:appcompat:1.4.1] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\f8d734a7d44310d84014d6ed621ec293\transformed\appcompat-1.4.1\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.navigation:navigation-fragment:2.4.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\c1daa4855049d8f11652340025b573df\transformed\navigation-fragment-2.4.0\AndroidManifest.xml:17:1-24:12
+MERGED from [com.github.Jasonchenlijian:FastBle:2.4.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\9ed508e7c57c7adcb1a84eea8d810f29\transformed\jetified-FastBle-2.4.0\AndroidManifest.xml:2:1-16:12
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\3cb859c1ac0dd29d128e917789be4254\transformed\jetified-viewpager2-1.0.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.fragment:fragment-ktx:1.4.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\b71b52cdbff66e67b0d1d6c0e9629b05\transformed\jetified-fragment-ktx-1.4.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.fragment:fragment:1.4.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\ca03e038b45e884900d42ecc967eb639\transformed\fragment-1.4.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.navigation:navigation-runtime:2.4.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\d237c395770d29ecac470ff308c551be\transformed\navigation-runtime-2.4.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.activity:activity-ktx:1.2.3] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\1204b855e82c977fcd8cf2b62958e8e1\transformed\jetified-activity-ktx-1.2.3\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.activity:activity:1.2.4] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\0173ed9dc551c8b1c170efbf05532376\transformed\jetified-activity-1.2.4\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.appcompat:appcompat-resources:1.4.1] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\99af0266dd6e8c54eb33c1aa44a873f5\transformed\jetified-appcompat-resources-1.4.1\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.emoji2:emoji2-views-helper:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\40129cdd0cc6fb43e1431d3a7f860d71\transformed\jetified-emoji2-views-helper-1.0.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.emoji2:emoji2:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\beb1e8c1d1724370afa1be71eb324942\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:17:1-37:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\1ad7e64fbfa1ec575baaf2daa876363e\transformed\drawerlayout-1.1.1\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\d5ce58f194e6eb15743ad13effdd09da\transformed\coordinatorlayout-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\d2646664f8d9727246d320f24126df9c\transformed\dynamicanimation-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\08a78bb58e82e932da1f82c2b8b82824\transformed\vectordrawable-animated-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\0a2c06990f10f8bf77c6b2eafaa2d2f7\transformed\vectordrawable-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.2.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\6a61eb620dd265406509e4044d6e256b\transformed\slidingpanelayout-1.2.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\973d1c6591a02ca84f2ddc5ef5b8076a\transformed\recyclerview-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\70c058259436dcd4c71d85461afd1b6a\transformed\viewpager-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.customview:customview:1.1.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\8e916a11daa6e848c25f3a40e996bf6b\transformed\customview-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\6d6e532017af0c907cd34d38d04e17fc\transformed\legacy-support-core-utils-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.navigation:navigation-common:2.4.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\8758a2ed278d87ee6897f2bc89d53236\transformed\navigation-common-2.4.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.core:core-ktx:1.2.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\da1c2a5985a5a422ba4c8953611f2457\transformed\jetified-core-ktx-1.2.0\AndroidManifest.xml:2:1-9:12
+MERGED from [androidx.transition:transition:1.4.1] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\0c9428398ac5aab54b0f8f8148fe8b64\transformed\transition-1.4.1\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.window:window:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\09a5e9d7f702ea229ef09128ceac4045\transformed\jetified-window-1.0.0\AndroidManifest.xml:17:1-33:12
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\d35f0010fbff61dfb15ae12685344215\transformed\loader-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core:1.7.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\21249a56641fb0309777a5ae16ce99ff\transformed\core-1.7.0\AndroidManifest.xml:17:1-26:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\58c33f79541fa64793747c2f03ce017d\transformed\cursoradapter-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.1] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\c1a2bad483f0938ab658856dbf3c7f56\transformed\jetified-lifecycle-viewmodel-savedstate-2.3.1\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.savedstate:savedstate-ktx:1.1.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\3d35a66e9f2fbb3a42060feb00cbfe96\transformed\jetified-savedstate-ktx-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.savedstate:savedstate:1.1.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\940f6159f5551d04c5900cf56e10f7a6\transformed\jetified-savedstate-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\64ae697d2c96f7c3bba420dc53e78db1\transformed\jetified-lifecycle-viewmodel-ktx-2.3.1\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.1] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\1d20e376c94887dfa0b3a5aa12cd6783\transformed\lifecycle-viewmodel-2.3.1\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\1bc1de6a32330280351f65a0393bdf57\transformed\cardview-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\d88cacb3ad7019752e911e94c62f5798\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\4d87c3e3b70abeed5e61faf08f3b9b5b\transformed\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:17:1-37:12
+MERGED from [androidx.startup:startup-runtime:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\297743ef38a765569e85995e5d62a64b\transformed\jetified-startup-runtime-1.0.0\AndroidManifest.xml:17:1-33:12
+MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\7a6baf161ab5d6c31b6f6f5d94e198cf\transformed\jetified-tracing-1.0.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.3.1] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\102e4258c1ebb022c8e01e16a499a81f\transformed\jetified-lifecycle-livedata-core-ktx-2.3.1\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\d6b2c6310d0da332cb9475defea77305\transformed\lifecycle-livedata-2.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.3.1] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\6e3c93787fdaaf7e4199472c64252016\transformed\lifecycle-livedata-core-2.3.1\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.3.1] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\0b112350c3ca2a062b47b1859eebcb53\transformed\jetified-lifecycle-runtime-ktx-2.3.1\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.4.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\0d7ad5a9bb64a79e832ad9e2795069b5\transformed\lifecycle-runtime-2.4.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.arch.core:core-runtime:2.1.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\72de0627c0c71c2c0ac6e20b5aa28ba3\transformed\core-runtime-2.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\511e2a36f18b29fdf3f425e3962668f8\transformed\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\5dc1b0d68d5be8d395af6b357c3240c1\transformed\documentfile-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\eb3bd80f829817dc46cef00554f9b4ab\transformed\localbroadcastmanager-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.print:print:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\998ecad2e598076d0444e5b886cc28b2\transformed\print-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.annotation:annotation-experimental:1.1.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\abd986d958258d7e8503cbe4ed7e75cb\transformed\jetified-annotation-experimental-1.1.0\AndroidManifest.xml:17:1-24:12
+INJECTED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml:2:1-46:12
+INJECTED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml:2:1-46:12
+INJECTED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml:2:1-46:12
+	package
+		ADDED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml:3:5-36
+		INJECTED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml:2:1-46:12
+		INJECTED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml
+	android:versionCode
+		INJECTED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml:2:1-46:12
+		INJECTED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml:2:11-69
+uses-permission#android.permission.BLUETOOTH
+ADDED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml:5:5-68
+MERGED from [com.github.Jasonchenlijian:FastBle:2.4.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\9ed508e7c57c7adcb1a84eea8d810f29\transformed\jetified-FastBle-2.4.0\AndroidManifest.xml:11:5-68
+MERGED from [com.github.Jasonchenlijian:FastBle:2.4.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\9ed508e7c57c7adcb1a84eea8d810f29\transformed\jetified-FastBle-2.4.0\AndroidManifest.xml:11:5-68
+	android:name
+		ADDED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml:5:22-65
+uses-permission#android.permission.BLUETOOTH_ADMIN
+ADDED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml:6:5-74
+MERGED from [com.github.Jasonchenlijian:FastBle:2.4.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\9ed508e7c57c7adcb1a84eea8d810f29\transformed\jetified-FastBle-2.4.0\AndroidManifest.xml:12:5-74
+MERGED from [com.github.Jasonchenlijian:FastBle:2.4.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\9ed508e7c57c7adcb1a84eea8d810f29\transformed\jetified-FastBle-2.4.0\AndroidManifest.xml:12:5-74
+	android:name
+		ADDED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml:6:22-71
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml:7:5-81
+MERGED from [com.github.Jasonchenlijian:FastBle:2.4.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\9ed508e7c57c7adcb1a84eea8d810f29\transformed\jetified-FastBle-2.4.0\AndroidManifest.xml:13:5-81
+MERGED from [com.github.Jasonchenlijian:FastBle:2.4.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\9ed508e7c57c7adcb1a84eea8d810f29\transformed\jetified-FastBle-2.4.0\AndroidManifest.xml:13:5-81
+	android:name
+		ADDED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml:7:22-78
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml:8:5-79
+MERGED from [com.github.Jasonchenlijian:FastBle:2.4.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\9ed508e7c57c7adcb1a84eea8d810f29\transformed\jetified-FastBle-2.4.0\AndroidManifest.xml:14:5-79
+MERGED from [com.github.Jasonchenlijian:FastBle:2.4.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\9ed508e7c57c7adcb1a84eea8d810f29\transformed\jetified-FastBle-2.4.0\AndroidManifest.xml:14:5-79
+	android:name
+		ADDED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml:8:22-76
+uses-permission#android.permission.BLUETOOTH_CONNECT
+ADDED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml:10:5-76
+	android:name
+		ADDED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml:10:22-73
+application
+ADDED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml:12:5-44:19
+MERGED from [com.google.android.material:material:1.5.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\e28af2a57da205d1991628495b66e5fc\transformed\material-1.5.0\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.material:material:1.5.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\e28af2a57da205d1991628495b66e5fc\transformed\material-1.5.0\AndroidManifest.xml:22:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.3] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\a33d520c58fa7860ced27355a344e679\transformed\constraintlayout-2.1.3\AndroidManifest.xml:9:5-20
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.3] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\a33d520c58fa7860ced27355a344e679\transformed\constraintlayout-2.1.3\AndroidManifest.xml:9:5-20
+MERGED from [androidx.emoji2:emoji2:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\beb1e8c1d1724370afa1be71eb324942\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:25:5-35:19
+MERGED from [androidx.emoji2:emoji2:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\beb1e8c1d1724370afa1be71eb324942\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:25:5-35:19
+MERGED from [androidx.window:window:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\09a5e9d7f702ea229ef09128ceac4045\transformed\jetified-window-1.0.0\AndroidManifest.xml:24:5-31:19
+MERGED from [androidx.window:window:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\09a5e9d7f702ea229ef09128ceac4045\transformed\jetified-window-1.0.0\AndroidManifest.xml:24:5-31:19
+MERGED from [androidx.core:core:1.7.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\21249a56641fb0309777a5ae16ce99ff\transformed\core-1.7.0\AndroidManifest.xml:24:5-89
+MERGED from [androidx.core:core:1.7.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\21249a56641fb0309777a5ae16ce99ff\transformed\core-1.7.0\AndroidManifest.xml:24:5-89
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\d88cacb3ad7019752e911e94c62f5798\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\d88cacb3ad7019752e911e94c62f5798\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\4d87c3e3b70abeed5e61faf08f3b9b5b\transformed\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:25:5-35:19
+MERGED from [androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\4d87c3e3b70abeed5e61faf08f3b9b5b\transformed\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:25:5-35:19
+MERGED from [androidx.startup:startup-runtime:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\297743ef38a765569e85995e5d62a64b\transformed\jetified-startup-runtime-1.0.0\AndroidManifest.xml:25:5-31:19
+MERGED from [androidx.startup:startup-runtime:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\297743ef38a765569e85995e5d62a64b\transformed\jetified-startup-runtime-1.0.0\AndroidManifest.xml:25:5-31:19
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.7.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\21249a56641fb0309777a5ae16ce99ff\transformed\core-1.7.0\AndroidManifest.xml:24:18-86
+	android:supportsRtl
+		ADDED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml:18:9-35
+	android:label
+		ADDED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml:16:9-41
+	android:fullBackupContent
+		ADDED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml:14:9-59
+	android:roundIcon
+		ADDED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml:17:9-54
+	android:icon
+		ADDED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml:15:9-43
+	android:allowBackup
+		ADDED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml:13:9-35
+	android:theme
+		ADDED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml:19:9-47
+activity#com.example.signbuddy.ALessonActivity
+ADDED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml:20:9-24:66
+	android:label
+		ADDED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml:23:13-30
+	android:exported
+		ADDED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml:22:13-37
+	android:theme
+		ADDED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml:24:13-63
+	android:name
+		ADDED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml:21:13-44
+activity#com.example.signbuddy.AlphabetActivity
+ADDED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml:25:9-29:58
+	android:parentActivityName
+		ADDED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml:29:13-55
+	android:label
+		ADDED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml:28:13-44
+	android:exported
+		ADDED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml:27:13-37
+	android:name
+		ADDED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml:26:13-45
+activity#com.example.signbuddy.LessonActivity
+ADDED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml:30:9-34:58
+	android:parentActivityName
+		ADDED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml:34:13-55
+	android:label
+		ADDED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml:33:13-44
+	android:exported
+		ADDED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml:32:13-37
+	android:name
+		ADDED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml:31:13-43
+activity#com.example.signbuddy.MainActivity
+ADDED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml:35:9-43:20
+	android:exported
+		ADDED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml:37:13-36
+	android:name
+		ADDED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml:36:13-41
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml:38:13-42:29
+action#android.intent.action.MAIN
+ADDED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml:39:17-69
+	android:name
+		ADDED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml:39:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml:41:17-77
+	android:name
+		ADDED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml:41:27-74
+uses-sdk
+INJECTED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml
+MERGED from [androidx.databinding:viewbinding:7.0.3] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\aedac3ef7d5f2c617ead8656bf92c449\transformed\jetified-viewbinding-7.0.3\AndroidManifest.xml:20:5-44
+MERGED from [androidx.databinding:viewbinding:7.0.3] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\aedac3ef7d5f2c617ead8656bf92c449\transformed\jetified-viewbinding-7.0.3\AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-ui:2.4.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\cfef27dda0d7aaa325049fb2ae689682\transformed\navigation-ui-2.4.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.navigation:navigation-ui:2.4.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\cfef27dda0d7aaa325049fb2ae689682\transformed\navigation-ui-2.4.0\AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.android.material:material:1.5.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\e28af2a57da205d1991628495b66e5fc\transformed\material-1.5.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.material:material:1.5.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\e28af2a57da205d1991628495b66e5fc\transformed\material-1.5.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.3] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\a33d520c58fa7860ced27355a344e679\transformed\constraintlayout-2.1.3\AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.constraintlayout:constraintlayout:2.1.3] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\a33d520c58fa7860ced27355a344e679\transformed\constraintlayout-2.1.3\AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.appcompat:appcompat:1.4.1] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\f8d734a7d44310d84014d6ed621ec293\transformed\appcompat-1.4.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat:1.4.1] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\f8d734a7d44310d84014d6ed621ec293\transformed\appcompat-1.4.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.navigation:navigation-fragment:2.4.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\c1daa4855049d8f11652340025b573df\transformed\navigation-fragment-2.4.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.navigation:navigation-fragment:2.4.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\c1daa4855049d8f11652340025b573df\transformed\navigation-fragment-2.4.0\AndroidManifest.xml:20:5-22:41
+MERGED from [com.github.Jasonchenlijian:FastBle:2.4.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\9ed508e7c57c7adcb1a84eea8d810f29\transformed\jetified-FastBle-2.4.0\AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.Jasonchenlijian:FastBle:2.4.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\9ed508e7c57c7adcb1a84eea8d810f29\transformed\jetified-FastBle-2.4.0\AndroidManifest.xml:7:5-9:41
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\3cb859c1ac0dd29d128e917789be4254\transformed\jetified-viewpager2-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\3cb859c1ac0dd29d128e917789be4254\transformed\jetified-viewpager2-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment-ktx:1.4.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\b71b52cdbff66e67b0d1d6c0e9629b05\transformed\jetified-fragment-ktx-1.4.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment-ktx:1.4.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\b71b52cdbff66e67b0d1d6c0e9629b05\transformed\jetified-fragment-ktx-1.4.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.4.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\ca03e038b45e884900d42ecc967eb639\transformed\fragment-1.4.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.4.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\ca03e038b45e884900d42ecc967eb639\transformed\fragment-1.4.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.navigation:navigation-runtime:2.4.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\d237c395770d29ecac470ff308c551be\transformed\navigation-runtime-2.4.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.navigation:navigation-runtime:2.4.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\d237c395770d29ecac470ff308c551be\transformed\navigation-runtime-2.4.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity-ktx:1.2.3] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\1204b855e82c977fcd8cf2b62958e8e1\transformed\jetified-activity-ktx-1.2.3\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity-ktx:1.2.3] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\1204b855e82c977fcd8cf2b62958e8e1\transformed\jetified-activity-ktx-1.2.3\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.2.4] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\0173ed9dc551c8b1c170efbf05532376\transformed\jetified-activity-1.2.4\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.2.4] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\0173ed9dc551c8b1c170efbf05532376\transformed\jetified-activity-1.2.4\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat-resources:1.4.1] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\99af0266dd6e8c54eb33c1aa44a873f5\transformed\jetified-appcompat-resources-1.4.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat-resources:1.4.1] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\99af0266dd6e8c54eb33c1aa44a873f5\transformed\jetified-appcompat-resources-1.4.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.emoji2:emoji2-views-helper:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\40129cdd0cc6fb43e1431d3a7f860d71\transformed\jetified-emoji2-views-helper-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.emoji2:emoji2-views-helper:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\40129cdd0cc6fb43e1431d3a7f860d71\transformed\jetified-emoji2-views-helper-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.emoji2:emoji2:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\beb1e8c1d1724370afa1be71eb324942\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.emoji2:emoji2:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\beb1e8c1d1724370afa1be71eb324942\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\1ad7e64fbfa1ec575baaf2daa876363e\transformed\drawerlayout-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\1ad7e64fbfa1ec575baaf2daa876363e\transformed\drawerlayout-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\d5ce58f194e6eb15743ad13effdd09da\transformed\coordinatorlayout-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\d5ce58f194e6eb15743ad13effdd09da\transformed\coordinatorlayout-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\d2646664f8d9727246d320f24126df9c\transformed\dynamicanimation-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.dynamicanimation:dynamicanimation:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\d2646664f8d9727246d320f24126df9c\transformed\dynamicanimation-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\08a78bb58e82e932da1f82c2b8b82824\transformed\vectordrawable-animated-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\08a78bb58e82e932da1f82c2b8b82824\transformed\vectordrawable-animated-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\0a2c06990f10f8bf77c6b2eafaa2d2f7\transformed\vectordrawable-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\0a2c06990f10f8bf77c6b2eafaa2d2f7\transformed\vectordrawable-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.2.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\6a61eb620dd265406509e4044d6e256b\transformed\slidingpanelayout-1.2.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.2.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\6a61eb620dd265406509e4044d6e256b\transformed\slidingpanelayout-1.2.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\973d1c6591a02ca84f2ddc5ef5b8076a\transformed\recyclerview-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\973d1c6591a02ca84f2ddc5ef5b8076a\transformed\recyclerview-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\70c058259436dcd4c71d85461afd1b6a\transformed\viewpager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\70c058259436dcd4c71d85461afd1b6a\transformed\viewpager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.1.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\8e916a11daa6e848c25f3a40e996bf6b\transformed\customview-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.customview:customview:1.1.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\8e916a11daa6e848c25f3a40e996bf6b\transformed\customview-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\6d6e532017af0c907cd34d38d04e17fc\transformed\legacy-support-core-utils-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\6d6e532017af0c907cd34d38d04e17fc\transformed\legacy-support-core-utils-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-common:2.4.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\8758a2ed278d87ee6897f2bc89d53236\transformed\navigation-common-2.4.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.navigation:navigation-common:2.4.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\8758a2ed278d87ee6897f2bc89d53236\transformed\navigation-common-2.4.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core-ktx:1.2.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\da1c2a5985a5a422ba4c8953611f2457\transformed\jetified-core-ktx-1.2.0\AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.core:core-ktx:1.2.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\da1c2a5985a5a422ba4c8953611f2457\transformed\jetified-core-ktx-1.2.0\AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.transition:transition:1.4.1] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\0c9428398ac5aab54b0f8f8148fe8b64\transformed\transition-1.4.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.transition:transition:1.4.1] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\0c9428398ac5aab54b0f8f8148fe8b64\transformed\transition-1.4.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.window:window:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\09a5e9d7f702ea229ef09128ceac4045\transformed\jetified-window-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.window:window:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\09a5e9d7f702ea229ef09128ceac4045\transformed\jetified-window-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\d35f0010fbff61dfb15ae12685344215\transformed\loader-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\d35f0010fbff61dfb15ae12685344215\transformed\loader-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.7.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\21249a56641fb0309777a5ae16ce99ff\transformed\core-1.7.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.7.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\21249a56641fb0309777a5ae16ce99ff\transformed\core-1.7.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\58c33f79541fa64793747c2f03ce017d\transformed\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\58c33f79541fa64793747c2f03ce017d\transformed\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.1] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\c1a2bad483f0938ab658856dbf3c7f56\transformed\jetified-lifecycle-viewmodel-savedstate-2.3.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.1] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\c1a2bad483f0938ab658856dbf3c7f56\transformed\jetified-lifecycle-viewmodel-savedstate-2.3.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate-ktx:1.1.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\3d35a66e9f2fbb3a42060feb00cbfe96\transformed\jetified-savedstate-ktx-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate-ktx:1.1.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\3d35a66e9f2fbb3a42060feb00cbfe96\transformed\jetified-savedstate-ktx-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.1.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\940f6159f5551d04c5900cf56e10f7a6\transformed\jetified-savedstate-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.1.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\940f6159f5551d04c5900cf56e10f7a6\transformed\jetified-savedstate-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\64ae697d2c96f7c3bba420dc53e78db1\transformed\jetified-lifecycle-viewmodel-ktx-2.3.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\64ae697d2c96f7c3bba420dc53e78db1\transformed\jetified-lifecycle-viewmodel-ktx-2.3.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.1] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\1d20e376c94887dfa0b3a5aa12cd6783\transformed\lifecycle-viewmodel-2.3.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.1] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\1d20e376c94887dfa0b3a5aa12cd6783\transformed\lifecycle-viewmodel-2.3.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\1bc1de6a32330280351f65a0393bdf57\transformed\cardview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\1bc1de6a32330280351f65a0393bdf57\transformed\cardview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\d88cacb3ad7019752e911e94c62f5798\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\d88cacb3ad7019752e911e94c62f5798\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\4d87c3e3b70abeed5e61faf08f3b9b5b\transformed\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\4d87c3e3b70abeed5e61faf08f3b9b5b\transformed\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.startup:startup-runtime:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\297743ef38a765569e85995e5d62a64b\transformed\jetified-startup-runtime-1.0.0\AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.startup:startup-runtime:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\297743ef38a765569e85995e5d62a64b\transformed\jetified-startup-runtime-1.0.0\AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\7a6baf161ab5d6c31b6f6f5d94e198cf\transformed\jetified-tracing-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\7a6baf161ab5d6c31b6f6f5d94e198cf\transformed\jetified-tracing-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.3.1] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\102e4258c1ebb022c8e01e16a499a81f\transformed\jetified-lifecycle-livedata-core-ktx-2.3.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.3.1] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\102e4258c1ebb022c8e01e16a499a81f\transformed\jetified-lifecycle-livedata-core-ktx-2.3.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\d6b2c6310d0da332cb9475defea77305\transformed\lifecycle-livedata-2.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\d6b2c6310d0da332cb9475defea77305\transformed\lifecycle-livedata-2.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.3.1] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\6e3c93787fdaaf7e4199472c64252016\transformed\lifecycle-livedata-core-2.3.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.3.1] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\6e3c93787fdaaf7e4199472c64252016\transformed\lifecycle-livedata-core-2.3.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.3.1] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\0b112350c3ca2a062b47b1859eebcb53\transformed\jetified-lifecycle-runtime-ktx-2.3.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx:2.3.1] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\0b112350c3ca2a062b47b1859eebcb53\transformed\jetified-lifecycle-runtime-ktx-2.3.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.4.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\0d7ad5a9bb64a79e832ad9e2795069b5\transformed\lifecycle-runtime-2.4.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.4.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\0d7ad5a9bb64a79e832ad9e2795069b5\transformed\lifecycle-runtime-2.4.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.1.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\72de0627c0c71c2c0ac6e20b5aa28ba3\transformed\core-runtime-2.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.1.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\72de0627c0c71c2c0ac6e20b5aa28ba3\transformed\core-runtime-2.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\511e2a36f18b29fdf3f425e3962668f8\transformed\interpolator-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\511e2a36f18b29fdf3f425e3962668f8\transformed\interpolator-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\5dc1b0d68d5be8d395af6b357c3240c1\transformed\documentfile-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\5dc1b0d68d5be8d395af6b357c3240c1\transformed\documentfile-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\eb3bd80f829817dc46cef00554f9b4ab\transformed\localbroadcastmanager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\eb3bd80f829817dc46cef00554f9b4ab\transformed\localbroadcastmanager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\998ecad2e598076d0444e5b886cc28b2\transformed\print-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.print:print:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\998ecad2e598076d0444e5b886cc28b2\transformed\print-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.1.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\abd986d958258d7e8503cbe4ed7e75cb\transformed\jetified-annotation-experimental-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.annotation:annotation-experimental:1.1.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\abd986d958258d7e8503cbe4ed7e75cb\transformed\jetified-annotation-experimental-1.1.0\AndroidManifest.xml:20:5-22:41
+INJECTED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\ramsh\OneDrive\Documents\GitHub\SignBuddy\software\app\src\main\AndroidManifest.xml
+provider#androidx.startup.InitializationProvider
+ADDED from [androidx.emoji2:emoji2:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\beb1e8c1d1724370afa1be71eb324942\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:26:9-34:20
+MERGED from [androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\4d87c3e3b70abeed5e61faf08f3b9b5b\transformed\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:26:9-34:20
+MERGED from [androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\4d87c3e3b70abeed5e61faf08f3b9b5b\transformed\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:26:9-34:20
+MERGED from [androidx.startup:startup-runtime:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\297743ef38a765569e85995e5d62a64b\transformed\jetified-startup-runtime-1.0.0\AndroidManifest.xml:26:9-30:34
+MERGED from [androidx.startup:startup-runtime:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\297743ef38a765569e85995e5d62a64b\transformed\jetified-startup-runtime-1.0.0\AndroidManifest.xml:26:9-30:34
+	tools:node
+		ADDED from [androidx.emoji2:emoji2:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\beb1e8c1d1724370afa1be71eb324942\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:30:13-31
+	android:authorities
+		ADDED from [androidx.emoji2:emoji2:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\beb1e8c1d1724370afa1be71eb324942\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:28:13-68
+	android:exported
+		ADDED from [androidx.emoji2:emoji2:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\beb1e8c1d1724370afa1be71eb324942\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:29:13-37
+	android:name
+		ADDED from [androidx.emoji2:emoji2:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\beb1e8c1d1724370afa1be71eb324942\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:27:13-67
+meta-data#androidx.emoji2.text.EmojiCompatInitializer
+ADDED from [androidx.emoji2:emoji2:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\beb1e8c1d1724370afa1be71eb324942\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:31:13-33:52
+	android:value
+		ADDED from [androidx.emoji2:emoji2:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\beb1e8c1d1724370afa1be71eb324942\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:33:17-49
+	android:name
+		ADDED from [androidx.emoji2:emoji2:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\beb1e8c1d1724370afa1be71eb324942\transformed\jetified-emoji2-1.0.0\AndroidManifest.xml:32:17-75
+uses-library#androidx.window.extensions
+ADDED from [androidx.window:window:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\09a5e9d7f702ea229ef09128ceac4045\transformed\jetified-window-1.0.0\AndroidManifest.xml:25:9-27:40
+	android:required
+		ADDED from [androidx.window:window:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\09a5e9d7f702ea229ef09128ceac4045\transformed\jetified-window-1.0.0\AndroidManifest.xml:27:13-37
+	android:name
+		ADDED from [androidx.window:window:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\09a5e9d7f702ea229ef09128ceac4045\transformed\jetified-window-1.0.0\AndroidManifest.xml:26:13-54
+uses-library#androidx.window.sidecar
+ADDED from [androidx.window:window:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\09a5e9d7f702ea229ef09128ceac4045\transformed\jetified-window-1.0.0\AndroidManifest.xml:28:9-30:40
+	android:required
+		ADDED from [androidx.window:window:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\09a5e9d7f702ea229ef09128ceac4045\transformed\jetified-window-1.0.0\AndroidManifest.xml:30:13-37
+	android:name
+		ADDED from [androidx.window:window:1.0.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\09a5e9d7f702ea229ef09128ceac4045\transformed\jetified-window-1.0.0\AndroidManifest.xml:29:13-51
+meta-data#androidx.lifecycle.ProcessLifecycleInitializer
+ADDED from [androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\4d87c3e3b70abeed5e61faf08f3b9b5b\transformed\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:31:13-33:52
+	android:value
+		ADDED from [androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\4d87c3e3b70abeed5e61faf08f3b9b5b\transformed\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:33:17-49
+	android:name
+		ADDED from [androidx.lifecycle:lifecycle-process:2.4.0] C:\Users\ramsh\AndroidStudioProjects\SignBuddy\software\.gradle\caches\transforms-3\4d87c3e3b70abeed5e61faf08f3b9b5b\transformed\jetified-lifecycle-process-2.4.0\AndroidManifest.xml:32:17-78
