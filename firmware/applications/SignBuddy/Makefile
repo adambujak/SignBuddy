@@ -1,6 +1,6 @@
 TARGET = SignBuddy
 BUILD_CONFIG ?= DEBUG
-BOARD_VERSION ?= NUCLEO
+BOARD_VERSION ?= BUDDY
 
 
 #Paths
@@ -10,8 +10,29 @@ FIRMWARE_ROOT = ../..
 SDK_ROOT = $(FIRMWARE_ROOT)/dependencies/STM32CubeL0
 HAL_ROOT = $(SDK_ROOT)/Drivers/STM32L0xx_HAL_Driver
 
+FREERTOS_ROOT = $(FIRMWARE_ROOT)/dependencies/freertos_kernel
+FREERTOS_PORTABLE = $(FREERTOS_ROOT)/portable/GCC/ARM_CM0
+
 LIB_ROOT = $(FIRMWARE_ROOT)/libraries
 PROJ_ROOT = $(FIRMWARE_ROOT)/applications/SignBuddy
+
+NANOPB_ROOT = $(FIRMWARE_ROOT)/dependencies/nanopb
+
+PB_SOURCES = \
+	$(NANOPB_ROOT)/pb_common.c \
+	$(NANOPB_ROOT)/pb_encode.c \
+
+PROTO_SOURCE = $(PROJ_ROOT)/sign_buddy.pb.c
+
+FREERTOS_SOURCES = \
+	$(FREERTOS_ROOT)/tasks.c \
+	$(FREERTOS_ROOT)/queue.c \
+	$(FREERTOS_ROOT)/list.c \
+	$(FREERTOS_ROOT)/timers.c \
+	$(FREERTOS_ROOT)/event_groups.c \
+	$(FREERTOS_ROOT)/stream_buffer.c \
+	$(FREERTOS_ROOT)/portable/MemMang/heap_3.c \
+	$(FREERTOS_PORTABLE)/port.c \
 
 HAL_SOURCES = \
 	$(HAL_ROOT)/Src/stm32l0xx_ll_adc.c \
@@ -22,16 +43,24 @@ HAL_SOURCES = \
 	$(HAL_ROOT)/Src/stm32l0xx_ll_tim.c \
 	$(HAL_ROOT)/Src/stm32l0xx_ll_utils.c \
 	$(HAL_ROOT)/Src/stm32l0xx_ll_usart.c \
+	$(HAL_ROOT)/Src/stm32l0xx_hal.c \
+	$(HAL_ROOT)/Src/stm32l0xx_hal_cortex.c \
+	$(HAL_ROOT)/Src/stm32l0xx_hal_rcc.c \
+	$(HAL_ROOT)/Src/stm32l0xx_hal_tsc.c \
+
 
 LIB_SOURCES = \
 	$(LIB_ROOT)/bno055/bno055.c \
 	$(LIB_ROOT)/fast_fifo/fifo.c \
-	$(LIB_ROOT)/system_time/system_time.c \
 
 C_SOURCES = \
 	main.c \
 	adc.c \
 	ble_uart.c \
+	comms.c \
+	crc.c \
+	dma.c \
+	flex.c \
 	gpio.c \
 	i2c.c \
 	imu.c \
@@ -39,17 +68,23 @@ C_SOURCES = \
 	logger.c \
 	sensors.c \
 	system_stm32l0xx.c \
+	tsc.c \
+	$(PROTO_SOURCE) \
 	$(LIB_SOURCES) \
 	$(HAL_SOURCES) \
+	$(FREERTOS_SOURCES) \
+	$(PB_SOURCES) \
 
 C_INCLUDES = \
 	-I$(SDK_ROOT)/Drivers/CMSIS/Device/ST/STM32L0xx/Include \
 	-I$(SDK_ROOT)/Drivers/CMSIS/Include \
 	-I$(HAL_ROOT)/Inc \
 	-I$(PROJ_ROOT) \
-	-I$(LIB_ROOT)/system_time \
 	-I$(LIB_ROOT)/fast_fifo \
 	-I$(LIB_ROOT)/bno055 \
+	-I$(NANOPB_ROOT) \
+	-I$(FREERTOS_ROOT)/include \
+	-I$(FREERTOS_PORTABLE) \
 
 STARTUP_FILE = startup_stm32l053xx.s
 
@@ -88,6 +123,11 @@ CHIPSET_DEF = STM32L053xx
 BOARD_DEF = BOARD_NUCLEO
 endif
 
+ifeq ($(BOARD_VERSION), BUDDY)
+CHIPSET_DEF = STM32L053xx
+BOARD_DEF = BOARD_BUDDY
+endif
+
 # macros for gcc
 # AS defines
 AS_DEFS = 
@@ -96,7 +136,9 @@ AS_DEFS =
 C_DEFS +=  \
 	-D$(CHIPSET_DEF) \
 	-D$(BOARD_DEF) \
+	-DUSE_HAL_DRIVER \
 	-DUSE_FULL_LL_DRIVER \
+	-DUSE_FULL_ASSERT \
 
 
 OPT = -O0 -g3
@@ -174,6 +216,6 @@ flash_jlink:
 
 clean:
 	-rm -fR $(BUILD_DIR)
-  
+
 -include $(wildcard $(BUILD_DIR)/*.d)
 

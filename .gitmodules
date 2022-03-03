@@ -4,3 +4,9 @@
 [submodule "firmware/test/Unity"]
 	path = firmware/test/Unity
 	url = https://github.com/ThrowTheSwitch/Unity
+[submodule "firmware/dependencies/nanopb"]
+	path = firmware/dependencies/nanopb
+	url = https://github.com/nanopb/nanopb
+[submodule "firmware/dependencies/freertos_kernel"]
+	path = firmware/dependencies/freertos_kernel
+	url = https://github.com/FreeRTOS/FreeRTOS-Kernel.git

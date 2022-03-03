@@ -1,31 +1,34 @@
 #include "board.h"
 #include "ble_uart.h"
 #include "common.h"
+#include "comms.h"
+#include "flex.h"
 #include "gpio.h"
+#include "imu.h"
 #include "log_uart.h"
 #include "logger.h"
 #include "sensors.h"
-#include "system_time.h"
-#include "adc.h"
-#include "imu.h"
-#include "ble_uart.h"
-#include "sensors.h"
+#include "tsc.h"
 
-void delay_us(uint32_t us)
+static uint8_t os_started = 0;
+
+static void os_start(void)
 {
-  uint32_t start_time = system_time_get();
-
-  while (system_time_cmp_us(start_time, system_time_get()) < us);
+  os_started = 1;
+  vTaskStartScheduler();
 }
 
-void delay_ms(uint32_t ms)
+void rtos_delay_ms(uint32_t ms)
 {
-  uint32_t start_time = system_time_get();
-
-  while (system_time_cmp_ms(start_time, system_time_get()) < ms);
+  if (os_started) {
+    vTaskDelay(ms);
+  }
+  else {
+    HAL_Delay(ms);
+  }
 }
 
-void sysclk_init(void)
+static void sysclk_init(void)
 {
   LL_FLASH_SetLatency(LL_FLASH_LATENCY_1);
   while (LL_FLASH_GetLatency() != LL_FLASH_LATENCY_1);
@@ -66,45 +69,36 @@ static void board_bringup(void)
 
   sysclk_init();
 
+  HAL_Init();
+
   gpio_init();
-}
-
-static void led_process(void)
-{
-  static uint32_t last_ticks = 0;
-  static uint32_t led_state = 0;
-
-  uint32_t time = system_time_get();
-
-  if (system_time_cmp_ms(last_ticks, time) < 1000) {
-    return;
-  }
-  last_ticks = time;
-  led_state = (led_state + 1) % 2;
-  gpio_led_set(led_state);
-
-  LOG_INFO("LED process\r\n");
 }
 
 int main(void)
 {
   board_bringup();
   // init early
-  system_time_init();
   log_uart_init();
+  rtos_delay_ms(1000);
 
-  sensors_init();
-  ble_uart_init();
-  adc_init();
-  imu_init();
+  flex_task_setup();
+  tsc_task_setup();
+  imu_task_setup();
+  sensors_task_setup();
+  comms_task_setup();
 
   LOG_INFO("App started\r\n");
 
-  while (1) {
-    led_process();
-    sensors_process();
-    imu_process();
-  }
+  comms_task_start();
+  sensors_task_start();
+
+  tsc_task_start();
+
+  flex_task_start();
+
+  imu_task_start();
+
+  os_start();
 }
 
 void error_handler(void)
@@ -116,4 +110,24 @@ void error_handler(void)
     gpio_led_set(1);
     for (uint32_t i = 0; i < 1000000; i++);
   }
+}
+
+void SysTick_Handler(void)
+{
+  HAL_IncTick();
+  if (os_started) {
+    OSSysTick_Handler();
+  }
+}
+
+void vApplicationStackOverflowHook(TaskHandle_t xTask, char *pcTaskName)
+{
+  __asm__ ("BKPT");
+  LOG_ERROR("Stack Overflow");
+  error_handler();
+}
+
+void assert_failed(uint8_t *file, uint32_t line)
+{
+  LOG_ERROR("\r\nassert_failed(). file: %s, line: %ld\r\n", file, line);
 }
