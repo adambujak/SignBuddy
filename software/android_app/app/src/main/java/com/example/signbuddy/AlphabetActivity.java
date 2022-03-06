@@ -8,19 +8,39 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class AlphabetActivity extends AppCompatActivity {
 
     ListView listViewAlpha;
-
-    //data for list
-    String[] alphaLetters = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",
-            "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
-
+    String[] alphaLetters;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alphabet);
+
+        Intent i = getIntent();
+        int lessonNumber = i.getIntExtra("LessonNumber", -1) + 1;
+        String st = String.valueOf(lessonNumber);
+        ((TextView)findViewById(R.id.textView3)).setText("You have selected Lesson "+ st);
+
+        switch(lessonNumber){
+            case 1:
+                alphaLetters = new String[]{"A", "B", "C", "D", "E"};
+                break;
+            case 2:
+                alphaLetters = new String[]{"F", "G", "H", "I", "J"};
+                break;
+            case 3:
+                alphaLetters = new String[]{"K", "L", "M", "N", "O"};
+                break;
+            case 4:
+                alphaLetters = new String[]{"P", "Q", "R", "S", "T"};
+                break;
+            case 5:
+                alphaLetters = new String[]{"U", "V", "W", "X", "Y", "Z"};
+                break;
+        }
 
         listViewAlpha = findViewById(R.id.listViewAlpha);
 
@@ -36,11 +56,14 @@ public class AlphabetActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (position == 0) {
-                    //clicked A
-                    //go from alphabet activity to A Lesson activity
-                    startActivity(new Intent(AlphabetActivity.this, ALessonActivity.class));
                 } else {
                 }
+                Intent i = new Intent(AlphabetActivity.this, LessonActivity.class);
+                Bundle mBundle = new Bundle();
+                mBundle.putString("LessonNumber", st);
+                mBundle.putInt("AlphaNum", position+1);
+                i.putExtras(mBundle);
+                startActivity(i);
             }
         });
     }

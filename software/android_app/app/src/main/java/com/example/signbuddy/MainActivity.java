@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void openLessonActivity(View v) {
-        Intent intent = new Intent(this, LessonActivity.class);
+        Intent intent = new Intent(this, LessonMenuActivity.class);
         startActivity(intent);
     }
 

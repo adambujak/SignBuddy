@@ -18,7 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SignBuddy">
         <activity
-            android:name=".ALessonActivity"
+            android:name=".LessonActivity"
             android:exported="false"
             android:label="A"
             android:theme="@style/Theme.SignBuddy.NoActionBar" />
@@ -28,7 +28,7 @@
             android:label="Select a Letter"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".LessonActivity"
+            android:name=".LessonMenuActivity"
             android:exported="false"
             android:label="Select a Letter"
             android:parentActivityName=".MainActivity" />

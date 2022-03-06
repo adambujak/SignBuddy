@@ -7,13 +7,19 @@
     android:orientation="vertical"
     tools:context=".AlphabetActivity">
 
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="39dp"
+        android:text="TextView" />
+
     <ListView
         android:id="@+id/listViewAlpha"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="vertical"
+        android:layout_height="724dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 </LinearLayout>
