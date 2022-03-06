@@ -6,15 +6,13 @@
 #include "logger.h"
 #include "bno055.h"
 
-#define PROCESS_PERIOD_MS    1000
-
 typedef struct {
-  uint32_t                last_ticks;
-  i2c_t                   i2c_instance;
-  struct   bno055_t       bno055;
-  struct   bno055_accel_t bno055_accel_xyz;
-  struct   bno055_mag_t   bno055_mag_xyz;
-  struct   bno055_gyro_t  bno055_gyro_xyz;
+  TaskHandle_t                   task_handle;
+  i2c_t                          i2c_instance;
+  struct   bno055_t              bno055;
+  struct   bno055_euler_t        bno055_euler_hrp;
+  struct   bno055_linear_accel_t bno055_acce_xyz;
+  void (*callback)(void);
 } state_t;
 
 static state_t s;
@@ -45,6 +43,15 @@ static void hw_init(void)
   i2c_init(&s.i2c_instance, IMU_I2C, &i2c_config);
 }
 
+static inline void sample_data(void)
+{
+  uint8_t ret = 0;
+
+  ret |= bno055_read_euler_hrp(&s.bno055_euler_hrp);
+  ret |= bno055_read_linear_accel_xyz(&s.bno055_acce_xyz);
+  ERR_CHECK(ret);
+}
+
 static inline int8_t bus_write(uint8_t slave_addr, uint8_t reg_addr, uint8_t *data, uint8_t length)
 {
   i2c_write(&s.i2c_instance, slave_addr << 1, reg_addr, data, (uint16_t) length);
@@ -59,7 +66,7 @@ static inline int8_t bus_read(uint8_t slave_addr, uint8_t reg_addr, uint8_t *dat
 
 static inline void delay(u32 ms)
 {
-  delay_ms((uint32_t) ms);
+  rtos_delay_ms((uint32_t) ms);
 }
 
 static void bno_init(void)
@@ -70,45 +77,51 @@ static void bno_init(void)
   s.bno055.dev_addr = BNO055_I2C_ADDR1;
 
   ERR_CHECK(bno055_init(&s.bno055));
-
   ERR_CHECK(bno055_set_power_mode(BNO055_POWER_MODE_NORMAL));
+  ERR_CHECK(bno055_set_operation_mode(BNO055_OPERATION_MODE_NDOF));
 }
 
-static void get_data(void)
+static void imu_task(void *arg)
 {
-  ERR_CHECK(bno055_set_operation_mode(BNO055_OPERATION_MODE_AMG));
-
-  uint32_t ret = 0;
-  ret |= bno055_read_accel_xyz(&s.bno055_accel_xyz);
-  ret |= bno055_read_mag_xyz(&s.bno055_mag_xyz);
-  ret |= bno055_read_gyro_xyz(&s.bno055_gyro_xyz);
-  ERR_CHECK(ret);
-
-  LOG_INFO("Accel datax: %d\r\n", s.bno055_accel_xyz.x);
-  LOG_INFO("Accel datay: %d\r\n", s.bno055_accel_xyz.y);
-  LOG_INFO("Accel dataz: %d\r\n", s.bno055_accel_xyz.z);
-  LOG_INFO("Magnt datax: %d\r\n", s.bno055_mag_xyz.x);
-  LOG_INFO("Magnt datay: %d\r\n", s.bno055_mag_xyz.y);
-  LOG_INFO("Magnt dataz: %d\r\n", s.bno055_mag_xyz.z);
-  LOG_INFO("Gyros datax: %d\r\n", s.bno055_gyro_xyz.x);
-  LOG_INFO("Gyros datay: %d\r\n", s.bno055_gyro_xyz.y);
-  LOG_INFO("Gyros dataz: %d\r\n", s.bno055_gyro_xyz.z);
+  while (1) {
+    ulTaskNotifyTake(pdFALSE, portMAX_DELAY);
+    sample_data();
+    s.callback();
+  }
 }
 
-void imu_init(void)
+void imu_task_setup(void)
 {
   hw_init();
   bno_init();
 }
 
-void imu_process(void)
+void imu_task_start(void)
 {
-  uint32_t time = system_time_get();
+  RTOS_ERR_CHECK(xTaskCreate(imu_task,
+                             "imu",
+                             IMU_STACK_SIZE,
+                             NULL,
+                             IMU_TASK_PRIORITY,
+                             &s.task_handle));
+}
 
-  if (system_time_cmp_ms(s.last_ticks, time) < PROCESS_PERIOD_MS) {
-    return;
-  }
-  s.last_ticks = time;
+void imu_start_read(void)
+{
+  xTaskNotifyGive(s.task_handle);
+}
 
-  get_data();
+void imu_data_get(SBPSample_IMUData *data)
+{
+  data->eul_h = s.bno055_euler_hrp.h;
+  data->eul_r = s.bno055_euler_hrp.r;
+  data->eul_p = s.bno055_euler_hrp.p;
+  data->lin_acc_x = s.bno055_acce_xyz.x;
+  data->lin_acc_y = s.bno055_acce_xyz.y;
+  data->lin_acc_z = s.bno055_acce_xyz.z;
+}
+
+void imu_callback_register(void (*callback)(void))
+{
+  s.callback = callback;
 }

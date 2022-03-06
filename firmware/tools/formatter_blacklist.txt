@@ -2,3 +2,5 @@ dependencies
 test/Unity
 test/**/test_runners
 libraries/bno055
+applications/cube_mx
+applications/CubeMXProject
