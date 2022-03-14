@@ -3,11 +3,15 @@ package com.example.signbuddy;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.text.BreakIterator;
 
 
 public class LessonActivity extends AppCompatActivity {
@@ -15,6 +19,7 @@ public class LessonActivity extends AppCompatActivity {
     private Button correctButton;
     private Button incorrectButton;
     private ProgressBar pgsBar;
+    private TextView countText;
     int alpha;
     int lessonnum;
     int alphanum;
@@ -44,6 +49,7 @@ public class LessonActivity extends AppCompatActivity {
 
         }
 
+        //setting current image
         alphanum  = (lessonnum-1)*5+alpha;
         String alphaNumber = String.valueOf(alphanum);
         String fnm = "alpha_"+alphaNumber; //  image file name
@@ -51,7 +57,16 @@ public class LessonActivity extends AppCompatActivity {
         int imgId = getResources().getIdentifier(PACKAGE_NAME+":drawable/"+fnm , null, null);
         image.setImageResource(imgId);
 
-
+        //start countdown
+        new CountDownTimer(7500, 1500) {
+            public void onTick(long millisUntilFinished) {
+                countText = findViewById(R.id.countText);
+                countText.setText("Perform Sign in: " + ((millisUntilFinished / 1500)+1));
+            }
+            public void onFinish() {
+                countText.setText("GO!");
+            }
+        }.start();
 
         correctButton = findViewById(R.id.correctButton);
         correctButton.setOnClickListener(new View.OnClickListener() {
