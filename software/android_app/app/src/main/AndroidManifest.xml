@@ -26,11 +26,12 @@
             android:name=".AlphabetActivity"
             android:exported="false"
             android:label="Select a Letter"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.SignBuddy.NoActionBar"/>
         <activity
             android:name=".LessonMenuActivity"
             android:exported="false"
-            android:label="Select a Letter"
+            android:label="Select a Lesson"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MainActivity"

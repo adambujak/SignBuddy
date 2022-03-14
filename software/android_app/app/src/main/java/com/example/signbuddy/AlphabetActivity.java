@@ -7,13 +7,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
 public class AlphabetActivity extends AppCompatActivity {
 
     ListView listViewAlpha;
+    private Button continueButton;
     String[] alphaLetters;
+    //String[] LessonStatus;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,8 +25,9 @@ public class AlphabetActivity extends AppCompatActivity {
         Intent i = getIntent();
         int lessonNumber = i.getIntExtra("LessonNumber", -1) + 1;
         String st = String.valueOf(lessonNumber);
-        ((TextView)findViewById(R.id.textView3)).setText("You have selected Lesson "+ st);
+        ((TextView)findViewById(R.id.textView3)).setText("You have selected Lesson "+ st + ". This lesson contains the following letters:");
 
+        int alpha = i.getIntExtra("alpha", -1) + 1;
         switch(lessonNumber){
             case 1:
                 alphaLetters = new String[]{"A", "B", "C", "D", "E"};
@@ -52,17 +56,15 @@ public class AlphabetActivity extends AppCompatActivity {
         listViewAlpha.setAdapter(adapterAlpha); //link adapter to listView
 
         //event handler for clickEvents
-        listViewAlpha.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (position == 0) {
-                } else {
-                }
+        continueButton = findViewById(R.id.continueButton);
+        continueButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
                 Intent i = new Intent(AlphabetActivity.this, LessonActivity.class);
-                Bundle mBundle = new Bundle();
-                mBundle.putString("LessonNumber", st);
-                mBundle.putInt("AlphaNum", position+1);
-                i.putExtras(mBundle);
+                Bundle mbundle = new Bundle();
+                mbundle.putInt("alpha", alpha);
+                mbundle.putString("LessonNumber", st);
+                i.putExtras(mbundle);
                 startActivity(i);
             }
         });

@@ -38,7 +38,10 @@ public class LessonMenuActivity extends AppCompatActivity {
 
                     //go from main activity to alphabet activity
                     Intent i = new Intent(LessonMenuActivity.this, AlphabetActivity.class);
-                    i.putExtra("LessonNumber", position);
+                    Bundle mbundle = new Bundle();
+                    mbundle.putInt("LessonNumber", position);
+                    mbundle.putInt("alpha", 0);
+                    i.putExtras(mbundle);
                     startActivity(i);
 
             }
