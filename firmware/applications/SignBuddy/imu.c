@@ -11,7 +11,6 @@ typedef struct {
   i2c_t                          i2c_instance;
   struct   bno055_t              bno055;
   struct   bno055_quaternion_t   bno055_quat_wxyz;
-  struct   bno055_linear_accel_t bno055_acce_xyz;
   void (*callback)(void);
 } state_t;
 
@@ -48,7 +47,6 @@ static inline void sample_data(void)
   uint8_t ret = 0;
 
   ret |= bno055_read_quaternion_wxyz(&s.bno055_quat_wxyz);
-  ret |= bno055_read_linear_accel_xyz(&s.bno055_acce_xyz);
   ERR_CHECK(ret);
 }
 
@@ -117,9 +115,6 @@ void imu_data_get(SBPSample_IMUData *data)
   data->quat_x = s.bno055_quat_wxyz.x;
   data->quat_y = s.bno055_quat_wxyz.y;
   data->quat_z = s.bno055_quat_wxyz.z;
-  data->lin_acc_x = s.bno055_acce_xyz.x;
-  data->lin_acc_y = s.bno055_acce_xyz.y;
-  data->lin_acc_z = s.bno055_acce_xyz.z;
 }
 
 void imu_callback_register(void (*callback)(void))

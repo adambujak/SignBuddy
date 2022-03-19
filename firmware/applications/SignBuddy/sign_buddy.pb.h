@@ -28,9 +28,6 @@ typedef struct _SBPSample_IMUData {
   int32_t quat_x;
   int32_t quat_y;
   int32_t quat_z;
-  int32_t lin_acc_x;
-  int32_t lin_acc_y;
-  int32_t lin_acc_z;
 } SBPSample_IMUData;
 
 typedef struct _SBPSample_TouchData {
@@ -49,7 +46,6 @@ typedef struct _SBPSample_TouchData {
 } SBPSample_TouchData;
 
 typedef struct _SBPStatus {
-  uint32_t battery_voltage;
   uint32_t imu_sys_calib_status;
   uint32_t imu_mag_calib_status;
   uint32_t imu_acc_calib_status;
@@ -82,18 +78,18 @@ extern "C" {
 #define SBPMessage_init_default                { 0, 0, { SBPSample_init_default } }
 #define SBPSample_init_default                 { 0, SBPSample_IMUData_init_default, SBPSample_FlexData_init_default, \
                                                  SBPSample_TouchData_init_default }
-#define SBPSample_IMUData_init_default         { 0, 0, 0, 0, 0, 0, 0 }
+#define SBPSample_IMUData_init_default         { 0, 0, 0, 0 }
 #define SBPSample_FlexData_init_default        { 0, 0, 0, 0, 0 }
 #define SBPSample_TouchData_init_default       { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }
-#define SBPStatus_init_default                 { 0, 0, 0, 0, 0 }
+#define SBPStatus_init_default                 { 0, 0, 0, 0 }
 #define SBPGestureData_init_zero               { { { NULL }, NULL }, { { NULL }, NULL } }
 #define SBPMessage_init_zero                   { 0, 0, { SBPSample_init_zero } }
 #define SBPSample_init_zero                    { 0, SBPSample_IMUData_init_zero, SBPSample_FlexData_init_zero, \
                                                  SBPSample_TouchData_init_zero }
-#define SBPSample_IMUData_init_zero            { 0, 0, 0, 0, 0, 0, 0 }
+#define SBPSample_IMUData_init_zero            { 0, 0, 0, 0 }
 #define SBPSample_FlexData_init_zero           { 0, 0, 0, 0, 0 }
 #define SBPSample_TouchData_init_zero          { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }
-#define SBPStatus_init_zero                    { 0, 0, 0, 0, 0 }
+#define SBPStatus_init_zero                    { 0, 0, 0, 0 }
 
 /* Field tags (for use in manual encoding/decoding) */
 #define SBPGestureData_letter_tag              1
@@ -107,9 +103,6 @@ extern "C" {
 #define SBPSample_IMUData_quat_x_tag           2
 #define SBPSample_IMUData_quat_y_tag           3
 #define SBPSample_IMUData_quat_z_tag           4
-#define SBPSample_IMUData_lin_acc_x_tag        5
-#define SBPSample_IMUData_lin_acc_y_tag        6
-#define SBPSample_IMUData_lin_acc_z_tag        7
 #define SBPSample_TouchData_touch_1_tag        1
 #define SBPSample_TouchData_touch_2_tag        2
 #define SBPSample_TouchData_touch_3_tag        3
@@ -122,11 +115,10 @@ extern "C" {
 #define SBPSample_TouchData_touch_10_tag       10
 #define SBPSample_TouchData_touch_11_tag       11
 #define SBPSample_TouchData_touch_12_tag       12
-#define SBPStatus_battery_voltage_tag          1
-#define SBPStatus_imu_sys_calib_status_tag     2
-#define SBPStatus_imu_mag_calib_status_tag     3
-#define SBPStatus_imu_acc_calib_status_tag     4
-#define SBPStatus_imu_gyro_calib_status_tag    5
+#define SBPStatus_imu_sys_calib_status_tag     1
+#define SBPStatus_imu_mag_calib_status_tag     2
+#define SBPStatus_imu_acc_calib_status_tag     3
+#define SBPStatus_imu_gyro_calib_status_tag    4
 #define SBPSample_sample_id_tag                1
 #define SBPSample_imu_data_tag                 2
 #define SBPSample_flex_data_tag                3
@@ -163,14 +155,11 @@ extern "C" {
 #define SBPSample_flex_data_MSGTYPE          SBPSample_FlexData
 #define SBPSample_touch_data_MSGTYPE         SBPSample_TouchData
 
-#define SBPSample_IMUData_FIELDLIST(X, a)      \
-  X(a, STATIC, REQUIRED, SINT32, quat_w, 1)    \
-  X(a, STATIC, REQUIRED, SINT32, quat_x, 2)    \
-  X(a, STATIC, REQUIRED, SINT32, quat_y, 3)    \
-  X(a, STATIC, REQUIRED, SINT32, quat_z, 4)    \
-  X(a, STATIC, REQUIRED, SINT32, lin_acc_x, 5) \
-  X(a, STATIC, REQUIRED, SINT32, lin_acc_y, 6) \
-  X(a, STATIC, REQUIRED, SINT32, lin_acc_z, 7)
+#define SBPSample_IMUData_FIELDLIST(X, a)   \
+  X(a, STATIC, REQUIRED, SINT32, quat_w, 1) \
+  X(a, STATIC, REQUIRED, SINT32, quat_x, 2) \
+  X(a, STATIC, REQUIRED, SINT32, quat_y, 3) \
+  X(a, STATIC, REQUIRED, SINT32, quat_z, 4)
 #define SBPSample_IMUData_CALLBACK           NULL
 #define SBPSample_IMUData_DEFAULT            NULL
 
@@ -200,11 +189,10 @@ extern "C" {
 #define SBPSample_TouchData_DEFAULT          NULL
 
 #define SBPStatus_FIELDLIST(X, a)                         \
-  X(a, STATIC, REQUIRED, UINT32, battery_voltage, 1)      \
-  X(a, STATIC, REQUIRED, UINT32, imu_sys_calib_status, 2) \
-  X(a, STATIC, REQUIRED, UINT32, imu_mag_calib_status, 3) \
-  X(a, STATIC, REQUIRED, UINT32, imu_acc_calib_status, 4) \
-  X(a, STATIC, REQUIRED, UINT32, imu_gyro_calib_status, 5)
+  X(a, STATIC, REQUIRED, UINT32, imu_sys_calib_status, 1) \
+  X(a, STATIC, REQUIRED, UINT32, imu_mag_calib_status, 2) \
+  X(a, STATIC, REQUIRED, UINT32, imu_acc_calib_status, 3) \
+  X(a, STATIC, REQUIRED, UINT32, imu_gyro_calib_status, 4)
 #define SBPStatus_CALLBACK                   NULL
 #define SBPStatus_DEFAULT                    NULL
 
@@ -227,12 +215,12 @@ extern const pb_msgdesc_t SBPStatus_msg;
 
 /* Maximum encoded size of messages (where known) */
 /* SBPGestureData_size depends on runtime parameters */
-#define SBPMessage_size             116
+#define SBPMessage_size             98
 #define SBPSample_FlexData_size     30
-#define SBPSample_IMUData_size      42
+#define SBPSample_IMUData_size      24
 #define SBPSample_TouchData_size    24
-#define SBPSample_size              108
-#define SBPStatus_size              30
+#define SBPSample_size              90
+#define SBPStatus_size              24
 
 #ifdef __cplusplus
 } /* extern "C" */

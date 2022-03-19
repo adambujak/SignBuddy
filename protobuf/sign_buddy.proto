@@ -24,9 +24,6 @@ message SBPSample {
     required sint32 quat_x = 2;
     required sint32 quat_y = 3;
     required sint32 quat_z = 4;
-    required sint32 lin_acc_x = 5;
-    required sint32 lin_acc_y = 6;
-    required sint32 lin_acc_z = 7;
   }
 
   required IMUData imu_data = 2;
@@ -60,9 +57,8 @@ message SBPSample {
 }
 
 message SBPStatus {
-  required uint32 battery_voltage = 1;
-  required uint32 imu_sys_calib_status = 2;
-  required uint32 imu_mag_calib_status = 3;
-  required uint32 imu_acc_calib_status = 4;
-  required uint32 imu_gyro_calib_status = 5;
+  required uint32 imu_sys_calib_status = 1;
+  required uint32 imu_mag_calib_status = 2;
+  required uint32 imu_acc_calib_status = 3;
+  required uint32 imu_gyro_calib_status = 4;
 }
