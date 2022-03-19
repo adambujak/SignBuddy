@@ -7,10 +7,10 @@
 #include "bno055.h"
 
 typedef struct {
-  TaskHandle_t                   task_handle;
-  i2c_t                          i2c_instance;
-  struct   bno055_t              bno055;
-  struct   bno055_quaternion_t   bno055_quat_wxyz;
+  TaskHandle_t                 task_handle;
+  i2c_t                        i2c_instance;
+  struct   bno055_t            bno055;
+  struct   bno055_quaternion_t bno055_quat_wxyz;
   void (*callback)(void);
 } state_t;
 
