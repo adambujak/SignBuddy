@@ -7,11 +7,10 @@
 #include "bno055.h"
 
 typedef struct {
-  TaskHandle_t                   task_handle;
-  i2c_t                          i2c_instance;
-  struct   bno055_t              bno055;
-  struct   bno055_euler_t        bno055_euler_hrp;
-  struct   bno055_linear_accel_t bno055_acce_xyz;
+  TaskHandle_t                 task_handle;
+  i2c_t                        i2c_instance;
+  struct   bno055_t            bno055;
+  struct   bno055_quaternion_t bno055_quat_wxyz;
   void (*callback)(void);
 } state_t;
 
@@ -47,8 +46,7 @@ static inline void sample_data(void)
 {
   uint8_t ret = 0;
 
-  ret |= bno055_read_euler_hrp(&s.bno055_euler_hrp);
-  ret |= bno055_read_linear_accel_xyz(&s.bno055_acce_xyz);
+  ret |= bno055_read_quaternion_wxyz(&s.bno055_quat_wxyz);
   ERR_CHECK(ret);
 }
 
@@ -78,7 +76,7 @@ static void bno_init(void)
 
   ERR_CHECK(bno055_init(&s.bno055));
   ERR_CHECK(bno055_set_power_mode(BNO055_POWER_MODE_NORMAL));
-  ERR_CHECK(bno055_set_operation_mode(BNO055_OPERATION_MODE_NDOF));
+  ERR_CHECK(bno055_set_operation_mode(BNO055_OPERATION_MODE_IMUPLUS));
 }
 
 static void imu_task(void *arg)
@@ -113,12 +111,10 @@ void imu_start_read(void)
 
 void imu_data_get(SBPSample_IMUData *data)
 {
-  data->eul_h = s.bno055_euler_hrp.h;
-  data->eul_r = s.bno055_euler_hrp.r;
-  data->eul_p = s.bno055_euler_hrp.p;
-  data->lin_acc_x = s.bno055_acce_xyz.x;
-  data->lin_acc_y = s.bno055_acce_xyz.y;
-  data->lin_acc_z = s.bno055_acce_xyz.z;
+  data->quat_w = s.bno055_quat_wxyz.x;
+  data->quat_x = s.bno055_quat_wxyz.x;
+  data->quat_y = s.bno055_quat_wxyz.y;
+  data->quat_z = s.bno055_quat_wxyz.z;
 }
 
 void imu_callback_register(void (*callback)(void))
