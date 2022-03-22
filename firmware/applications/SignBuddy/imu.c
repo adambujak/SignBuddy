@@ -109,6 +109,13 @@ void imu_start_read(void)
   xTaskNotifyGive(s.task_handle);
 }
 
+void imu_reset(void)
+{
+  ERR_CHECK(bno055_set_sys_rst(BNO055_BIT_ENABLE));
+  LOG_INFO("imu: reset\r\n");
+  bno_init();
+}
+
 void imu_data_get(SBPSample_IMUData *data)
 {
   data->quat_w = s.bno055_quat_wxyz.x;
