@@ -16,6 +16,10 @@ typedef struct {
 
 static state_t s;
 
+static struct bno055_accel_offset_t accel_offset_reset = { 0 };
+
+static struct bno055_gyro_offset_t gyro_offset_reset = { 0 };
+
 static void hw_init(void)
 {
   IMU_I2C_CLK_EN();
@@ -111,8 +115,11 @@ void imu_start_read(void)
 
 void imu_reset(void)
 {
+  ERR_CHECK(bno055_write_accel_offset(&accel_offset_reset));
+  ERR_CHECK(bno055_write_gyro_offset(&gyro_offset_reset));
   ERR_CHECK(bno055_set_sys_rst(BNO055_BIT_ENABLE));
   LOG_INFO("imu: reset\r\n");
+  rtos_delay_ms(1000);
   bno_init();
 }
 
