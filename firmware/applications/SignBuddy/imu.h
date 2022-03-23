@@ -8,6 +8,7 @@
 void imu_task_setup(void);
 void imu_task_start(void);
 void imu_start_read(void);
+void imu_reset(void);
 
 void imu_callback_register(void (*callback)(void));
 

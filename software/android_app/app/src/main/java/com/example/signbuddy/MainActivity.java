@@ -47,11 +47,13 @@ public class MainActivity extends AppCompatActivity {
     private final String UUID_CHARACTERISTIC_NOTIFY = "6E400003-B5A3-F393-E0A9-E50E24DCCA9E";
     private final byte[] CMD_SAMPLE_ONCE = {0x01};
     private final byte[] CMD_SAMPLE_PERIODIC = {0x02};
+    private final byte[] CMD_RESET_IMU = {0x03};
     private final int MAX_SAMPLES = 40;
     private final byte MSG_SYNC = 0x16;
     private final byte MID_SAMPLE = 0x01;
 
     private Button connectButton;
+    private Button resetButton;
     private ProgressBar connectProgress;
     private Button collectButton;
     private BleDevice SignBuddy;
@@ -78,6 +80,9 @@ public class MainActivity extends AppCompatActivity {
         connectProgress = findViewById(R.id.connectProgress);
         connectButton = findViewById(R.id.connectButton);
         connectButton.setOnClickListener(this::connectButtonCallback);
+
+        resetButton = findViewById(R.id.resetButton);
+        resetButton.setOnClickListener(this::resetButtonCallback);
 
         collectButton = findViewById(R.id.collectButton);
         collectButton.setOnClickListener(this::collectButtonCallback);
@@ -210,6 +215,7 @@ public class MainActivity extends AppCompatActivity {
                                 Toast.makeText(MainActivity.this, "Connected!", Toast.LENGTH_SHORT).show();
                                 connectButton.setText(R.string.connected);
                                 connectProgress.setVisibility(View.GONE);
+                                resetButton.setVisibility(View.VISIBLE);
                                 BleManager.getInstance().notify(SignBuddy, UUID_SERVICE, UUID_CHARACTERISTIC_NOTIFY, new BleNotifyCallback() {
                                     @Override
                                     public void onNotifySuccess() {
@@ -250,12 +256,27 @@ public class MainActivity extends AppCompatActivity {
                                 connectButton.setEnabled(true);
                                 connectButton.setText(R.string.connect_to_device);
                                 connectProgress.setVisibility(View.GONE);
+                                resetButton.setVisibility(View.GONE);
                             }
                         });
                     }
                 }
             });
         }
+    }
+
+    private void resetButtonCallback(View v) {
+        BleManager.getInstance().write(SignBuddy, UUID_SERVICE, UUID_CHARACTERISTIC_WRITE, CMD_RESET_IMU, new BleWriteCallback() {
+            @Override
+            public void onWriteSuccess(int current, int total, byte[] justWrite) {
+                Toast.makeText(MainActivity.this, "Reset IMU!", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onWriteFailure(BleException exception) {
+                Toast.makeText(MainActivity.this, "Failed to reset IMU!", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void requestFineLocation() {

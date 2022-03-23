@@ -5,6 +5,7 @@
 #include "common.h"
 #include "crc.h"
 #include "fifo.h"
+#include "imu.h"
 #include "logger.h"
 #include "pb_encode.h"
 #include "sensors.h"
@@ -15,6 +16,7 @@
 
 #define CMD_SAMPLE_STATIC       0x01
 #define CMD_SAMPLE_DYNAMIC      0x02
+#define CMD_RESET_IMU           0x03
 
 #define SYNC                    0x16
 
@@ -69,6 +71,11 @@ static void rx()
   case CMD_SAMPLE_DYNAMIC:
     LOG_DEBUG("comms: sample dynamic\r\n");
     sensors_sample(SAMPLE_DYNAMIC);
+    break;
+
+  case CMD_RESET_IMU:
+    LOG_DEBUG("comms: reset imu\r\n");
+    imu_reset();
     break;
 
   default:

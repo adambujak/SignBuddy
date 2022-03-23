@@ -7,6 +7,16 @@
     tools:context=".MainActivity">
 
     <Button
+        android:id="@+id/resetButton"
+        android:layout_width="142dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="24dp"
+        android:text="@string/reset_imu"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/connectButton" />
+
+    <Button
         android:id="@+id/connectButton"
         android:layout_width="142dp"
         android:layout_height="55dp"
@@ -79,7 +89,6 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="text"
-        android:maxLength="1"
         android:hint="@string/gesture_letter"
         android:importantForAutofill="no"
         app:layout_constraintBottom_toTopOf="@+id/collectButton"
