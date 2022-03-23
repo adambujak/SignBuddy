@@ -18,6 +18,7 @@
 
 typedef struct {
   uint16_t     flex_values[FLEX_SENSOR_CNT];
+  float        unsaturated_data[FLEX_SENSOR_CNT];
   TaskHandle_t task_handle;
   void (*callback)(void);
 } state_t;
@@ -46,6 +47,27 @@ static void hw_init(void)
   adc_init();
 }
 
+static inline void calibrate_data(void)
+{
+  s.unsaturated_data[FLEX_SENSOR_THUMB] = s.flex_values[FLEX_SENSOR_THUMB] * 0.1978 - 438.58;
+  s.unsaturated_data[FLEX_SENSOR_INDEX] = s.flex_values[FLEX_SENSOR_INDEX] * 0.1359 - 234.34;
+  s.unsaturated_data[FLEX_SENSOR_MIDDLE] = s.flex_values[FLEX_SENSOR_MIDDLE] * 0.2611 - 677.55;
+  s.unsaturated_data[FLEX_SENSOR_RING] = s.flex_values[FLEX_SENSOR_RING] * 0.2823 - 610.97;
+  s.unsaturated_data[FLEX_SENSOR_LITTLE] = s.flex_values[FLEX_SENSOR_LITTLE] * 0.4321 - 675.7;
+
+  for (int i = 0; i < FLEX_SENSOR_CNT; i++) {
+    if (s.unsaturated_data[i] > 90) {
+      s.flex_values[i] = 90;
+    }
+    else if (s.unsaturated_data[i] < 0) {
+      s.flex_values[i] = 0;
+    }
+    else {
+      s.flex_values[i] = (uint16_t) s.unsaturated_data[i];
+    }
+  }
+}
+
 static inline void sample_data(void)
 {
   adc_enable();
@@ -55,6 +77,7 @@ static inline void sample_data(void)
   for (int i = 0; i < FLEX_SENSOR_CNT; i++) {
     s.flex_values[i] = __LL_ADC_CALC_DATA_TO_VOLTAGE(VREF, s.flex_values[i], LL_ADC_RESOLUTION_12B);
   }
+  calibrate_data();
 }
 
 static void flex_task(void *arg)
