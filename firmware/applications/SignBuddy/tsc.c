@@ -7,7 +7,7 @@
 #include <string.h>
 
 #define CALIBRATION_SAMPLES            8
-#define TOUCH_TRIGGER_LEVEL            50
+#define TOUCH_TRIGGER_LEVEL            25
 
 #define CHANNEL0                       0
 #define CHANNEL1                       1
