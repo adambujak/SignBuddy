@@ -38,21 +38,8 @@ data = np.zeros((240, 21))
 for i in range(data.shape[0]):
     data[i] = np.array(x_data[i])
 classification = np.array(y_data)
-unique, counts = np.unique(classification, return_counts=True)
 
-data_means = np.zeros((unique.shape[0], 21))
-data_vars = np.zeros((unique.shape[0], 21))
-data_std = np.zeros((unique.shape[0], 21))
-data_normalized = np.zeros_like(data)
-
-for i in range(unique.shape[0]):
-    idx = (classification == unique[i]).nonzero()  # Get all indices of digit
-    data_means[i] = np.average(data[idx], axis=0)  # Compute mean of features
-    data_vars[i] = np.var(data[idx], axis=0)  # Compute variance of features
-    data_std[i] = np.std(data[idx], axis=0)
-    data_normalized[idx] = np.divide(np.subtract(data[idx], data_means[i]),
-                                     data_std[i])  # Normalize features using mean and std
-data_normalized[np.isnan(data_normalized)] = 0  # Not sure if correct, there were NaN values and I'm not sure why
+data_normalized = preprocessing.normalize(data, axis=0)
 covariance_matrix = np.cov(data_normalized.T)
 eigenvalues, eigenvectors = np.linalg.eig(covariance_matrix)  # Get eigenvectors
 print("eigenvector: \n", eigenvectors, "\n")
@@ -71,7 +58,7 @@ ax = fig.add_subplot(projection='3d')
 ax.scatter(pca[:, 0], pca[:, 1], pca[:, 2], c=labels)
 plt.show()
 
-x_train, x_test, y_train, y_test = train_test_split(data, labels, test_size=1 / 2, random_state=42)
+x_train, x_test, y_train, y_test = train_test_split(data_normalized, labels, test_size=1 / 2, random_state=42)
 parameters = {'kernel': ('linear', 'rbf'), 'C': [0.01, 0.1, 1, 10, 100, 1000, 10000],
               'gamma': [0.001, 0.01, 0.1, 1, 10, 100, 1000, 10000]}
 clf = GridSearchCV(SVC(), parameters)
@@ -79,17 +66,19 @@ clf.fit(x_train, y_train)
 print(clf.best_score_)
 print(clf.best_estimator_)
 print(clf.best_params_)
-model = SVC(kernel='linear', gamma=0.001, C=0.01)
+model = SVC(kernel='rbf', gamma=10, C=1000)
 model.fit(x_train, y_train)
 y_pred = model.predict(x_train)
 print("\nCONFUSION MATRIX TRAIN")
 confusion_matrix_train = metrics.confusion_matrix(y_train, y_pred)
 print(confusion_matrix_train)
 print(metrics.classification_report(y_train, y_pred))
+unique, counts = np.unique(classification, return_counts=True)
 sns.heatmap(confusion_matrix_train, square=True, annot=True, fmt='d', cbar=False, xticklabels=unique,
             yticklabels=unique)
 plt.xlabel('Prediction')
 plt.ylabel('Actual')
+plt.title('Confusion matrix for training data')
 plt.show()
 y_pred_test = model.predict(x_test)
 print("CONFUSION MATRIX TEST")
@@ -100,4 +89,5 @@ sns.heatmap(confusion_matrix_test, square=True, annot=True, fmt='d', cbar=False,
             yticklabels=unique)
 plt.xlabel('Prediction')
 plt.ylabel('Actual')
+plt.title('Confusion matrix for test data')
 plt.show()
