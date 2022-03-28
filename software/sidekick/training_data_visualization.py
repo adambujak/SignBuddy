@@ -39,7 +39,7 @@ for i in range(data.shape[0]):
     data[i] = np.array(x_data[i])
 classification = np.array(y_data)
 
-data_normalized = preprocessing.normalize(data, axis=0)
+data_normalized, norms = preprocessing.normalize(data, axis=0, return_norm=True)  # Norms used to normalize live data
 covariance_matrix = np.cov(data_normalized.T)
 eigenvalues, eigenvectors = np.linalg.eig(covariance_matrix)  # Get eigenvectors
 print("eigenvector: \n", eigenvectors, "\n")
