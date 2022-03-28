@@ -1,5 +1,6 @@
 import numpy as np
 import regex as re
+import seaborn as sns
 from matplotlib import pyplot as plt
 from sklearn import metrics
 from sklearn import preprocessing
@@ -82,9 +83,21 @@ model = SVC(kernel='linear', gamma=0.001, C=0.01)
 model.fit(x_train, y_train)
 y_pred = model.predict(x_train)
 print("\nCONFUSION MATRIX TRAIN")
-print(metrics.confusion_matrix(y_train, y_pred))
+confusion_matrix_train = metrics.confusion_matrix(y_train, y_pred)
+print(confusion_matrix_train)
 print(metrics.classification_report(y_train, y_pred))
+sns.heatmap(confusion_matrix_train, square=True, annot=True, fmt='d', cbar=False, xticklabels=unique,
+            yticklabels=unique)
+plt.xlabel('Prediction')
+plt.ylabel('Actual')
+plt.show()
 y_pred_test = model.predict(x_test)
 print("CONFUSION MATRIX TEST")
-print(metrics.confusion_matrix(y_test, y_pred_test))
+confusion_matrix_test = metrics.confusion_matrix(y_test, y_pred_test)
+print(confusion_matrix_test)
 print(metrics.classification_report(y_test, y_pred_test))
+sns.heatmap(confusion_matrix_test, square=True, annot=True, fmt='d', cbar=False, xticklabels=unique,
+            yticklabels=unique)
+plt.xlabel('Prediction')
+plt.ylabel('Actual')
+plt.show()
