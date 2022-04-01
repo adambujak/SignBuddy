@@ -22,13 +22,13 @@ public class QuizAlphabetActivity extends AppCompatActivity {
         setContentView(R.layout.activity_alphabet);
 
         Intent i = getIntent();
-        int lessonNumber = i.getIntExtra("LessonNumber", -1) + 1;
-        String st = String.valueOf(lessonNumber);
+        int quizNumber = i.getIntExtra("QuizNumber", -1) + 1;
+        String st = String.valueOf(quizNumber);
         ((TextView)findViewById(R.id.textView3)).setText("You have selected Quiz "+ st + ". This quiz contains the following letters:");
 
 
         int alpha = i.getIntExtra("alpha", -1) + 1;
-        switch(lessonNumber){
+        switch(quizNumber){
             case 1:
                 alphaLetters = new String[]{"A", "B", "C", "D", "E"};
                 break;
@@ -65,7 +65,7 @@ public class QuizAlphabetActivity extends AppCompatActivity {
                 Intent i = new Intent(QuizAlphabetActivity.this, QuizActivity.class);
                 Bundle mbundle = new Bundle();
                 mbundle.putInt("alpha", alpha);
-                mbundle.putString("LessonNumber", st);
+                mbundle.putString("QuizNumber", st);
                 i.putExtras(mbundle);
                 startActivity(i);
             }

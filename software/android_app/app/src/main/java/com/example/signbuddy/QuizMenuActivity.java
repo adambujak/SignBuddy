@@ -14,7 +14,7 @@ public class QuizMenuActivity extends AppCompatActivity {
     ListView listView;
 
     //data for list
-    String[] categoryTypes = {"Lesson 1", "Lesson 2", "Lesson 3", "Lesson 4", "Lesson 5"};
+    String[] categoryTypes = {"Quiz 1", "Quiz 2", "Quiz 3", "Quiz 4", "Quiz 5"};
 
 
     @Override
@@ -39,7 +39,7 @@ public class QuizMenuActivity extends AppCompatActivity {
                 //go from main activity to alphabet activity
                 Intent i = new Intent(QuizMenuActivity.this, QuizAlphabetActivity.class);
                 Bundle mbundle = new Bundle();
-                mbundle.putInt("LessonNumber", position);
+                mbundle.putInt("QuizNumber", position);
                 mbundle.putInt("alpha", 0);
                 i.putExtras(mbundle);
                 startActivity(i);

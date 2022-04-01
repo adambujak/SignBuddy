@@ -54,7 +54,7 @@
         <activity
             android:name=".QuizMenuActivity"
             android:exported="false"
-            android:label="Select a Lesson"
+            android:label="Select a Quiz"
             android:parentActivityName=".MainActivity" />
 
     </application>

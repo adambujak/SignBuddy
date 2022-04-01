@@ -31,8 +31,8 @@ public class QuizActivity extends AppCompatActivity {
 
         //setting gesture image
         Intent i = getIntent();
-        String lessonNumber = i.getStringExtra("LessonNumber");
-        lessonnum = Integer.valueOf(lessonNumber);
+        String quizNumber = i.getStringExtra("QuizNumber");
+        lessonnum = Integer.valueOf(quizNumber);
         alpha = i.getIntExtra("alpha", 0);
 
         //set Progress Bar
@@ -76,7 +76,7 @@ public class QuizActivity extends AppCompatActivity {
                                                  i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                                                  Bundle mbundle = new Bundle();
                                                  mbundle.putInt("alpha", alpha);
-                                                 mbundle.putString("LessonNumber", lessonNumber);
+                                                 mbundle.putString("LessonNumber", quizNumber);
                                                  i.putExtras(mbundle);
 
                                                  startActivity(i);
@@ -88,7 +88,17 @@ public class QuizActivity extends AppCompatActivity {
         incorrectButton = findViewById(R.id.incorrectButton);
         incorrectButton.setOnClickListener(new View.OnClickListener() {
                                              public void onClick(View v) {
-                                                 Toast.makeText(QuizActivity.this, "Incorrect, Please try again!", Toast.LENGTH_SHORT).show();
+                                                 Toast.makeText(QuizActivity.this, "Incorrect", Toast.LENGTH_SHORT).show();
+                                                 alpha++;
+                                                 finish();
+                                                 i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                                                 Bundle mbundle = new Bundle();
+                                                 mbundle.putInt("alpha", alpha);
+                                                 mbundle.putString("LessonNumber", quizNumber);
+                                                 i.putExtras(mbundle);
+
+                                                 startActivity(i);
+                                                 overridePendingTransition(0,0);
                                              }
                                          }
         );
