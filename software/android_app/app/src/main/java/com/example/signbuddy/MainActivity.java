@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void openQuizActivity(View v) {
-        Intent intent = new Intent(this, QuizActivity.class);
+        Intent intent = new Intent(this, QuizMenuActivity.class);
         startActivity(intent);
     }
 

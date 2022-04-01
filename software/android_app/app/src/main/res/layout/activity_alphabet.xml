@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".AlphabetActivity">
+    tools:context=".LessonAlphabetActivity">
 
     <Space
         android:layout_width="match_parent"
@@ -44,7 +44,6 @@
         android:layout_marginLeft="@dimen/fab_margin"
         android:layout_marginTop="@dimen/fab_margin"
         android:layout_marginRight="@dimen/fab_margin"
-        android:drawablePadding="@dimen/fab_margin"
-        android:text="Continue to Lesson" />
+        android:drawablePadding="@dimen/fab_margin" />
 
 </LinearLayout>

@@ -23,7 +23,7 @@
             android:label="A"
             android:theme="@style/Theme.SignBuddy.NoActionBar" />
         <activity
-            android:name=".AlphabetActivity"
+            android:name=".LessonAlphabetActivity"
             android:exported="false"
             android:label="Select a Letter"
             android:parentActivityName=".MainActivity"
@@ -38,10 +38,25 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            </intent-filter></activity>
+        <activity
+            android:name=".QuizActivity"
+            android:exported="false"
+            android:label="A"
+            android:theme="@style/Theme.SignBuddy.NoActionBar" />
+        <activity
+            android:name=".QuizAlphabetActivity"
+            android:exported="false"
+            android:label="Select a Letter"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.SignBuddy.NoActionBar"/>
+        <activity
+            android:name=".QuizMenuActivity"
+            android:exported="false"
+            android:label="Select a Lesson"
+            android:parentActivityName=".MainActivity" />
+
     </application>
 
 </manifest>

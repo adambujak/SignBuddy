@@ -5,13 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class AlphabetActivity extends AppCompatActivity {
+public class LessonAlphabetActivity extends AppCompatActivity {
 
     ListView listViewAlpha;
     private Button continueButton;
@@ -57,10 +56,11 @@ public class AlphabetActivity extends AppCompatActivity {
 
         //event handler for clickEvents
         continueButton = findViewById(R.id.continueButton);
+        continueButton.setText("Continue to Lesson");
         continueButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                Intent i = new Intent(AlphabetActivity.this, LessonActivity.class);
+                Intent i = new Intent(LessonAlphabetActivity.this, LessonActivity.class);
                 Bundle mbundle = new Bundle();
                 mbundle.putInt("alpha", alpha);
                 mbundle.putString("LessonNumber", st);

@@ -9,8 +9,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class LessonMenuActivity extends AppCompatActivity {
 
+public class QuizMenuActivity extends AppCompatActivity {
     ListView listView;
 
     //data for list
@@ -36,15 +36,15 @@ public class LessonMenuActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                    //go from main activity to alphabet activity
-                    Intent i = new Intent(LessonMenuActivity.this, LessonAlphabetActivity.class);
-                    Bundle mbundle = new Bundle();
-                    mbundle.putInt("LessonNumber", position);
-                    mbundle.putInt("alpha", 0);
-                    i.putExtras(mbundle);
-                    startActivity(i);
-
+                //go from main activity to alphabet activity
+                Intent i = new Intent(QuizMenuActivity.this, QuizAlphabetActivity.class);
+                Bundle mbundle = new Bundle();
+                mbundle.putInt("LessonNumber", position);
+                mbundle.putInt("alpha", 0);
+                i.putExtras(mbundle);
+                startActivity(i);
             }
         });
     }
 }
+
