@@ -1,0 +1,7680 @@
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@72027a99
+letter: "a"
+samples {
+  flex_data {
+    flex_index: 90
+    flex_little: 90
+    flex_middle: 89
+    flex_ring: 88
+    flex_thumb: 81
+  }
+  imu_data {
+    quat_w: 7312
+    quat_x: 7312
+    quat_y: -7286
+    quat_z: -10189
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@d4e305b
+letter: "a"
+samples {
+  flex_data {
+    flex_index: 89
+    flex_little: 89
+    flex_middle: 87
+    flex_ring: 90
+    flex_thumb: 80
+  }
+  imu_data {
+    quat_w: 7867
+    quat_x: 7867
+    quat_y: -7530
+    quat_z: -10116
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: true
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@52dc4172
+letter: "a"
+samples {
+  flex_data {
+    flex_index: 87
+    flex_little: 89
+    flex_middle: 89
+    flex_ring: 90
+    flex_thumb: 77
+  }
+  imu_data {
+    quat_w: 8052
+    quat_x: 8052
+    quat_y: -7739
+    quat_z: -9499
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: true
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@213c4d67
+letter: "a"
+samples {
+  flex_data {
+    flex_index: 78
+    flex_little: 90
+    flex_middle: 87
+    flex_ring: 90
+    flex_thumb: 82
+  }
+  imu_data {
+    quat_w: 7726
+    quat_x: 7726
+    quat_y: -7561
+    quat_z: -9913
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@98577532
+letter: "a"
+samples {
+  flex_data {
+    flex_index: 81
+    flex_little: 89
+    flex_middle: 87
+    flex_ring: 89
+    flex_thumb: 84
+  }
+  imu_data {
+    quat_w: 8107
+    quat_x: 8107
+    quat_y: -8016
+    quat_z: -9388
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@477996b5
+letter: "a"
+samples {
+  flex_data {
+    flex_index: 79
+    flex_little: 89
+    flex_middle: 85
+    flex_ring: 86
+    flex_thumb: 82
+  }
+  imu_data {
+    quat_w: 8808
+    quat_x: 8808
+    quat_y: -6801
+    quat_z: -9291
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@3a7473cb
+letter: "a"
+samples {
+  flex_data {
+    flex_index: 78
+    flex_little: 90
+    flex_middle: 90
+    flex_ring: 90
+    flex_thumb: 80
+  }
+  imu_data {
+    quat_w: 7957
+    quat_x: 7957
+    quat_y: -7876
+    quat_z: -9821
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@315e7617
+letter: "a"
+samples {
+  flex_data {
+    flex_index: 73
+    flex_little: 89
+    flex_middle: 88
+    flex_ring: 90
+    flex_thumb: 80
+  }
+  imu_data {
+    quat_w: 7837
+    quat_x: 7837
+    quat_y: -7912
+    quat_z: -9561
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@946dd5aa
+letter: "a"
+samples {
+  flex_data {
+    flex_index: 70
+    flex_little: 90
+    flex_middle: 85
+    flex_ring: 90
+    flex_thumb: 82
+  }
+  imu_data {
+    quat_w: 7624
+    quat_x: 7624
+    quat_y: -7603
+    quat_z: -10064
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@b883cea3
+letter: "a"
+samples {
+  flex_data {
+    flex_index: 67
+    flex_little: 90
+    flex_middle: 84
+    flex_ring: 84
+    flex_thumb: 80
+  }
+  imu_data {
+    quat_w: 7599
+    quat_x: 7599
+    quat_y: -7743
+    quat_z: -9657
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@a3c74a9a
+letter: "b"
+samples {
+  flex_data {
+    flex_index: 7
+    flex_little: 2
+    flex_middle: 0
+    flex_ring: 5
+    flex_thumb: 87
+  }
+  imu_data {
+    quat_w: 5476
+    quat_x: 5476
+    quat_y: -5443
+    quat_z: -11525
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@9c80f255
+letter: "b"
+samples {
+  flex_data {
+    flex_index: 7
+    flex_little: 3
+    flex_middle: 7
+    flex_ring: 5
+    flex_thumb: 88
+  }
+  imu_data {
+    quat_w: 6443
+    quat_x: 6443
+    quat_y: -5031
+    quat_z: -11065
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@db297e2c
+letter: "b"
+samples {
+  flex_data {
+    flex_index: 7
+    flex_little: 2
+    flex_middle: 6
+    flex_ring: 5
+    flex_thumb: 85
+  }
+  imu_data {
+    quat_w: 6176
+    quat_x: 6176
+    quat_y: -5084
+    quat_z: -11322
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@e7c104d
+letter: "b"
+samples {
+  flex_data {
+    flex_index: 7
+    flex_little: 2
+    flex_middle: 6
+    flex_ring: 5
+    flex_thumb: 84
+  }
+  imu_data {
+    quat_w: 6189
+    quat_x: 6189
+    quat_y: -5075
+    quat_z: -11275
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@e6728249
+letter: "b"
+samples {
+  flex_data {
+    flex_index: 8
+    flex_little: 3
+    flex_middle: 13
+    flex_ring: 7
+    flex_thumb: 89
+  }
+  imu_data {
+    quat_w: 7029
+    quat_x: 7029
+    quat_y: -5984
+    quat_z: -9866
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@bd9453ee
+letter: "b"
+samples {
+  flex_data {
+    flex_index: 8
+    flex_little: 3
+    flex_middle: 13
+    flex_ring: 7
+    flex_thumb: 87
+  }
+  imu_data {
+    quat_w: 6932
+    quat_x: 6932
+    quat_y: -5857
+    quat_z: -10100
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@c6b7340f
+letter: "b"
+samples {
+  flex_data {
+    flex_index: 8
+    flex_little: 3
+    flex_middle: 13
+    flex_ring: 6
+    flex_thumb: 87
+  }
+  imu_data {
+    quat_w: 6978
+    quat_x: 6978
+    quat_y: -5774
+    quat_z: -10089
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@87983a34
+letter: "b"
+samples {
+  flex_data {
+    flex_index: 8
+    flex_little: 3
+    flex_middle: 13
+    flex_ring: 6
+    flex_thumb: 86
+  }
+  imu_data {
+    quat_w: 6982
+    quat_x: 6982
+    quat_y: -5728
+    quat_z: -10105
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@a70927ce
+letter: "b"
+samples {
+  flex_data {
+    flex_index: 8
+    flex_little: 3
+    flex_middle: 13
+    flex_ring: 7
+    flex_thumb: 86
+  }
+  imu_data {
+    quat_w: 6916
+    quat_x: 6916
+    quat_y: -5720
+    quat_z: -10116
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@c9de8bda
+letter: "b"
+samples {
+  flex_data {
+    flex_index: 8
+    flex_little: 3
+    flex_middle: 13
+    flex_ring: 7
+    flex_thumb: 86
+  }
+  imu_data {
+    quat_w: 7110
+    quat_x: 7110
+    quat_y: -5751
+    quat_z: -9865
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@543f7a0b
+letter: "c"
+samples {
+  flex_data {
+    flex_index: 52
+    flex_little: 60
+    flex_middle: 72
+    flex_ring: 56
+    flex_thumb: 80
+  }
+  imu_data {
+    quat_w: 8163
+    quat_x: 8163
+    quat_y: -2237
+    quat_z: -5502
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@de326ded
+letter: "c"
+samples {
+  flex_data {
+    flex_index: 51
+    flex_little: 51
+    flex_middle: 70
+    flex_ring: 54
+    flex_thumb: 78
+  }
+  imu_data {
+    quat_w: 7712
+    quat_x: 7712
+    quat_y: -2019
+    quat_z: -5968
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@ac1c8e47
+letter: "c"
+samples {
+  flex_data {
+    flex_index: 49
+    flex_little: 50
+    flex_middle: 69
+    flex_ring: 53
+    flex_thumb: 77
+  }
+  imu_data {
+    quat_w: 7643
+    quat_x: 7643
+    quat_y: -1802
+    quat_z: -6011
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@6865ae63
+letter: "c"
+samples {
+  flex_data {
+    flex_index: 49
+    flex_little: 48
+    flex_middle: 69
+    flex_ring: 52
+    flex_thumb: 77
+  }
+  imu_data {
+    quat_w: 7614
+    quat_x: 7614
+    quat_y: -1752
+    quat_z: -6016
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@7141c8c7
+letter: "c"
+samples {
+  flex_data {
+    flex_index: 48
+    flex_little: 48
+    flex_middle: 68
+    flex_ring: 52
+    flex_thumb: 77
+  }
+  imu_data {
+    quat_w: 7556
+    quat_x: 7556
+    quat_y: -1697
+    quat_z: -6085
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@a0fc35a
+letter: "c"
+samples {
+  flex_data {
+    flex_index: 36
+    flex_little: 37
+    flex_middle: 68
+    flex_ring: 52
+    flex_thumb: 71
+  }
+  imu_data {
+    quat_w: 7563
+    quat_x: 7563
+    quat_y: -2213
+    quat_z: -5643
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@cfe00ef6
+letter: "c"
+samples {
+  flex_data {
+    flex_index: 35
+    flex_little: 32
+    flex_middle: 67
+    flex_ring: 51
+    flex_thumb: 72
+  }
+  imu_data {
+    quat_w: 7421
+    quat_x: 7421
+    quat_y: -1940
+    quat_z: -6045
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@20801d17
+letter: "c"
+samples {
+  flex_data {
+    flex_index: 34
+    flex_little: 31
+    flex_middle: 67
+    flex_ring: 50
+    flex_thumb: 72
+  }
+  imu_data {
+    quat_w: 7338
+    quat_x: 7338
+    quat_y: -1824
+    quat_z: -6091
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@1e229586
+letter: "c"
+samples {
+  flex_data {
+    flex_index: 34
+    flex_little: 31
+    flex_middle: 67
+    flex_ring: 50
+    flex_thumb: 73
+  }
+  imu_data {
+    quat_w: 7226
+    quat_x: 7226
+    quat_y: -1870
+    quat_z: -6447
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@b9276881
+letter: "c"
+samples {
+  flex_data {
+    flex_index: 34
+    flex_little: 31
+    flex_middle: 66
+    flex_ring: 49
+    flex_thumb: 72
+  }
+  imu_data {
+    quat_w: 7157
+    quat_x: 7157
+    quat_y: -1800
+    quat_z: -6445
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@623cc933
+letter: "d"
+samples {
+  flex_data {
+    flex_index: 7
+    flex_little: 55
+    flex_middle: 68
+    flex_ring: 64
+    flex_thumb: 83
+  }
+  imu_data {
+    quat_w: 11179
+    quat_x: 11179
+    quat_y: -1184
+    quat_z: -4859
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@76b55e56
+letter: "d"
+samples {
+  flex_data {
+    flex_index: 7
+    flex_little: 56
+    flex_middle: 67
+    flex_ring: 63
+    flex_thumb: 82
+  }
+  imu_data {
+    quat_w: 11024
+    quat_x: 11024
+    quat_y: -1229
+    quat_z: -4923
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@bae787ad
+letter: "d"
+samples {
+  flex_data {
+    flex_index: 7
+    flex_little: 55
+    flex_middle: 66
+    flex_ring: 62
+    flex_thumb: 82
+  }
+  imu_data {
+    quat_w: 10989
+    quat_x: 10989
+    quat_y: -1105
+    quat_z: -4983
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@b860e085
+letter: "d"
+samples {
+  flex_data {
+    flex_index: 7
+    flex_little: 54
+    flex_middle: 66
+    flex_ring: 61
+    flex_thumb: 81
+  }
+  imu_data {
+    quat_w: 10867
+    quat_x: 10867
+    quat_y: -1058
+    quat_z: -5043
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@3daaa6fa
+letter: "d"
+samples {
+  flex_data {
+    flex_index: 7
+    flex_little: 54
+    flex_middle: 65
+    flex_ring: 61
+    flex_thumb: 81
+  }
+  imu_data {
+    quat_w: 10857
+    quat_x: 10857
+    quat_y: -973
+    quat_z: -5066
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@90575973
+letter: "d"
+samples {
+  flex_data {
+    flex_index: 7
+    flex_little: 57
+    flex_middle: 66
+    flex_ring: 54
+    flex_thumb: 78
+  }
+  imu_data {
+    quat_w: 10649
+    quat_x: 10649
+    quat_y: -1593
+    quat_z: -5543
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@f21d25f4
+letter: "d"
+samples {
+  flex_data {
+    flex_index: 7
+    flex_little: 57
+    flex_middle: 65
+    flex_ring: 53
+    flex_thumb: 79
+  }
+  imu_data {
+    quat_w: 10487
+    quat_x: 10487
+    quat_y: -1486
+    quat_z: -5676
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@f7143bb0
+letter: "d"
+samples {
+  flex_data {
+    flex_index: 7
+    flex_little: 57
+    flex_middle: 65
+    flex_ring: 53
+    flex_thumb: 79
+  }
+  imu_data {
+    quat_w: 10392
+    quat_x: 10392
+    quat_y: -1457
+    quat_z: -5735
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@312c08ca
+letter: "d"
+samples {
+  flex_data {
+    flex_index: 7
+    flex_little: 57
+    flex_middle: 64
+    flex_ring: 52
+    flex_thumb: 80
+  }
+  imu_data {
+    quat_w: 10330
+    quat_x: 10330
+    quat_y: -1438
+    quat_z: -5799
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@51462fb2
+letter: "d"
+samples {
+  flex_data {
+    flex_index: 7
+    flex_little: 56
+    flex_middle: 64
+    flex_ring: 52
+    flex_thumb: 80
+  }
+  imu_data {
+    quat_w: 10304
+    quat_x: 10304
+    quat_y: -1426
+    quat_z: -5794
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@cd09e28d
+letter: "e"
+samples {
+  flex_data {
+    flex_index: 80
+    flex_little: 44
+    flex_middle: 78
+    flex_ring: 61
+    flex_thumb: 90
+  }
+  imu_data {
+    quat_w: 6758
+    quat_x: 6758
+    quat_y: -5240
+    quat_z: -10564
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@31dd030d
+letter: "e"
+samples {
+  flex_data {
+    flex_index: 78
+    flex_little: 43
+    flex_middle: 77
+    flex_ring: 60
+    flex_thumb: 90
+  }
+  imu_data {
+    quat_w: 6700
+    quat_x: 6700
+    quat_y: -5100
+    quat_z: -10527
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@52850697
+letter: "e"
+samples {
+  flex_data {
+    flex_index: 76
+    flex_little: 42
+    flex_middle: 77
+    flex_ring: 59
+    flex_thumb: 90
+  }
+  imu_data {
+    quat_w: 6691
+    quat_x: 6691
+    quat_y: -4950
+    quat_z: -10533
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@230c0c21
+letter: "e"
+samples {
+  flex_data {
+    flex_index: 75
+    flex_little: 42
+    flex_middle: 76
+    flex_ring: 59
+    flex_thumb: 90
+  }
+  imu_data {
+    quat_w: 6685
+    quat_x: 6685
+    quat_y: -4744
+    quat_z: -10551
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@757204df
+letter: "e"
+samples {
+  flex_data {
+    flex_index: 80
+    flex_little: 63
+    flex_middle: 84
+    flex_ring: 62
+    flex_thumb: 90
+  }
+  imu_data {
+    quat_w: 6045
+    quat_x: 6045
+    quat_y: -4951
+    quat_z: -10927
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@828812ca
+letter: "e"
+samples {
+  flex_data {
+    flex_index: 78
+    flex_little: 61
+    flex_middle: 80
+    flex_ring: 60
+    flex_thumb: 90
+  }
+  imu_data {
+    quat_w: 6183
+    quat_x: 6183
+    quat_y: -4898
+    quat_z: -10771
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@f26d0bc9
+letter: "e"
+samples {
+  flex_data {
+    flex_index: 76
+    flex_little: 60
+    flex_middle: 79
+    flex_ring: 59
+    flex_thumb: 90
+  }
+  imu_data {
+    quat_w: 6297
+    quat_x: 6297
+    quat_y: -4755
+    quat_z: -10690
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@f8708b8b
+letter: "e"
+samples {
+  flex_data {
+    flex_index: 75
+    flex_little: 59
+    flex_middle: 79
+    flex_ring: 59
+    flex_thumb: 89
+  }
+  imu_data {
+    quat_w: 6302
+    quat_x: 6302
+    quat_y: -4697
+    quat_z: -10661
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@daa5027a
+letter: "e"
+samples {
+  flex_data {
+    flex_index: 85
+    flex_little: 52
+    flex_middle: 84
+    flex_ring: 75
+    flex_thumb: 90
+  }
+  imu_data {
+    quat_w: 7331
+    quat_x: 7331
+    quat_y: -4765
+    quat_z: -9319
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@5292c872
+letter: "e"
+samples {
+  flex_data {
+    flex_index: 82
+    flex_little: 51
+    flex_middle: 83
+    flex_ring: 73
+    flex_thumb: 90
+  }
+  imu_data {
+    quat_w: 7123
+    quat_x: 7123
+    quat_y: -4675
+    quat_z: -9810
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@655173db
+letter: "f"
+samples {
+  flex_data {
+    flex_index: 39
+    flex_little: 4
+    flex_middle: 5
+    flex_ring: 6
+    flex_thumb: 62
+  }
+  imu_data {
+    quat_w: 8857
+    quat_x: 8857
+    quat_y: -3632
+    quat_z: -6264
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@3028ea63
+letter: "f"
+samples {
+  flex_data {
+    flex_index: 37
+    flex_little: 4
+    flex_middle: 6
+    flex_ring: 6
+    flex_thumb: 63
+  }
+  imu_data {
+    quat_w: 8806
+    quat_x: 8806
+    quat_y: -3567
+    quat_z: -6435
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@f8c5a3c6
+letter: "f"
+samples {
+  flex_data {
+    flex_index: 49
+    flex_little: 5
+    flex_middle: 32
+    flex_ring: 15
+    flex_thumb: 73
+  }
+  imu_data {
+    quat_w: 8891
+    quat_x: 8891
+    quat_y: -3325
+    quat_z: -6538
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@1d00be18
+letter: "f"
+samples {
+  flex_data {
+    flex_index: 48
+    flex_little: 4
+    flex_middle: 30
+    flex_ring: 15
+    flex_thumb: 72
+  }
+  imu_data {
+    quat_w: 8871
+    quat_x: 8871
+    quat_y: -3261
+    quat_z: -6613
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: true
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@51718d38
+letter: "f"
+samples {
+  flex_data {
+    flex_index: 60
+    flex_little: 7
+    flex_middle: 41
+    flex_ring: 20
+    flex_thumb: 78
+  }
+  imu_data {
+    quat_w: 9648
+    quat_x: 9648
+    quat_y: -2249
+    quat_z: -5900
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: true
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@70ca27b7
+letter: "f"
+samples {
+  flex_data {
+    flex_index: 57
+    flex_little: 6
+    flex_middle: 38
+    flex_ring: 19
+    flex_thumb: 76
+  }
+  imu_data {
+    quat_w: 9550
+    quat_x: 9550
+    quat_y: -2211
+    quat_z: -6153
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: true
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@b1b699d7
+letter: "f"
+samples {
+  flex_data {
+    flex_index: 55
+    flex_little: 5
+    flex_middle: 37
+    flex_ring: 19
+    flex_thumb: 75
+  }
+  imu_data {
+    quat_w: 9541
+    quat_x: 9541
+    quat_y: -2201
+    quat_z: -6132
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: true
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@f4666c59
+letter: "f"
+samples {
+  flex_data {
+    flex_index: 54
+    flex_little: 5
+    flex_middle: 37
+    flex_ring: 19
+    flex_thumb: 74
+  }
+  imu_data {
+    quat_w: 9517
+    quat_x: 9517
+    quat_y: -2177
+    quat_z: -6140
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: true
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@3b54ca2d
+letter: "f"
+samples {
+  flex_data {
+    flex_index: 53
+    flex_little: 5
+    flex_middle: 37
+    flex_ring: 19
+    flex_thumb: 74
+  }
+  imu_data {
+    quat_w: 9500
+    quat_x: 9500
+    quat_y: -2138
+    quat_z: -6124
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: true
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@51a0735c
+letter: "f"
+samples {
+  flex_data {
+    flex_index: 53
+    flex_little: 5
+    flex_middle: 37
+    flex_ring: 19
+    flex_thumb: 74
+  }
+  imu_data {
+    quat_w: 9491
+    quat_x: 9491
+    quat_y: -2106
+    quat_z: -6163
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: true
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@696bc149
+letter: "g"
+samples {
+  flex_data {
+    flex_index: 7
+    flex_little: 79
+    flex_middle: 79
+    flex_ring: 73
+    flex_thumb: 89
+  }
+  imu_data {
+    quat_w: 6161
+    quat_x: 6161
+    quat_y: 7856
+    quat_z: -6940
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: false
+    touch7: true
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@3db1394f
+letter: "g"
+samples {
+  flex_data {
+    flex_index: 7
+    flex_little: 78
+    flex_middle: 77
+    flex_ring: 71
+    flex_thumb: 88
+  }
+  imu_data {
+    quat_w: 6078
+    quat_x: 6078
+    quat_y: 7863
+    quat_z: -6905
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: false
+    touch7: true
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@d451f76e
+letter: "g"
+samples {
+  flex_data {
+    flex_index: 7
+    flex_little: 77
+    flex_middle: 77
+    flex_ring: 70
+    flex_thumb: 88
+  }
+  imu_data {
+    quat_w: 5968
+    quat_x: 5968
+    quat_y: 7957
+    quat_z: -6858
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: false
+    touch7: true
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@6ce1cd60
+letter: "g"
+samples {
+  flex_data {
+    flex_index: 7
+    flex_little: 76
+    flex_middle: 76
+    flex_ring: 69
+    flex_thumb: 87
+  }
+  imu_data {
+    quat_w: 5915
+    quat_x: 5915
+    quat_y: 8025
+    quat_z: -6838
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: false
+    touch7: true
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@103060ed
+letter: "g"
+samples {
+  flex_data {
+    flex_index: 8
+    flex_little: 77
+    flex_middle: 78
+    flex_ring: 68
+    flex_thumb: 87
+  }
+  imu_data {
+    quat_w: 7076
+    quat_x: 7076
+    quat_y: 6962
+    quat_z: -6505
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: true
+    touch7: true
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@f087189a
+letter: "g"
+samples {
+  flex_data {
+    flex_index: 7
+    flex_little: 75
+    flex_middle: 77
+    flex_ring: 67
+    flex_thumb: 87
+  }
+  imu_data {
+    quat_w: 7066
+    quat_x: 7066
+    quat_y: 6865
+    quat_z: -6598
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: true
+    touch7: true
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@a3231947
+letter: "g"
+samples {
+  flex_data {
+    flex_index: 7
+    flex_little: 73
+    flex_middle: 75
+    flex_ring: 65
+    flex_thumb: 86
+  }
+  imu_data {
+    quat_w: 6710
+    quat_x: 6710
+    quat_y: 7251
+    quat_z: -6460
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: true
+    touch7: true
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@541f5a48
+letter: "g"
+samples {
+  flex_data {
+    flex_index: 7
+    flex_little: 72
+    flex_middle: 75
+    flex_ring: 65
+    flex_thumb: 86
+  }
+  imu_data {
+    quat_w: 6586
+    quat_x: 6586
+    quat_y: 7190
+    quat_z: -6377
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: true
+    touch7: true
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@55c89293
+letter: "g"
+samples {
+  flex_data {
+    flex_index: 7
+    flex_little: 72
+    flex_middle: 75
+    flex_ring: 64
+    flex_thumb: 85
+  }
+  imu_data {
+    quat_w: 6579
+    quat_x: 6579
+    quat_y: 7136
+    quat_z: -6356
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: true
+    touch7: true
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@663f7738
+letter: "g"
+samples {
+  flex_data {
+    flex_index: 7
+    flex_little: 72
+    flex_middle: 75
+    flex_ring: 64
+    flex_thumb: 85
+  }
+  imu_data {
+    quat_w: 6566
+    quat_x: 6566
+    quat_y: 7103
+    quat_z: -6320
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: true
+    touch7: true
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@41f3a7fc
+letter: "h"
+samples {
+  flex_data {
+    flex_index: 7
+    flex_little: 75
+    flex_middle: 12
+    flex_ring: 82
+    flex_thumb: 90
+  }
+  imu_data {
+    quat_w: 6702
+    quat_x: 6702
+    quat_y: 7608
+    quat_z: -6353
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@3a04c604
+letter: "h"
+samples {
+  flex_data {
+    flex_index: 6
+    flex_little: 80
+    flex_middle: 2
+    flex_ring: 90
+    flex_thumb: 90
+  }
+  imu_data {
+    quat_w: 6951
+    quat_x: 6951
+    quat_y: 7623
+    quat_z: -6248
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@a60f05bc
+letter: "h"
+samples {
+  flex_data {
+    flex_index: 6
+    flex_little: 76
+    flex_middle: 4
+    flex_ring: 88
+    flex_thumb: 90
+  }
+  imu_data {
+    quat_w: 6754
+    quat_x: 6754
+    quat_y: 7580
+    quat_z: -6399
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@d45bc3fc
+letter: "h"
+samples {
+  flex_data {
+    flex_index: 6
+    flex_little: 74
+    flex_middle: 4
+    flex_ring: 86
+    flex_thumb: 90
+  }
+  imu_data {
+    quat_w: 6703
+    quat_x: 6703
+    quat_y: 7581
+    quat_z: -6406
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@605893b8
+letter: "h"
+samples {
+  flex_data {
+    flex_index: 6
+    flex_little: 73
+    flex_middle: 5
+    flex_ring: 86
+    flex_thumb: 90
+  }
+  imu_data {
+    quat_w: 6608
+    quat_x: 6608
+    quat_y: 7628
+    quat_z: -6419
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@7cab1d20
+letter: "h"
+samples {
+  flex_data {
+    flex_index: 7
+    flex_little: 79
+    flex_middle: 3
+    flex_ring: 88
+    flex_thumb: 85
+  }
+  imu_data {
+    quat_w: 6838
+    quat_x: 6838
+    quat_y: 7644
+    quat_z: -6103
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@810631f8
+letter: "h"
+samples {
+  flex_data {
+    flex_index: 7
+    flex_little: 77
+    flex_middle: 4
+    flex_ring: 87
+    flex_thumb: 85
+  }
+  imu_data {
+    quat_w: 6834
+    quat_x: 6834
+    quat_y: 7664
+    quat_z: -6117
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@8ea1169a
+letter: "h"
+samples {
+  flex_data {
+    flex_index: 6
+    flex_little: 77
+    flex_middle: 3
+    flex_ring: 86
+    flex_thumb: 84
+  }
+  imu_data {
+    quat_w: 6675
+    quat_x: 6675
+    quat_y: 7797
+    quat_z: -6142
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@d42c1d89
+letter: "h"
+samples {
+  flex_data {
+    flex_index: 7
+    flex_little: 77
+    flex_middle: 4
+    flex_ring: 85
+    flex_thumb: 84
+  }
+  imu_data {
+    quat_w: 6652
+    quat_x: 6652
+    quat_y: 7783
+    quat_z: -6072
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@3a538983
+letter: "h"
+samples {
+  flex_data {
+    flex_index: 6
+    flex_little: 76
+    flex_middle: 4
+    flex_ring: 84
+    flex_thumb: 84
+  }
+  imu_data {
+    quat_w: 6643
+    quat_x: 6643
+    quat_y: 7742
+    quat_z: -6012
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@d42c6e93
+letter: "i"
+samples {
+  flex_data {
+    flex_index: 86
+    flex_little: 10
+    flex_middle: 76
+    flex_ring: 71
+    flex_thumb: 81
+  }
+  imu_data {
+    quat_w: 7369
+    quat_x: 7369
+    quat_y: -8021
+    quat_z: -9008
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: true
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@abbce380
+letter: "i"
+samples {
+  flex_data {
+    flex_index: 83
+    flex_little: 14
+    flex_middle: 78
+    flex_ring: 87
+    flex_thumb: 77
+  }
+  imu_data {
+    quat_w: 7781
+    quat_x: 7781
+    quat_y: -8567
+    quat_z: -8238
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: true
+    touch11: false
+    touch12: false
+    touch2: true
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@dc436944
+letter: "i"
+samples {
+  flex_data {
+    flex_index: 80
+    flex_little: 9
+    flex_middle: 75
+    flex_ring: 83
+    flex_thumb: 76
+  }
+  imu_data {
+    quat_w: 7544
+    quat_x: 7544
+    quat_y: -8570
+    quat_z: -8289
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: true
+    touch11: false
+    touch12: false
+    touch2: true
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@a6fdab2c
+letter: "i"
+samples {
+  flex_data {
+    flex_index: 79
+    flex_little: 10
+    flex_middle: 75
+    flex_ring: 82
+    flex_thumb: 76
+  }
+  imu_data {
+    quat_w: 7399
+    quat_x: 7399
+    quat_y: -8454
+    quat_z: -8666
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: true
+    touch11: false
+    touch12: false
+    touch2: true
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@fae5f570
+letter: "i"
+samples {
+  flex_data {
+    flex_index: 78
+    flex_little: 10
+    flex_middle: 74
+    flex_ring: 82
+    flex_thumb: 76
+  }
+  imu_data {
+    quat_w: 7392
+    quat_x: 7392
+    quat_y: -8479
+    quat_z: -8673
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: true
+    touch11: false
+    touch12: false
+    touch2: true
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@bf9f2ab3
+letter: "i"
+samples {
+  flex_data {
+    flex_index: 82
+    flex_little: 8
+    flex_middle: 75
+    flex_ring: 78
+    flex_thumb: 82
+  }
+  imu_data {
+    quat_w: 7642
+    quat_x: 7642
+    quat_y: -7812
+    quat_z: -8444
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: true
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@74aabd99
+letter: "i"
+samples {
+  flex_data {
+    flex_index: 79
+    flex_little: 10
+    flex_middle: 74
+    flex_ring: 75
+    flex_thumb: 78
+  }
+  imu_data {
+    quat_w: 7583
+    quat_x: 7583
+    quat_y: -7532
+    quat_z: -8583
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: true
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@3995707e
+letter: "i"
+samples {
+  flex_data {
+    flex_index: 78
+    flex_little: 10
+    flex_middle: 73
+    flex_ring: 74
+    flex_thumb: 77
+  }
+  imu_data {
+    quat_w: 7568
+    quat_x: 7568
+    quat_y: -7472
+    quat_z: -8604
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: true
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@c0ff313c
+letter: "i"
+samples {
+  flex_data {
+    flex_index: 77
+    flex_little: 9
+    flex_middle: 72
+    flex_ring: 74
+    flex_thumb: 77
+  }
+  imu_data {
+    quat_w: 7573
+    quat_x: 7573
+    quat_y: -7601
+    quat_z: -8660
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: true
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@d1d12b7
+letter: "i"
+samples {
+  flex_data {
+    flex_index: 75
+    flex_little: 9
+    flex_middle: 72
+    flex_ring: 74
+    flex_thumb: 77
+  }
+  imu_data {
+    quat_w: 7511
+    quat_x: 7511
+    quat_y: -7642
+    quat_z: -8658
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: true
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@2829527e
+letter: "k"
+samples {
+  flex_data {
+    flex_index: 7
+    flex_little: 90
+    flex_middle: 0
+    flex_ring: 89
+    flex_thumb: 90
+  }
+  imu_data {
+    quat_w: 7699
+    quat_x: 7699
+    quat_y: -5405
+    quat_z: -9901
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@539458e0
+letter: "k"
+samples {
+  flex_data {
+    flex_index: 6
+    flex_little: 89
+    flex_middle: 0
+    flex_ring: 88
+    flex_thumb: 88
+  }
+  imu_data {
+    quat_w: 8075
+    quat_x: 8075
+    quat_y: -6053
+    quat_z: -9962
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@c98a1293
+letter: "k"
+samples {
+  flex_data {
+    flex_index: 6
+    flex_little: 88
+    flex_middle: 0
+    flex_ring: 86
+    flex_thumb: 88
+  }
+  imu_data {
+    quat_w: 8075
+    quat_x: 8075
+    quat_y: -6089
+    quat_z: -9824
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@1af8e1ae
+letter: "k"
+samples {
+  flex_data {
+    flex_index: 6
+    flex_little: 87
+    flex_middle: 0
+    flex_ring: 86
+    flex_thumb: 87
+  }
+  imu_data {
+    quat_w: 8143
+    quat_x: 8143
+    quat_y: -6039
+    quat_z: -9833
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@b3467c76
+letter: "k"
+samples {
+  flex_data {
+    flex_index: 6
+    flex_little: 86
+    flex_middle: 0
+    flex_ring: 84
+    flex_thumb: 87
+  }
+  imu_data {
+    quat_w: 8177
+    quat_x: 8177
+    quat_y: -5954
+    quat_z: -9863
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@9877436
+letter: "k"
+samples {
+  flex_data {
+    flex_index: 6
+    flex_little: 85
+    flex_middle: 21
+    flex_ring: 83
+    flex_thumb: 90
+  }
+  imu_data {
+    quat_w: 7589
+    quat_x: 7589
+    quat_y: -5817
+    quat_z: -9534
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@61f333c6
+letter: "k"
+samples {
+  flex_data {
+    flex_index: 6
+    flex_little: 84
+    flex_middle: 21
+    flex_ring: 83
+    flex_thumb: 90
+  }
+  imu_data {
+    quat_w: 7695
+    quat_x: 7695
+    quat_y: -5670
+    quat_z: -9404
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@4afb47c2
+letter: "k"
+samples {
+  flex_data {
+    flex_index: 6
+    flex_little: 83
+    flex_middle: 22
+    flex_ring: 82
+    flex_thumb: 90
+  }
+  imu_data {
+    quat_w: 7803
+    quat_x: 7803
+    quat_y: -5599
+    quat_z: -9410
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@9bea1d8f
+letter: "k"
+samples {
+  flex_data {
+    flex_index: 6
+    flex_little: 82
+    flex_middle: 22
+    flex_ring: 81
+    flex_thumb: 90
+  }
+  imu_data {
+    quat_w: 7797
+    quat_x: 7797
+    quat_y: -5561
+    quat_z: -9429
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@96ec97e4
+letter: "k"
+samples {
+  flex_data {
+    flex_index: 6
+    flex_little: 82
+    flex_middle: 22
+    flex_ring: 80
+    flex_thumb: 89
+  }
+  imu_data {
+    quat_w: 7721
+    quat_x: 7721
+    quat_y: -5668
+    quat_z: -9625
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: true
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@7d3d4c78
+letter: "l"
+samples {
+  flex_data {
+    flex_index: 9
+    flex_little: 80
+    flex_middle: 90
+    flex_ring: 90
+    flex_thumb: 34
+  }
+  imu_data {
+    quat_w: 6803
+    quat_x: 6803
+    quat_y: -5508
+    quat_z: -9776
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@1dc1f53b
+letter: "l"
+samples {
+  flex_data {
+    flex_index: 8
+    flex_little: 79
+    flex_middle: 90
+    flex_ring: 90
+    flex_thumb: 35
+  }
+  imu_data {
+    quat_w: 6788
+    quat_x: 6788
+    quat_y: -5257
+    quat_z: -9725
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@a4b37f6c
+letter: "l"
+samples {
+  flex_data {
+    flex_index: 8
+    flex_little: 77
+    flex_middle: 90
+    flex_ring: 90
+    flex_thumb: 34
+  }
+  imu_data {
+    quat_w: 6818
+    quat_x: 6818
+    quat_y: -5102
+    quat_z: -9700
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@aac9edf4
+letter: "l"
+samples {
+  flex_data {
+    flex_index: 8
+    flex_little: 77
+    flex_middle: 90
+    flex_ring: 90
+    flex_thumb: 34
+  }
+  imu_data {
+    quat_w: 6874
+    quat_x: 6874
+    quat_y: -4888
+    quat_z: -9626
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@c6be96f2
+letter: "l"
+samples {
+  flex_data {
+    flex_index: 8
+    flex_little: 77
+    flex_middle: 90
+    flex_ring: 90
+    flex_thumb: 35
+  }
+  imu_data {
+    quat_w: 6733
+    quat_x: 6733
+    quat_y: -5029
+    quat_z: -9858
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@fa4b38a2
+letter: "l"
+samples {
+  flex_data {
+    flex_index: 8
+    flex_little: 80
+    flex_middle: 90
+    flex_ring: 87
+    flex_thumb: 31
+  }
+  imu_data {
+    quat_w: 7206
+    quat_x: 7206
+    quat_y: -5447
+    quat_z: -9150
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@2758cdcc
+letter: "l"
+samples {
+  flex_data {
+    flex_index: 8
+    flex_little: 78
+    flex_middle: 87
+    flex_ring: 84
+    flex_thumb: 31
+  }
+  imu_data {
+    quat_w: 7284
+    quat_x: 7284
+    quat_y: -5103
+    quat_z: -9100
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@d4650b23
+letter: "l"
+samples {
+  flex_data {
+    flex_index: 7
+    flex_little: 77
+    flex_middle: 87
+    flex_ring: 84
+    flex_thumb: 31
+  }
+  imu_data {
+    quat_w: 7178
+    quat_x: 7178
+    quat_y: -5111
+    quat_z: -9351
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@ca542de2
+letter: "l"
+samples {
+  flex_data {
+    flex_index: 7
+    flex_little: 77
+    flex_middle: 86
+    flex_ring: 83
+    flex_thumb: 31
+  }
+  imu_data {
+    quat_w: 7235
+    quat_x: 7235
+    quat_y: -4983
+    quat_z: -9364
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@a360854f
+letter: "l"
+samples {
+  flex_data {
+    flex_index: 8
+    flex_little: 77
+    flex_middle: 86
+    flex_ring: 82
+    flex_thumb: 31
+  }
+  imu_data {
+    quat_w: 7312
+    quat_x: 7312
+    quat_y: -4944
+    quat_z: -9284
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@a45eb946
+letter: "m"
+samples {
+  flex_data {
+    flex_index: 79
+    flex_little: 66
+    flex_middle: 78
+    flex_ring: 78
+    flex_thumb: 90
+  }
+  imu_data {
+    quat_w: 7094
+    quat_x: 7094
+    quat_y: -7607
+    quat_z: -10104
+  }
+  sample_id: 1
+  touch_data {
+    touch1: true
+    touch10: false
+    touch11: false
+    touch12: true
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@c0d2ec2
+letter: "m"
+samples {
+  flex_data {
+    flex_index: 78
+    flex_little: 65
+    flex_middle: 78
+    flex_ring: 77
+    flex_thumb: 90
+  }
+  imu_data {
+    quat_w: 7159
+    quat_x: 7159
+    quat_y: -7591
+    quat_z: -9963
+  }
+  sample_id: 1
+  touch_data {
+    touch1: true
+    touch10: false
+    touch11: false
+    touch12: true
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@32105ef5
+letter: "m"
+samples {
+  flex_data {
+    flex_index: 77
+    flex_little: 64
+    flex_middle: 78
+    flex_ring: 76
+    flex_thumb: 88
+  }
+  imu_data {
+    quat_w: 7156
+    quat_x: 7156
+    quat_y: -7489
+    quat_z: -9935
+  }
+  sample_id: 1
+  touch_data {
+    touch1: true
+    touch10: false
+    touch11: false
+    touch12: true
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@70707da7
+letter: "m"
+samples {
+  flex_data {
+    flex_index: 75
+    flex_little: 63
+    flex_middle: 76
+    flex_ring: 76
+    flex_thumb: 87
+  }
+  imu_data {
+    quat_w: 4371
+    quat_x: 4371
+    quat_y: -6845
+    quat_z: -11571
+  }
+  sample_id: 1
+  touch_data {
+    touch1: true
+    touch10: false
+    touch11: false
+    touch12: true
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@757fdb11
+letter: "m"
+samples {
+  flex_data {
+    flex_index: 83
+    flex_little: 70
+    flex_middle: 81
+    flex_ring: 80
+    flex_thumb: 90
+  }
+  imu_data {
+    quat_w: 6663
+    quat_x: 6663
+    quat_y: -6991
+    quat_z: -10326
+  }
+  sample_id: 1
+  touch_data {
+    touch1: true
+    touch10: false
+    touch11: false
+    touch12: true
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@6ced3723
+letter: "m"
+samples {
+  flex_data {
+    flex_index: 80
+    flex_little: 67
+    flex_middle: 80
+    flex_ring: 77
+    flex_thumb: 90
+  }
+  imu_data {
+    quat_w: 6707
+    quat_x: 6707
+    quat_y: -6923
+    quat_z: -10190
+  }
+  sample_id: 1
+  touch_data {
+    touch1: true
+    touch10: false
+    touch11: false
+    touch12: true
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@a7b30dcf
+letter: "m"
+samples {
+  flex_data {
+    flex_index: 79
+    flex_little: 67
+    flex_middle: 80
+    flex_ring: 76
+    flex_thumb: 90
+  }
+  imu_data {
+    quat_w: 6778
+    quat_x: 6778
+    quat_y: -6867
+    quat_z: -10074
+  }
+  sample_id: 1
+  touch_data {
+    touch1: true
+    touch10: false
+    touch11: false
+    touch12: true
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@23af446a
+letter: "m"
+samples {
+  flex_data {
+    flex_index: 78
+    flex_little: 66
+    flex_middle: 79
+    flex_ring: 75
+    flex_thumb: 90
+  }
+  imu_data {
+    quat_w: 6837
+    quat_x: 6837
+    quat_y: -6760
+    quat_z: -10072
+  }
+  sample_id: 1
+  touch_data {
+    touch1: true
+    touch10: false
+    touch11: false
+    touch12: true
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@9f1f2f9f
+letter: "m"
+samples {
+  flex_data {
+    flex_index: 77
+    flex_little: 65
+    flex_middle: 79
+    flex_ring: 75
+    flex_thumb: 90
+  }
+  imu_data {
+    quat_w: 6943
+    quat_x: 6943
+    quat_y: -6726
+    quat_z: -9975
+  }
+  sample_id: 1
+  touch_data {
+    touch1: true
+    touch10: false
+    touch11: false
+    touch12: true
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@9084269b
+letter: "m"
+samples {
+  flex_data {
+    flex_index: 77
+    flex_little: 64
+    flex_middle: 79
+    flex_ring: 74
+    flex_thumb: 89
+  }
+  imu_data {
+    quat_w: 6996
+    quat_x: 6996
+    quat_y: -6687
+    quat_z: -9937
+  }
+  sample_id: 1
+  touch_data {
+    touch1: true
+    touch10: false
+    touch11: false
+    touch12: true
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@324f1c08
+letter: "n"
+samples {
+  flex_data {
+    flex_index: 77
+    flex_little: 86
+    flex_middle: 73
+    flex_ring: 80
+    flex_thumb: 86
+  }
+  imu_data {
+    quat_w: 7443
+    quat_x: 7443
+    quat_y: -7170
+    quat_z: -10139
+  }
+  sample_id: 1
+  touch_data {
+    touch1: true
+    touch10: false
+    touch11: false
+    touch12: true
+    touch2: true
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@994e9277
+letter: "n"
+samples {
+  flex_data {
+    flex_index: 74
+    flex_little: 85
+    flex_middle: 72
+    flex_ring: 79
+    flex_thumb: 84
+  }
+  imu_data {
+    quat_w: 7502
+    quat_x: 7502
+    quat_y: -7068
+    quat_z: -10048
+  }
+  sample_id: 1
+  touch_data {
+    touch1: true
+    touch10: false
+    touch11: false
+    touch12: true
+    touch2: true
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@3e7c7c10
+letter: "n"
+samples {
+  flex_data {
+    flex_index: 73
+    flex_little: 83
+    flex_middle: 71
+    flex_ring: 78
+    flex_thumb: 83
+  }
+  imu_data {
+    quat_w: 7457
+    quat_x: 7457
+    quat_y: -7126
+    quat_z: -10069
+  }
+  sample_id: 1
+  touch_data {
+    touch1: true
+    touch10: false
+    touch11: false
+    touch12: true
+    touch2: true
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@913e43b
+letter: "n"
+samples {
+  flex_data {
+    flex_index: 73
+    flex_little: 85
+    flex_middle: 71
+    flex_ring: 78
+    flex_thumb: 81
+  }
+  imu_data {
+    quat_w: 7455
+    quat_x: 7455
+    quat_y: -7136
+    quat_z: -10056
+  }
+  sample_id: 1
+  touch_data {
+    touch1: true
+    touch10: false
+    touch11: false
+    touch12: true
+    touch2: true
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@d5d1f669
+letter: "n"
+samples {
+  flex_data {
+    flex_index: 72
+    flex_little: 83
+    flex_middle: 71
+    flex_ring: 77
+    flex_thumb: 82
+  }
+  imu_data {
+    quat_w: 7445
+    quat_x: 7445
+    quat_y: -7126
+    quat_z: -10081
+  }
+  sample_id: 1
+  touch_data {
+    touch1: true
+    touch10: false
+    touch11: false
+    touch12: true
+    touch2: true
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@dcaee429
+letter: "n"
+samples {
+  flex_data {
+    flex_index: 84
+    flex_little: 83
+    flex_middle: 80
+    flex_ring: 86
+    flex_thumb: 85
+  }
+  imu_data {
+    quat_w: 7557
+    quat_x: 7557
+    quat_y: -7933
+    quat_z: -9831
+  }
+  sample_id: 1
+  touch_data {
+    touch1: true
+    touch10: false
+    touch11: false
+    touch12: true
+    touch2: true
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@ea251630
+letter: "n"
+samples {
+  flex_data {
+    flex_index: 80
+    flex_little: 82
+    flex_middle: 78
+    flex_ring: 85
+    flex_thumb: 82
+  }
+  imu_data {
+    quat_w: 7572
+    quat_x: 7572
+    quat_y: -7569
+    quat_z: -9935
+  }
+  sample_id: 1
+  touch_data {
+    touch1: true
+    touch10: false
+    touch11: false
+    touch12: true
+    touch2: true
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@42e9791a
+letter: "n"
+samples {
+  flex_data {
+    flex_index: 79
+    flex_little: 80
+    flex_middle: 77
+    flex_ring: 84
+    flex_thumb: 82
+  }
+  imu_data {
+    quat_w: 7639
+    quat_x: 7639
+    quat_y: -7480
+    quat_z: -9923
+  }
+  sample_id: 1
+  touch_data {
+    touch1: true
+    touch10: false
+    touch11: false
+    touch12: true
+    touch2: true
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@316d2f28
+letter: "n"
+samples {
+  flex_data {
+    flex_index: 79
+    flex_little: 82
+    flex_middle: 77
+    flex_ring: 84
+    flex_thumb: 79
+  }
+  imu_data {
+    quat_w: 7588
+    quat_x: 7588
+    quat_y: -7438
+    quat_z: -9952
+  }
+  sample_id: 1
+  touch_data {
+    touch1: true
+    touch10: false
+    touch11: false
+    touch12: true
+    touch2: true
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@404deb6
+letter: "n"
+samples {
+  flex_data {
+    flex_index: 78
+    flex_little: 81
+    flex_middle: 76
+    flex_ring: 84
+    flex_thumb: 79
+  }
+  imu_data {
+    quat_w: 7554
+    quat_x: 7554
+    quat_y: -7457
+    quat_z: -9956
+  }
+  sample_id: 1
+  touch_data {
+    touch1: true
+    touch10: false
+    touch11: false
+    touch12: true
+    touch2: true
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@876aa0c7
+letter: "o"
+samples {
+  flex_data {
+    flex_index: 67
+    flex_little: 50
+    flex_middle: 74
+    flex_ring: 55
+    flex_thumb: 76
+  }
+  imu_data {
+    quat_w: 9287
+    quat_x: 9287
+    quat_y: -3777
+    quat_z: -6074
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: true
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@3652cfae
+letter: "o"
+samples {
+  flex_data {
+    flex_index: 66
+    flex_little: 50
+    flex_middle: 74
+    flex_ring: 55
+    flex_thumb: 75
+  }
+  imu_data {
+    quat_w: 9247
+    quat_x: 9247
+    quat_y: -3639
+    quat_z: -6075
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: true
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@85f0c22a
+letter: "o"
+samples {
+  flex_data {
+    flex_index: 65
+    flex_little: 50
+    flex_middle: 73
+    flex_ring: 54
+    flex_thumb: 74
+  }
+  imu_data {
+    quat_w: 9221
+    quat_x: 9221
+    quat_y: -3561
+    quat_z: -6077
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: true
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@279f0c5b
+letter: "o"
+samples {
+  flex_data {
+    flex_index: 65
+    flex_little: 49
+    flex_middle: 73
+    flex_ring: 55
+    flex_thumb: 74
+  }
+  imu_data {
+    quat_w: 9220
+    quat_x: 9220
+    quat_y: -3520
+    quat_z: -6011
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: true
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@cbd17c97
+letter: "o"
+samples {
+  flex_data {
+    flex_index: 65
+    flex_little: 49
+    flex_middle: 73
+    flex_ring: 54
+    flex_thumb: 73
+  }
+  imu_data {
+    quat_w: 9169
+    quat_x: 9169
+    quat_y: -3380
+    quat_z: -6059
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: true
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@95bd28ba
+letter: "o"
+samples {
+  flex_data {
+    flex_index: 66
+    flex_little: 58
+    flex_middle: 76
+    flex_ring: 62
+    flex_thumb: 79
+  }
+  imu_data {
+    quat_w: 9588
+    quat_x: 9588
+    quat_y: -2855
+    quat_z: -4864
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@f7b23a01
+letter: "o"
+samples {
+  flex_data {
+    flex_index: 65
+    flex_little: 55
+    flex_middle: 75
+    flex_ring: 60
+    flex_thumb: 77
+  }
+  imu_data {
+    quat_w: 9435
+    quat_x: 9435
+    quat_y: -2857
+    quat_z: -5092
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@c99ac815
+letter: "o"
+samples {
+  flex_data {
+    flex_index: 64
+    flex_little: 54
+    flex_middle: 75
+    flex_ring: 60
+    flex_thumb: 77
+  }
+  imu_data {
+    quat_w: 9350
+    quat_x: 9350
+    quat_y: -2734
+    quat_z: -5187
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@109aaf79
+letter: "o"
+samples {
+  flex_data {
+    flex_index: 63
+    flex_little: 54
+    flex_middle: 75
+    flex_ring: 60
+    flex_thumb: 77
+  }
+  imu_data {
+    quat_w: 9351
+    quat_x: 9351
+    quat_y: -2710
+    quat_z: -5172
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@5d3e893e
+letter: "o"
+samples {
+  flex_data {
+    flex_index: 63
+    flex_little: 54
+    flex_middle: 74
+    flex_ring: 59
+    flex_thumb: 76
+  }
+  imu_data {
+    quat_w: 9342
+    quat_x: 9342
+    quat_y: -2692
+    quat_z: -5198
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: true
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@155a111a
+letter: "p"
+samples {
+  flex_data {
+    flex_index: 4
+    flex_little: 78
+    flex_middle: 13
+    flex_ring: 86
+    flex_thumb: 90
+  }
+  imu_data {
+    quat_w: -5103
+    quat_x: -5103
+    quat_y: 5380
+    quat_z: -12412
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: true
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@d5bec23c
+letter: "p"
+samples {
+  flex_data {
+    flex_index: 4
+    flex_little: 77
+    flex_middle: 14
+    flex_ring: 84
+    flex_thumb: 90
+  }
+  imu_data {
+    quat_w: -5104
+    quat_x: -5104
+    quat_y: 5515
+    quat_z: -12293
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: true
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@15a0754
+letter: "p"
+samples {
+  flex_data {
+    flex_index: 4
+    flex_little: 75
+    flex_middle: 15
+    flex_ring: 84
+    flex_thumb: 90
+  }
+  imu_data {
+    quat_w: -5040
+    quat_x: -5040
+    quat_y: 5494
+    quat_z: -12271
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: true
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@fbb09129
+letter: "p"
+samples {
+  flex_data {
+    flex_index: 4
+    flex_little: 75
+    flex_middle: 16
+    flex_ring: 84
+    flex_thumb: 90
+  }
+  imu_data {
+    quat_w: -4941
+    quat_x: -4941
+    quat_y: 5416
+    quat_z: -12255
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: true
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@8585d95c
+letter: "p"
+samples {
+  flex_data {
+    flex_index: 4
+    flex_little: 75
+    flex_middle: 15
+    flex_ring: 83
+    flex_thumb: 90
+  }
+  imu_data {
+    quat_w: -4981
+    quat_x: -4981
+    quat_y: 5457
+    quat_z: -12223
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: true
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@4025826a
+letter: "p"
+samples {
+  flex_data {
+    flex_index: 4
+    flex_little: 77
+    flex_middle: 9
+    flex_ring: 82
+    flex_thumb: 88
+  }
+  imu_data {
+    quat_w: -5055
+    quat_x: -5055
+    quat_y: 4493
+    quat_z: -12506
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: true
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@17b4a180
+letter: "p"
+samples {
+  flex_data {
+    flex_index: 4
+    flex_little: 75
+    flex_middle: 11
+    flex_ring: 80
+    flex_thumb: 87
+  }
+  imu_data {
+    quat_w: -5051
+    quat_x: -5051
+    quat_y: 4547
+    quat_z: -12515
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: true
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@b6ad6905
+letter: "p"
+samples {
+  flex_data {
+    flex_index: 4
+    flex_little: 73
+    flex_middle: 11
+    flex_ring: 80
+    flex_thumb: 87
+  }
+  imu_data {
+    quat_w: -4919
+    quat_x: -4919
+    quat_y: 4484
+    quat_z: -12501
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: true
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@2d77051e
+letter: "p"
+samples {
+  flex_data {
+    flex_index: 4
+    flex_little: 73
+    flex_middle: 10
+    flex_ring: 79
+    flex_thumb: 86
+  }
+  imu_data {
+    quat_w: -4867
+    quat_x: -4867
+    quat_y: 4341
+    quat_z: -12490
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: true
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@f6a4995b
+letter: "p"
+samples {
+  flex_data {
+    flex_index: 5
+    flex_little: 72
+    flex_middle: 9
+    flex_ring: 78
+    flex_thumb: 86
+  }
+  imu_data {
+    quat_w: -4825
+    quat_x: -4825
+    quat_y: 4213
+    quat_z: -12467
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: true
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@ef77d62c
+letter: "q"
+samples {
+  flex_data {
+    flex_index: 8
+    flex_little: 86
+    flex_middle: 87
+    flex_ring: 90
+    flex_thumb: 60
+  }
+  imu_data {
+    quat_w: -3677
+    quat_x: -3677
+    quat_y: 4683
+    quat_z: -12898
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@59a92823
+letter: "q"
+samples {
+  flex_data {
+    flex_index: 8
+    flex_little: 84
+    flex_middle: 86
+    flex_ring: 88
+    flex_thumb: 61
+  }
+  imu_data {
+    quat_w: -3695
+    quat_x: -3695
+    quat_y: 4840
+    quat_z: -12712
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@46b18291
+letter: "q"
+samples {
+  flex_data {
+    flex_index: 8
+    flex_little: 83
+    flex_middle: 86
+    flex_ring: 87
+    flex_thumb: 62
+  }
+  imu_data {
+    quat_w: -3800
+    quat_x: -3800
+    quat_y: 4963
+    quat_z: -12610
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@d1b77893
+letter: "q"
+samples {
+  flex_data {
+    flex_index: 8
+    flex_little: 82
+    flex_middle: 86
+    flex_ring: 86
+    flex_thumb: 62
+  }
+  imu_data {
+    quat_w: -3813
+    quat_x: -3813
+    quat_y: 5031
+    quat_z: -12560
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@c576e210
+letter: "q"
+samples {
+  flex_data {
+    flex_index: 8
+    flex_little: 81
+    flex_middle: 86
+    flex_ring: 86
+    flex_thumb: 62
+  }
+  imu_data {
+    quat_w: -3864
+    quat_x: -3864
+    quat_y: 5094
+    quat_z: -12499
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@96243271
+letter: "q"
+samples {
+  flex_data {
+    flex_index: 8
+    flex_little: 75
+    flex_middle: 88
+    flex_ring: 88
+    flex_thumb: 53
+  }
+  imu_data {
+    quat_w: -3458
+    quat_x: -3458
+    quat_y: 4368
+    quat_z: -12651
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@8f1f44d0
+letter: "q"
+samples {
+  flex_data {
+    flex_index: 9
+    flex_little: 74
+    flex_middle: 87
+    flex_ring: 86
+    flex_thumb: 54
+  }
+  imu_data {
+    quat_w: -3519
+    quat_x: -3519
+    quat_y: 4408
+    quat_z: -12484
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@692c4913
+letter: "q"
+samples {
+  flex_data {
+    flex_index: 9
+    flex_little: 73
+    flex_middle: 86
+    flex_ring: 86
+    flex_thumb: 55
+  }
+  imu_data {
+    quat_w: -3520
+    quat_x: -3520
+    quat_y: 4520
+    quat_z: -12386
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@87c1db05
+letter: "q"
+samples {
+  flex_data {
+    flex_index: 9
+    flex_little: 73
+    flex_middle: 86
+    flex_ring: 85
+    flex_thumb: 55
+  }
+  imu_data {
+    quat_w: -3546
+    quat_x: -3546
+    quat_y: 4539
+    quat_z: -12330
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@8a5b993
+letter: "q"
+samples {
+  flex_data {
+    flex_index: 9
+    flex_little: 73
+    flex_middle: 85
+    flex_ring: 84
+    flex_thumb: 55
+  }
+  imu_data {
+    quat_w: -3550
+    quat_x: -3550
+    quat_y: 4473
+    quat_z: -12348
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@cf82e476
+letter: "r"
+samples {
+  flex_data {
+    flex_index: 8
+    flex_little: 82
+    flex_middle: 0
+    flex_ring: 90
+    flex_thumb: 88
+  }
+  imu_data {
+    quat_w: 5696
+    quat_x: 5696
+    quat_y: -6595
+    quat_z: -11994
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: true
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@1dfdc2e4
+letter: "r"
+samples {
+  flex_data {
+    flex_index: 8
+    flex_little: 80
+    flex_middle: 0
+    flex_ring: 90
+    flex_thumb: 87
+  }
+  imu_data {
+    quat_w: 5677
+    quat_x: 5677
+    quat_y: -6448
+    quat_z: -12090
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: true
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@cfaf617a
+letter: "r"
+samples {
+  flex_data {
+    flex_index: 8
+    flex_little: 80
+    flex_middle: 0
+    flex_ring: 90
+    flex_thumb: 87
+  }
+  imu_data {
+    quat_w: 5604
+    quat_x: 5604
+    quat_y: -6430
+    quat_z: -12128
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: true
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@32cb8c97
+letter: "r"
+samples {
+  flex_data {
+    flex_index: 8
+    flex_little: 80
+    flex_middle: 0
+    flex_ring: 90
+    flex_thumb: 87
+  }
+  imu_data {
+    quat_w: 5580
+    quat_x: 5580
+    quat_y: -6478
+    quat_z: -12103
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: true
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@b540afce
+letter: "r"
+samples {
+  flex_data {
+    flex_index: 8
+    flex_little: 79
+    flex_middle: 0
+    flex_ring: 90
+    flex_thumb: 87
+  }
+  imu_data {
+    quat_w: 5515
+    quat_x: 5515
+    quat_y: -6451
+    quat_z: -12176
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: true
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@5c65e0a4
+letter: "r"
+samples {
+  flex_data {
+    flex_index: 7
+    flex_little: 79
+    flex_middle: 0
+    flex_ring: 90
+    flex_thumb: 87
+  }
+  imu_data {
+    quat_w: 5716
+    quat_x: 5716
+    quat_y: -6510
+    quat_z: -12094
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@6ea6c52b
+letter: "r"
+samples {
+  flex_data {
+    flex_index: 7
+    flex_little: 79
+    flex_middle: 0
+    flex_ring: 90
+    flex_thumb: 87
+  }
+  imu_data {
+    quat_w: 5807
+    quat_x: 5807
+    quat_y: -6257
+    quat_z: -12038
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@94cf41dc
+letter: "r"
+samples {
+  flex_data {
+    flex_index: 7
+    flex_little: 79
+    flex_middle: 0
+    flex_ring: 90
+    flex_thumb: 87
+  }
+  imu_data {
+    quat_w: 5896
+    quat_x: 5896
+    quat_y: -6223
+    quat_z: -11785
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@c73d8e53
+letter: "r"
+samples {
+  flex_data {
+    flex_index: 7
+    flex_little: 79
+    flex_middle: 0
+    flex_ring: 90
+    flex_thumb: 87
+  }
+  imu_data {
+    quat_w: 6013
+    quat_x: 6013
+    quat_y: -6126
+    quat_z: -11761
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@4345f2bb
+letter: "r"
+samples {
+  flex_data {
+    flex_index: 7
+    flex_little: 78
+    flex_middle: 0
+    flex_ring: 90
+    flex_thumb: 86
+  }
+  imu_data {
+    quat_w: 5988
+    quat_x: 5988
+    quat_y: -6092
+    quat_z: -11763
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@bf6fe907
+letter: "s"
+samples {
+  flex_data {
+    flex_index: 90
+    flex_little: 77
+    flex_middle: 90
+    flex_ring: 90
+    flex_thumb: 90
+  }
+  imu_data {
+    quat_w: 5584
+    quat_x: 5584
+    quat_y: -5659
+    quat_z: -11621
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@e425d7d
+letter: "s"
+samples {
+  flex_data {
+    flex_index: 90
+    flex_little: 76
+    flex_middle: 90
+    flex_ring: 90
+    flex_thumb: 90
+  }
+  imu_data {
+    quat_w: 5573
+    quat_x: 5573
+    quat_y: -5670
+    quat_z: -11649
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@eb067a7e
+letter: "s"
+samples {
+  flex_data {
+    flex_index: 90
+    flex_little: 76
+    flex_middle: 90
+    flex_ring: 90
+    flex_thumb: 90
+  }
+  imu_data {
+    quat_w: 5539
+    quat_x: 5539
+    quat_y: -5678
+    quat_z: -11616
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@93ebb700
+letter: "s"
+samples {
+  flex_data {
+    flex_index: 90
+    flex_little: 76
+    flex_middle: 90
+    flex_ring: 90
+    flex_thumb: 90
+  }
+  imu_data {
+    quat_w: 5427
+    quat_x: 5427
+    quat_y: -5656
+    quat_z: -11636
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@d5dbde1
+letter: "s"
+samples {
+  flex_data {
+    flex_index: 90
+    flex_little: 75
+    flex_middle: 90
+    flex_ring: 90
+    flex_thumb: 90
+  }
+  imu_data {
+    quat_w: 5380
+    quat_x: 5380
+    quat_y: -5559
+    quat_z: -11717
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@ea7efe6a
+letter: "s"
+samples {
+  flex_data {
+    flex_index: 90
+    flex_little: 72
+    flex_middle: 90
+    flex_ring: 90
+    flex_thumb: 90
+  }
+  imu_data {
+    quat_w: 5465
+    quat_x: 5465
+    quat_y: -6029
+    quat_z: -11017
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@18a10905
+letter: "s"
+samples {
+  flex_data {
+    flex_index: 90
+    flex_little: 71
+    flex_middle: 90
+    flex_ring: 90
+    flex_thumb: 90
+  }
+  imu_data {
+    quat_w: 5391
+    quat_x: 5391
+    quat_y: -5848
+    quat_z: -11242
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@a624c69d
+letter: "s"
+samples {
+  flex_data {
+    flex_index: 89
+    flex_little: 71
+    flex_middle: 90
+    flex_ring: 90
+    flex_thumb: 90
+  }
+  imu_data {
+    quat_w: 5367
+    quat_x: 5367
+    quat_y: -5850
+    quat_z: -11327
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@d249ff32
+letter: "s"
+samples {
+  flex_data {
+    flex_index: 88
+    flex_little: 70
+    flex_middle: 90
+    flex_ring: 90
+    flex_thumb: 89
+  }
+  imu_data {
+    quat_w: 5294
+    quat_x: 5294
+    quat_y: -5829
+    quat_z: -11278
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@50f8bb66
+letter: "s"
+samples {
+  flex_data {
+    flex_index: 87
+    flex_little: 70
+    flex_middle: 90
+    flex_ring: 90
+    flex_thumb: 89
+  }
+  imu_data {
+    quat_w: 5248
+    quat_x: 5248
+    quat_y: -5759
+    quat_z: -11355
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@6a2cc5e8
+letter: "t"
+samples {
+  flex_data {
+    flex_index: 63
+    flex_little: 83
+    flex_middle: 90
+    flex_ring: 90
+    flex_thumb: 82
+  }
+  imu_data {
+    quat_w: 6823
+    quat_x: 6823
+    quat_y: -6530
+    quat_z: -10579
+  }
+  sample_id: 1
+  touch_data {
+    touch1: true
+    touch10: true
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@4fa8d708
+letter: "t"
+samples {
+  flex_data {
+    flex_index: 63
+    flex_little: 82
+    flex_middle: 90
+    flex_ring: 90
+    flex_thumb: 81
+  }
+  imu_data {
+    quat_w: 6729
+    quat_x: 6729
+    quat_y: -6396
+    quat_z: -10643
+  }
+  sample_id: 1
+  touch_data {
+    touch1: true
+    touch10: true
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@d0ece643
+letter: "t"
+samples {
+  flex_data {
+    flex_index: 63
+    flex_little: 82
+    flex_middle: 90
+    flex_ring: 90
+    flex_thumb: 82
+  }
+  imu_data {
+    quat_w: 6698
+    quat_x: 6698
+    quat_y: -6363
+    quat_z: -10716
+  }
+  sample_id: 1
+  touch_data {
+    touch1: true
+    touch10: true
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@c15b4fea
+letter: "t"
+samples {
+  flex_data {
+    flex_index: 62
+    flex_little: 82
+    flex_middle: 90
+    flex_ring: 90
+    flex_thumb: 82
+  }
+  imu_data {
+    quat_w: 6689
+    quat_x: 6689
+    quat_y: -6312
+    quat_z: -10721
+  }
+  sample_id: 1
+  touch_data {
+    touch1: true
+    touch10: true
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@8fe68dee
+letter: "t"
+samples {
+  flex_data {
+    flex_index: 62
+    flex_little: 82
+    flex_middle: 90
+    flex_ring: 90
+    flex_thumb: 82
+  }
+  imu_data {
+    quat_w: 6688
+    quat_x: 6688
+    quat_y: -6287
+    quat_z: -10708
+  }
+  sample_id: 1
+  touch_data {
+    touch1: true
+    touch10: true
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@8f054ec4
+letter: "t"
+samples {
+  flex_data {
+    flex_index: 64
+    flex_little: 79
+    flex_middle: 90
+    flex_ring: 90
+    flex_thumb: 83
+  }
+  imu_data {
+    quat_w: 7281
+    quat_x: 7281
+    quat_y: -5703
+    quat_z: -10794
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: true
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@53ebfa03
+letter: "t"
+samples {
+  flex_data {
+    flex_index: 62
+    flex_little: 78
+    flex_middle: 90
+    flex_ring: 90
+    flex_thumb: 83
+  }
+  imu_data {
+    quat_w: 7205
+    quat_x: 7205
+    quat_y: -5595
+    quat_z: -10780
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: true
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@f88df6bb
+letter: "t"
+samples {
+  flex_data {
+    flex_index: 61
+    flex_little: 78
+    flex_middle: 90
+    flex_ring: 90
+    flex_thumb: 84
+  }
+  imu_data {
+    quat_w: 7161
+    quat_x: 7161
+    quat_y: -5534
+    quat_z: -10737
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: true
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@c62408be
+letter: "t"
+samples {
+  flex_data {
+    flex_index: 62
+    flex_little: 78
+    flex_middle: 90
+    flex_ring: 90
+    flex_thumb: 81
+  }
+  imu_data {
+    quat_w: 7126
+    quat_x: 7126
+    quat_y: -5470
+    quat_z: -10794
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: true
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@73bb6b92
+letter: "t"
+samples {
+  flex_data {
+    flex_index: 62
+    flex_little: 77
+    flex_middle: 90
+    flex_ring: 90
+    flex_thumb: 81
+  }
+  imu_data {
+    quat_w: 7240
+    quat_x: 7240
+    quat_y: -5421
+    quat_z: -10780
+  }
+  sample_id: 1
+  touch_data {
+    touch1: true
+    touch10: true
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@e3661432
+letter: "u"
+samples {
+  flex_data {
+    flex_index: 3
+    flex_little: 78
+    flex_middle: 0
+    flex_ring: 90
+    flex_thumb: 85
+  }
+  imu_data {
+    quat_w: 5854
+    quat_x: 5854
+    quat_y: -5532
+    quat_z: -11480
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@b9aa7827
+letter: "u"
+samples {
+  flex_data {
+    flex_index: 3
+    flex_little: 78
+    flex_middle: 0
+    flex_ring: 90
+    flex_thumb: 85
+  }
+  imu_data {
+    quat_w: 5898
+    quat_x: 5898
+    quat_y: -5510
+    quat_z: -11485
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@8b218383
+letter: "u"
+samples {
+  flex_data {
+    flex_index: 3
+    flex_little: 78
+    flex_middle: 0
+    flex_ring: 90
+    flex_thumb: 85
+  }
+  imu_data {
+    quat_w: 6076
+    quat_x: 6076
+    quat_y: -5493
+    quat_z: -11362
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@e2926582
+letter: "u"
+samples {
+  flex_data {
+    flex_index: 3
+    flex_little: 77
+    flex_middle: 0
+    flex_ring: 90
+    flex_thumb: 85
+  }
+  imu_data {
+    quat_w: 6131
+    quat_x: 6131
+    quat_y: -5438
+    quat_z: -11295
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@51e5097f
+letter: "u"
+samples {
+  flex_data {
+    flex_index: 3
+    flex_little: 78
+    flex_middle: 0
+    flex_ring: 90
+    flex_thumb: 85
+  }
+  imu_data {
+    quat_w: 6218
+    quat_x: 6218
+    quat_y: -5394
+    quat_z: -11241
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@be3615ff
+letter: "u"
+samples {
+  flex_data {
+    flex_index: 4
+    flex_little: 65
+    flex_middle: 0
+    flex_ring: 90
+    flex_thumb: 90
+  }
+  imu_data {
+    quat_w: 6710
+    quat_x: 6710
+    quat_y: -5455
+    quat_z: -10641
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@36829187
+letter: "u"
+samples {
+  flex_data {
+    flex_index: 4
+    flex_little: 64
+    flex_middle: 0
+    flex_ring: 90
+    flex_thumb: 90
+  }
+  imu_data {
+    quat_w: 6732
+    quat_x: 6732
+    quat_y: -5486
+    quat_z: -10661
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@7d883427
+letter: "u"
+samples {
+  flex_data {
+    flex_index: 4
+    flex_little: 64
+    flex_middle: 0
+    flex_ring: 90
+    flex_thumb: 90
+  }
+  imu_data {
+    quat_w: 6817
+    quat_x: 6817
+    quat_y: -5441
+    quat_z: -10580
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@3d42a460
+letter: "u"
+samples {
+  flex_data {
+    flex_index: 4
+    flex_little: 63
+    flex_middle: 0
+    flex_ring: 90
+    flex_thumb: 90
+  }
+  imu_data {
+    quat_w: 6801
+    quat_x: 6801
+    quat_y: -5382
+    quat_z: -10633
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@4c08b7dd
+letter: "u"
+samples {
+  flex_data {
+    flex_index: 4
+    flex_little: 62
+    flex_middle: 0
+    flex_ring: 90
+    flex_thumb: 90
+  }
+  imu_data {
+    quat_w: 6791
+    quat_x: 6791
+    quat_y: -5333
+    quat_z: -10716
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@ca39b5b4
+letter: "v"
+samples {
+  flex_data {
+    flex_index: 8
+    flex_little: 79
+    flex_middle: 0
+    flex_ring: 89
+    flex_thumb: 78
+  }
+  imu_data {
+    quat_w: 5431
+    quat_x: 5431
+    quat_y: -5598
+    quat_z: -11853
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@450accba
+letter: "v"
+samples {
+  flex_data {
+    flex_index: 7
+    flex_little: 79
+    flex_middle: 0
+    flex_ring: 88
+    flex_thumb: 78
+  }
+  imu_data {
+    quat_w: 5176
+    quat_x: 5176
+    quat_y: -5591
+    quat_z: -11838
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@2aabeb5b
+letter: "v"
+samples {
+  flex_data {
+    flex_index: 7
+    flex_little: 78
+    flex_middle: 0
+    flex_ring: 87
+    flex_thumb: 78
+  }
+  imu_data {
+    quat_w: 5232
+    quat_x: 5232
+    quat_y: -5618
+    quat_z: -11788
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@a7e692b0
+letter: "v"
+samples {
+  flex_data {
+    flex_index: 7
+    flex_little: 78
+    flex_middle: 0
+    flex_ring: 87
+    flex_thumb: 79
+  }
+  imu_data {
+    quat_w: 5306
+    quat_x: 5306
+    quat_y: -5661
+    quat_z: -11773
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@78a5c728
+letter: "v"
+samples {
+  flex_data {
+    flex_index: 7
+    flex_little: 77
+    flex_middle: 0
+    flex_ring: 87
+    flex_thumb: 79
+  }
+  imu_data {
+    quat_w: 5407
+    quat_x: 5407
+    quat_y: -5767
+    quat_z: -11700
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@dba0d4d5
+letter: "v"
+samples {
+  flex_data {
+    flex_index: 7
+    flex_little: 77
+    flex_middle: 0
+    flex_ring: 90
+    flex_thumb: 81
+  }
+  imu_data {
+    quat_w: 6264
+    quat_x: 6264
+    quat_y: -5163
+    quat_z: -11364
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@1781cfa5
+letter: "v"
+samples {
+  flex_data {
+    flex_index: 7
+    flex_little: 76
+    flex_middle: 0
+    flex_ring: 88
+    flex_thumb: 81
+  }
+  imu_data {
+    quat_w: 6055
+    quat_x: 6055
+    quat_y: -5170
+    quat_z: -11484
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@ea5a675a
+letter: "v"
+samples {
+  flex_data {
+    flex_index: 6
+    flex_little: 76
+    flex_middle: 0
+    flex_ring: 89
+    flex_thumb: 81
+  }
+  imu_data {
+    quat_w: 6081
+    quat_x: 6081
+    quat_y: -5240
+    quat_z: -11441
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@68391ed6
+letter: "v"
+samples {
+  flex_data {
+    flex_index: 7
+    flex_little: 75
+    flex_middle: 0
+    flex_ring: 86
+    flex_thumb: 79
+  }
+  imu_data {
+    quat_w: 6232
+    quat_x: 6232
+    quat_y: -5213
+    quat_z: -11333
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@bfaf9f51
+letter: "v"
+samples {
+  flex_data {
+    flex_index: 7
+    flex_little: 75
+    flex_middle: 0
+    flex_ring: 85
+    flex_thumb: 79
+  }
+  imu_data {
+    quat_w: 6177
+    quat_x: 6177
+    quat_y: -5053
+    quat_z: -11387
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@84766026
+letter: "w"
+samples {
+  flex_data {
+    flex_index: 4
+    flex_little: 80
+    flex_middle: 0
+    flex_ring: 0
+    flex_thumb: 81
+  }
+  imu_data {
+    quat_w: 4925
+    quat_x: 4925
+    quat_y: -6717
+    quat_z: -11608
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@534527b1
+letter: "w"
+samples {
+  flex_data {
+    flex_index: 3
+    flex_little: 77
+    flex_middle: 0
+    flex_ring: 0
+    flex_thumb: 80
+  }
+  imu_data {
+    quat_w: 4948
+    quat_x: 4948
+    quat_y: -6615
+    quat_z: -11700
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@e2b98982
+letter: "w"
+samples {
+  flex_data {
+    flex_index: 3
+    flex_little: 77
+    flex_middle: 0
+    flex_ring: 0
+    flex_thumb: 80
+  }
+  imu_data {
+    quat_w: 5009
+    quat_x: 5009
+    quat_y: -6551
+    quat_z: -11685
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@d0e6856b
+letter: "w"
+samples {
+  flex_data {
+    flex_index: 3
+    flex_little: 77
+    flex_middle: 0
+    flex_ring: 0
+    flex_thumb: 80
+  }
+  imu_data {
+    quat_w: 5035
+    quat_x: 5035
+    quat_y: -6582
+    quat_z: -11617
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@57125470
+letter: "w"
+samples {
+  flex_data {
+    flex_index: 3
+    flex_little: 76
+    flex_middle: 0
+    flex_ring: 0
+    flex_thumb: 80
+  }
+  imu_data {
+    quat_w: 5018
+    quat_x: 5018
+    quat_y: -6502
+    quat_z: -11661
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@12bb2ad
+letter: "w"
+samples {
+  flex_data {
+    flex_index: 4
+    flex_little: 79
+    flex_middle: 0
+    flex_ring: 1
+    flex_thumb: 85
+  }
+  imu_data {
+    quat_w: 5197
+    quat_x: 5197
+    quat_y: -6923
+    quat_z: -10991
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@45b45ed4
+letter: "w"
+samples {
+  flex_data {
+    flex_index: 4
+    flex_little: 77
+    flex_middle: 0
+    flex_ring: 0
+    flex_thumb: 84
+  }
+  imu_data {
+    quat_w: 5122
+    quat_x: 5122
+    quat_y: -6782
+    quat_z: -11195
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@d760e4d5
+letter: "w"
+samples {
+  flex_data {
+    flex_index: 4
+    flex_little: 76
+    flex_middle: 0
+    flex_ring: 3
+    flex_thumb: 83
+  }
+  imu_data {
+    quat_w: 5150
+    quat_x: 5150
+    quat_y: -6731
+    quat_z: -11166
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@c45a6f19
+letter: "w"
+samples {
+  flex_data {
+    flex_index: 4
+    flex_little: 76
+    flex_middle: 0
+    flex_ring: 2
+    flex_thumb: 83
+  }
+  imu_data {
+    quat_w: 5188
+    quat_x: 5188
+    quat_y: -6693
+    quat_z: -11115
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@e6df1ab1
+letter: "w"
+samples {
+  flex_data {
+    flex_index: 3
+    flex_little: 75
+    flex_middle: 0
+    flex_ring: 0
+    flex_thumb: 82
+  }
+  imu_data {
+    quat_w: 5178
+    quat_x: 5178
+    quat_y: -6666
+    quat_z: -11113
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: false
+    touch5: false
+    touch6: true
+    touch7: false
+    touch8: false
+    touch9: false
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@3798f0d5
+letter: "x"
+samples {
+  flex_data {
+    flex_index: 51
+    flex_little: 77
+    flex_middle: 90
+    flex_ring: 90
+    flex_thumb: 82
+  }
+  imu_data {
+    quat_w: 6304
+    quat_x: 6304
+    quat_y: -4306
+    quat_z: -12334
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@d4fce351
+letter: "x"
+samples {
+  flex_data {
+    flex_index: 50
+    flex_little: 77
+    flex_middle: 90
+    flex_ring: 90
+    flex_thumb: 81
+  }
+  imu_data {
+    quat_w: 6367
+    quat_x: 6367
+    quat_y: -4223
+    quat_z: -12293
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@1dd9b4a5
+letter: "x"
+samples {
+  flex_data {
+    flex_index: 50
+    flex_little: 77
+    flex_middle: 90
+    flex_ring: 90
+    flex_thumb: 81
+  }
+  imu_data {
+    quat_w: 6339
+    quat_x: 6339
+    quat_y: -4221
+    quat_z: -12291
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@947f312d
+letter: "x"
+samples {
+  flex_data {
+    flex_index: 49
+    flex_little: 76
+    flex_middle: 90
+    flex_ring: 90
+    flex_thumb: 81
+  }
+  imu_data {
+    quat_w: 6344
+    quat_x: 6344
+    quat_y: -4171
+    quat_z: -12285
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@857f6648
+letter: "x"
+samples {
+  flex_data {
+    flex_index: 49
+    flex_little: 76
+    flex_middle: 90
+    flex_ring: 90
+    flex_thumb: 81
+  }
+  imu_data {
+    quat_w: 6356
+    quat_x: 6356
+    quat_y: -4182
+    quat_z: -12223
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@d04bbf64
+letter: "x"
+samples {
+  flex_data {
+    flex_index: 64
+    flex_little: 71
+    flex_middle: 90
+    flex_ring: 90
+    flex_thumb: 85
+  }
+  imu_data {
+    quat_w: 6960
+    quat_x: 6960
+    quat_y: -4594
+    quat_z: -10985
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@d1d3591e
+letter: "x"
+samples {
+  flex_data {
+    flex_index: 61
+    flex_little: 73
+    flex_middle: 90
+    flex_ring: 90
+    flex_thumb: 83
+  }
+  imu_data {
+    quat_w: 6871
+    quat_x: 6871
+    quat_y: -4634
+    quat_z: -11150
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@19e98351
+letter: "x"
+samples {
+  flex_data {
+    flex_index: 57
+    flex_little: 72
+    flex_middle: 90
+    flex_ring: 89
+    flex_thumb: 83
+  }
+  imu_data {
+    quat_w: 6825
+    quat_x: 6825
+    quat_y: -4461
+    quat_z: -11218
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@833b9373
+letter: "x"
+samples {
+  flex_data {
+    flex_index: 55
+    flex_little: 71
+    flex_middle: 90
+    flex_ring: 89
+    flex_thumb: 83
+  }
+  imu_data {
+    quat_w: 6806
+    quat_x: 6806
+    quat_y: -4388
+    quat_z: -11252
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@688f36ca
+letter: "x"
+samples {
+  flex_data {
+    flex_index: 54
+    flex_little: 70
+    flex_middle: 90
+    flex_ring: 88
+    flex_thumb: 82
+  }
+  imu_data {
+    quat_w: 6764
+    quat_x: 6764
+    quat_y: -4313
+    quat_z: -11280
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@e7882182
+letter: "y"
+samples {
+  flex_data {
+    flex_index: 90
+    flex_little: 3
+    flex_middle: 90
+    flex_ring: 86
+    flex_thumb: 20
+  }
+  imu_data {
+    quat_w: 4867
+    quat_x: 4867
+    quat_y: -4008
+    quat_z: -11889
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@84100d4f
+letter: "y"
+samples {
+  flex_data {
+    flex_index: 90
+    flex_little: 3
+    flex_middle: 90
+    flex_ring: 83
+    flex_thumb: 18
+  }
+  imu_data {
+    quat_w: 4947
+    quat_x: 4947
+    quat_y: -3923
+    quat_z: -11844
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@b409608c
+letter: "y"
+samples {
+  flex_data {
+    flex_index: 90
+    flex_little: 3
+    flex_middle: 90
+    flex_ring: 81
+    flex_thumb: 18
+  }
+  imu_data {
+    quat_w: 5007
+    quat_x: 5007
+    quat_y: -3884
+    quat_z: -11908
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@80a6ebf3
+letter: "y"
+samples {
+  flex_data {
+    flex_index: 90
+    flex_little: 4
+    flex_middle: 90
+    flex_ring: 81
+    flex_thumb: 18
+  }
+  imu_data {
+    quat_w: 4984
+    quat_x: 4984
+    quat_y: -3712
+    quat_z: -11928
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@99d2a359
+letter: "y"
+samples {
+  flex_data {
+    flex_index: 90
+    flex_little: 3
+    flex_middle: 89
+    flex_ring: 80
+    flex_thumb: 18
+  }
+  imu_data {
+    quat_w: 4973
+    quat_x: 4973
+    quat_y: -3663
+    quat_z: -11962
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@7c27729d
+letter: "y"
+samples {
+  flex_data {
+    flex_index: 90
+    flex_little: 13
+    flex_middle: 87
+    flex_ring: 80
+    flex_thumb: 29
+  }
+  imu_data {
+    quat_w: 6900
+    quat_x: 6900
+    quat_y: -5802
+    quat_z: -10592
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@26e64f84
+letter: "y"
+samples {
+  flex_data {
+    flex_index: 90
+    flex_little: 11
+    flex_middle: 86
+    flex_ring: 77
+    flex_thumb: 28
+  }
+  imu_data {
+    quat_w: 6848
+    quat_x: 6848
+    quat_y: -5713
+    quat_z: -10619
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@bb390cc2
+letter: "y"
+samples {
+  flex_data {
+    flex_index: 90
+    flex_little: 11
+    flex_middle: 85
+    flex_ring: 77
+    flex_thumb: 28
+  }
+  imu_data {
+    quat_w: 6734
+    quat_x: 6734
+    quat_y: -5591
+    quat_z: -10742
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@b523facb
+letter: "y"
+samples {
+  flex_data {
+    flex_index: 90
+    flex_little: 11
+    flex_middle: 85
+    flex_ring: 76
+    flex_thumb: 28
+  }
+  imu_data {
+    quat_w: 6750
+    quat_x: 6750
+    quat_y: -5443
+    quat_z: -10724
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}
+# com.example.signbuddy.SignBuddyProto$SBPGestureData@5c2f2afb
+letter: "y"
+samples {
+  flex_data {
+    flex_index: 90
+    flex_little: 11
+    flex_middle: 84
+    flex_ring: 76
+    flex_thumb: 28
+  }
+  imu_data {
+    quat_w: 6709
+    quat_x: 6709
+    quat_y: -5412
+    quat_z: -10804
+  }
+  sample_id: 1
+  touch_data {
+    touch1: false
+    touch10: false
+    touch11: false
+    touch12: false
+    touch2: false
+    touch3: false
+    touch4: true
+    touch5: false
+    touch6: false
+    touch7: false
+    touch8: false
+    touch9: true
+  }
+}

@@ -5,6 +5,7 @@
 #include "common.h"
 #include "crc.h"
 #include "fifo.h"
+#include "imu.h"
 #include "logger.h"
 #include "pb_encode.h"
 #include "sensors.h"
@@ -15,6 +16,7 @@
 
 #define CMD_SAMPLE_STATIC       0x01
 #define CMD_SAMPLE_DYNAMIC      0x02
+#define CMD_RESET_IMU           0x03
 
 #define SYNC                    0x16
 
@@ -71,6 +73,11 @@ static void rx()
     sensors_sample(SAMPLE_DYNAMIC);
     break;
 
+  case CMD_RESET_IMU:
+    LOG_DEBUG("comms: reset imu\r\n");
+    imu_reset();
+    break;
+
   default:
     LOG_DEBUG("comms: unknown cmd\r\n");
     break;
@@ -91,9 +98,10 @@ static void packetize_sample()
   pb_ostream_t stream = pb_ostream_from_buffer((pb_byte_t *) s.packet.msg, MAX_MSG_SIZE);
 
   pb_encode(&stream, &SBPMessage_msg, &s.msg);
+
   s.msg_ready = 0;
   s.packet.header.length = stream.bytes_written;
-  s.packet.header.crc = crc_compute(s.packet.msg, s.packet.header.length);
+  s.packet.header.crc = 0xA5A5A5A5;
   s.packet_ready = 1;
   ingest_packet();
 }

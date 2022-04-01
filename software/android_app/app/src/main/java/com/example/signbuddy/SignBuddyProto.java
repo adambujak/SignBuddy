@@ -1328,58 +1328,40 @@ public final class SignBuddyProto {
         com.google.protobuf.MessageLiteOrBuilder {
 
       /**
-       * <code>required sint32 eul_h = 1;</code>
+       * <code>required sint32 quat_w = 1;</code>
        */
-      boolean hasEulH();
+      boolean hasQuatW();
       /**
-       * <code>required sint32 eul_h = 1;</code>
+       * <code>required sint32 quat_w = 1;</code>
        */
-      int getEulH();
+      int getQuatW();
 
       /**
-       * <code>required sint32 eul_r = 2;</code>
+       * <code>required sint32 quat_x = 2;</code>
        */
-      boolean hasEulR();
+      boolean hasQuatX();
       /**
-       * <code>required sint32 eul_r = 2;</code>
+       * <code>required sint32 quat_x = 2;</code>
        */
-      int getEulR();
+      int getQuatX();
 
       /**
-       * <code>required sint32 eul_p = 3;</code>
+       * <code>required sint32 quat_y = 3;</code>
        */
-      boolean hasEulP();
+      boolean hasQuatY();
       /**
-       * <code>required sint32 eul_p = 3;</code>
+       * <code>required sint32 quat_y = 3;</code>
        */
-      int getEulP();
+      int getQuatY();
 
       /**
-       * <code>required sint32 lin_acc_x = 4;</code>
+       * <code>required sint32 quat_z = 4;</code>
        */
-      boolean hasLinAccX();
+      boolean hasQuatZ();
       /**
-       * <code>required sint32 lin_acc_x = 4;</code>
+       * <code>required sint32 quat_z = 4;</code>
        */
-      int getLinAccX();
-
-      /**
-       * <code>required sint32 lin_acc_y = 5;</code>
-       */
-      boolean hasLinAccY();
-      /**
-       * <code>required sint32 lin_acc_y = 5;</code>
-       */
-      int getLinAccY();
-
-      /**
-       * <code>required sint32 lin_acc_z = 6;</code>
-       */
-      boolean hasLinAccZ();
-      /**
-       * <code>required sint32 lin_acc_z = 6;</code>
-       */
-      int getLinAccZ();
+      int getQuatZ();
     }
     /**
      * Protobuf type {@code SBPSample.IMUData}
@@ -1392,199 +1374,135 @@ public final class SignBuddyProto {
       private IMUData() {
       }
       private int bitField0_;
-      public static final int EUL_H_FIELD_NUMBER = 1;
-      private int eulH_;
+      public static final int QUAT_W_FIELD_NUMBER = 1;
+      private int quatW_;
       /**
-       * <code>required sint32 eul_h = 1;</code>
+       * <code>required sint32 quat_w = 1;</code>
        */
-      public boolean hasEulH() {
+      public boolean hasQuatW() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required sint32 eul_h = 1;</code>
+       * <code>required sint32 quat_w = 1;</code>
        */
-      public int getEulH() {
-        return eulH_;
+      public int getQuatW() {
+        return quatW_;
       }
       /**
-       * <code>required sint32 eul_h = 1;</code>
+       * <code>required sint32 quat_w = 1;</code>
        */
-      private void setEulH(int value) {
+      private void setQuatW(int value) {
         bitField0_ |= 0x00000001;
-        eulH_ = value;
+        quatW_ = value;
       }
       /**
-       * <code>required sint32 eul_h = 1;</code>
+       * <code>required sint32 quat_w = 1;</code>
        */
-      private void clearEulH() {
+      private void clearQuatW() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        eulH_ = 0;
+        quatW_ = 0;
       }
 
-      public static final int EUL_R_FIELD_NUMBER = 2;
-      private int eulR_;
+      public static final int QUAT_X_FIELD_NUMBER = 2;
+      private int quatX_;
       /**
-       * <code>required sint32 eul_r = 2;</code>
+       * <code>required sint32 quat_x = 2;</code>
        */
-      public boolean hasEulR() {
+      public boolean hasQuatX() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>required sint32 eul_r = 2;</code>
+       * <code>required sint32 quat_x = 2;</code>
        */
-      public int getEulR() {
-        return eulR_;
+      public int getQuatX() {
+        return quatX_;
       }
       /**
-       * <code>required sint32 eul_r = 2;</code>
+       * <code>required sint32 quat_x = 2;</code>
        */
-      private void setEulR(int value) {
+      private void setQuatX(int value) {
         bitField0_ |= 0x00000002;
-        eulR_ = value;
+        quatX_ = value;
       }
       /**
-       * <code>required sint32 eul_r = 2;</code>
+       * <code>required sint32 quat_x = 2;</code>
        */
-      private void clearEulR() {
+      private void clearQuatX() {
         bitField0_ = (bitField0_ & ~0x00000002);
-        eulR_ = 0;
+        quatX_ = 0;
       }
 
-      public static final int EUL_P_FIELD_NUMBER = 3;
-      private int eulP_;
+      public static final int QUAT_Y_FIELD_NUMBER = 3;
+      private int quatY_;
       /**
-       * <code>required sint32 eul_p = 3;</code>
+       * <code>required sint32 quat_y = 3;</code>
        */
-      public boolean hasEulP() {
+      public boolean hasQuatY() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>required sint32 eul_p = 3;</code>
+       * <code>required sint32 quat_y = 3;</code>
        */
-      public int getEulP() {
-        return eulP_;
+      public int getQuatY() {
+        return quatY_;
       }
       /**
-       * <code>required sint32 eul_p = 3;</code>
+       * <code>required sint32 quat_y = 3;</code>
        */
-      private void setEulP(int value) {
+      private void setQuatY(int value) {
         bitField0_ |= 0x00000004;
-        eulP_ = value;
+        quatY_ = value;
       }
       /**
-       * <code>required sint32 eul_p = 3;</code>
+       * <code>required sint32 quat_y = 3;</code>
        */
-      private void clearEulP() {
+      private void clearQuatY() {
         bitField0_ = (bitField0_ & ~0x00000004);
-        eulP_ = 0;
+        quatY_ = 0;
       }
 
-      public static final int LIN_ACC_X_FIELD_NUMBER = 4;
-      private int linAccX_;
+      public static final int QUAT_Z_FIELD_NUMBER = 4;
+      private int quatZ_;
       /**
-       * <code>required sint32 lin_acc_x = 4;</code>
+       * <code>required sint32 quat_z = 4;</code>
        */
-      public boolean hasLinAccX() {
+      public boolean hasQuatZ() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
-       * <code>required sint32 lin_acc_x = 4;</code>
+       * <code>required sint32 quat_z = 4;</code>
        */
-      public int getLinAccX() {
-        return linAccX_;
+      public int getQuatZ() {
+        return quatZ_;
       }
       /**
-       * <code>required sint32 lin_acc_x = 4;</code>
+       * <code>required sint32 quat_z = 4;</code>
        */
-      private void setLinAccX(int value) {
+      private void setQuatZ(int value) {
         bitField0_ |= 0x00000008;
-        linAccX_ = value;
+        quatZ_ = value;
       }
       /**
-       * <code>required sint32 lin_acc_x = 4;</code>
+       * <code>required sint32 quat_z = 4;</code>
        */
-      private void clearLinAccX() {
+      private void clearQuatZ() {
         bitField0_ = (bitField0_ & ~0x00000008);
-        linAccX_ = 0;
-      }
-
-      public static final int LIN_ACC_Y_FIELD_NUMBER = 5;
-      private int linAccY_;
-      /**
-       * <code>required sint32 lin_acc_y = 5;</code>
-       */
-      public boolean hasLinAccY() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
-      }
-      /**
-       * <code>required sint32 lin_acc_y = 5;</code>
-       */
-      public int getLinAccY() {
-        return linAccY_;
-      }
-      /**
-       * <code>required sint32 lin_acc_y = 5;</code>
-       */
-      private void setLinAccY(int value) {
-        bitField0_ |= 0x00000010;
-        linAccY_ = value;
-      }
-      /**
-       * <code>required sint32 lin_acc_y = 5;</code>
-       */
-      private void clearLinAccY() {
-        bitField0_ = (bitField0_ & ~0x00000010);
-        linAccY_ = 0;
-      }
-
-      public static final int LIN_ACC_Z_FIELD_NUMBER = 6;
-      private int linAccZ_;
-      /**
-       * <code>required sint32 lin_acc_z = 6;</code>
-       */
-      public boolean hasLinAccZ() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
-      }
-      /**
-       * <code>required sint32 lin_acc_z = 6;</code>
-       */
-      public int getLinAccZ() {
-        return linAccZ_;
-      }
-      /**
-       * <code>required sint32 lin_acc_z = 6;</code>
-       */
-      private void setLinAccZ(int value) {
-        bitField0_ |= 0x00000020;
-        linAccZ_ = value;
-      }
-      /**
-       * <code>required sint32 lin_acc_z = 6;</code>
-       */
-      private void clearLinAccZ() {
-        bitField0_ = (bitField0_ & ~0x00000020);
-        linAccZ_ = 0;
+        quatZ_ = 0;
       }
 
       public void writeTo(com.google.protobuf.CodedOutputStream output)
                           throws java.io.IOException {
         if (((bitField0_ & 0x00000001) == 0x00000001)) {
-          output.writeSInt32(1, eulH_);
+          output.writeSInt32(1, quatW_);
         }
         if (((bitField0_ & 0x00000002) == 0x00000002)) {
-          output.writeSInt32(2, eulR_);
+          output.writeSInt32(2, quatX_);
         }
         if (((bitField0_ & 0x00000004) == 0x00000004)) {
-          output.writeSInt32(3, eulP_);
+          output.writeSInt32(3, quatY_);
         }
         if (((bitField0_ & 0x00000008) == 0x00000008)) {
-          output.writeSInt32(4, linAccX_);
-        }
-        if (((bitField0_ & 0x00000010) == 0x00000010)) {
-          output.writeSInt32(5, linAccY_);
-        }
-        if (((bitField0_ & 0x00000020) == 0x00000020)) {
-          output.writeSInt32(6, linAccZ_);
+          output.writeSInt32(4, quatZ_);
         }
         unknownFields.writeTo(output);
       }
@@ -1596,27 +1514,19 @@ public final class SignBuddyProto {
         size = 0;
         if (((bitField0_ & 0x00000001) == 0x00000001)) {
           size += com.google.protobuf.CodedOutputStream
-            .computeSInt32Size(1, eulH_);
+            .computeSInt32Size(1, quatW_);
         }
         if (((bitField0_ & 0x00000002) == 0x00000002)) {
           size += com.google.protobuf.CodedOutputStream
-            .computeSInt32Size(2, eulR_);
+            .computeSInt32Size(2, quatX_);
         }
         if (((bitField0_ & 0x00000004) == 0x00000004)) {
           size += com.google.protobuf.CodedOutputStream
-            .computeSInt32Size(3, eulP_);
+            .computeSInt32Size(3, quatY_);
         }
         if (((bitField0_ & 0x00000008) == 0x00000008)) {
           size += com.google.protobuf.CodedOutputStream
-            .computeSInt32Size(4, linAccX_);
-        }
-        if (((bitField0_ & 0x00000010) == 0x00000010)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeSInt32Size(5, linAccY_);
-        }
-        if (((bitField0_ & 0x00000020) == 0x00000020)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeSInt32Size(6, linAccZ_);
+            .computeSInt32Size(4, quatZ_);
         }
         size += unknownFields.getSerializedSize();
         memoizedSerializedSize = size;
@@ -1706,176 +1616,118 @@ public final class SignBuddyProto {
 
 
         /**
-         * <code>required sint32 eul_h = 1;</code>
+         * <code>required sint32 quat_w = 1;</code>
          */
-        public boolean hasEulH() {
-          return instance.hasEulH();
+        public boolean hasQuatW() {
+          return instance.hasQuatW();
         }
         /**
-         * <code>required sint32 eul_h = 1;</code>
+         * <code>required sint32 quat_w = 1;</code>
          */
-        public int getEulH() {
-          return instance.getEulH();
+        public int getQuatW() {
+          return instance.getQuatW();
         }
         /**
-         * <code>required sint32 eul_h = 1;</code>
+         * <code>required sint32 quat_w = 1;</code>
          */
-        public Builder setEulH(int value) {
+        public Builder setQuatW(int value) {
           copyOnWrite();
-          instance.setEulH(value);
+          instance.setQuatW(value);
           return this;
         }
         /**
-         * <code>required sint32 eul_h = 1;</code>
+         * <code>required sint32 quat_w = 1;</code>
          */
-        public Builder clearEulH() {
+        public Builder clearQuatW() {
           copyOnWrite();
-          instance.clearEulH();
-          return this;
-        }
-
-        /**
-         * <code>required sint32 eul_r = 2;</code>
-         */
-        public boolean hasEulR() {
-          return instance.hasEulR();
-        }
-        /**
-         * <code>required sint32 eul_r = 2;</code>
-         */
-        public int getEulR() {
-          return instance.getEulR();
-        }
-        /**
-         * <code>required sint32 eul_r = 2;</code>
-         */
-        public Builder setEulR(int value) {
-          copyOnWrite();
-          instance.setEulR(value);
-          return this;
-        }
-        /**
-         * <code>required sint32 eul_r = 2;</code>
-         */
-        public Builder clearEulR() {
-          copyOnWrite();
-          instance.clearEulR();
+          instance.clearQuatW();
           return this;
         }
 
         /**
-         * <code>required sint32 eul_p = 3;</code>
+         * <code>required sint32 quat_x = 2;</code>
          */
-        public boolean hasEulP() {
-          return instance.hasEulP();
+        public boolean hasQuatX() {
+          return instance.hasQuatX();
         }
         /**
-         * <code>required sint32 eul_p = 3;</code>
+         * <code>required sint32 quat_x = 2;</code>
          */
-        public int getEulP() {
-          return instance.getEulP();
+        public int getQuatX() {
+          return instance.getQuatX();
         }
         /**
-         * <code>required sint32 eul_p = 3;</code>
+         * <code>required sint32 quat_x = 2;</code>
          */
-        public Builder setEulP(int value) {
+        public Builder setQuatX(int value) {
           copyOnWrite();
-          instance.setEulP(value);
+          instance.setQuatX(value);
           return this;
         }
         /**
-         * <code>required sint32 eul_p = 3;</code>
+         * <code>required sint32 quat_x = 2;</code>
          */
-        public Builder clearEulP() {
+        public Builder clearQuatX() {
           copyOnWrite();
-          instance.clearEulP();
-          return this;
-        }
-
-        /**
-         * <code>required sint32 lin_acc_x = 4;</code>
-         */
-        public boolean hasLinAccX() {
-          return instance.hasLinAccX();
-        }
-        /**
-         * <code>required sint32 lin_acc_x = 4;</code>
-         */
-        public int getLinAccX() {
-          return instance.getLinAccX();
-        }
-        /**
-         * <code>required sint32 lin_acc_x = 4;</code>
-         */
-        public Builder setLinAccX(int value) {
-          copyOnWrite();
-          instance.setLinAccX(value);
-          return this;
-        }
-        /**
-         * <code>required sint32 lin_acc_x = 4;</code>
-         */
-        public Builder clearLinAccX() {
-          copyOnWrite();
-          instance.clearLinAccX();
+          instance.clearQuatX();
           return this;
         }
 
         /**
-         * <code>required sint32 lin_acc_y = 5;</code>
+         * <code>required sint32 quat_y = 3;</code>
          */
-        public boolean hasLinAccY() {
-          return instance.hasLinAccY();
+        public boolean hasQuatY() {
+          return instance.hasQuatY();
         }
         /**
-         * <code>required sint32 lin_acc_y = 5;</code>
+         * <code>required sint32 quat_y = 3;</code>
          */
-        public int getLinAccY() {
-          return instance.getLinAccY();
+        public int getQuatY() {
+          return instance.getQuatY();
         }
         /**
-         * <code>required sint32 lin_acc_y = 5;</code>
+         * <code>required sint32 quat_y = 3;</code>
          */
-        public Builder setLinAccY(int value) {
+        public Builder setQuatY(int value) {
           copyOnWrite();
-          instance.setLinAccY(value);
+          instance.setQuatY(value);
           return this;
         }
         /**
-         * <code>required sint32 lin_acc_y = 5;</code>
+         * <code>required sint32 quat_y = 3;</code>
          */
-        public Builder clearLinAccY() {
+        public Builder clearQuatY() {
           copyOnWrite();
-          instance.clearLinAccY();
+          instance.clearQuatY();
           return this;
         }
 
         /**
-         * <code>required sint32 lin_acc_z = 6;</code>
+         * <code>required sint32 quat_z = 4;</code>
          */
-        public boolean hasLinAccZ() {
-          return instance.hasLinAccZ();
+        public boolean hasQuatZ() {
+          return instance.hasQuatZ();
         }
         /**
-         * <code>required sint32 lin_acc_z = 6;</code>
+         * <code>required sint32 quat_z = 4;</code>
          */
-        public int getLinAccZ() {
-          return instance.getLinAccZ();
+        public int getQuatZ() {
+          return instance.getQuatZ();
         }
         /**
-         * <code>required sint32 lin_acc_z = 6;</code>
+         * <code>required sint32 quat_z = 4;</code>
          */
-        public Builder setLinAccZ(int value) {
+        public Builder setQuatZ(int value) {
           copyOnWrite();
-          instance.setLinAccZ(value);
+          instance.setQuatZ(value);
           return this;
         }
         /**
-         * <code>required sint32 lin_acc_z = 6;</code>
+         * <code>required sint32 quat_z = 4;</code>
          */
-        public Builder clearLinAccZ() {
+        public Builder clearQuatZ() {
           copyOnWrite();
-          instance.clearLinAccZ();
+          instance.clearQuatZ();
           return this;
         }
 
@@ -1895,37 +1747,25 @@ public final class SignBuddyProto {
             if (isInitialized == 0) return null;
 
             boolean shouldMemoize = ((Boolean) arg0).booleanValue();
-            if (!hasEulH()) {
+            if (!hasQuatW()) {
               if (shouldMemoize) {
                 memoizedIsInitialized = 0;
               }
               return null;
             }
-            if (!hasEulR()) {
+            if (!hasQuatX()) {
               if (shouldMemoize) {
                 memoizedIsInitialized = 0;
               }
               return null;
             }
-            if (!hasEulP()) {
+            if (!hasQuatY()) {
               if (shouldMemoize) {
                 memoizedIsInitialized = 0;
               }
               return null;
             }
-            if (!hasLinAccX()) {
-              if (shouldMemoize) {
-                memoizedIsInitialized = 0;
-              }
-              return null;
-            }
-            if (!hasLinAccY()) {
-              if (shouldMemoize) {
-                memoizedIsInitialized = 0;
-              }
-              return null;
-            }
-            if (!hasLinAccZ()) {
+            if (!hasQuatZ()) {
               if (shouldMemoize) {
                 memoizedIsInitialized = 0;
               }
@@ -1944,24 +1784,18 @@ public final class SignBuddyProto {
           case VISIT: {
             Visitor visitor = (Visitor) arg0;
             com.example.signbuddy.SignBuddyProto.SBPSample.IMUData other = (com.example.signbuddy.SignBuddyProto.SBPSample.IMUData) arg1;
-            eulH_ = visitor.visitInt(
-                hasEulH(), eulH_,
-                other.hasEulH(), other.eulH_);
-            eulR_ = visitor.visitInt(
-                hasEulR(), eulR_,
-                other.hasEulR(), other.eulR_);
-            eulP_ = visitor.visitInt(
-                hasEulP(), eulP_,
-                other.hasEulP(), other.eulP_);
-            linAccX_ = visitor.visitInt(
-                hasLinAccX(), linAccX_,
-                other.hasLinAccX(), other.linAccX_);
-            linAccY_ = visitor.visitInt(
-                hasLinAccY(), linAccY_,
-                other.hasLinAccY(), other.linAccY_);
-            linAccZ_ = visitor.visitInt(
-                hasLinAccZ(), linAccZ_,
-                other.hasLinAccZ(), other.linAccZ_);
+            quatW_ = visitor.visitInt(
+                hasQuatW(), quatW_,
+                other.hasQuatW(), other.quatW_);
+            quatX_ = visitor.visitInt(
+                hasQuatX(), quatX_,
+                other.hasQuatX(), other.quatX_);
+            quatY_ = visitor.visitInt(
+                hasQuatY(), quatY_,
+                other.hasQuatY(), other.quatY_);
+            quatZ_ = visitor.visitInt(
+                hasQuatZ(), quatZ_,
+                other.hasQuatZ(), other.quatZ_);
             if (visitor == com.google.protobuf.GeneratedMessageLite.MergeFromVisitor
                 .INSTANCE) {
               bitField0_ |= other.bitField0_;
@@ -1989,32 +1823,22 @@ public final class SignBuddyProto {
                   }
                   case 8: {
                     bitField0_ |= 0x00000001;
-                    eulH_ = input.readSInt32();
+                    quatW_ = input.readSInt32();
                     break;
                   }
                   case 16: {
                     bitField0_ |= 0x00000002;
-                    eulR_ = input.readSInt32();
+                    quatX_ = input.readSInt32();
                     break;
                   }
                   case 24: {
                     bitField0_ |= 0x00000004;
-                    eulP_ = input.readSInt32();
+                    quatY_ = input.readSInt32();
                     break;
                   }
                   case 32: {
                     bitField0_ |= 0x00000008;
-                    linAccX_ = input.readSInt32();
-                    break;
-                  }
-                  case 40: {
-                    bitField0_ |= 0x00000010;
-                    linAccY_ = input.readSInt32();
-                    break;
-                  }
-                  case 48: {
-                    bitField0_ |= 0x00000020;
-                    linAccZ_ = input.readSInt32();
+                    quatZ_ = input.readSInt32();
                     break;
                   }
                 }
@@ -4655,47 +4479,38 @@ public final class SignBuddyProto {
       com.google.protobuf.MessageLiteOrBuilder {
 
     /**
-     * <code>required uint32 battery_voltage = 1;</code>
-     */
-    boolean hasBatteryVoltage();
-    /**
-     * <code>required uint32 battery_voltage = 1;</code>
-     */
-    int getBatteryVoltage();
-
-    /**
-     * <code>required uint32 imu_sys_calib_status = 2;</code>
+     * <code>required uint32 imu_sys_calib_status = 1;</code>
      */
     boolean hasImuSysCalibStatus();
     /**
-     * <code>required uint32 imu_sys_calib_status = 2;</code>
+     * <code>required uint32 imu_sys_calib_status = 1;</code>
      */
     int getImuSysCalibStatus();
 
     /**
-     * <code>required uint32 imu_mag_calib_status = 3;</code>
+     * <code>required uint32 imu_mag_calib_status = 2;</code>
      */
     boolean hasImuMagCalibStatus();
     /**
-     * <code>required uint32 imu_mag_calib_status = 3;</code>
+     * <code>required uint32 imu_mag_calib_status = 2;</code>
      */
     int getImuMagCalibStatus();
 
     /**
-     * <code>required uint32 imu_acc_calib_status = 4;</code>
+     * <code>required uint32 imu_acc_calib_status = 3;</code>
      */
     boolean hasImuAccCalibStatus();
     /**
-     * <code>required uint32 imu_acc_calib_status = 4;</code>
+     * <code>required uint32 imu_acc_calib_status = 3;</code>
      */
     int getImuAccCalibStatus();
 
     /**
-     * <code>required uint32 imu_gyro_calib_status = 5;</code>
+     * <code>required uint32 imu_gyro_calib_status = 4;</code>
      */
     boolean hasImuGyroCalibStatus();
     /**
-     * <code>required uint32 imu_gyro_calib_status = 5;</code>
+     * <code>required uint32 imu_gyro_calib_status = 4;</code>
      */
     int getImuGyroCalibStatus();
   }
@@ -4710,167 +4525,135 @@ public final class SignBuddyProto {
     private SBPStatus() {
     }
     private int bitField0_;
-    public static final int BATTERY_VOLTAGE_FIELD_NUMBER = 1;
-    private int batteryVoltage_;
+    public static final int IMU_SYS_CALIB_STATUS_FIELD_NUMBER = 1;
+    private int imuSysCalibStatus_;
     /**
-     * <code>required uint32 battery_voltage = 1;</code>
+     * <code>required uint32 imu_sys_calib_status = 1;</code>
      */
-    public boolean hasBatteryVoltage() {
+    public boolean hasImuSysCalibStatus() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required uint32 battery_voltage = 1;</code>
-     */
-    public int getBatteryVoltage() {
-      return batteryVoltage_;
-    }
-    /**
-     * <code>required uint32 battery_voltage = 1;</code>
-     */
-    private void setBatteryVoltage(int value) {
-      bitField0_ |= 0x00000001;
-      batteryVoltage_ = value;
-    }
-    /**
-     * <code>required uint32 battery_voltage = 1;</code>
-     */
-    private void clearBatteryVoltage() {
-      bitField0_ = (bitField0_ & ~0x00000001);
-      batteryVoltage_ = 0;
-    }
-
-    public static final int IMU_SYS_CALIB_STATUS_FIELD_NUMBER = 2;
-    private int imuSysCalibStatus_;
-    /**
-     * <code>required uint32 imu_sys_calib_status = 2;</code>
-     */
-    public boolean hasImuSysCalibStatus() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    /**
-     * <code>required uint32 imu_sys_calib_status = 2;</code>
+     * <code>required uint32 imu_sys_calib_status = 1;</code>
      */
     public int getImuSysCalibStatus() {
       return imuSysCalibStatus_;
     }
     /**
-     * <code>required uint32 imu_sys_calib_status = 2;</code>
+     * <code>required uint32 imu_sys_calib_status = 1;</code>
      */
     private void setImuSysCalibStatus(int value) {
-      bitField0_ |= 0x00000002;
+      bitField0_ |= 0x00000001;
       imuSysCalibStatus_ = value;
     }
     /**
-     * <code>required uint32 imu_sys_calib_status = 2;</code>
+     * <code>required uint32 imu_sys_calib_status = 1;</code>
      */
     private void clearImuSysCalibStatus() {
-      bitField0_ = (bitField0_ & ~0x00000002);
+      bitField0_ = (bitField0_ & ~0x00000001);
       imuSysCalibStatus_ = 0;
     }
 
-    public static final int IMU_MAG_CALIB_STATUS_FIELD_NUMBER = 3;
+    public static final int IMU_MAG_CALIB_STATUS_FIELD_NUMBER = 2;
     private int imuMagCalibStatus_;
     /**
-     * <code>required uint32 imu_mag_calib_status = 3;</code>
+     * <code>required uint32 imu_mag_calib_status = 2;</code>
      */
     public boolean hasImuMagCalibStatus() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
+      return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>required uint32 imu_mag_calib_status = 3;</code>
+     * <code>required uint32 imu_mag_calib_status = 2;</code>
      */
     public int getImuMagCalibStatus() {
       return imuMagCalibStatus_;
     }
     /**
-     * <code>required uint32 imu_mag_calib_status = 3;</code>
+     * <code>required uint32 imu_mag_calib_status = 2;</code>
      */
     private void setImuMagCalibStatus(int value) {
-      bitField0_ |= 0x00000004;
+      bitField0_ |= 0x00000002;
       imuMagCalibStatus_ = value;
     }
     /**
-     * <code>required uint32 imu_mag_calib_status = 3;</code>
+     * <code>required uint32 imu_mag_calib_status = 2;</code>
      */
     private void clearImuMagCalibStatus() {
-      bitField0_ = (bitField0_ & ~0x00000004);
+      bitField0_ = (bitField0_ & ~0x00000002);
       imuMagCalibStatus_ = 0;
     }
 
-    public static final int IMU_ACC_CALIB_STATUS_FIELD_NUMBER = 4;
+    public static final int IMU_ACC_CALIB_STATUS_FIELD_NUMBER = 3;
     private int imuAccCalibStatus_;
     /**
-     * <code>required uint32 imu_acc_calib_status = 4;</code>
+     * <code>required uint32 imu_acc_calib_status = 3;</code>
      */
     public boolean hasImuAccCalibStatus() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
+      return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>required uint32 imu_acc_calib_status = 4;</code>
+     * <code>required uint32 imu_acc_calib_status = 3;</code>
      */
     public int getImuAccCalibStatus() {
       return imuAccCalibStatus_;
     }
     /**
-     * <code>required uint32 imu_acc_calib_status = 4;</code>
+     * <code>required uint32 imu_acc_calib_status = 3;</code>
      */
     private void setImuAccCalibStatus(int value) {
-      bitField0_ |= 0x00000008;
+      bitField0_ |= 0x00000004;
       imuAccCalibStatus_ = value;
     }
     /**
-     * <code>required uint32 imu_acc_calib_status = 4;</code>
+     * <code>required uint32 imu_acc_calib_status = 3;</code>
      */
     private void clearImuAccCalibStatus() {
-      bitField0_ = (bitField0_ & ~0x00000008);
+      bitField0_ = (bitField0_ & ~0x00000004);
       imuAccCalibStatus_ = 0;
     }
 
-    public static final int IMU_GYRO_CALIB_STATUS_FIELD_NUMBER = 5;
+    public static final int IMU_GYRO_CALIB_STATUS_FIELD_NUMBER = 4;
     private int imuGyroCalibStatus_;
     /**
-     * <code>required uint32 imu_gyro_calib_status = 5;</code>
+     * <code>required uint32 imu_gyro_calib_status = 4;</code>
      */
     public boolean hasImuGyroCalibStatus() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
+      return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
-     * <code>required uint32 imu_gyro_calib_status = 5;</code>
+     * <code>required uint32 imu_gyro_calib_status = 4;</code>
      */
     public int getImuGyroCalibStatus() {
       return imuGyroCalibStatus_;
     }
     /**
-     * <code>required uint32 imu_gyro_calib_status = 5;</code>
+     * <code>required uint32 imu_gyro_calib_status = 4;</code>
      */
     private void setImuGyroCalibStatus(int value) {
-      bitField0_ |= 0x00000010;
+      bitField0_ |= 0x00000008;
       imuGyroCalibStatus_ = value;
     }
     /**
-     * <code>required uint32 imu_gyro_calib_status = 5;</code>
+     * <code>required uint32 imu_gyro_calib_status = 4;</code>
      */
     private void clearImuGyroCalibStatus() {
-      bitField0_ = (bitField0_ & ~0x00000010);
+      bitField0_ = (bitField0_ & ~0x00000008);
       imuGyroCalibStatus_ = 0;
     }
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeUInt32(1, batteryVoltage_);
+        output.writeUInt32(1, imuSysCalibStatus_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeUInt32(2, imuSysCalibStatus_);
+        output.writeUInt32(2, imuMagCalibStatus_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeUInt32(3, imuMagCalibStatus_);
+        output.writeUInt32(3, imuAccCalibStatus_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeUInt32(4, imuAccCalibStatus_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeUInt32(5, imuGyroCalibStatus_);
+        output.writeUInt32(4, imuGyroCalibStatus_);
       }
       unknownFields.writeTo(output);
     }
@@ -4882,23 +4665,19 @@ public final class SignBuddyProto {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(1, batteryVoltage_);
+          .computeUInt32Size(1, imuSysCalibStatus_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(2, imuSysCalibStatus_);
+          .computeUInt32Size(2, imuMagCalibStatus_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(3, imuMagCalibStatus_);
+          .computeUInt32Size(3, imuAccCalibStatus_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(4, imuAccCalibStatus_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(5, imuGyroCalibStatus_);
+          .computeUInt32Size(4, imuGyroCalibStatus_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSerializedSize = size;
@@ -4988,48 +4767,19 @@ public final class SignBuddyProto {
 
 
       /**
-       * <code>required uint32 battery_voltage = 1;</code>
-       */
-      public boolean hasBatteryVoltage() {
-        return instance.hasBatteryVoltage();
-      }
-      /**
-       * <code>required uint32 battery_voltage = 1;</code>
-       */
-      public int getBatteryVoltage() {
-        return instance.getBatteryVoltage();
-      }
-      /**
-       * <code>required uint32 battery_voltage = 1;</code>
-       */
-      public Builder setBatteryVoltage(int value) {
-        copyOnWrite();
-        instance.setBatteryVoltage(value);
-        return this;
-      }
-      /**
-       * <code>required uint32 battery_voltage = 1;</code>
-       */
-      public Builder clearBatteryVoltage() {
-        copyOnWrite();
-        instance.clearBatteryVoltage();
-        return this;
-      }
-
-      /**
-       * <code>required uint32 imu_sys_calib_status = 2;</code>
+       * <code>required uint32 imu_sys_calib_status = 1;</code>
        */
       public boolean hasImuSysCalibStatus() {
         return instance.hasImuSysCalibStatus();
       }
       /**
-       * <code>required uint32 imu_sys_calib_status = 2;</code>
+       * <code>required uint32 imu_sys_calib_status = 1;</code>
        */
       public int getImuSysCalibStatus() {
         return instance.getImuSysCalibStatus();
       }
       /**
-       * <code>required uint32 imu_sys_calib_status = 2;</code>
+       * <code>required uint32 imu_sys_calib_status = 1;</code>
        */
       public Builder setImuSysCalibStatus(int value) {
         copyOnWrite();
@@ -5037,7 +4787,7 @@ public final class SignBuddyProto {
         return this;
       }
       /**
-       * <code>required uint32 imu_sys_calib_status = 2;</code>
+       * <code>required uint32 imu_sys_calib_status = 1;</code>
        */
       public Builder clearImuSysCalibStatus() {
         copyOnWrite();
@@ -5046,19 +4796,19 @@ public final class SignBuddyProto {
       }
 
       /**
-       * <code>required uint32 imu_mag_calib_status = 3;</code>
+       * <code>required uint32 imu_mag_calib_status = 2;</code>
        */
       public boolean hasImuMagCalibStatus() {
         return instance.hasImuMagCalibStatus();
       }
       /**
-       * <code>required uint32 imu_mag_calib_status = 3;</code>
+       * <code>required uint32 imu_mag_calib_status = 2;</code>
        */
       public int getImuMagCalibStatus() {
         return instance.getImuMagCalibStatus();
       }
       /**
-       * <code>required uint32 imu_mag_calib_status = 3;</code>
+       * <code>required uint32 imu_mag_calib_status = 2;</code>
        */
       public Builder setImuMagCalibStatus(int value) {
         copyOnWrite();
@@ -5066,7 +4816,7 @@ public final class SignBuddyProto {
         return this;
       }
       /**
-       * <code>required uint32 imu_mag_calib_status = 3;</code>
+       * <code>required uint32 imu_mag_calib_status = 2;</code>
        */
       public Builder clearImuMagCalibStatus() {
         copyOnWrite();
@@ -5075,19 +4825,19 @@ public final class SignBuddyProto {
       }
 
       /**
-       * <code>required uint32 imu_acc_calib_status = 4;</code>
+       * <code>required uint32 imu_acc_calib_status = 3;</code>
        */
       public boolean hasImuAccCalibStatus() {
         return instance.hasImuAccCalibStatus();
       }
       /**
-       * <code>required uint32 imu_acc_calib_status = 4;</code>
+       * <code>required uint32 imu_acc_calib_status = 3;</code>
        */
       public int getImuAccCalibStatus() {
         return instance.getImuAccCalibStatus();
       }
       /**
-       * <code>required uint32 imu_acc_calib_status = 4;</code>
+       * <code>required uint32 imu_acc_calib_status = 3;</code>
        */
       public Builder setImuAccCalibStatus(int value) {
         copyOnWrite();
@@ -5095,7 +4845,7 @@ public final class SignBuddyProto {
         return this;
       }
       /**
-       * <code>required uint32 imu_acc_calib_status = 4;</code>
+       * <code>required uint32 imu_acc_calib_status = 3;</code>
        */
       public Builder clearImuAccCalibStatus() {
         copyOnWrite();
@@ -5104,19 +4854,19 @@ public final class SignBuddyProto {
       }
 
       /**
-       * <code>required uint32 imu_gyro_calib_status = 5;</code>
+       * <code>required uint32 imu_gyro_calib_status = 4;</code>
        */
       public boolean hasImuGyroCalibStatus() {
         return instance.hasImuGyroCalibStatus();
       }
       /**
-       * <code>required uint32 imu_gyro_calib_status = 5;</code>
+       * <code>required uint32 imu_gyro_calib_status = 4;</code>
        */
       public int getImuGyroCalibStatus() {
         return instance.getImuGyroCalibStatus();
       }
       /**
-       * <code>required uint32 imu_gyro_calib_status = 5;</code>
+       * <code>required uint32 imu_gyro_calib_status = 4;</code>
        */
       public Builder setImuGyroCalibStatus(int value) {
         copyOnWrite();
@@ -5124,7 +4874,7 @@ public final class SignBuddyProto {
         return this;
       }
       /**
-       * <code>required uint32 imu_gyro_calib_status = 5;</code>
+       * <code>required uint32 imu_gyro_calib_status = 4;</code>
        */
       public Builder clearImuGyroCalibStatus() {
         copyOnWrite();
@@ -5148,12 +4898,6 @@ public final class SignBuddyProto {
           if (isInitialized == 0) return null;
 
           boolean shouldMemoize = ((Boolean) arg0).booleanValue();
-          if (!hasBatteryVoltage()) {
-            if (shouldMemoize) {
-              memoizedIsInitialized = 0;
-            }
-            return null;
-          }
           if (!hasImuSysCalibStatus()) {
             if (shouldMemoize) {
               memoizedIsInitialized = 0;
@@ -5191,9 +4935,6 @@ public final class SignBuddyProto {
         case VISIT: {
           Visitor visitor = (Visitor) arg0;
           com.example.signbuddy.SignBuddyProto.SBPStatus other = (com.example.signbuddy.SignBuddyProto.SBPStatus) arg1;
-          batteryVoltage_ = visitor.visitInt(
-              hasBatteryVoltage(), batteryVoltage_,
-              other.hasBatteryVoltage(), other.batteryVoltage_);
           imuSysCalibStatus_ = visitor.visitInt(
               hasImuSysCalibStatus(), imuSysCalibStatus_,
               other.hasImuSysCalibStatus(), other.imuSysCalibStatus_);
@@ -5233,26 +4974,21 @@ public final class SignBuddyProto {
                 }
                 case 8: {
                   bitField0_ |= 0x00000001;
-                  batteryVoltage_ = input.readUInt32();
+                  imuSysCalibStatus_ = input.readUInt32();
                   break;
                 }
                 case 16: {
                   bitField0_ |= 0x00000002;
-                  imuSysCalibStatus_ = input.readUInt32();
+                  imuMagCalibStatus_ = input.readUInt32();
                   break;
                 }
                 case 24: {
                   bitField0_ |= 0x00000004;
-                  imuMagCalibStatus_ = input.readUInt32();
+                  imuAccCalibStatus_ = input.readUInt32();
                   break;
                 }
                 case 32: {
                   bitField0_ |= 0x00000008;
-                  imuAccCalibStatus_ = input.readUInt32();
-                  break;
-                }
-                case 40: {
-                  bitField0_ |= 0x00000010;
                   imuGyroCalibStatus_ = input.readUInt32();
                   break;
                 }
