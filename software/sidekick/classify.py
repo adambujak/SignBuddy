@@ -26,7 +26,7 @@ for proto in proto_strings:
     del list2[0]
     del list2[9]
     for i in range(len(list2)):
-        if i in range(8):
+        if i in range(9):
             list2[i] = int(list2[i][0])
         else:
             if list2[i][0] == 'false':
