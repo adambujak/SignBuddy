@@ -7,6 +7,7 @@ from sklearn import preprocessing
 from sklearn.model_selection import GridSearchCV
 from sklearn.model_selection import train_test_split
 from sklearn.svm import SVC
+from sklearn_porter import Porter
 
 data = open("sign_buddy_training_data.txt", "r").read()
 
@@ -25,7 +26,7 @@ for proto in proto_strings:
     del list2[0]
     del list2[9]
     for i in range(len(list2)):
-        if i in range(8):
+        if i in range(9):
             list2[i] = int(list2[i][0])
         else:
             if list2[i][0] == 'false':
@@ -70,6 +71,10 @@ print(clf.best_params_)
 
 model = SVC(kernel='rbf', gamma=10, C=1000)
 model.fit(x_train_normalized, y_train)
+porter = Porter(model, language='java')
+output = porter.export()
+with open('SVC.java', 'w') as f:
+    f.write(output)
 y_pred = model.predict(x_train_normalized)
 print("\nCONFUSION MATRIX TRAIN")
 confusion_matrix_train = metrics.confusion_matrix(y_train, y_pred)
