@@ -14,7 +14,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 public class QuizActivity extends AppCompatActivity {
-    private static final String FILE_NAME = "lessonData.txt";
     private Button correctButton;
     private Button incorrectButton;
     private ProgressBar pgsBar;
