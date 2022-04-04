@@ -45,7 +45,6 @@ public class LessonActivity extends AppCompatActivity {
     private final String UUID_CHARACTERISTIC_NOTIFY = "6E400003-B5A3-F393-E0A9-E50E24DCCA9E";
     private final byte MSG_SYNC = 0x16;
     private SignBuddyProto.SBPGestureData gestureData;
-
     private final int MAX_SAMPLES = 40;
     private final byte MID_SAMPLE = 0x01;
     private int num_samples;
