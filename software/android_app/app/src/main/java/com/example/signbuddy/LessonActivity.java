@@ -39,6 +39,10 @@ public class LessonActivity extends AppCompatActivity {
     int lessonnum; //coming from previous activity
     int alphanum; //mapped to actual alpha number (1-26)
     boolean correct;
+    private BleDevice SignBuddy;
+    private ReentrantLock samplesLock = new ReentrantLock();
+    private List<SignBuddyProto.SBPSample> samples = new ArrayList<>();
+    private ByteArrayOutputStream byteBuffer = new ByteArrayOutputStream();
 
     private final String UUID_SERVICE = "6E400001-B5A3-F393-E0A9-E50E24DCCA9E";
     private final String UUID_CHARACTERISTIC_WRITE = "6E400002-B5A3-F393-E0A9-E50E24DCCA9E";
@@ -94,7 +98,7 @@ public class LessonActivity extends AppCompatActivity {
             }
             public void onFinish() {
                 countText.setText("GO!");
-                BleManager.getInstance().notify(MainActivity.SignBuddy, UUID_SERVICE, UUID_CHARACTERISTIC_NOTIFY, new BleNotifyCallback() {
+                BleManager.getInstance().notify(SignBuddy, UUID_SERVICE, UUID_CHARACTERISTIC_NOTIFY, new BleNotifyCallback() {
                     @Override
                     public void onNotifySuccess() {
 
@@ -108,7 +112,7 @@ public class LessonActivity extends AppCompatActivity {
                     @Override
                     public void onCharacteristicChanged(byte[] data) {
                         for (byte b : data) {
-                            if (b == MSG_SYNC && MainActivity.byteBuffer.size() == 0) {
+                            if (b == MSG_SYNC && byteBuffer.size() == 0) {
                                 skip_crc = 4;
                                 next_byte_is_length = true;
                             } else if (next_byte_is_length) {
@@ -117,10 +121,10 @@ public class LessonActivity extends AppCompatActivity {
                             } else if (skip_crc > 0) {
                                 skip_crc--;
                             } else {
-                                MainActivity.byteBuffer.write(b);
-                                if (MainActivity.byteBuffer.size() == msg_length) {
-                                    new Thread(new LessonActivity.ParseMessage(MainActivity.byteBuffer.toByteArray())).start();
-                                    MainActivity.byteBuffer.reset();
+                                byteBuffer.write(b);
+                                if (byteBuffer.size() == msg_length) {
+                                    new Thread(new LessonActivity.ParseMessage(byteBuffer.toByteArray())).start();
+                                    byteBuffer.reset();
                                 }
                             }
                         }
@@ -168,22 +172,22 @@ public class LessonActivity extends AppCompatActivity {
                 if (message.getId() == MID_SAMPLE) {
                     SignBuddyProto.SBPSample sample = message.getSample();
                     Log.i("Sign Buddy", "NEW SAMPLE");
-                    MainActivity.samplesLock.lock();
-                    MainActivity.samples.add(sample);
-                    Log.i("Sign Buddy", String.valueOf(MainActivity.samples.size()));
-                    if (MainActivity.samples.size() == num_samples) {
+                    samplesLock.lock();
+                    samples.add(sample);
+                    Log.i("Sign Buddy", String.valueOf(samples.size()));
+                    if (samples.size() == num_samples) {
                         gestureData = SignBuddyProto.SBPGestureData.newBuilder()
-                                .addAllSamples(MainActivity.samples)
+                                .addAllSamples(samples)
                                 .build();
                         Log.i("SignBuddy", gestureData.toString());
 
-                        MainActivity.samples.clear();
+                        samples.clear();
                         runOnUiThread(() -> {
                             Toast.makeText(LessonActivity.this, "Gesture collected!", Toast.LENGTH_SHORT).show();
                         });
                         Log.i("Sign Buddy", "NEW GESTURE");
                     }
-                    MainActivity.samplesLock.unlock();
+                    samplesLock.unlock();
                 }
             } catch (Exception e) {
                 e.printStackTrace();
