@@ -56,10 +56,10 @@ public class MainActivity extends AppCompatActivity {
     private Button resetButton;
     private ProgressBar connectProgress;
     private Button collectButton;
-    public static BleDevice SignBuddy;
-    public static ReentrantLock samplesLock = new ReentrantLock();
-    public static List<SignBuddyProto.SBPSample> samples = new ArrayList<>();
-    public static ByteArrayOutputStream byteBuffer = new ByteArrayOutputStream();
+    private BleDevice SignBuddy;
+    private ReentrantLock samplesLock = new ReentrantLock();
+    private List<SignBuddyProto.SBPSample> samples = new ArrayList<>();
+    private ByteArrayOutputStream byteBuffer = new ByteArrayOutputStream();
     private int num_samples;
     private int msg_length;
     private int skip_crc;
