@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.clj.fastble.BleManager;
 import com.clj.fastble.callback.BleNotifyCallback;
+import com.clj.fastble.callback.BleWriteCallback;
 import com.clj.fastble.data.BleDevice;
 import com.clj.fastble.exception.BleException;
 
@@ -43,6 +44,7 @@ public class LessonActivity extends AppCompatActivity {
     private ReentrantLock samplesLock = new ReentrantLock();
     private List<SignBuddyProto.SBPSample> samples = new ArrayList<>();
     private ByteArrayOutputStream byteBuffer = new ByteArrayOutputStream();
+    private final byte[] CMD_SAMPLE_ONCE = {0x01};
 
     private final String UUID_SERVICE = "6E400001-B5A3-F393-E0A9-E50E24DCCA9E";
     private final String UUID_CHARACTERISTIC_WRITE = "6E400002-B5A3-F393-E0A9-E50E24DCCA9E";
@@ -129,6 +131,19 @@ public class LessonActivity extends AppCompatActivity {
                 countText.setText("Perform Sign in: " + ((millisUntilFinished / 1500)+1));
             }
             public void onFinish() {
+                byte[] cmd;
+                cmd = CMD_SAMPLE_ONCE;
+                BleManager.getInstance().write(SignBuddy, UUID_SERVICE, UUID_CHARACTERISTIC_WRITE, cmd, new BleWriteCallback() {
+                    @Override
+                    public void onWriteSuccess(int current, int total, byte[] justWrite) {
+                        Toast.makeText(LessonActivity.this, "Starting collection!", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onWriteFailure(BleException exception) {
+                        Toast.makeText(LessonActivity.this, "Failed to start collection!", Toast.LENGTH_SHORT).show();
+                    }
+                });
                 countText.setText("GO!");
                 try {
                     Thread.sleep(500);
