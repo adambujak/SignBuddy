@@ -90,15 +90,7 @@ public class LessonActivity extends AppCompatActivity {
         int imgId = getResources().getIdentifier(PACKAGE_NAME+":drawable/"+fnm , null, null);
         image.setImageResource(imgId);
 
-        //start countdown
-        new CountDownTimer(7500, 1500) {
-            public void onTick(long millisUntilFinished) {
-                countText = findViewById(R.id.countText);
-                countText.setText("Perform Sign in: " + ((millisUntilFinished / 1500)+1));
-            }
-            public void onFinish() {
-                countText.setText("GO!");
-                BleManager.getInstance().notify(SignBuddy, UUID_SERVICE, UUID_CHARACTERISTIC_NOTIFY, new BleNotifyCallback() {
+        BleManager.getInstance().notify(SignBuddy, UUID_SERVICE, UUID_CHARACTERISTIC_NOTIFY, new BleNotifyCallback() {
                     @Override
                     public void onNotifySuccess() {
 
@@ -130,6 +122,19 @@ public class LessonActivity extends AppCompatActivity {
                         }
                     }
                 });
+        //start countdown
+        new CountDownTimer(7500, 1500) {
+            public void onTick(long millisUntilFinished) {
+                countText = findViewById(R.id.countText);
+                countText.setText("Perform Sign in: " + ((millisUntilFinished / 1500)+1));
+            }
+            public void onFinish() {
+                countText.setText("GO!");
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 countText.setText(gestureData.toString());
 
             }
