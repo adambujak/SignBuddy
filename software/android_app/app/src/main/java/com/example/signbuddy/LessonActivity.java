@@ -228,7 +228,7 @@ public class LessonActivity extends AppCompatActivity {
         String data19 = String.valueOf((gestureData.getSamples(0).getTouchData().getTouch8() ? 1 : -1) / 12.64911);
         String data20 = String.valueOf((gestureData.getSamples(0).getTouchData().getTouch9() ? 1 : -1) / 12.64911);
         String[] args = {data0, data1, data2, data3, data4, data5, data6, data7, data8, data9, data10, data11, data12, data13, data14, data15, data16, data17, data18, data19, data20};
-        SVCalpha = SVC.main(args);
+        SVCalpha = SVC.main(args)+1;
 
     }
 
