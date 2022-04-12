@@ -195,9 +195,9 @@ public class LessonActivity extends AppCompatActivity {
                     } else {
                         runOnUiThread(() -> {
                             Toast.makeText(LessonActivity.this, "Incorrect, Please try again!", Toast.LENGTH_SHORT).show();
-                            i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                            recreate();
                         });
+                        i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                        recreate();
                     }
                 }
             } catch (Exception e) {
