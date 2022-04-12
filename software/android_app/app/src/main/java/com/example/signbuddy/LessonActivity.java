@@ -206,27 +206,27 @@ public class LessonActivity extends AppCompatActivity {
     }
 
     private void callSVC() {
-        String data0 = String.valueOf((gestureData.getSamples(0).getFlexData().getFlexIndex()) / 641.82241);
-        String data1 = String.valueOf((gestureData.getSamples(0).getFlexData().getFlexLittle()) / 838.81047);
-        String data2 = String.valueOf((gestureData.getSamples(0).getFlexData().getFlexMiddle()) / 798.91990);
-        String data3 = String.valueOf((gestureData.getSamples(0).getFlexData().getFlexRing()) / 935.76600);
-        String data4 = String.valueOf((gestureData.getSamples(0).getFlexData().getFlexThumb()) / 1010.25888);
-        String data5 = String.valueOf((gestureData.getSamples(0).getImuData().getQuatW()) / 89806.69545);
-        String data6 = String.valueOf((gestureData.getSamples(0).getImuData().getQuatX()) / 89806.69545);
-        String data7 = String.valueOf((gestureData.getSamples(0).getImuData().getQuatY()) / 70859.62009);
-        String data8 = String.valueOf((gestureData.getSamples(0).getImuData().getQuatZ()) / 124341.31934);
-        String data9 = String.valueOf((gestureData.getSamples(0).getTouchData().getTouch1() ? 1 : -1) / 12.64911);
-        String data10 = String.valueOf((gestureData.getSamples(0).getTouchData().getTouch10() ? 1 : -1) / 12.64911);
-        String data11 = String.valueOf((gestureData.getSamples(0).getTouchData().getTouch11() ? 1 : -1) / 12.64911);
-        String data12 = String.valueOf((gestureData.getSamples(0).getTouchData().getTouch12() ? 1 : -1) / 12.64911);
-        String data13 = String.valueOf((gestureData.getSamples(0).getTouchData().getTouch2() ? 1 : -1) / 12.64911);
-        String data14 = String.valueOf((gestureData.getSamples(0).getTouchData().getTouch3() ? 1 : -1) / 12.64911);
-        String data15 = String.valueOf((gestureData.getSamples(0).getTouchData().getTouch4() ? 1 : -1) / 12.64911);
-        String data16 = String.valueOf((gestureData.getSamples(0).getTouchData().getTouch5() ? 1 : -1) / 12.64911);
-        String data17 = String.valueOf((gestureData.getSamples(0).getTouchData().getTouch6() ? 1 : -1) / 12.64911);
-        String data18 = String.valueOf((gestureData.getSamples(0).getTouchData().getTouch7() ? 1 : -1) / 12.64911);
-        String data19 = String.valueOf((gestureData.getSamples(0).getTouchData().getTouch8() ? 1 : -1) / 12.64911);
-        String data20 = String.valueOf((gestureData.getSamples(0).getTouchData().getTouch9() ? 1 : -1) / 12.64911);
+        String data0 = String.valueOf((gestureData.getSamples(0).getFlexData().getFlexIndex()) / 756.37358);
+        String data1 = String.valueOf((gestureData.getSamples(0).getFlexData().getFlexLittle()) / 826.82646);
+        String data2 = String.valueOf((gestureData.getSamples(0).getFlexData().getFlexMiddle()) / 929.51170);
+        String data3 = String.valueOf((gestureData.getSamples(0).getFlexData().getFlexRing()) / 965.84108);
+        String data4 = String.valueOf((gestureData.getSamples(0).getFlexData().getFlexThumb()) / 1011.90266);
+        String data5 = String.valueOf((gestureData.getSamples(0).getImuData().getQuatW()) / 79198.56836);
+        String data6 = String.valueOf((gestureData.getSamples(0).getImuData().getQuatX()) / 79198.56836);
+        String data7 = String.valueOf((gestureData.getSamples(0).getImuData().getQuatY()) / 59061.66665);
+        String data8 = String.valueOf((gestureData.getSamples(0).getImuData().getQuatZ()) / 140609.55664);
+        String data9 = String.valueOf((gestureData.getSamples(0).getTouchData().getTouch1() ? 1 : -1) / 12.60952);
+        String data10 = String.valueOf((gestureData.getSamples(0).getTouchData().getTouch10() ? 1 : -1) / 12.60952);
+        String data11 = String.valueOf((gestureData.getSamples(0).getTouchData().getTouch11() ? 1 : -1) / 12.60952);
+        String data12 = String.valueOf((gestureData.getSamples(0).getTouchData().getTouch12() ? 1 : -1) / 12.60952);
+        String data13 = String.valueOf((gestureData.getSamples(0).getTouchData().getTouch2() ? 1 : -1) / 12.60952);
+        String data14 = String.valueOf((gestureData.getSamples(0).getTouchData().getTouch3() ? 1 : -1) / 12.60952);
+        String data15 = String.valueOf((gestureData.getSamples(0).getTouchData().getTouch4() ? 1 : -1) / 12.60952);
+        String data16 = String.valueOf((gestureData.getSamples(0).getTouchData().getTouch5() ? 1 : -1) / 12.60952);
+        String data17 = String.valueOf((gestureData.getSamples(0).getTouchData().getTouch6() ? 1 : -1) / 12.60952);
+        String data18 = String.valueOf((gestureData.getSamples(0).getTouchData().getTouch7() ? 1 : -1) / 12.60952);
+        String data19 = String.valueOf((gestureData.getSamples(0).getTouchData().getTouch8() ? 1 : -1) / 12.60952);
+        String data20 = String.valueOf((gestureData.getSamples(0).getTouchData().getTouch9() ? 1 : -1) / 12.60952);
         String[] args = {data0, data1, data2, data3, data4, data5, data6, data7, data8, data9, data10, data11, data12, data13, data14, data15, data16, data17, data18, data19, data20};
         SVCalpha = SVC.main(args)+1;
 
