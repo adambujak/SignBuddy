@@ -2,6 +2,7 @@ package com.example.signbuddy;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
@@ -41,7 +42,7 @@ import java.util.concurrent.locks.ReentrantLock;
 public class MainActivity extends AppCompatActivity {
 
     private final int FINE_LOCATION_CODE = 1;
-    private final String BLE_NAME = "Sign Buddy BLE";
+    private final String BLE_NAME = "Adafruit Bluefruit LE";
     private final String UUID_SERVICE = "6E400001-B5A3-F393-E0A9-E50E24DCCA9E";
     private final String UUID_CHARACTERISTIC_WRITE = "6E400002-B5A3-F393-E0A9-E50E24DCCA9E";
     private final String UUID_CHARACTERISTIC_NOTIFY = "6E400003-B5A3-F393-E0A9-E50E24DCCA9E";
@@ -69,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         setContentView(R.layout.activity_main);
 
         Button lessonButton = findViewById(R.id.lessonButton);
@@ -122,12 +124,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void openLessonActivity(View v) {
-        Intent intent = new Intent(this, LessonActivity.class);
+        Intent intent = new Intent(this, LessonMenuActivity.class);
         startActivity(intent);
     }
 
     private void openQuizActivity(View v) {
-        Intent intent = new Intent(this, QuizActivity.class);
+        Intent intent = new Intent(this, QuizMenuActivity.class);
         startActivity(intent);
     }
 
