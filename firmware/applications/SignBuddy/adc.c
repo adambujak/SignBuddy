@@ -78,6 +78,7 @@ void ADC1_COMP_IRQHandler(void)
     LL_ADC_ClearFlag_OVR(ADC1);
 
     adc_overrun_cb();
+    adc_overrun_cb();
   }
 }
 
